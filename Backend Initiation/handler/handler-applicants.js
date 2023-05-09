@@ -1,35 +1,35 @@
 const { nanoid } = require('nanoid');
-const workExperiences = require("../data/workExperiences");
+const applicants = require('../data/applicants');
 
-const addExperienceHandler = (request, h) => {
+const addApplicantsHandler = (request, h) => {
     // const { name, year, author, summary, publisher, pageCount, readPage, reading} = request.payload;
-    const { companyName, yearIn, yearOut, position, description} = request.payload;
+    const { name, address, telp, email, age, education, experience, skill } = request.payload;
 
     const id = nanoid(16);
     
-    if (companyName === undefined){
+    if (name === undefined){
         const response = h.response({
             status: 'fail',
-            message: 'Failed, Company Name undefined', 
+            message: 'Failed, name undefined', 
         });
         response.statusCode = 400;
         return response;
     } 
 
-    const newWorkExperiences = {
-        id, companyName, yearIn, yearOut, position, description
+    const newApplicants = {
+        id, name, address, telp, email, age, education, experience, skill
     }
 
-    workExperiences.push(newWorkExperiences);
+    applicants.push(newProfiles);
 
-    const isSuccess = workExperiences.filter((workExperience) => workExperience.id === id).length > 0;
+    const isSuccess = applicants.filter((applicant) => applicant.id === id).length > 0;
  
     if (isSuccess) {
         const response = h.response({
             status: 'success',
             message: 'Success',
             data: {
-                workExperienceId: id,
+                applicantId: id,
             },
         });
         response.statusCode = 201;
@@ -44,4 +44,4 @@ const addExperienceHandler = (request, h) => {
         return response;
     }
 }
-module.exports = addExperienceHandler;
+module.exports = addApplicantsHandler;

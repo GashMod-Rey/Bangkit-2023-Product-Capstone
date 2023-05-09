@@ -1,35 +1,35 @@
 const { nanoid } = require('nanoid');
-const orgHistories = require("../data/orgHistories");
+const companies = require('../data/companies');
 
-const addOrgHistoryHandler = (request, h) => {
+const addCompaniesHandler = (request, h) => {
     // const { name, year, author, summary, publisher, pageCount, readPage, reading} = request.payload;
-    const { orgName, yearIn, yearOut, position, description} = request.payload;
+    const { name, address, telp, email, age, education, experience, skill } = request.payload;
 
     const id = nanoid(16);
     
-    if (orgName === undefined){
+    if (name === undefined){
         const response = h.response({
             status: 'fail',
-            message: 'Failed, Organitation Name undefined', 
+            message: 'Failed, name undefined', 
         });
         response.statusCode = 400;
         return response;
     } 
 
-    const newOrgHistories = {
-        id, orgName, yearIn, yearOut, position, description
+    const newCompanies = {
+        id, name, address, telp, email, age, education, experience, skill
     }
 
-    orgHistories.push(newOrgHistories);
+    companies.push(newProfiles);
 
-    const isSuccess = orgHistories.filter((orgHistory) => orgHistory.id === id).length > 0;
+    const isSuccess = companies.filter((company) => company.id === id).length > 0;
  
     if (isSuccess) {
         const response = h.response({
             status: 'success',
             message: 'Success',
             data: {
-                orgHistoryId: id,
+                companyId: id,
             },
         });
         response.statusCode = 201;
@@ -44,4 +44,4 @@ const addOrgHistoryHandler = (request, h) => {
         return response;
     }
 }
-module.exports = addOrgHistoryHandler;
+module.exports = addCompaniesHandler;
