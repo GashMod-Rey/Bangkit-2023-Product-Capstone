@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.LoginOptionActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="80dp"
+        tools:src="@drawable/logo" />
+
+    <Button
+        android:id="@+id/button_employee_signin"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:backgroundTint="#5669FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        android:layout_marginTop="100dp"
+        android:text="Employee Sign In"
+        app:cornerRadius="20dp"
+        />
+
+    <Button
+        android:id="@+id/button_company_signin"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:backgroundTint="#5669FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_employee_signin"
+        android:layout_marginTop="20dp"
+        android:text="Company Sign In"
+        app:cornerRadius="20dp"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
