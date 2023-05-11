@@ -26,10 +26,14 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/title_company"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/lato_bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         android:text="Google Inc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -37,37 +41,89 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/title_about_company"
         android:layout_width="match_parent"
-        android:layout_height="333dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
+        android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/lato_bold"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:text="About Company"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/title_company" />
+
+    <TextView
+        android:id="@+id/description_about_company"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/lato"
+        android:text="This is the description text about company"
+        android:textColor="#524B6B"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_about_company" />
+
+
+    <TextView
+        android:id="@+id/title_website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Website"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_about_company" />
+
+    <TextView
+        android:id="@+id/description_website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/lato"
+        android:text="www.google.com"
+        android:textColor="#524B6B"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_website" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_reject"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
         android:layout_marginTop="12dp"
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="@color/white"
+        android:textColor="#807A7A"
         android:text="Reject"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.166"
-        tools:layout_editor_absoluteX="52dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_website"
+        app:layout_constraintVertical_bias="0.166" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_accept"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
         android:layout_marginTop="12dp"
+        android:backgroundTint="#29BB26"
+        android:layout_marginRight="20dp"
         android:text="Accept"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.166"
-        tools:layout_editor_absoluteX="249dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_website"
+        app:layout_constraintVertical_bias="0.166" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
