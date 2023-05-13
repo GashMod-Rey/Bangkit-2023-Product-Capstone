@@ -7,7 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import umn.ac.id.myapplication.ui.databinding.ActivityHomeEmployeeBinding
+import umn.ac.id.myapplication.R
+import umn.ac.id.myapplication.databinding.ActivityHomeEmployeeBinding
 
 class HomeEmployeeActivity : AppCompatActivity() {
 

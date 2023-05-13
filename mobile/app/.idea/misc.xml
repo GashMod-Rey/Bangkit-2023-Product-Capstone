@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.142" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_company_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_home_employee.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_login_option.xml" value="0.25416666666666665" />
         <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/item_chat_list.xml" value="0.1" />
       </map>
     </option>
