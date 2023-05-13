@@ -48,9 +48,11 @@
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusTopStart="10dp"
+        android:backgroundTint="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:startIconDrawable="@drawable/ic_search"
+        app:boxStrokeWidth="0dp"
         app:layout_constraintTop_toBottomOf="@+id/collapsingToolbarLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -60,7 +62,6 @@
             android:background="@drawable/search_bar"
             app:cornerRadius="10dp"
             android:hint="Search HRD"
-
             android:fontFamily="@font/lato"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout"
@@ -72,6 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_marginTop="30dp"
+        tools:listitem="@layout/item_chat_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bar" />
