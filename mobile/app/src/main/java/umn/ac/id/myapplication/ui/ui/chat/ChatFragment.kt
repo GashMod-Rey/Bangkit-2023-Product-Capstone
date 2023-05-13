@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import umn.ac.id.myapplication.databinding.FragmentChatBinding
 import androidx.appcompat.widget.Toolbar
+import umn.ac.id.myapplication.databinding.FragmentProfileBinding
+import umn.ac.id.myapplication.ui.ui.profile.ProfileViewModel
 
 
 class ChatFragment : Fragment() {
@@ -24,7 +26,17 @@ class ChatFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val profileViewModel =
+            ViewModelProvider(this).get(ChatViewModel::class.java)
 
+        _binding = FragmentChatBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        val textView: TextView = binding.TextTest
+        profileViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
+        }
+        return root
     }
 
     override fun onDestroyView() {
