@@ -5,43 +5,19 @@
 //     editBookByIdHandler, 
 //     deleteBookByIdHandler } = require("./handler");
 
-const { addProfileHandler } = require("./handler/profileHD");
-const { addAchievementHandler } = require("./handler/achievementHD");
-const { addEducationHistoryHandler } = require("./handler/edHistoryHD");
-const { addOrgHistoryHandler } = require("./handler/orgHistorieHD");
-const { addSkillHandler } = require("./handler/skillHD");
-const { addExperienceHandler } = require("./handler/workExpHD");
+const { addApplicantsHandler } = require("./handler/handler-applicants");
+const { addCompaniesHandler } = require("./handler/handler-company");
 
 const routes = [
     {
         method: 'POST',
-        path: '/profiles',
-        handler: addProfileHandler,
+        path: '/applicants',
+        handler: addApplicantsHandler,
     },
     {
         method: 'POST',
-        path: '/achievements',
-        handler: addAchievementHandler,
-    },
-    {
-        method: 'POST',
-        path: '/educationHistories',
-        handler: addEducationHistoryHandler,
-    },
-    {
-        method: 'POST',
-        path: '/orgHistories',
-        handler: addOrgHistoryHandler,
-    },
-    {
-        method: 'POST',
-        path: '/skills',
-        handler: addSkillHandler,
-    },
-    {
-        method: 'POST',
-        path: '/workExperiences',
-        handler: addExperienceHandler,
+        path: '/companies',
+        handler: addCompaniesHandler,
     },
 
     // {
