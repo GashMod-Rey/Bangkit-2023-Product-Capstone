@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation2"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="umn.ac.id.myapplication.ui.companypage.ui.home.HomeCompanyFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home_company" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="umn.ac.id.myapplication.ui.companypage.ui.ChatCompany.ChatCompanyFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat_company" />
+
+    <fragment
+        android:id="@+id/navigation_profile_company"
+        android:name="umn.ac.id.myapplication.ui.companypage.ui.ProfileCompany.ProfileCompanyFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile_company" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="umn.ac.id.myapplication.ui.companypage.ui.HistoryCompany.HistoryCompanyFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_history_company" />
+</navigation>

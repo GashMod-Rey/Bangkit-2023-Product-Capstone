@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ui.SettingsActivity">
-
+    tools:context=".ui.companypage.SettingsCompanyActivity">
     <TextView
         android:id="@+id/tvSettings"
         android:layout_width="match_parent"
@@ -23,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_aboutme"
+        android:id="@+id/button_logout"
         android:layout_width="370dp"
         android:layout_height="75dp"
         android:backgroundTint="#F9F9F9"

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/ic_waiting"
+    android:width="30dp"
+    android:height="30dp">
+
+</vector>

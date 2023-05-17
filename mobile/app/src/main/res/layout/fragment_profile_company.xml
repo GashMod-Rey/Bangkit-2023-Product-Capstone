@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="80dp"
+                app:cardCornerRadius="250dp">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/title_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="Google Inc"
+                />
+
+            <TextView
+                android:id="@+id/title_about_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:text="About Company"
+                />
+
+            <TextView
+                android:id="@+id/description_about_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/lato"
+                android:text="This is the description text about company"
+                android:textColor="#524B6B"
+                android:textSize="15sp"
+                android:layout_marginTop="20dp" />
+
+
+            <TextView
+                android:id="@+id/title_website"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="Website"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/description_website"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/lato"
+                android:text="www.google.com"
+                android:textColor="#524B6B"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/title_industry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="Industry"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/description_industry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/lato"
+                android:text="Internet Product"
+                android:textColor="#524B6B"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/title_employee_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="Employee Size"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/description_employee_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/lato"
+                android:text="Internet Product"
+                android:textColor="#524B6B"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/title_head_office"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="Industry"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/description_head_office"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/lato"
+                android:text="Mountain View"
+                android:textColor="#524B6B"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+

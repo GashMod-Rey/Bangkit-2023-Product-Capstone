@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.companypage.EditCompanyActivity">
+
+
+    <TextView
+        android:id="@+id/tvChangeabout"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:layout_marginVertical="50dp"
+        android:text="Change About Company"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeabout" />
+
+    <EditText
+        android:id="@+id/add_name"
+        android:layout_width="365dp"
+        android:layout_height="50dp"
+        android:padding="20dp"
+        android:hint="Google Inc"
+        android:drawablePadding="10dp"
+        android:textSize="10sp"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvlocation"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Location"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_name"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addLocation"
+        android:layout_width="365dp"
+        android:layout_height="50dp"
+        android:padding="20dp"
+        android:hint="Mobile Development Expert"
+        android:drawablePadding="10dp"
+        android:textSize="10sp"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvlocation"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvHeadoffice"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Head Office"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addLocation"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addHeadOffice"
+        android:layout_width="365dp"
+        android:layout_height="50dp"
+        android:padding="20dp"
+        android:hint="21"
+        android:drawablePadding="10dp"
+        android:textSize="10sp"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeadoffice"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvwebsite"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Website"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addHeadOffice"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addwebsite"
+        android:layout_width="365dp"
+        android:layout_height="50dp"
+        android:padding="20dp"
+        android:hint="PostgreSQL"
+        android:drawablePadding="10dp"
+        android:textSize="10sp"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvwebsite"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvIndustry"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Industry"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addwebsite"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addIndustry"
+        android:layout_width="365dp"
+        android:layout_height="50dp"
+        android:padding="20dp"
+        android:hint="Android Studio"
+        android:drawablePadding="10dp"
+        android:textSize="10sp"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvIndustry"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvemployeesize"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Employee Size"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addIndustry"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/addemployeesize"
+        android:layout_width="365dp"
+        android:layout_height="50dp"
+        android:padding="20dp"
+        android:hint=""
+        android:drawablePadding="10dp"
+        android:textSize="10sp"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvemployeesize"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <TextView
+        android:id="@+id/tvdescription"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="About Company"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addemployeesize"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/adddescription"
+        android:layout_width="365dp"
+        android:layout_height="50dp"
+        android:padding="20dp"
+        android:hint=""
+        android:drawablePadding="10dp"
+        android:textSize="10sp"
+        android:background="@drawable/edit_text_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvdescription"
+        android:layout_marginTop="5dp"
+        app:cornerRadius="30dp"/>
+
+    <Button
+        android:id="@+id/button_reject"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="#DD2025"
+        android:textColor="@color/white"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adddescription"
+        app:layout_constraintVertical_bias="0.166" />
+
+    <Button
+        android:id="@+id/button_accept"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#29BB26"
+        android:layout_marginRight="20dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adddescription"
+        app:layout_constraintVertical_bias="0.166" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
