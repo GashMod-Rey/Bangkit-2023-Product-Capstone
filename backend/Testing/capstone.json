@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "capstone-project-hirehub",
+  "private_key_id": "b3e54951ba2dfed3953be3bfa6d9394b50fc9e7d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCFFy/yTwPpk3m8\nHgkg71nCeQclH0ho4qTuSGIX95GiRxRUazJ+QRhzgg0KkzJdbulCqs4yRbZ0eag7\ndFfOE2zWP2yxnqlxMT/mOJXpA7VxP09/57XbVWQ0w+lZTR/mIlTpkvVtjngI8gV5\nY1FJxhWvDbagA3IXS9HQIzAODlT9I0g7wahNc8aGm1UMAraHYNnizQ19fvG3Sh26\nGelOa8mbRG8GjPtxP2Z8xOvhVOkXkeN8hs0Rdq0Nxav3w+4qbyzndtv8hZvHoOrD\n3OzcPQ6SoDtYKu+IAk5a5AJgr9N4uzWS6b7HyfN4dC36Rg2280XRfj4LS+4DBVvT\nwkrIkiVjAgMBAAECggEAPZ6htVd+ITwFpeJmKZiH/3FXrIlSVjVxVV2wBRa7l92+\n/OLw6uGqt3gkH5xNOlMqrpI0i7QZKM5W5MgWCzSVNJEC+y3Rl7XMtwPF7K+p5zf/\nz+FxIo7jqUZ3mMALn9qPY+GFvmazDrk3bZ9dOIH88iKwRl+yCDUzfGF+U1OxZ82u\nLESGpF4TlpOqcOkfKWUP47kwJU4yXwSClSsaaBhdAffslpKS5k+hU0PT7Tf7ZLgk\nLM+/FJ550EIZTKd8WWnVYaMZwYf3alxdc6IXbd4354OwyJF+Y/lcqLQBc4FqIAKM\nR16DTjqBsDscX/MNupDkDc2WrertPIQXGogg2tnb0QKBgQC5LhzOWOgmUs9Seoy7\nWH51PYMaebt/CqR2IYPMIYfPwljpuF7hKlJlP2Gb6TF5DEQyuTuNzrtp7pZdgtWR\nXchN3oskd22szpecCGVibgaVkm4Qwrr8To7Q81O2llxjTjSdxeWj4dSPBhtJB0jn\nxVFt0NvmscPUaQSxKZhsP+wjuQKBgQC3/Uu7xN77glM+l3i7Im38uwNeFTdqXL4T\nCKxBguO2q5BfXE97vaL1HezxAwxOmlib0qzNttObe8FAT2oFjfkH/exnxxbLgoaF\nT3htFDg6vSj1jkn3t6KUQm1ohaJRTOrNvzTl813IUO40eYCy2e2Ea8TASq15WziZ\nD2VHSUGX+wKBgQCc3uFsNIjFHlWfC034zyihbPCJFyKspnlX0WBzJtyENaFYrOVD\nXbTbLGwlxdAxOSD0z1IR+VVukb0zjkgZkxbCUIoS5FE2mPR6K+qnDYnqX1d6P1xj\nrLDzdY4vGQU+4ttT5Hd68y470vJ+VPt/y/oFS29d6K16XVSqOBB1c1k5kQKBgEMv\nKAdxtSbMCQ+zCe/ze4ws0eb6AllBclrK8POfEv2yGi7oK1H5BldRTSMYxNay/6Yu\nwNEBcLW28/NCzGko1YW4kCm5Bjbb+7kUMtpJ5tp0Fk/MXHArSx+uPftLyOC9IIRu\nzKcnPdiWzNS2hWtJrrSLEbZRzpSg3cLuX0IvmtcfAoGACQQOpLDYUSXjyCP8ogvW\nnVgnzJWTl7NsSY3jt2i88kpFgLlkZwnkLHSlit6CF3+sFxwbQK4aUQ00tuUKZ19J\nA3nSRJ2hl2Z5deFaaU3f0TVpHS877UvK26kLeSmRUlBhzPAMeJ5PR0OFcZ8dryJZ\nzKSeRYey9nw87JdvMCvrHms=\n-----END PRIVATE KEY-----\n",
+  "client_email": "hirehubcredential@capstone-project-hirehub.iam.gserviceaccount.com",
+  "client_id": "114075633853441382137",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hirehubcredential%40capstone-project-hirehub.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
