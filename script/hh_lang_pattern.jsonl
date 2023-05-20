@@ -1,0 +1,481 @@
+{"label": "LANG", "pattern": [{"LOWER": "abkhazian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "adyghe"}]}
+{"label": "LANG", "pattern": [{"LOWER": "afrikaans"}]}
+{"label": "LANG", "pattern": [{"LOWER": "afro-asiatic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ainu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "akan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "akkadian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "albanian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "algerian"},{"LOWER": "arabic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "amharic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "angika"}]}
+{"label": "LANG", "pattern": [{"LOWER": "apache"}]}
+{"label": "LANG", "pattern": [{"LOWER": "arabic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "aramaic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "armenian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "aromanian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "assamese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "assyrian"},{"LOWER": "neo-aramaic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "asturian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "avaric"}]}
+{"label": "LANG", "pattern": [{"LOWER": "avestan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "aymara"}]}
+{"label": "LANG", "pattern": [{"LOWER": "azerbaijani"}]}
+{"label": "LANG", "pattern": [{"LOWER": "balinese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bambara"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bantu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bashkir"}]}
+{"label": "LANG", "pattern": [{"LOWER": "basque"}]}
+{"label": "LANG", "pattern": [{"LOWER": "batak"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bavarian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "belarusian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bemba"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bengali"}]}
+{"label": "LANG", "pattern": [{"LOWER": "berber"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bhojpuri"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bihari"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bikol"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bini"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bishnupriya"},{"LOWER": "manipuri"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bislama"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bosnian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "brahui"}]}
+{"label": "LANG", "pattern": [{"LOWER": "breton"}]}
+{"label": "LANG", "pattern": [{"LOWER": "buginese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "bulgarian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "burmese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "cantonese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "catalan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "cebuano"}]}
+{"label": "LANG", "pattern": [{"LOWER": "chamic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "chamorro"}]}
+{"label": "LANG", "pattern": [{"LOWER": "chechen"}]}
+{"label": "LANG", "pattern": [{"LOWER": "cherokee"}]}
+{"label": "LANG", "pattern": [{"LOWER": "chewa"}]}
+{"label": "LANG", "pattern": [{"LOWER": "chhattisgarhi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "chichewa"}]}
+{"label": "LANG", "pattern": [{"LOWER": "chinese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "chittagonian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "choctaw"}]}
+{"label": "LANG", "pattern": [{"LOWER": "church"},{"LOWER": "slavic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "chuvash"}]}
+{"label": "LANG", "pattern": [{"LOWER": "classical"},{"LOWER": "newari"}]}
+{"label": "LANG", "pattern": [{"LOWER": "classical"},{"LOWER": "syriac"}]}
+{"label": "LANG", "pattern": [{"LOWER": "classical"},{"LOWER": "tibetan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "comorian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "coptic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "cornish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "corsican"}]}
+{"label": "LANG", "pattern": [{"LOWER": "cree"}]}
+{"label": "LANG", "pattern": [{"LOWER": "crimean"},{"LOWER": "tatar"}]}
+{"label": "LANG", "pattern": [{"LOWER": "croatian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "czech"}]}
+{"label": "LANG", "pattern": [{"LOWER": "dakota"}]}
+{"label": "LANG", "pattern": [{"LOWER": "danish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "dargwa"}]}
+{"label": "LANG", "pattern": [{"LOWER": "dari"}]}
+{"label": "LANG", "pattern": [{"LOWER": "delaware"}]}
+{"label": "LANG", "pattern": [{"LOWER": "dhivehi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "dimli"}]}
+{"label": "LANG", "pattern": [{"LOWER": "dinka"}]}
+{"label": "LANG", "pattern": [{"LOWER": "divehi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "dogri"}]}
+{"label": "LANG", "pattern": [{"LOWER": "duala"}]}
+{"label": "LANG", "pattern": [{"LOWER": "dutch"}]}
+{"label": "LANG", "pattern": [{"LOWER": "dzongkha"}]}
+{"label": "LANG", "pattern": [{"LOWER": "eastern"},{"LOWER": "punjabi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "eastern"},{"LOWER": "slovak"}]}
+{"label": "LANG", "pattern": [{"LOWER": "eastern"},{"LOWER": "tamang"}]}
+{"label": "LANG", "pattern": [{"LOWER": "efik"}]}
+{"label": "LANG", "pattern": [{"LOWER": "egyptian"},{"LOWER": "arabic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "emilian-romagnol"}]}
+{"label": "LANG", "pattern": [{"LOWER": "english"}]}
+{"label": "LANG", "pattern": [{"LOWER": "erzya"}]}
+{"label": "LANG", "pattern": [{"LOWER": "esperanto"}]}
+{"label": "LANG", "pattern": [{"LOWER": "estonian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ewe"}]}
+{"label": "LANG", "pattern": [{"LOWER": "extremaduran"}]}
+{"label": "LANG", "pattern": [{"LOWER": "fala"}]}
+{"label": "LANG", "pattern": [{"LOWER": "fang"}]}
+{"label": "LANG", "pattern": [{"LOWER": "fanti"}]}
+{"label": "LANG", "pattern": [{"LOWER": "faroese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "fiji"},{"LOWER": "hindi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "fijian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "filipino"}]}
+{"label": "LANG", "pattern": [{"LOWER": "finnish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "flemish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "fon"}]}
+{"label": "LANG", "pattern": [{"LOWER": "franco-provençal"}]}
+{"label": "LANG", "pattern": [{"LOWER": "french"}]}
+{"label": "LANG", "pattern": [{"LOWER": "frisian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "friulian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "fula"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ga"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gaelic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gagauz"}]}
+{"label": "LANG", "pattern": [{"LOWER": "galician"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gan"},{"LOWER": "chinese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ganda"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gayo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gbaya"}]}
+{"label": "LANG", "pattern": [{"LOWER": "georgian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "german"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gikuyu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gilaki"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gondi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gorontalo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gothic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "grebo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "greek"}]}
+{"label": "LANG", "pattern": [{"LOWER": "greenlandic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "guarani"}]}
+{"label": "LANG", "pattern": [{"LOWER": "guaraní"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gujarati"}]}
+{"label": "LANG", "pattern": [{"LOWER": "gusii"}]}
+{"label": "LANG", "pattern": [{"LOWER": "haida"}]}
+{"label": "LANG", "pattern": [{"LOWER": "haitian"},{"LOWER": "creole"}]}
+{"label": "LANG", "pattern": [{"LOWER": "hakka"},{"LOWER": "chinese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "hausa"}]}
+{"label": "LANG", "pattern": [{"LOWER": "hawaiian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "hebrew"}]}
+{"label": "LANG", "pattern": [{"LOWER": "herero"}]}
+{"label": "LANG", "pattern": [{"LOWER": "hiligaynon"}]}
+{"label": "LANG", "pattern": [{"LOWER": "hindi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "hiri"},{"LOWER": "motu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "hmong"}]}
+{"label": "LANG", "pattern": [{"LOWER": "hungarian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "hupa"}]}
+{"label": "LANG", "pattern": [{"LOWER": "iban"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ibibio"}]}
+{"label": "LANG", "pattern": [{"LOWER": "icelandic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ido"}]}
+{"label": "LANG", "pattern": [{"LOWER": "igbo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ilocano"}]}
+{"label": "LANG", "pattern": [{"LOWER": "iloko"}]}
+{"label": "LANG", "pattern": [{"LOWER": "indonesian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ingush"}]}
+{"label": "LANG", "pattern": [{"LOWER": "interlingua"}]}
+{"label": "LANG", "pattern": [{"LOWER": "interlingue"}]}
+{"label": "LANG", "pattern": [{"LOWER": "inuktitut"}]}
+{"label": "LANG", "pattern": [{"LOWER": "inupiaq"}]}
+{"label": "LANG", "pattern": [{"LOWER": "irish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "italian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "japanese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "javanese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "jju"}]}
+{"label": "LANG", "pattern": [{"LOWER": "jola-fonyi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "judeo-arabic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "judeo-persian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "jutish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kabardian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kabiyè"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kabyle"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kachin"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kalaallisut"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kalenjin"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kalmyk"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kamba"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kannada"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kanuri"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kapampangan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "karachay-balkar"}]}
+{"label": "LANG", "pattern": [{"LOWER": "karakalpak"}]}
+{"label": "LANG", "pattern": [{"LOWER": "karelian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kashmiri"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kashubian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kazakh"}]}
+{"label": "LANG", "pattern": [{"LOWER": "khmer"}]}
+{"label": "LANG", "pattern": [{"LOWER": "khoekhoe"}]}
+{"label": "LANG", "pattern": [{"LOWER": "khotanese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "khowar"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kikuyu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kimbundu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kinyarwanda"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kirghiz"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kirundi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "klingon"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kom"}]}
+{"label": "LANG", "pattern": [{"LOWER": "komi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kongo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "konkani"}]}
+{"label": "LANG", "pattern": [{"LOWER": "korean"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kosraean"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kotava"}]}
+{"label": "LANG", "pattern": [{"LOWER": "koyra"},{"LOWER": "chiini"}]}
+{"label": "LANG", "pattern": [{"LOWER": "koyraboro"},{"LOWER": "senni"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kpelle"}]}
+{"label": "LANG", "pattern": [{"LOWER": "krio"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kuanyama"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kumyk"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kurdish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kurukh"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kutenai"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kwanyama"}]}
+{"label": "LANG", "pattern": [{"LOWER": "kyrgyz"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ladino"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lahnda"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lak"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lamba"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lao"}]}
+{"label": "LANG", "pattern": [{"LOWER": "latin"}]}
+{"label": "LANG", "pattern": [{"LOWER": "latvian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lezghian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ligurian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "limburgish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lingala"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lithuanian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lojban"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lombard"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lozi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "luba-katanga"}]}
+{"label": "LANG", "pattern": [{"LOWER": "luba-lulua"}]}
+{"label": "LANG", "pattern": [{"LOWER": "luganda"}]}
+{"label": "LANG", "pattern": [{"LOWER": "luhya"}]}
+{"label": "LANG", "pattern": [{"LOWER": "lule"},{"LOWER": "sami"}]}
+{"label": "LANG", "pattern": [{"LOWER": "luo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "luxembourgish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "luyia"}]}
+{"label": "LANG", "pattern": [{"LOWER": "macedonian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "madurese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "magahi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "maithili"}]}
+{"label": "LANG", "pattern": [{"LOWER": "makasar"}]}
+{"label": "LANG", "pattern": [{"LOWER": "malagasy"}]}
+{"label": "LANG", "pattern": [{"LOWER": "malay"}]}
+{"label": "LANG", "pattern": [{"LOWER": "malayalam"}]}
+{"label": "LANG", "pattern": [{"LOWER": "maldivian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "maltese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "manchu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mandar"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mandarin"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mandingo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "manipuri"}]}
+{"label": "LANG", "pattern": [{"LOWER": "manx"}]}
+{"label": "LANG", "pattern": [{"LOWER": "maori"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mapudungun"}]}
+{"label": "LANG", "pattern": [{"LOWER": "marathi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mari"}]}
+{"label": "LANG", "pattern": [{"LOWER": "marshallese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "marwari"}]}
+{"label": "LANG", "pattern": [{"LOWER": "masai"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mazanderani"}]}
+{"label": "LANG", "pattern": [{"LOWER": "medumba"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mende"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mentawai"}]}
+{"label": "LANG", "pattern": [{"LOWER": "meru"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mewari"}]}
+{"label": "LANG", "pattern": [{"LOWER": "min"},{"LOWER": "dong"}]}
+{"label": "LANG", "pattern": [{"LOWER": "min"},{"LOWER": "nan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "minangkabau"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mirandese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "moksha"}]}
+{"label": "LANG", "pattern": [{"LOWER": "moldavian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mon"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mongo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mongolian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "montenegrin"}]}
+{"label": "LANG", "pattern": [{"LOWER": "morisyen"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mossi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "mundang"}]}
+{"label": "LANG", "pattern": [{"LOWER": "n'ko"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nama"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nauru"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nauruan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "navajo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ndebele"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ndonga"}]}
+{"label": "LANG", "pattern": [{"LOWER": "neapolitan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nepali"}]}
+{"label": "LANG", "pattern": [{"LOWER": "newari"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nias"}]}
+{"label": "LANG", "pattern": [{"LOWER": "niuean"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nogai"}]}
+{"label": "LANG", "pattern": [{"LOWER": "norse"}]}
+{"label": "LANG", "pattern": [{"LOWER": "north"},{"LOWER": "frisian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "northern"},{"LOWER": "sami"}]}
+{"label": "LANG", "pattern": [{"LOWER": "northern"},{"LOWER": "sotho"}]}
+{"label": "LANG", "pattern": [{"LOWER": "norwegian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nuer"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nyamwezi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nyanja"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nyankole"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nyoro"}]}
+{"label": "LANG", "pattern": [{"LOWER": "nzima"}]}
+{"label": "LANG", "pattern": [{"LOWER": "occitan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ojibwa"}]}
+{"label": "LANG", "pattern": [{"LOWER": "old"},{"LOWER": "church"},{"LOWER": "slavonic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "oriya"}]}
+{"label": "LANG", "pattern": [{"LOWER": "oromo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "osage"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ossetian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "palauan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "pali"}]}
+{"label": "LANG", "pattern": [{"LOWER": "pampanga"}]}
+{"label": "LANG", "pattern": [{"LOWER": "pangasinan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "papiamento"}]}
+{"label": "LANG", "pattern": [{"LOWER": "pashto"}]}
+{"label": "LANG", "pattern": [{"LOWER": "pedi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "persian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "picard"}]}
+{"label": "LANG", "pattern": [{"LOWER": "piedmontese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "plautdietsch"}]}
+{"label": "LANG", "pattern": [{"LOWER": "pohnpeian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "polish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "portuguese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "pothwari"}]}
+{"label": "LANG", "pattern": [{"LOWER": "pulaar"}]}
+{"label": "LANG", "pattern": [{"LOWER": "punjabi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "quechua"}]}
+{"label": "LANG", "pattern": [{"LOWER": "rajasthani"}]}
+{"label": "LANG", "pattern": [{"LOWER": "rarotongan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "rohingya"}]}
+{"label": "LANG", "pattern": [{"LOWER": "romani"}]}
+{"label": "LANG", "pattern": [{"LOWER": "romanian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "romansh"}]}
+{"label": "LANG", "pattern": [{"LOWER": "rombo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "root"}]}
+{"label": "LANG", "pattern": [{"LOWER": "rundi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "russian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "rwa"}]}
+{"label": "LANG", "pattern": [{"LOWER": "saho"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sakha"}]}
+{"label": "LANG", "pattern": [{"LOWER": "samaritan"},{"LOWER": "aramaic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "samburu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "samoan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sango"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sanskrit"}]}
+{"label": "LANG", "pattern": [{"LOWER": "santali"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sardinian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sasak"}]}
+{"label": "LANG", "pattern": [{"LOWER": "scots"}]}
+{"label": "LANG", "pattern": [{"LOWER": "scottish"},{"LOWER": "gaelic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "selayar"}]}
+{"label": "LANG", "pattern": [{"LOWER": "selkup"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sena"}]}
+{"label": "LANG", "pattern": [{"LOWER": "serbian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "serer"}]}
+{"label": "LANG", "pattern": [{"LOWER": "shambala"}]}
+{"label": "LANG", "pattern": [{"LOWER": "shan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "shawiya"}]}
+{"label": "LANG", "pattern": [{"LOWER": "shona"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sichuan"},{"LOWER": "yi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sicilian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sidamo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "silesian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sindhi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sinhala"}]}
+{"label": "LANG", "pattern": [{"LOWER": "siswati"}]}
+{"label": "LANG", "pattern": [{"LOWER": "skolt"},{"LOWER": "sami"}]}
+{"label": "LANG", "pattern": [{"LOWER": "slave"}]}
+{"label": "LANG", "pattern": [{"LOWER": "slovak"}]}
+{"label": "LANG", "pattern": [{"LOWER": "slovenian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "soga"}]}
+{"label": "LANG", "pattern": [{"LOWER": "somali"}]}
+{"label": "LANG", "pattern": [{"LOWER": "soninke"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sorani"},{"LOWER": "kurdish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sotho"}]}
+{"label": "LANG", "pattern": [{"LOWER": "south"},{"LOWER": "levantine"},{"LOWER": "arabic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "south"},{"LOWER": "ndebele"}]}
+{"label": "LANG", "pattern": [{"LOWER": "south"},{"LOWER": "slavey"}]}
+{"label": "LANG", "pattern": [{"LOWER": "southern"},{"LOWER": "altai"}]}
+{"label": "LANG", "pattern": [{"LOWER": "southern"},{"LOWER": "sami"}]}
+{"label": "LANG", "pattern": [{"LOWER": "southern"},{"LOWER": "sotho"}]}
+{"label": "LANG", "pattern": [{"LOWER": "southwestern"},{"LOWER": "tamang"}]}
+{"label": "LANG", "pattern": [{"LOWER": "spanish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "sundanese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "susu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "swabian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "swahili"}]}
+{"label": "LANG", "pattern": [{"LOWER": "swati"}]}
+{"label": "LANG", "pattern": [{"LOWER": "swazi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "swedish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "swiss"},{"LOWER": "german"}]}
+{"label": "LANG", "pattern": [{"LOWER": "syriac"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tachelhit"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tagalog"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tahitian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tajik"}]}
+{"label": "LANG", "pattern": [{"LOWER": "talysh"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tamashek"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tamil"}]}
+{"label": "LANG", "pattern": [{"LOWER": "taroko"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tatar"}]}
+{"label": "LANG", "pattern": [{"LOWER": "telugu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tereno"}]}
+{"label": "LANG", "pattern": [{"LOWER": "teso"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tetum"}]}
+{"label": "LANG", "pattern": [{"LOWER": "thai"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tibetan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tigre"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tigrinya"}]}
+{"label": "LANG", "pattern": [{"LOWER": "timne"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tiv"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tlingit"}]}
+{"label": "LANG", "pattern": [{"LOWER": "toda"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tok"},{"LOWER": "pisin"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tokelau"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tonga"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tongan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "toraja-sa'dan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "torwali"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tsakhur"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tsonga"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tswana"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tulu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tumbuka"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tunica"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tupi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "turkish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "turkmen"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tuvaluan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tuvan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "twi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "tyap"}]}
+{"label": "LANG", "pattern": [{"LOWER": "udmurt"}]}
+{"label": "LANG", "pattern": [{"LOWER": "uighur"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ukrainian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "ulithian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "umbundu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "upper"},{"LOWER": "sorbian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "urdu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "urhobo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "uzbek"}]}
+{"label": "LANG", "pattern": [{"LOWER": "venda"}]}
+{"label": "LANG", "pattern": [{"LOWER": "venetian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "veps"}]}
+{"label": "LANG", "pattern": [{"LOWER": "vietnamese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "votic"}]}
+{"label": "LANG", "pattern": [{"LOWER": "vunjo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "võro"}]}
+{"label": "LANG", "pattern": [{"LOWER": "walloon"}]}
+{"label": "LANG", "pattern": [{"LOWER": "walser"}]}
+{"label": "LANG", "pattern": [{"LOWER": "waray"}]}
+{"label": "LANG", "pattern": [{"LOWER": "waray-waray"}]}
+{"label": "LANG", "pattern": [{"LOWER": "washo"}]}
+{"label": "LANG", "pattern": [{"LOWER": "welsh"}]}
+{"label": "LANG", "pattern": [{"LOWER": "west"},{"LOWER": "flemish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "western"},{"LOWER": "balochi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "western"},{"LOWER": "frisian"}]}
+{"label": "LANG", "pattern": [{"LOWER": "western"},{"LOWER": "punjabi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "wolaitta"}]}
+{"label": "LANG", "pattern": [{"LOWER": "wolaytta"}]}
+{"label": "LANG", "pattern": [{"LOWER": "wolof"}]}
+{"label": "LANG", "pattern": [{"LOWER": "xhosa"}]}
+{"label": "LANG", "pattern": [{"LOWER": "xinjiang"},{"LOWER": "kumo"},{"LOWER": "xi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "xipaya"}]}
+{"label": "LANG", "pattern": [{"LOWER": "yakan"}]}
+{"label": "LANG", "pattern": [{"LOWER": "yao"}]}
+{"label": "LANG", "pattern": [{"LOWER": "yapese"}]}
+{"label": "LANG", "pattern": [{"LOWER": "yemba"}]}
+{"label": "LANG", "pattern": [{"LOWER": "yiddish"}]}
+{"label": "LANG", "pattern": [{"LOWER": "yoruba"}]}
+{"label": "LANG", "pattern": [{"LOWER": "yuchi"}]}
+{"label": "LANG", "pattern": [{"LOWER": "yukaghir"}]}
+{"label": "LANG", "pattern": [{"LOWER": "yupik"}]}
+{"label": "LANG", "pattern": [{"LOWER": "zapotec"}]}
+{"label": "LANG", "pattern": [{"LOWER": "zarma"}]}
+{"label": "LANG", "pattern": [{"LOWER": "zaza"}]}
+{"label": "LANG", "pattern": [{"LOWER": "zhuang"}]}
+{"label": "LANG", "pattern": [{"LOWER": "zoroastrian"},{"LOWER": "dari"}]}
+{"label": "LANG", "pattern": [{"LOWER": "zulu"}]}
+{"label": "LANG", "pattern": [{"LOWER": "zuni"}]}
