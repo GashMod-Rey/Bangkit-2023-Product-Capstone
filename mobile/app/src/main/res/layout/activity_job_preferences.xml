@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.companypage.EditCompanyActivity">
+
+
+    <TextView
+        android:id="@+id/tvChangeabout"
+        android:layout_width="163dp"
+        android:layout_height="20dp"
+        android:layout_marginVertical="50dp"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Change About Company"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="27dp" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Select Job Roles"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeabout" />
+
+    <TextView
+        android:id="@+id/tvName2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="236dp"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Select Location"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeabout" />
+
+    <TextView
+        android:id="@+id/tvName3"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="512dp"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Office"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeabout" />
+
+    <TextView
+        android:id="@+id/tvName4"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="408dp"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="left"
+        android:text="Job Type"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangeabout" />
+
+    <EditText
+        android:id="@+id/add_name"
+        android:layout_width="182dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="Product Designer"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <EditText
+        android:id="@+id/add_name2"
+        android:layout_width="96dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="304dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="California"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <EditText
+        android:id="@+id/add_name5"
+        android:layout_width="96dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="232dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="USA"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <EditText
+        android:id="@+id/add_name8"
+        android:layout_width="81dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="512dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="Google Inc"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.915"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <EditText
+        android:id="@+id/add_name4"
+        android:layout_width="145dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="Developer"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <EditText
+        android:id="@+id/add_name3"
+        android:layout_width="125dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="512dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="On-Site"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <EditText
+        android:id="@+id/add_name7"
+        android:layout_width="145dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="412dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="Full-Time"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <EditText
+        android:id="@+id/add_name6"
+        android:layout_width="145dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="UX Designer"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <EditText
+        android:id="@+id/addLocation"
+        android:layout_width="162dp"
+        android:layout_height="55dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="Motion Designer"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="82dp" />
+
+    <EditText
+        android:id="@+id/addLocation4"
+        android:layout_width="200dp"
+        android:layout_height="51dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="Full-Stack Developer"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="216dp" />
+
+    <EditText
+        android:id="@+id/addLocation5"
+        android:layout_width="252dp"
+        android:layout_height="52dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="Worldwide"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="310dp" />
+
+    <EditText
+        android:id="@+id/addLocation6"
+        android:layout_width="252dp"
+        android:layout_height="54dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="New York "
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.817"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="381dp" />
+
+    <EditText
+        android:id="@+id/addLocation3"
+        android:layout_width="123dp"
+        android:layout_height="54dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="Any"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="589dp" />
+
+    <EditText
+        android:id="@+id/addLocation8"
+        android:layout_width="207dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="Part-Time"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="490dp" />
+
+    <EditText
+        android:id="@+id/addLocation7"
+        android:layout_width="200dp"
+        android:layout_height="51dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="10dp"
+        android:hint="Graphics Designer"
+        android:padding="20dp"
+        android:textSize="10sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="154dp" />
+
+    <Button
+        android:id="@+id/button_accept"
+        android:layout_width="368dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#5669FF"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
