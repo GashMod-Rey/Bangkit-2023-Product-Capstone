@@ -297,3 +297,22 @@ def take_country(text):
             loc = country
             break
     return loc
+
+def cvparsing(pdfpath):
+    doc = fitz.open(pdfpath)
+    text = ""
+    for page in doc:
+        text = text + str(page.get_text())
+    text = re.sub(r'[^\x00-\x7F]', '', text)
+
+    profDic["PERSON"] = take_name(text)
+    profDic["EMAIL"] = take_email(text)
+    profDic["MOBILE"] = take_mp(text)
+    profDic["SUM"] = take_sum(text)
+    profDic["SKILL"] = take_skills(text)
+    profDic["LANG"] = take_lang(text)    
+    profDic["EDU"] = take_edu(text)
+    profDic['DEGREE'] = take_degree(text)
+    profDic['LOC'] = take_country(text)
+
+    return profDic
