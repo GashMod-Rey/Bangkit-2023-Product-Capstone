@@ -1,12 +1,12 @@
-package umn.ac.id.myapplication.ui
+package umn.ac.id.myapplication.ui.applicantpage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import umn.ac.id.myapplication.R
 
-class SignUpActivity : AppCompatActivity() {
+class AboutMeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_about_me)
     }
 }

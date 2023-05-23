@@ -1,4 +1,4 @@
-package umn.ac.id.myapplication.ui.ui.chat
+package umn.ac.id.myapplication.ui.applicantpage.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,15 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import umn.ac.id.myapplication.databinding.FragmentChatBinding
-import androidx.appcompat.widget.Toolbar
 import umn.ac.id.myapplication.databinding.FragmentProfileBinding
-import umn.ac.id.myapplication.ui.ui.profile.ProfileViewModel
 
+class ProfileFragment : Fragment() {
 
-class ChatFragment : Fragment() {
-
-    private var _binding: FragmentChatBinding? = null
+    private var _binding: FragmentProfileBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -27,12 +23,12 @@ class ChatFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val profileViewModel =
-            ViewModelProvider(this).get(ChatViewModel::class.java)
+            ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-        _binding = FragmentChatBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.TextTest
+        val textView: TextView = binding.tvName
         profileViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }

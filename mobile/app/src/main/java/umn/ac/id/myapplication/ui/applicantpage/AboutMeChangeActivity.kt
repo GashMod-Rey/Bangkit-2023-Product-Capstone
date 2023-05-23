@@ -1,4 +1,4 @@
-package umn.ac.id.myapplication.ui
+package umn.ac.id.myapplication.ui.applicantpage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

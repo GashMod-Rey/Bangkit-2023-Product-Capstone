@@ -1,12 +1,12 @@
-package umn.ac.id.myapplication.ui
+package umn.ac.id.myapplication.ui.applicantpage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import umn.ac.id.myapplication.R
 
-class LoginActivity : AppCompatActivity() {
+class UploadCvSuccessActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_upload_cv_success)
     }
 }

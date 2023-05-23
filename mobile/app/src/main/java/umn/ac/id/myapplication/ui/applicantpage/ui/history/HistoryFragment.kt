@@ -1,4 +1,4 @@
-package umn.ac.id.myapplication.ui.ui.history
+package umn.ac.id.myapplication.ui.applicantpage.ui.history
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

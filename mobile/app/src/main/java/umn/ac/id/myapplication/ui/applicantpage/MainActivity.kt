@@ -1,12 +1,12 @@
-package umn.ac.id.myapplication.ui.ui.chat
+package umn.ac.id.myapplication.ui.applicantpage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import umn.ac.id.myapplication.R
 
-class ChatActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat)
+        setContentView(R.layout.activity_main)
     }
 }

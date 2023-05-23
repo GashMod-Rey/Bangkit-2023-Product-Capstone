@@ -114,35 +114,35 @@
             android:name=".UploadCvActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.CompanyProfileActivity"
+            android:name=".ui.applicantpage.CompanyProfileActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.ui.chat.NoMessageActivity"
+            android:name=".ui.applicantpage.ui.chat.NoMessageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.ui.chat.ChatActivity"
+            android:name=".ui.applicantpage.ui.chat.ChatActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.SignUpActivity"
+            android:name=".ui.applicantpage.SignUpActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.LoginOptionActivity"
+            android:name=".ui.applicantpage.LoginOptionActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -156,7 +156,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.applicantpage.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -169,7 +169,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.applicantpage.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
