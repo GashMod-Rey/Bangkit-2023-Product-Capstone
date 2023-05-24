@@ -60,13 +60,13 @@
         android:text="Upload a Doc/Docx/PDF"
         android:textColor="@color/blueMain"
         app:cornerRadius="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_login"
+        app:layout_constraintBottom_toTopOf="@+id/button_upload"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_about_company" />
 
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/button_upload"
         android:layout_width="300dp"
         android:layout_height="70dp"
         android:layout_marginTop="10dp"

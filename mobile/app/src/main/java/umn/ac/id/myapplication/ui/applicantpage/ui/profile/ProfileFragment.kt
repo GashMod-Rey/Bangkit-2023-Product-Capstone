@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import umn.ac.id.myapplication.databinding.FragmentProfileBinding
 import umn.ac.id.myapplication.ui.applicantpage.AboutMeActivity
+import umn.ac.id.myapplication.ui.applicantpage.UploadCvActivity
 
 class ProfileFragment : Fragment() {
 
@@ -36,11 +37,19 @@ class ProfileFragment : Fragment() {
             textView.text = it
         }
 
-        binding.buttonAboutme.setOnClickListener {
-            Intent(requireContext(), AboutMeActivity::class.java).also{
-                startActivity(it)
-            }
+        val buttonAboutMe = binding.buttonAboutme
+        val buttonCV = binding.buttonCv
+
+        buttonAboutMe.setOnClickListener {
+            val intent = Intent(requireContext(), AboutMeActivity::class.java)
+            startActivity(intent)
         }
+
+        buttonCV.setOnClickListener {
+            val intent = Intent(requireContext(), UploadCvActivity::class.java)
+            startActivity(intent)
+        }
+
         return root
     }
 
