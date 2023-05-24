@@ -3,11 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.applicantpage.ui.history.HistoryFragment">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:fontFamily="@font/lato_bold"
+        android:layout_marginTop="35dp"
+        android:text="Offering History" />
+    <Button
+        android:id="@+id/button_success"
+        android:layout_width="370dp"
+        android:layout_height="75dp"
+        android:backgroundTint="#F9F9F9"
+        android:text="Success"
+        android:textColor="@color/black"
+        app:cornerRadius="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="30dp"
+        android:drawableLeft="@drawable/ic_success"/>
+    <Button
+        android:id="@+id/button_reject"
+        android:layout_width="370dp"
+        android:layout_height="75dp"
+        android:backgroundTint="#F9F9F9"
+        android:text="Reject"
+        android:textColor="@color/black"
+        app:cornerRadius="20dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="30dp"
+        android:drawableLeft="@drawable/ic_reject"/>
 
 </FrameLayout>
