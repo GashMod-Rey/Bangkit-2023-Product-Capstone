@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="80dp"
-        tools:src="@drawable/logo" />
+        android:src="@drawable/logo" />
 
     <Button
         android:id="@+id/button_employee_signin"

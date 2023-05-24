@@ -1,5 +1,6 @@
 package umn.ac.id.myapplication.ui.applicantpage.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import umn.ac.id.myapplication.databinding.FragmentProfileBinding
+import umn.ac.id.myapplication.ui.applicantpage.AboutMeActivity
 
 class ProfileFragment : Fragment() {
 
@@ -22,6 +24,7 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         val profileViewModel =
             ViewModelProvider(this).get(ProfileViewModel::class.java)
 
@@ -31,6 +34,12 @@ class ProfileFragment : Fragment() {
         val textView: TextView = binding.tvName
         profileViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
+        }
+
+        binding.buttonAboutme.setOnClickListener {
+            Intent(requireContext(), AboutMeActivity::class.java).also{
+                startActivity(it)
+            }
         }
         return root
     }

@@ -11,6 +11,7 @@ class LoginOptionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginOptionBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityLoginOptionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.buttonEmployeeSignin.setOnClickListener {
