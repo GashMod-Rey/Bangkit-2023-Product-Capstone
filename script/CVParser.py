@@ -4,7 +4,8 @@ from string import punctuation
 import spacy
 from spacy import displacy
 from spacy.tokens import DocBin
-import sys, fitz
+import requests
+import fitz
 import re
 import time
 from tqdm import tqdm
@@ -298,8 +299,12 @@ def take_country(text):
             break
     return loc
 
-def cvparsing(pdfpath):
-    doc = fitz.open(pdfpath)
+def cvparsing(pdflink):
+    response = requests.get(pdflink)
+    content = response.content
+
+    doc = fitz.open(stream=content, filetype='pdf')
+
     text = ""
     for page in doc:
         text = text + str(page.get_text())
