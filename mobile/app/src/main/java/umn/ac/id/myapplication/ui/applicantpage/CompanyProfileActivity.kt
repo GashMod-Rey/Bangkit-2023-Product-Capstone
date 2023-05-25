@@ -1,12 +1,12 @@
-package umn.ac.id.myapplication.ui
+package umn.ac.id.myapplication.ui.applicantpage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import umn.ac.id.myapplication.R
 
-class LoginOptionActivity : AppCompatActivity() {
+class CompanyProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_option)
+        setContentView(R.layout.activity_company_profile)
     }
 }

@@ -1,4 +1,4 @@
-package umn.ac.id.myapplication.ui.ui.home
+package umn.ac.id.myapplication.ui.applicantpage.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

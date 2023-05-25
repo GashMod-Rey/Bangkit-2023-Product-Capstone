@@ -1,12 +1,12 @@
-package umn.ac.id.myapplication.ui
+package umn.ac.id.myapplication.ui.applicantpage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import umn.ac.id.myapplication.R
 
-class UploadCvActivity : AppCompatActivity() {
+class AboutMeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_upload_cv)
+        setContentView(R.layout.activity_about_me)
     }
 }

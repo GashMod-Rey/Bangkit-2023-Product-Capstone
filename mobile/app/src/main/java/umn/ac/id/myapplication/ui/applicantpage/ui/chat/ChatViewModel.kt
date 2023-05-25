@@ -1,4 +1,4 @@
-package umn.ac.id.myapplication.ui.ui.chat
+package umn.ac.id.myapplication.ui.applicantpage.ui.chat
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
