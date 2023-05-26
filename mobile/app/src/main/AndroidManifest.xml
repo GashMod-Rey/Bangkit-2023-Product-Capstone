@@ -14,14 +14,21 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".HistoryRejectActivity"
+            android:name=".ui.applicantpage.SettingsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".HistorySuccessActivity"
+            android:name=".ui.applicantpage.HistoryRejectActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.applicantpage.HistorySuccessActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

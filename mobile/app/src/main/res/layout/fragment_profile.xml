@@ -9,15 +9,25 @@
         android:id="@+id/linearLayoutCompat"
         android:layout_width="match_parent"
         android:layout_height="270dp"
+        android:gravity="end"
         android:background="@drawable/bg_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_settings"/>
+        <ImageButton
+            android:id="@+id/button_edit"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_edit"/>
+
+        <ImageButton
+            android:id="@+id/button_settings"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_settings"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -75,9 +85,10 @@
 
     <Button
         android:id="@+id/button_aboutme"
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:backgroundTint="#F9F9F9"
+        android:layout_marginHorizontal="30dp"
         android:text="About Me"
         android:textColor="@color/black"
         app:cornerRadius="20dp"
@@ -89,12 +100,13 @@
 
     <Button
         android:id="@+id/button_cv"
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:backgroundTint="#F9F9F9"
         android:text="Curriculum vitae"
         android:textColor="@color/black"
         app:cornerRadius="20dp"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/ic_cv"
         app:layout_constraintEnd_toEndOf="parent"
