@@ -310,6 +310,7 @@ def cvparsing(pdflink):
         text = text + str(page.get_text())
     text = re.sub(r'[^\x00-\x7F]', '', text)
 
+    profDic = {}
     profDic["PERSON"] = take_name(text)
     profDic["EMAIL"] = take_email(text)
     profDic["MOBILE"] = take_mp(text)
