@@ -16,17 +16,19 @@
         android:fontFamily="@font/lato_bold"
         android:layout_marginTop="35dp"
         android:text="Offering History" />
+
     <Button
         android:id="@+id/button_success"
         android:layout_width="370dp"
         android:layout_height="75dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="100dp"
         android:backgroundTint="#F9F9F9"
+        android:drawableLeft="@drawable/ic_success"
         android:text="Success"
         android:textColor="@color/black"
-        app:cornerRadius="20dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="30dp"
-        android:drawableLeft="@drawable/ic_success"/>
+        app:cornerRadius="20dp" />
+
     <Button
         android:id="@+id/button_reject"
         android:layout_width="370dp"
@@ -36,7 +38,7 @@
         android:textColor="@color/black"
         app:cornerRadius="20dp"
         android:layout_marginTop="200dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="10dp"
         android:drawableLeft="@drawable/ic_reject"/>
 
     <Button
@@ -48,7 +50,7 @@
         android:textColor="@color/black"
         app:cornerRadius="20dp"
         android:layout_marginTop="300dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="10dp"
         android:drawableLeft="@drawable/ic_waiting"
         />
 
