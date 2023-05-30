@@ -9,7 +9,7 @@ app.use(express.static(src));
 
 const multer = Multer({
     storage: Multer.memoryStorage(),
-    fileSize: 5 * 1024 * 1024,
+    fileSize: 20 * 1024 * 1024, //ganti
 });
 
 
@@ -23,7 +23,17 @@ const storage = new Storage({
 
 const bucket = storage.bucket("bucket_pdf33");
 
-app.post("/upload", multer.single("pdfFile") ,(req,res) => {
+app.get("/upload", async (req, res) => {
+    try {
+      const [files] = await bucket.getFiles();
+      res.send([files]);
+      console.log("Success");
+    } catch (error) {
+      res.send("Error:" + error);
+    }
+  });
+
+app.post("/upload", multer.single("pdfFile"), (req, res) => {
     console.log("Made it /upload");
     try{
         if (req.file){
@@ -36,8 +46,8 @@ app.post("/upload", multer.single("pdfFile") ,(req,res) => {
                 console.log("Success");
             });
             blobStream.end(req.file.buffer);
-        }else throw "error with img";
-    }catch (error){
+        } else throw "error with pdf";
+    } catch (error) {
         res.status(500).send(error);
     }
 });
