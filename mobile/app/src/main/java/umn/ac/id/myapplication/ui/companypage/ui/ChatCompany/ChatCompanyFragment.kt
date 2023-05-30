@@ -27,10 +27,7 @@ class ChatCompanyFragment : Fragment() {
         _binding = FragmentChatCompanyBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.TextTest
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
         return root
     }
 

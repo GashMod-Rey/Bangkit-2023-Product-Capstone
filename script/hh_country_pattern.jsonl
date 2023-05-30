@@ -1,0 +1,195 @@
+{"label": "COUNTRY", "pattern": [{"LOWER": "afghanistan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "albania"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "algeria"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "andorra"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "angola"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "antigua"},{"LOWER": "and"},{"LOWER": "barbuda"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "argentina"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "armenia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "australia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "austria"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "azerbaijan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "bahamas"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "bahrain"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "bangladesh"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "barbados"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "belarus"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "belgium"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "belize"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "benin"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "bhutan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "bolivia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "bosnia"},{"LOWER": "and"},{"LOWER": "herzegovina"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "botswana"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "brazil"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "brunei"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "bulgaria"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "burkina"},{"LOWER": "faso"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "burundi"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "cabo"},{"LOWER": "verde"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "cambodia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "cameroon"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "canada"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "central"},{"LOWER": "african"},{"LOWER": "republic"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "chad"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "chile"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "china"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "colombia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "comoros"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "congo"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "costa"},{"LOWER": "rica"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "croatia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "cuba"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "cyprus"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "czech"},{"LOWER": "republic"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "denmark"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "djibouti"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "dominica"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "dominican"},{"LOWER": "republic"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "east"},{"LOWER": "timor"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "ecuador"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "egypt"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "el"},{"LOWER": "salvador"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "equatorial"},{"LOWER": "guinea"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "eritrea"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "estonia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "eswatini"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "ethiopia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "fiji"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "finland"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "france"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "gabon"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "gambia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "georgia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "germany"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "ghana"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "greece"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "grenada"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "guatemala"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "guinea"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "guinea-bissau"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "guyana"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "haiti"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "honduras"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "hungary"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "iceland"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "india"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "indonesia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "iran"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "iraq"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "ireland"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "israel"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "italy"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "jamaica"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "japan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "jordan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "kazakhstan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "kenya"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "kiribati"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "kosovo"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "kuwait"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "kyrgyzstan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "laos"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "latvia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "lebanon"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "lesotho"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "liberia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "libya"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "liechtenstein"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "lithuania"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "luxembourg"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "madagascar"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "malawi"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "malaysia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "maldives"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "mali"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "malta"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "marshall"},{"LOWER": "islands"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "mauritania"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "mauritius"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "mexico"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "micronesia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "moldova"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "monaco"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "mongolia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "montenegro"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "morocco"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "mozambique"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "myanmar"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "namibia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "nauru"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "nepal"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "netherlands"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "new"},{"LOWER": "zealand"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "nicaragua"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "niger"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "nigeria"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "north"},{"LOWER": "korea"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "north"},{"LOWER": "macedonia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "norway"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "oman"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "pakistan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "palau"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "palestinepanama"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "papua"},{"LOWER": "new"},{"LOWER": "guinea"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "paraguay"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "peru"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "philippines"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "poland"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "portugal"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "qatar"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "romania"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "russia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "rwanda"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "saint"},{"LOWER": "kitts"},{"LOWER": "and"},{"LOWER": "nevis"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "saint"},{"LOWER": "lucia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "saint"},{"LOWER": "vincent"},{"LOWER": "and"},{"LOWER": "the"},{"LOWER": "grenadines"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "samoa"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "san"},{"LOWER": "marino"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "sao"},{"LOWER": "tome"},{"LOWER": "and"},{"LOWER": "principe"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "saudi"},{"LOWER": "arabia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "senegal"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "serbia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "seychelles"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "sierra"},{"LOWER": "leone"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "singapore"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "slovakia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "slovenia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "solomon"},{"LOWER": "islands"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "somalia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "south"},{"LOWER": "africa"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "south"},{"LOWER": "korea"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "south"},{"LOWER": "sudan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "spain"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "sri"},{"LOWER": "lanka"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "sudan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "suriname"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "sweden"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "switzerland"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "syria"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "taiwan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "tajikistan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "tanzania"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "thailand"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "timor"},{"LOWER": "leste"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "togo"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "tonga"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "trinidad"},{"LOWER": "and"},{"LOWER": "tobago"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "tunisia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "turkey"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "turkmenistan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "tuvalu"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "uganda"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "ukraine"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "united"},{"LOWER": "arab"},{"LOWER": "emirates"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "united"},{"LOWER": "kingdom"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "united"},{"LOWER": "states"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "uruguay"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "uzbekistan"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "vanuatu"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "vatican"},{"LOWER": "city"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "venezuela"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "vietnam"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "yemen"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "zambia"}]}
+{"label": "COUNTRY", "pattern": [{"LOWER": "zimbabwe"}]}

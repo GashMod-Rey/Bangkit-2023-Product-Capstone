@@ -14,84 +14,108 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".WaitingHiredCompanyActivity"
+            android:name=".ui.applicantpage.SettingsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".FailedHiredCompanyActivity"
+            android:name=".ui.applicantpage.HistoryRejectActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SuccesfullyHiringCompanyActivity"
+            android:name=".ui.applicantpage.HistorySuccessActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".HiringProcessCompany"
+            android:name=".ui.companypage.JobPreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.companypage.WaitingHiredCompanyActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".HistoryWaitingCompanyActivity"
+            android:name=".ui.companypage.FailedHiredCompanyActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".HistoryDeclineCompanyActivity"
+            android:name=".ui.companypage.SuccesfullyHiringCompanyActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".HistorySuccessCompanyActivity"
+            android:name=".ui.companypage.HiringProcessCompany"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SettingsCompanyActivity"
+            android:name=".ui.companypage.HistoryWaitingCompanyActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".EditCompanyActivity"
+            android:name=".ui.companypage.HistoryDeclineCompanyActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegisterCompanyActivity"
+            android:name=".ui.companypage.HistorySuccessCompanyActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginCompanyActivity"
+            android:name=".ui.companypage.SettingsCompanyActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainCompanyActivity"
+            android:name=".ui.companypage.EditCompanyActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.companypage.RegisterCompanyActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.companypage.LoginCompanyActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.companypage.MainCompanyActivity"
             android:exported="false"
             android:label="@string/title_activity_main_company">
             <meta-data
@@ -99,47 +123,47 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AboutMeActivity"
+            android:name=".ui.applicantpage.AboutMeActivity"
             android:exported="false" />
         <activity
-            android:name=".AboutMeChangeActivity"
+            android:name=".ui.applicantpage.AboutMeChangeActivity"
             android:exported="false" />
         <activity
-            android:name=".UploadCvSuccessActivity"
+            android:name=".ui.applicantpage.UploadCvSuccessActivity"
             android:exported="false" />
         <activity
-            android:name=".UploadCvActivity"
+            android:name=".ui.applicantpage.UploadCvActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.CompanyProfileActivity"
+            android:name=".ui.applicantpage.CompanyProfileActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.ui.chat.NoMessageActivity"
+            android:name=".ui.applicantpage.ui.chat.NoMessageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.ui.chat.ChatActivity"
+            android:name=".ui.applicantpage.ui.chat.ChatActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.SignUpActivity"
+            android:name=".ui.applicantpage.SignUpActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.LoginOptionActivity"
+            android:name=".ui.applicantpage.LoginOptionActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -147,13 +171,6 @@
         </activity>
         <activity
             android:name=".ui.SplashScreenActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -166,7 +183,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.applicantpage.LoginActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.applicantpage.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

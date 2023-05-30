@@ -4,11 +4,47 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.142" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_about_me.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_about_me_change.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_chat.xml" value="0.25416666666666665" />
         <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_company_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_edit_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_failed_hired_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_hiring_process_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_history_decline_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_history_success_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_history_waiting_company.xml" value="0.25416666666666665" />
         <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_home_employee.xml" value="0.25416666666666665" />
         <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_login_company.xml" value="0.25416666666666665" />
         <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_login_option.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_main_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_no_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_register_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_settings.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_settings_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_sign_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_succesfully_hiring_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_upload_cv.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_upload_cv_success.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/activity_waiting_hired_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/fragment_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/fragment_chat_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/fragment_history.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/fragment_history_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/fragment_home_company.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/fragment_profile_company.xml" value="0.25416666666666665" />
         <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/item_chat_list.xml" value="0.1" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/item_decline_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/item_list_hiring.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/item_receive_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/item_send_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/item_success_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Semester 6/Bangkit/Bangkit Capstone/Bangkit-2023-Product-Capstone/mobile/app/src/main/res/layout/item_waiting_list.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

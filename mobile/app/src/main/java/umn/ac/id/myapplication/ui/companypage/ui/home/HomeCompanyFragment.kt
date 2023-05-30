@@ -29,10 +29,6 @@ class HomeCompanyFragment : Fragment() {
         _binding = FragmentHomeCompanyBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textView
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 

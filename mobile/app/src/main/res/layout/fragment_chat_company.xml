@@ -60,7 +60,7 @@
             android:layout_height="70dp"
             android:background="@drawable/search_bar"
             app:cornerRadius="10dp"
-            android:hint="Search HRD"
+            android:hint="Search Employee"
             android:fontFamily="@font/lato"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout"
