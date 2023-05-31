@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="loginForm">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+      <input type="submit" value="Login">
+    </div>
+  </form>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Get the form values
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Create the request body
+      const requestBody = {
+        Username: username,
+        Password: password
+      };
+
+      // Send a POST request to the server
+      fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      })
+      .then(response => {
+        if (response.ok) {
+          // Login successful
+          console.log('Login successful');
+          // Do something after successful login, e.g., redirect to a new page
+        } else {
+          // Login failed
+          console.error('Login failed');
+        }
+      })
+      .catch(error => {
+        console.error('An error occurred:', error);
+      });
+    });
+  </script>
+</body>
+</html>
