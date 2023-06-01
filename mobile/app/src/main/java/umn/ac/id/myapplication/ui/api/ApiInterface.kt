@@ -10,7 +10,7 @@ import retrofit2.http.Part
 interface ApiInterface {
     @Multipart
     @POST("upload")
-    suspend fun uploadCV(
+   fun uploadCV(
         @Part pdf: MultipartBody.Part
     ): Response<ResponseBody>
 }
