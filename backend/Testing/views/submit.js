@@ -21,11 +21,30 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     let formData = new FormData();
     formData.append("pdfFile", newFile);
 
+    // checkpo
+
+    let jsonObject = {};
+    formData.forEach((value, key) => {
+      jsonObject[key] = value;
+    });
+
     fetch("/upload", {
         method: "POST",
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonObject),
     })
-    .then((res) => res.text());
+    .then((res) => {
+      if (response.ok) {
+        // Login successful
+        console.log('Upload successful');
+        // Do something after successful login, e.g., redirect to a new page
+      } else {
+        // Login failed
+        console.error('Upload failed');
+      }
+    });
     // .then(takeLink());
 
     setTimeout(function() {

@@ -42,13 +42,18 @@ app.post("/upload", multer.single("pdfFile"), (req, res) => {
             const blobStream = blob.createWriteStream();
 
             blobStream.on("finish", () => {
-                res.status(200).send("Success");
+                res.setHeader("Content-Type", "application/json");
+                res.status(200).json({ message: "Success" });
+
+                //res.status(200).send("Success");
                 console.log("Success");
             });
             blobStream.end(req.file.buffer);
         } else throw "error with pdf";
     } catch (error) {
-        res.status(500).send(error);
+        res.setHeader("Content-Type", "application/json");
+        res.status(500).json({ error: error });
+        //res.status(500).send(error);
     }
 });
 
