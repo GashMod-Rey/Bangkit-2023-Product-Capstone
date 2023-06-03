@@ -35,7 +35,7 @@
         android:layout_marginHorizontal="30dp"
         android:fontFamily="@font/lato_bold"
         android:text="Description : As a Mobile Development Expert, I specialize in designing, building, and maintaining mobile applications for smartphones and tablets. With a strong understanding of various mobile platforms, programming languages, and development frameworks, I have a proven track record of creating high-quality mobile applications that meet the specific needs of my clients."
-        android:textColor="@color/black"
+        android:textColor="#3C3E56"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="97dp" />
@@ -50,8 +50,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:fontFamily="@font/lato_bold"
+        android:layout_marginTop="10dp"
         android:text="Age : 25 years of age"
-        android:textColor="@color/black"
+        android:textColor="#3C3E56"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="306dp" />
@@ -64,25 +65,94 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/lato_bold"
         android:text="Skill : Mobile Development,  Java, PostgreSQL."
-        android:textColor="@color/black"
+        android:textColor="#3C3E56"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAge" />
 
     <TextView
-        android:id="@+id/tvTools"
+        android:id="@+id/tvEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="64dp"
         android:fontFamily="@font/lato_bold"
-        android:text="Tools : Figma, Adobe Photoshop, Premiere Pro."
-        android:textColor="@color/black"
+        android:text="Email: andelle@gmail.com"
+        android:textColor="#3C3E56"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAge" />
+
+    <TextView
+        android:id="@+id/tvYearOfBirth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Date of Birth: 19-03-2002"
+        android:textColor="#3C3E56"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+
+    <TextView
+        android:id="@+id/tvLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Language: Indonesia"
+        android:textColor="#3C3E56"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvYearOfBirth" />
+    <TextView
+        android:id="@+id/tvEducationInstitution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Education Institution: Sriwijaya University"
+        android:textColor="#3C3E56"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLanguage" />
+
+    <TextView
+        android:id="@+id/tvDegree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Degree: Bachelor Degree"
+        android:textColor="#3C3E56"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEducationInstitution" />
+
+    <TextView
+        android:id="@+id/tvMobilePhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/lato_bold"
+        android:text="Mobile Phone: 081279793792"
+        android:textColor="#3C3E56"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDegree" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
