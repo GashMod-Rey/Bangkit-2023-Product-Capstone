@@ -106,7 +106,7 @@ class UploadCvActivity : AppCompatActivity() {
             file.writeBytes(inputStream!!.readBytes())
             val requestPdfFile = file.asRequestBody("application/pdf".toMediaType())
             val pdfMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "pdf",
+                "pdfFile",
                 file.name,
                 requestPdfFile
             )
