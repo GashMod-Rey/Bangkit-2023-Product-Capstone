@@ -15,7 +15,7 @@ class UploadCvSuccessActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonDone.setOnClickListener {
-            Intent(this, ProfileFragment::class.java).also {
+            Intent(this, AboutMeActivity::class.java).also {
                 startActivity(it)
             }
         }
