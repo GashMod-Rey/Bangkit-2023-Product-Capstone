@@ -34,11 +34,11 @@
 
 
     <EditText
-        android:id="@+id/ad_email_login"
+        android:id="@+id/ad_username_login"
         android:layout_width="320dp"
         android:layout_height="60dp"
         android:padding="20dp"
-        android:hint="email"
+        android:hint="username"
         android:drawableLeft="@drawable/ic_email"
         android:drawablePadding="10dp"
         android:background="@drawable/edit_text_background"
@@ -59,7 +59,7 @@
         android:background="@drawable/edit_text_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ad_email_login"
+        app:layout_constraintTop_toBottomOf="@+id/ad_username_login"
         android:layout_marginTop="30dp"
         app:cornerRadius="30dp"/>
 

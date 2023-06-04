@@ -22,23 +22,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/ad_name_signup"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:padding="20dp"
-        android:hint="name"
-        android:drawableLeft="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:background="@drawable/edit_text_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_text"
-        android:layout_marginTop="20dp"
-        app:cornerRadius="30dp"/>
+
 
     <EditText
-        android:id="@+id/ad_email_signup"
+        android:id="@+id/ad_username_signup"
         android:layout_width="320dp"
         android:layout_height="60dp"
         android:padding="20dp"
@@ -48,7 +35,7 @@
         android:background="@drawable/edit_text_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ad_name_signup"
+        app:layout_constraintTop_toBottomOf="@+id/signup_text"
         android:layout_marginTop="20dp"
         app:cornerRadius="30dp"/>
 
@@ -64,7 +51,7 @@
         android:background="@drawable/edit_text_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ad_email_signup"
+        app:layout_constraintTop_toBottomOf="@+id/ad_username_signup"
         android:layout_marginTop="20dp"
         app:cornerRadius="30dp"/>
 
