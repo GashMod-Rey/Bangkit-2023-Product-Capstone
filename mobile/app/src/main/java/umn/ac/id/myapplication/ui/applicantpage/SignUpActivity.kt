@@ -26,34 +26,33 @@ private val signUpViewModel by viewModels<SignUpViewModel>()
         }
 
         binding.buttonSignup.setOnClickListener {
-//            val username = binding.adUsernameSignup.text.toString().trim()
-//            val password = binding.adPasswordSignup.text.toString().trim()
-//            if(username.isEmpty() && password.isEmpty()){
-//                binding.adUsernameSignup.error = "Username is empty"
-//                binding.adPasswordSignup.error = "Password is empty"
-//            }
-//            else {
-//                signUpViewModel.postRegister(
-//                    username, password
-//                )
-//                signUpViewModel.signup.observe(this){
-//                    when (it){
-//                        is Resource.Success -> {
-//                            val intent = Intent(this, LoginActivity::class.java)
-//                            startActivity(intent)
-//                            finish()
-//                        }
-//                        is Resource.Error -> {
-//                            Toast.makeText(
-//                                this, it.message.toString(), Toast.LENGTH_SHORT
-//                            ).show()
-//                        }
-//                    }
-//                }
-//            }
-            Intent(this@SignUpActivity, LoginActivity::class.java).also{
-                startActivity(it)
+            val username = binding.adUsernameSignup.text.toString().trim()
+            val password = binding.adPasswordSignup.text.toString().trim()
+            if(username.isEmpty() && password.isEmpty()){
+                binding.adUsernameSignup.error = "Username is empty"
+                binding.adPasswordSignup.error = "Password is empty"
             }
+            else {
+                signUpViewModel.postRegister(
+                    username, password
+                )
+                signUpViewModel.signup.observe(this){
+                    when (it){
+                        is Resource.Success -> {
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                        is Resource.Error -> {
+                            Toast.makeText(
+                                this, it.message.toString(), Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
+
+
         }
     }
 }

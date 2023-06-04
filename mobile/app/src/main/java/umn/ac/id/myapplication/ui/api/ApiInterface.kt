@@ -19,14 +19,14 @@ interface ApiInterface {
     @FormUrlEncoded
     @POST("login")
     fun postLogin(
-        @Field("username") username: String,
-        @Field("password") password: String
+        @Field("Username") Username: String,
+        @Field("Password") Password: String
     ): Call<LoginResponse>
 
     @FormUrlEncoded
     @POST("signup")
     fun postSignUp(
-        @Field("Username") Username: String,
-        @Field("Password") Password: String,
+        @Field("username") username: String,
+        @Field("password") password: String,
     ): Call<SignUpResponse>
 }
