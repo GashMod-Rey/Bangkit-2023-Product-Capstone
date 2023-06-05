@@ -181,13 +181,22 @@ app.get('/protected', (req, res) => {
     }
 });
 
-app.get("/upload", async (req, res) => {
+app.get('/upload', async (req, res) => {
     try {
       const [files] = await bucket.getFiles();
-      res.send([files]);
-      console.log("Success");
+    
+      if (files.length > 0) {
+        const lastFile = files[files.length - 1];
+        const url = `https://storage.googleapis.com/bucket_pdf33/${lastFile.id}`;
+        const fileData = { id: lastFile.id, url };
+    
+        res.json(fileData);
+        console.log('Success');
+      } else {
+        res.status(404).json({ error: 'No files found' });
+      }
     } catch (error) {
-      res.send("Error:" + error);
+      res.status(500).json({ error: 'Error: ' + error });
     }
 });
 
