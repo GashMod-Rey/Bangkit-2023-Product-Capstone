@@ -180,6 +180,7 @@ app.get('/protected', (req, res) => {
         return res.status(401).json({ message: 'Access denied. Invalid token.' });
     }
 });
+const spawner = require("child_process").spawn;
 
 app.get('/upload', async (req, res) => {
     try {
@@ -189,7 +190,18 @@ app.get('/upload', async (req, res) => {
         const lastFile = files[files.length - 1];
         const url = `https://storage.googleapis.com/bucket_pdf33/${lastFile.id}`;
         const fileData = { id: lastFile.id, url };
-    
+
+        // const data_to_pass_in = {
+        //     data_sent: url
+        // }
+        // console.log("Data to pass in : ", data_to_pass_in);
+
+        // const python_process = spawner("python", ["./cvparser/CVParser.py", JSON.stringify(data_to_pass_in)]);
+
+        // python_process.stdout.on("data", (data) => {
+        //     console.log("Data from python script", JSON.parse(data.toString()));
+        // });
+
         res.json(fileData);
         console.log('Success');
       } else {
@@ -225,6 +237,7 @@ app.post('/upload', (req, res) => {
             });
 
             blobStream.end(file.buffer);
+            id += 1;
         });
     } catch (error) {
         res.setHeader('Content-Type', 'application/json');
