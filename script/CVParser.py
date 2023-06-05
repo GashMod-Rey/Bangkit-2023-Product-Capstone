@@ -9,6 +9,8 @@ import fitz
 import re
 import time
 from tqdm import tqdm
+import sys
+import json
 
 model_md = spacy.load("en_core_web_md")
 model_sm = spacy.load("en_core_web_sm")
@@ -321,4 +323,10 @@ def cvparsing(pdflink):
     profDic['DEGREE'] = take_degree(text)
     profDic['LOC'] = take_country(text)
 
-    return profDic
+    out = json.dumps(profDic)
+    print(out)
+
+if __name__ == "__main__":
+    json_input = sys.argv[1]
+    data = json.loads(json_input)
+    cvparsing(data['data_sent'])
