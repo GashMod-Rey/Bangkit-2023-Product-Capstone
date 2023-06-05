@@ -212,8 +212,9 @@ app.get('/upload', async (req, res) => {
     }
 });
 
-let id = 0;
+const timestamp = new Date();
 
+const formattedTimestamp = timestamp.toISOString();
 app.post('/upload', (req, res) => {
     console.log('Made it /upload');
     try {
@@ -227,7 +228,7 @@ app.post('/upload', (req, res) => {
             }
 
             // Handle the uploaded file
-            const blob = bucket.file(`${id}_post.pdf`);
+            const blob = bucket.file(`${formattedTimestamp}_post.pdf`);
             const blobStream = blob.createWriteStream();
 
             blobStream.on('finish', () => {
@@ -237,7 +238,6 @@ app.post('/upload', (req, res) => {
             });
 
             blobStream.end(file.buffer);
-            id += 1;
         });
     } catch (error) {
         res.setHeader('Content-Type', 'application/json');
