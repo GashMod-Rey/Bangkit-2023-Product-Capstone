@@ -7,8 +7,6 @@ from spacy.tokens import DocBin
 import requests
 import fitz
 import re
-import time
-from tqdm import tqdm
 import sys
 import json
 
@@ -66,7 +64,6 @@ def take_name(text):
                     find = True
                 else:
                     return rem
-        
     custom_stopword = ["educational", "objective", "project", "reference",  "experience",  "address"]
     init_len = len(text)
     for sub_str in custom_stopword:
@@ -85,13 +82,13 @@ def take_name(text):
     text = " ".join(text.split("\n")).lower()
     
     custom_drop = ("civil", "skill", "permanent", "mail", "email", "add", "academic", "branch", "present", "mechanic", 
-                   "engineer", "apply", "programming", "examination", "learning", "university", "employment", "date", 
-                   "birth", "place", "succeed", "model", "name", "personal", "profile", "page", "secure", "culture", 
-                   "offer", "company", "work", "successfully", "growth", "oriented", "field", "infrastructur", 
-                   "qualification", "electronic", "entry", "seeking", "position", "organization", "vitae", "curri", 
-                   "cirri", "curi", "instagram", "email", "current", "plot", "resume", "contact", "mobile", "phone", 
-                   "no", "nationality", "id", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "block", "correspon", 
-                   "passport", "career", "stren")
+    "engineer", "apply", "programming", "examination", "learning", "university", "employment", "date", 
+    "birth", "place", "succeed", "model", "name", "personal", "profile", "page", "secure", "culture", 
+    "offer", "company", "work", "successfully", "growth", "oriented", "field", "infrastructur", 
+    "qualification", "electronic", "entry", "seeking", "position", "organization", "vitae", "curri", 
+    "cirri", "curi", "instagram", "email", "current", "plot", "resume", "contact", "mobile", "phone", 
+    "no", "nationality", "id", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "block", "correspon", 
+    "passport", "career", "stren")
     text = ' '.join([word for word in text.split() if not word.lower().startswith(custom_drop) and not word.lower().endswith(custom_drop)])
         
     custom_punc = [",", "/", "  ", "-", ":", "(", ")"]
@@ -145,11 +142,6 @@ def take_skills(text):
     return skillsList
 
 def take_lang(text):
-    doc = fitz.open(pdfpath)
-    text = ""
-    for page in doc:
-        text = text + str(page.get_text())
-    text = re.sub(r'[^\x00-\x7F]', '', text)
     text = " ".join(text.split("\n"))
     custom_drop = ["purpose"]
     for drop in custom_drop:
@@ -322,11 +314,9 @@ def cvparsing(pdflink):
     profDic["EDU"] = take_edu(text)
     profDic['DEGREE'] = take_degree(text)
     profDic['LOC'] = take_country(text)
-
     out = json.dumps(profDic)
     print(out)
 
-if __name__ == "__main__":
-    json_input = sys.argv[1]
-    data = json.loads(json_input)
-    cvparsing(data['data_sent'])
+json_input = sys.argv[1]
+data = json.loads(json_input)
+cvparsing(data['data_sent'])
