@@ -6,6 +6,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 import umn.ac.id.myapplication.ui.data.LoginResponse
+import umn.ac.id.myapplication.ui.data.ProfileApplicantResponse
 import umn.ac.id.myapplication.ui.data.SignUpResponse
 import umn.ac.id.myapplication.ui.data.UploadCVResponse
 
@@ -29,4 +30,9 @@ interface ApiInterface {
         @Field("username") username: String,
         @Field("password") password: String,
     ): Call<SignUpResponse>
+
+    @GET("setProfileApplicant")
+    fun getProfileApplicant(
+        @Header("Authorization") token: String
+    ): Call<ProfileApplicantResponse>
 }
