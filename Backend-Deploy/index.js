@@ -115,6 +115,23 @@ app.post('/setProfileApplicant', (req, res) => {
     );
 });
 
+app.get('/getProfileApplicant', (req, res) => {
+    const token = req.session.token;
+    const decodedToken = verifyToken(token);
+    const username = decodedToken.username;
+
+    const query = `SELECT * FROM Applicants WHERE Username = ?`;
+
+    connection.query(query, [username], (err, results) => {
+        if (err) {
+          console.error('Failed to fetch applicants:', err);
+          res.status(500).json({ error: 'Failed to fetch applicants' });
+          return;
+        }
+        res.json(results);
+    });
+})
+
 function hashPass(password){
     const hashpass = jwt.sign({password}, secretKey);
     return hashpass;
@@ -263,6 +280,28 @@ app.post('/upload', (req, res) => {
     }
 });
 
+app.post('/deleteCV', async (req, res) => {
+    const token = req.session.token;
+    const decodedToken = verifyToken(token);
+    const username = decodedToken.username;
+  
+    try {
+        // Delete the file entry from MySQL
+        const deleteQuery = 'UPDATE Applicants SET PdfPath = ? WHERE Username = ?';
+        connection.query(deleteQuery, ["NULL", username], (deleteErr) => {
+          if (deleteErr) {
+            console.error('Error executing MySQL delete query:', deleteErr);
+            return res.status(500).json({ error: 'An error occurred while deleting the file entry' });
+          }
+  
+          return res.json({ message: 'PDF file deleted successfully' });
+        });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'An error occurred while deleting the PDF file' });
+    }
+});
+
 // Company API
 
 //Sign up
@@ -359,6 +398,23 @@ app.post('/setProfileCompany', (req, res) => {
       }
     );
 });
+
+app.get('/getProfileCompany', (req, res) => {
+    const token = req.session.token;
+    const decodedToken = verifyToken(token);
+    const username = decodedToken.username;
+
+    const query = `SELECT * FROM Company WHERE Username = ?`;
+
+    connection.query(query, [username], (err, results) => {
+        if (err) {
+          console.error('Failed to fetch applicants:', err);
+          res.status(500).json({ error: 'Failed to fetch applicants' });
+          return;
+        }
+        res.json(results);
+    });
+})
   
 app.get("/", (req, res) => {
     res.sendFile(src + "/index.html");
