@@ -5,10 +5,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
-import umn.ac.id.myapplication.ui.data.LoginResponse
-import umn.ac.id.myapplication.ui.data.ProfileApplicantResponse
-import umn.ac.id.myapplication.ui.data.SignUpResponse
-import umn.ac.id.myapplication.ui.data.UploadCVResponse
+import umn.ac.id.myapplication.ui.data.*
 
 interface ApiInterface {
     @Multipart
@@ -35,4 +32,9 @@ interface ApiInterface {
     fun getProfileApplicant(
         @Header("Authorization") token: String
     ): Call<ProfileApplicantResponse>
+
+    @GET("getCV")
+    fun getCV (
+    ): Call<ProfileApplicantResponse>
+
 }
