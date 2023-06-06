@@ -1,12 +1,15 @@
 const express = require("express");
 const app = express();
 const port = 8000;
+const path = require("path");
 const { Storage } = require("@google-cloud/storage");
 const Multer = require("multer");
-app.use(express.static(src));
+const src = path.join(__dirname, "views");
 const Upload = Multer().single("pdfFile");
 const jwt = require('jsonwebtoken');
 const session = require('express-session');
+const timestamp = new Date();
+const formattedTimestamp = timestamp.toISOString();
 
 
 const bodyParser = require('body-parser');
@@ -18,7 +21,7 @@ app.use(session({
     secret: 'yogaganteng',
     resave: false,
     saveUninitialized: true
-}));
+  }));
 
 // MySQL database connection
 const connection = mysql.createConnection({
@@ -55,7 +58,7 @@ connection.connect((err) => {
 const secretKey = 'yogaganteng';
   
 // Sign-up route
-app.post('/signup', (req, res) => {
+app.post('/signupApplicant', (req, res) => {
     const { username, password } = req.body;
 
     // Check if username and password are provided
@@ -91,11 +94,10 @@ app.post('/signup', (req, res) => {
     });
 });
 
-app.post('/setProfile', (req, res) => {
+app.post('/setProfileApplicant', (req, res) => {
     // Extract the profile data from the request body
     const {name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork } = req.body;
     const pdfPath = req.session.pdfPath;
-    console.log(pdfPath);
     const token = req.session.token;
     const decodedToken = verifyToken(token);
     const username = decodedToken.username;
@@ -118,7 +120,7 @@ function hashPass(password){
     return hashpass;
 }
 
-app.post('/login', (req, res) => {
+app.post('/loginApplicant', (req, res) => {
     const { Username, Password } = req.body;
 
     // Check if username and password are provided
@@ -169,7 +171,7 @@ function verifPass(user){
 //Generate a JWT token
 function generateToken(user) {
     const payload = {
-        username: user.username
+        username: user.Username
         // Add any other relevant user data to the payload
     };
 
@@ -208,7 +210,6 @@ app.get('/protected', (req, res) => {
         return res.status(401).json({ message: 'Access denied. Invalid token.' });
     }
 });
-const spawner = require("child_process").spawn;
 
 app.get('/upload', async (req, res) => {
     try {
@@ -218,17 +219,9 @@ app.get('/upload', async (req, res) => {
         const lastFile = files[files.length - 1];
         const url = `https://storage.googleapis.com/bucket_pdf33/${lastFile.id}`;
         const fileData = { id: lastFile.id, url };
+        
         req.session.pdfPath = url;
-        // const data_to_pass_in = {
-        //     data_sent: url
-        // }
-        // console.log("Data to pass in : ", data_to_pass_in);
-
-        // const python_process = spawner("python", ["./cvparser/CVParser.py", JSON.stringify(data_to_pass_in)]);
-
-        // python_process.stdout.on("data", (data) => {
-        //     console.log("Data from python script", JSON.parse(data.toString()));
-        // });
+        console.log(req.session.pdfPath);
 
         res.json(fileData);
         console.log('Success');
@@ -240,9 +233,6 @@ app.get('/upload', async (req, res) => {
     }
 });
 
-const timestamp = new Date();
-
-const formattedTimestamp = timestamp.toISOString();
 app.post('/upload', (req, res) => {
     console.log('Made it /upload');
     try {
@@ -271,6 +261,107 @@ app.post('/upload', (req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(500).json({ error });
     }
+});
+
+// Company API
+
+//Sign up
+app.post('/signupCompany', (req, res) => {
+    const { username, password } = req.body;
+
+    // Check if username and password are provided
+    if (!username || !password) {
+        return res.status(400).json({ message: 'Username and password are required.' });
+    }
+
+    // Check if the username already exists
+    const checkQuery = `SELECT * FROM Company WHERE Username = ?`;
+        connection.query(checkQuery, [username], (err, results) => {
+            if (err) {
+                console.error('Error executing the query:', err);
+                return res.status(500).json({ message: 'Internal server error.' });
+            }
+
+            if (results.length > 0) {
+                return res.status(409).json({ message: 'Username already exists.' });
+            }
+
+            // Hashing
+            const hashPassword = hashPass(password);
+
+            // Insert the new user into the database
+            const insertQuery = `INSERT INTO Company (Username, Password) VALUES (?, ?)`;
+            connection.query(insertQuery, [username, hashPassword], (err) => {
+            if (err) {
+                console.error('Error executing the query:', err);
+                return res.status(500).json({ message: 'Internal server error.' });
+            }
+
+            return res.status(201).json({ message: 'Sign-up successful.' });
+        });
+    });
+});
+
+app.post('/loginCompany', (req, res) => {
+    const { Username, Password } = req.body;
+
+    // Check if username and password are provided
+    if (!Username || !Password) {
+        return res.status(400).json({ message: 'Username and password are required.' });
+    }
+
+    // Query the database for the user
+    const query = `SELECT * FROM Company WHERE Username = ?`;
+    connection.query(query, [Username], (err, results) => {
+        if (err) {
+            console.error('Error executing the query:', err);
+            return res.status(500).json({ message: 'Internal server error.' });
+        }
+
+        // Check if the user exists
+        if (results.length === 0) {
+            return res.status(401).json({ message: 'Invalid username.' });
+        }
+
+        const user = results[0];
+
+        // Decode password
+        const decoded = verifPass(user);
+
+        // Check if the password is correct
+        if (decoded.password !== Password) {
+            return res.status(401).json({ message: 'Invalid password.' });
+        }
+
+        // Successful login
+        const token = generateToken(user);
+        req.session.token = token;
+        return res.status(200).json({ token: token });
+    });
+});
+
+app.post('/setProfileCompany', (req, res) => {
+    // Extract the profile data from the request body
+    const {name, summary, location, employee} = req.body;
+    const token = req.session.token;
+    const decodedToken = verifyToken(token);
+    const username = decodedToken.username;
+
+    const query = `UPDATE Company SET Name = ?, Summary = ?, Location = ?, Employee = ? WHERE Username = ?`;
+
+    connection.query(query,[name, summary, location, employee, username],(err) => {
+        if (err) {
+            console.error('Error executing the query:', err);
+            return res.status(500).json({ message: 'Internal server error.' });
+        }
+
+        return res.status(201).json({ message: 'Profile Updated' });
+      }
+    );
+});
+  
+app.get("/", (req, res) => {
+    res.sendFile(src + "/index.html");
 });
 
 app.listen(port, () => {
