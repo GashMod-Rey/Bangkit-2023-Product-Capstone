@@ -15,26 +15,27 @@ interface ApiInterface {
     ): Call<UploadCVResponse>
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("loginApplicant")
     fun postLogin(
         @Field("Username") Username: String,
         @Field("Password") Password: String
     ): Call<LoginResponse>
 
     @FormUrlEncoded
-    @POST("signup")
+    @POST("signupApplicant")
     fun postSignUp(
         @Field("username") username: String,
         @Field("password") password: String,
     ): Call<SignUpResponse>
 
-    @GET("setProfileApplicant")
-    fun getProfileApplicant(
-        @Header("Authorization") token: String
-    ): Call<ProfileApplicantResponse>
+//    @POST("setProfileApplicant")
+//    fun setProfileApplicant(
+//        @Header("Authorization") token: String
+//    ): Call<ProfileApplicantResponse>
 
-    @GET("getCV")
-    fun getCV (
+    @GET("getProfileApplicant")
+    fun getProfileApplicant (
+        @Header("Authorization") token: String
     ): Call<ProfileApplicantResponse>
 
 }

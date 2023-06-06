@@ -1,11 +1,15 @@
 package umn.ac.id.myapplication.ui.applicantpage
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -25,11 +29,15 @@ import umn.ac.id.myapplication.R
 import umn.ac.id.myapplication.databinding.ActivityUploadCvBinding
 import umn.ac.id.myapplication.ui.api.ApiClient
 import umn.ac.id.myapplication.ui.api.ApiClient.apiInstance
+import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.utils.Resource
+import umn.ac.id.myapplication.ui.viewmodel.MainViewModel
 import umn.ac.id.myapplication.ui.viewmodel.UploadCvViewModel
+import umn.ac.id.myapplication.ui.viewmodelfactory.MainViewModelFactory
 import java.io.File
 
 class UploadCvActivity : AppCompatActivity() {
+    val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user")
     private lateinit var binding: ActivityUploadCvBinding
     private val PICK_PDF_REQUEST = 1
     private var selectedPdfUri: Uri? = null
@@ -98,35 +106,41 @@ class UploadCvActivity : AppCompatActivity() {
     }
 
     private fun uploadFilePdf(){
-        if(selectedPdfUri != null){
-            val contentResolver = contentResolver
-            val inputStream = contentResolver.openInputStream(selectedPdfUri!!)
-            val file = File(cacheDir, "temp.pdf")
-            file.createNewFile()
-            file.writeBytes(inputStream!!.readBytes())
-            val requestPdfFile = file.asRequestBody("application/pdf".toMediaType())
-            val pdfMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "pdfFile",
-                file.name,
-                requestPdfFile
-            )
-            viewModel.uploadFile(pdfMultipart)
-            viewModel.pdf.observe(this){
-                when(it){
-                    is Resource.Success -> {
-                        val intent = Intent(this, UploadCvSuccessActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
-                        finish()
-                    }
-                    is Resource.Error -> {
-                        Toast.makeText(
-                            this, it.message.toString(), Toast.LENGTH_SHORT
-                        ).show()
+        val pref = UserPreferences.getInstance(dataStore)
+        val mainViewModel = ViewModelProvider(this, MainViewModelFactory(pref))[MainViewModel::class.java]
+
+        mainViewModel.getSession().observe(this){
+            if(selectedPdfUri != null){
+                val contentResolver = contentResolver
+                val inputStream = contentResolver.openInputStream(selectedPdfUri!!)
+                val file = File(cacheDir, "temp.pdf")
+                file.createNewFile()
+                file.writeBytes(inputStream!!.readBytes())
+                val requestPdfFile = file.asRequestBody("application/pdf".toMediaType())
+                val pdfMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                    "pdfFile",
+                    file.name,
+                    requestPdfFile
+                )
+                viewModel.uploadFile(pdfMultipart)
+                viewModel.pdf.observe(this){
+                    when(it){
+                        is Resource.Success -> {
+                            val intent = Intent(this, UploadCvSuccessActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(intent)
+                            finish()
+                        }
+                        is Resource.Error -> {
+                            Toast.makeText(
+                                this, it.message.toString(), Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             }
         }
+
     }
 
 

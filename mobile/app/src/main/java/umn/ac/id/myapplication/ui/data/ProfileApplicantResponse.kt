@@ -3,39 +3,48 @@ package umn.ac.id.myapplication.ui.data
 import com.google.gson.annotations.SerializedName
 
 data class ProfileApplicantResponse(
-    @field: SerializedName("name")
-    val name: String,
+    @field: SerializedName("Username")
+    val Username: String,
 
-    @field: SerializedName("dateOfBirth")
-    val dateOfBirth: Int,
+    @field: SerializedName("Password")
+    val Password: String,
 
-    @field: SerializedName("email")
-    val email: String,
+    @field: SerializedName("Name")
+    val Name: String? = null,
 
-    @field: SerializedName("language")
-    val language: String,
+    @field: SerializedName("YearOfBirth")
+    val YearOfBirth: Int?= null,
 
-    @field: SerializedName("summary")
-    val summary: String,
+    @field: SerializedName("Email")
+    val Email: String?= null,
 
-    @field: SerializedName("education")
-    val education: String,
+    @field: SerializedName("Language")
+    val Language: String? = null,
 
-    @field: SerializedName("skills")
-    val skills: String,
+    @field: SerializedName("Summary")
+    val Summary: String? = null,
 
-    @field: SerializedName("salaryMin")
-    val salaryMin: Int,
+    @field: SerializedName("EducationInstitution")
+    val EducationInstitution: String?= null,
 
-    @field: SerializedName("location")
-    val location: String,
+    @field: SerializedName("Skills")
+    val Skills: String?= null,
 
-    @field: SerializedName("degree")
-    val degree: String,
+    @field: SerializedName("SalaryMinimum")
+    val SalaryMinimum: Int? = null,
 
-    @field: SerializedName("mobilePhone")
-    val mobilePhone: String,
+    @field: SerializedName("Location")
+    val Location: String?= null,
 
-    @field: SerializedName("openToWork")
-    val openToWork: Boolean
+    @field: SerializedName("Degree")
+    val Degree: String?= null,
+
+    @field: SerializedName("MobilePhone")
+    val MobilePhone: String?= null,
+
+    @field: SerializedName("OpenToWork")
+    val OpenToWork: Boolean? = null,
+
+    @field: SerializedName("PdfPath")
+    val PdfPath: String?= null,
 )
