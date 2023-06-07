@@ -64,6 +64,7 @@ def take_name(text):
                     find = True
                 else:
                     return rem
+                
     custom_stopword = ["educational", "objective", "project", "reference",  "experience",  "address"]
     init_len = len(text)
     for sub_str in custom_stopword:
