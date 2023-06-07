@@ -119,6 +119,39 @@ app.post('/setProfileApplicant', (req, res) => {
     );
 });
 
+app.post('/setProfileApplicantAuto', (req, res) => {
+    // Extract the profile data from the request body
+    const dataPy = req.session.dataPy;
+    const ppPath = req.session.ppPath;
+    const pdfPath = req.session.pdfPath;
+    const token = req.session.tokenA;
+    const decodedToken = verifyToken(token);
+    const username = decodedToken.username;
+
+    // data
+    const name = dataPy.PERSON;
+    const email = dataPy.EMAIL;
+    const mobilePhone = dataPy.MOBILE;
+    const summary = dataPy.SUM;
+    const skills = dataPy.SKILL;
+    const language = dataPy.LANG;
+    const education = dataPy.EDU;
+    const degree = dataPy.DEGREE;
+    const location = dataPy.LOC;
+
+    const query = `UPDATE Applicants SET Name = ?, Email = ?, Language = ?, Summary = ?, EducationInstitution = ?, Skills = ?, Location = ?, Degree = ?, MobilePhone = ?, WHERE Username = ?`;
+
+    connection.query(query,[name, email, language, summary, education, skills, location, degree, mobilePhone, username],(err) => {
+        if (err) {
+            console.error('Error executing the query:', err);
+            return res.status(500).json({ message: 'Internal server error.' });
+        }
+
+        return res.status(201).json({ message: 'Profile Updated' });
+      }
+    );
+});
+
 app.get('/getProfileApplicant', (req, res) => {
     const token = req.session.tokenA;
     const decodedToken = verifyToken(token);
@@ -253,17 +286,10 @@ app.get('/uploadCV', async (req, res) => {
         const python_process = spawner("python", ["./cvparser/CVParser.py", JSON.stringify(data_to_pass_in)]);
 
         python_process.stdout.on("data", (data) => {
+            const dataPy = JSON.parse(data.toString());
+            req.session.dataPy = dataPy;
             console.log("Data from python script", JSON.parse(data.toString()));
         });
-        // python_process.stderr.on('data', (data) => {
-        //     console.log(`stderr: ${data}`);
-        // });
-        
-        // python_process.on('close', (code) => {
-        //     console.log(`child process exited with code ${code}`);
-        // });
-
-        // console.log(req.session.pdfPath);
 
         res.json(fileData);
         console.log('Success');
