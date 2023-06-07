@@ -99,7 +99,7 @@ app.post('/setProfileApplicant', (req, res) => {
     // Extract the profile data from the request body
     const {name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork } = req.body;
     const pdfPath = req.session.pdfPath;
-    const token = req.session.token;
+    const token = req.session.tokenA;
     const decodedToken = verifyToken(token);
     const username = decodedToken.username;
 
@@ -117,7 +117,7 @@ app.post('/setProfileApplicant', (req, res) => {
 });
 
 app.get('/getProfileApplicant', (req, res) => {
-    const token = req.session.token;
+    const token = req.session.tokenA;
     const decodedToken = verifyToken(token);
     const username = decodedToken.username;
 
@@ -171,7 +171,7 @@ app.post('/loginApplicant', (req, res) => {
 
         // Successful login
         const token = generateToken(user);
-        req.session.token = token;
+        req.session.tokenA = token;
         return res.status(200).json({ token: token });
     });
 });
@@ -375,7 +375,7 @@ app.post('/loginCompany', (req, res) => {
 
         // Successful login
         const token = generateToken(user);
-        req.session.token = token;
+        req.session.tokenC = token;
         return res.status(200).json({ token: token });
     });
 });
@@ -383,7 +383,7 @@ app.post('/loginCompany', (req, res) => {
 app.post('/setProfileCompany', (req, res) => {
     // Extract the profile data from the request body
     const {name, summary, location, employee} = req.body;
-    const token = req.session.token;
+    const token = req.session.tokenC;
     const decodedToken = verifyToken(token);
     const username = decodedToken.username;
 
@@ -401,7 +401,7 @@ app.post('/setProfileCompany', (req, res) => {
 });
 
 app.get('/getProfileCompany', (req, res) => {
-    const token = req.session.token;
+    const token = req.session.tokenC;
     const decodedToken = verifyToken(token);
     const username = decodedToken.username;
 
@@ -415,7 +415,102 @@ app.get('/getProfileCompany', (req, res) => {
         }
         res.json(results);
     });
-})
+});
+
+// API Relation
+
+app.post('/offer', (req, res) => {
+    const tokenA = req.session.tokenA;
+    const tokenC = req.session.tokenC;
+    const decodedTokenA = verifyToken(tokenA);
+    const decodedTokenC = verifyToken(tokenC);
+    const usernameA = decodedTokenA.username;
+    const usernameC = decodedTokenC.username;
+
+    const query = `INSERT INTO Relation (UsernameA, UsernameC) VALUES (?, ?)`;
+    connection.query(query, [usernameA, usernameC], (err, results) =>{
+        if (err) {
+            console.error('Error executing the query:', err);
+            return res.status(500).json({ message: 'Internal server error.' });
+        }
+
+        return res.status(201).json({ message: 'Success' });
+    });
+});
+
+app.post('/offerResponse', (req, res) => {
+    const tokenA = req.session.tokenA;
+    const tokenC = req.session.tokenC;
+    const decodedTokenA = verifyToken(tokenA);
+    const decodedTokenC = verifyToken(tokenC);
+    const usernameA = decodedTokenA.username;
+    const usernameC = decodedTokenC.username;
+
+    const { offer } = req.body;
+
+    if(parseInt(offer) === 0){
+        const query = `UPDATE Relation SET Offer = ?, Status = ? WHERE UsernameA = ? AND UsernameC = ?`;
+        connection.query(query, [offer, false, usernameA, usernameC], (err, results) =>{
+            if (err) {
+                console.error('Error executing the query:', err);
+                return res.status(500).json({ message: 'Internal server error.' });
+            }
+
+            return res.status(201).json({ message: 'Success' });
+        });    
+    } else{
+        const query = `UPDATE Relation SET Offer = ? WHERE UsernameA = ? AND UsernameC = ?`;
+        connection.query(query, [offer, usernameA, usernameC], (err, results) =>{
+            if (err) {
+                console.error('Error executing the query:', err);
+                return res.status(500).json({ message: 'Internal server error.' });
+            }
+
+            return res.status(201).json({ message: 'Success' });
+        });
+    }
+});
+
+app.post('/status', (req, res) => {
+    const tokenA = req.session.tokenA;
+    const tokenC = req.session.tokenC;
+    const decodedTokenA = verifyToken(tokenA);
+    const decodedTokenC = verifyToken(tokenC);
+    const usernameA = decodedTokenA.username;
+    const usernameC = decodedTokenC.username;
+
+    const { status } = req.body;
+
+    if(parseInt(status) === 1){
+        const query = `UPDATE Relation SET Status = ? WHERE UsernameA = ? AND UsernameC = ?`;
+        connection.query(query, [status, usernameA, usernameC], (err, results) =>{
+            if (err) {
+                console.error('Error executing the query:', err);
+                return res.status(500).json({ message: 'Internal server error.' });
+            }
+        });
+
+        const updateApplicant = `UPDATE Applicants SET OpenToWork = false WHERE Username = ?`; 
+        connection.query(updateApplicant, [usernameA], (err, results) =>{
+            if (err) {
+                console.error('Error executing the query:', err);
+                return res.status(500).json({ message: 'Internal server error.' });
+            }
+
+            return res.status(201).json({ message: 'Success update Applicants' });
+        });
+    } else {
+        const query = `UPDATE Relation SET Status = ? WHERE UsernameA = ? AND UsernameC = ?`;
+        connection.query(query, [status, usernameA, usernameC], (err, results) =>{
+            if (err) {
+                console.error('Error executing the query:', err);
+                return res.status(500).json({ message: 'Internal server error.' });
+            }
+
+            return res.status(201).json({ message: 'Success update Relation' });
+        });
+    }    
+});
   
 app.get("/", (req, res) => {
     res.sendFile(src + "/index.html");
