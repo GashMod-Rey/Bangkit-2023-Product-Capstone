@@ -5,9 +5,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
-import umn.ac.id.myapplication.ui.data.LoginResponse
-import umn.ac.id.myapplication.ui.data.SignUpResponse
-import umn.ac.id.myapplication.ui.data.UploadCVResponse
+import umn.ac.id.myapplication.ui.data.*
 
 interface ApiInterface {
     @Multipart
@@ -17,16 +15,27 @@ interface ApiInterface {
     ): Call<UploadCVResponse>
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("loginApplicant")
     fun postLogin(
         @Field("Username") Username: String,
         @Field("Password") Password: String
     ): Call<LoginResponse>
 
     @FormUrlEncoded
-    @POST("signup")
+    @POST("signupApplicant")
     fun postSignUp(
         @Field("username") username: String,
         @Field("password") password: String,
     ): Call<SignUpResponse>
+
+//    @POST("setProfileApplicant")
+//    fun setProfileApplicant(
+//        @Header("Authorization") token: String
+//    ): Call<ProfileApplicantResponse>
+
+    @GET("getProfileApplicant")
+    fun getProfileApplicant (
+        @Header("Authorization") token: String
+    ): Call<ProfileApplicantResponse>
+
 }

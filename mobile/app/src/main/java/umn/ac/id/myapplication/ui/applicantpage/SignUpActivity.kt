@@ -48,6 +48,10 @@ private val signUpViewModel by viewModels<SignUpViewModel>()
                                 this, it.message.toString(), Toast.LENGTH_SHORT
                             ).show()
                         }
+
+                        is Resource.Loading-> {
+
+                        }
                     }
                 }
             }
