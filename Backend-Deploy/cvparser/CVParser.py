@@ -131,7 +131,7 @@ def take_name(text):
 
 def take_skills(text):
     text = " ".join(text.split("\n"))
-    skills = "jz_skill_patterns.jsonl"
+    skills = "./cvparser/jz_skill_patterns.jsonl"
     ruler.from_disk(skills)
     resultnlp = model_sm(text)
     skillsList = []
@@ -147,7 +147,7 @@ def take_lang(text):
     custom_drop = ["purpose"]
     for drop in custom_drop:
         text = text.lower().replace(drop, "")
-    langs = "hh_lang_pattern.jsonl"
+    langs = "./cvparser/hh_lang_pattern.jsonl"
     ruler.from_disk(langs)
     resultnlp = model_sm(text)
     langList = []
@@ -242,7 +242,7 @@ def take_sum(text):
 
 def take_degree(text):
     text = " ".join(text.split("\n"))
-    nlp = spacy.load("output/model-best")
+    nlp = spacy.load("./cvparser/output/model-best")
     resultnlp = nlp(text)
     degreeD = ["diploma", "amd", "ama", "str", "ap"]
     degree1 = ["bachelor", "btech",  "sarjana", 'ba', 'bcom', 'be', 'btech', 'bsc', 'bba', 'skom', 'se', 'ssi', 'ssn', 'sikom', 'sip', 'sipol', 'sh', 'spd', 'sked', 'skeb', 'sgz', 'shum', 'spsi']
@@ -283,7 +283,7 @@ def take_degree(text):
 
 def take_country(text):
     text = " ".join(text.split("\n"))
-    loc = "hh_country_pattern.jsonl"
+    loc = "./cvparser/hh_country_pattern.jsonl"
     ruler.from_disk(loc)
     resultnlp = model_sm(text)
     loc = ''

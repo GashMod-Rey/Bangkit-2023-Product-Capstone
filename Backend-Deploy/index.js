@@ -232,6 +232,8 @@ app.get('/protected', (req, res) => {
     }
 });
 
+const spawner = require("child_process").spawn;
+
 app.get('/uploadCV', async (req, res) => {
     try {
       const [files] = await bucketCV.getFiles();
@@ -242,7 +244,26 @@ app.get('/uploadCV', async (req, res) => {
         const fileData = { id: lastFile.id, url };
         
         req.session.pdfPath = url;
-        console.log(req.session.pdfPath);
+
+        const data_to_pass_in = {
+            data_sent: url
+        }
+        console.log("Data sent to python script ", data_to_pass_in);
+
+        const python_process = spawner("python", ["./cvparser/CVParser.py", JSON.stringify(data_to_pass_in)]);
+
+        python_process.stdout.on("data", (data) => {
+            console.log("Data from python script", JSON.parse(data.toString()));
+        });
+        // python_process.stderr.on('data', (data) => {
+        //     console.log(`stderr: ${data}`);
+        // });
+        
+        // python_process.on('close', (code) => {
+        //     console.log(`child process exited with code ${code}`);
+        // });
+
+        // console.log(req.session.pdfPath);
 
         res.json(fileData);
         console.log('Success');
