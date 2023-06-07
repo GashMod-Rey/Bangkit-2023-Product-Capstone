@@ -23,6 +23,7 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
     private val _isError = MutableLiveData<Boolean>()
 
     fun getSession(): LiveData<UserSession> {
+
         return userPreferences.getSession().asLiveData()
     }
 
