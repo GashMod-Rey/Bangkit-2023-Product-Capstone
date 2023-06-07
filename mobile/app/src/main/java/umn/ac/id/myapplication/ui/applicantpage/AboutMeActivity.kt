@@ -27,9 +27,9 @@ class AboutMeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about_me)
-
+//
         profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
-        val token = "ini diisi token kita nay"
+//        val token = "ini diisi token kita nay"
 
 //        profileViewModel.cvData.observe(this) { resource ->
 //            when (resource) {
@@ -56,35 +56,35 @@ class AboutMeActivity : AppCompatActivity() {
 //            }
 //        }
 
-        profileViewModel.getCvData(token)
-    }
-
-    private fun showLoadingIndicator() {
-        // Tampilkan indikator loading seperti ProgressBar
-        progressBar.visibility = View.VISIBLE
-    }
-
-    private fun hideLoadingIndicator() {
-        // Sembunyikan indikator loading
-        progressBar.visibility = View.GONE
-    }
-
-    private fun displayProfileData(profileApplicantResponse: ProfileApplicantResponse) {
-        // Tampilkan data profil di antarmuka pengguna
-        findViewById<TextView>(R.id.tvDesc).text = profileApplicantResponse.Summary
-//        findViewById<TextView>(R.id.tvAge).text = "Age: ${profileApplicantResponse.Age} years of age"
-        findViewById<TextView>(R.id.tvSkills).text = "Skills: ${profileApplicantResponse.Skills}"
-        findViewById<TextView>(R.id.tvEmail).text = "Email: ${profileApplicantResponse.Email}"
-        findViewById<TextView>(R.id.tvYearOfBirth).text = "Date of Birth: ${profileApplicantResponse.YearOfBirth}"
-        findViewById<TextView>(R.id.tvLanguage).text = "Language: ${profileApplicantResponse.Language}"
-        findViewById<TextView>(R.id.tvEducationInstitution).text = "Education Institution: ${profileApplicantResponse.EducationInstitution}"
-        findViewById<TextView>(R.id.tvDegree).text = "Degree: ${profileApplicantResponse.Degree}"
-        findViewById<TextView>(R.id.tvMobilePhone).text = "Mobile Phone: ${profileApplicantResponse.MobilePhone}"
-    }
-
-
-    private fun showError(errorMessage: String) {
-        // Tampilkan pesan kesalahan ke pengguna
-        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+//        profileViewModel.getCvData(token)
+//    }
+//
+//    private fun showLoadingIndicator() {
+//        // Tampilkan indikator loading seperti ProgressBar
+//        progressBar.visibility = View.VISIBLE
+//    }
+//
+//    private fun hideLoadingIndicator() {
+//        // Sembunyikan indikator loading
+//        progressBar.visibility = View.GONE
+//    }
+//
+//    private fun displayProfileData(profileApplicantResponse: ProfileApplicantResponse) {
+//        // Tampilkan data profil di antarmuka pengguna
+//        findViewById<TextView>(R.id.tvDesc).text = profileApplicantResponse.Summary
+////        findViewById<TextView>(R.id.tvAge).text = "Age: ${profileApplicantResponse.Age} years of age"
+//        findViewById<TextView>(R.id.tvSkills).text = "Skills: ${profileApplicantResponse.Skills}"
+//        findViewById<TextView>(R.id.tvEmail).text = "Email: ${profileApplicantResponse.Email}"
+//        findViewById<TextView>(R.id.tvYearOfBirth).text = "Date of Birth: ${profileApplicantResponse.YearOfBirth}"
+//        findViewById<TextView>(R.id.tvLanguage).text = "Language: ${profileApplicantResponse.Language}"
+//        findViewById<TextView>(R.id.tvEducationInstitution).text = "Education Institution: ${profileApplicantResponse.EducationInstitution}"
+//        findViewById<TextView>(R.id.tvDegree).text = "Degree: ${profileApplicantResponse.Degree}"
+//        findViewById<TextView>(R.id.tvMobilePhone).text = "Mobile Phone: ${profileApplicantResponse.MobilePhone}"
+//    }
+//
+//
+//    private fun showError(errorMessage: String) {
+//        // Tampilkan pesan kesalahan ke pengguna
+//        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
     }
 }

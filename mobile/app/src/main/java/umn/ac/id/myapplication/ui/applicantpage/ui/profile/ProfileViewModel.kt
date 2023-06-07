@@ -29,8 +29,6 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
         return userPreferences.getSession().asLiveData()
     }
 
-    var errorMessage: String = ""
-        private set
 
     fun getCvData(token: String) {
 
