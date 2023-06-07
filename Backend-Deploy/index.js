@@ -5,7 +5,8 @@ const path = require("path");
 const { Storage } = require("@google-cloud/storage");
 const Multer = require("multer");
 const src = path.join(__dirname, "views");
-const Upload = Multer().single("pdfFile");
+const UploadCV = Multer().single("pdfFile");
+const UploadPP = Multer().single("ppFile");
 const jwt = require('jsonwebtoken');
 const session = require('express-session');
 const timestamp = new Date();
@@ -46,7 +47,8 @@ const storage = new Storage({
     keyFilename,
 });
 
-const bucket = storage.bucket("bucket_pdf33");
+const bucketCV = storage.bucket("bucket_pdf33");
+const bucketPP = storage.bucket("bucket_pp33");
 
 connection.connect((err) => {
     if (err) {
@@ -98,14 +100,15 @@ app.post('/signupApplicant', (req, res) => {
 app.post('/setProfileApplicant', (req, res) => {
     // Extract the profile data from the request body
     const {name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork } = req.body;
+    const ppPath = req.session.ppPath;
     const pdfPath = req.session.pdfPath;
     const token = req.session.tokenA;
     const decodedToken = verifyToken(token);
     const username = decodedToken.username;
 
-    const query = `UPDATE Applicants SET Name = ?, YearOfBirth = ?, Email = ?, Language = ?, Summary = ?, EducationInstitution = ?, Skills = ?, SalaryMinimum = ?, Location = ?, Degree = ?, MobilePhone = ?, OpenToWork = ?, PdfPath = ? WHERE Username = ?`;
+    const query = `UPDATE Applicants SET Name = ?, YearOfBirth = ?, Email = ?, Language = ?, Summary = ?, EducationInstitution = ?, Skills = ?, SalaryMinimum = ?, Location = ?, Degree = ?, MobilePhone = ?, OpenToWork = ?, PdfPath = ?, PpPath = ? WHERE Username = ?`;
 
-    connection.query(query,[name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork, pdfPath, username],(err) => {
+    connection.query(query,[name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork, pdfPath, ppPath, username],(err) => {
         if (err) {
             console.error('Error executing the query:', err);
             return res.status(500).json({ message: 'Internal server error.' });
@@ -229,9 +232,9 @@ app.get('/protected', (req, res) => {
     }
 });
 
-app.get('/upload', async (req, res) => {
+app.get('/uploadCV', async (req, res) => {
     try {
-      const [files] = await bucket.getFiles();
+      const [files] = await bucketCV.getFiles();
     
       if (files.length > 0) {
         const lastFile = files[files.length - 1];
@@ -251,10 +254,10 @@ app.get('/upload', async (req, res) => {
     }
 });
 
-app.post('/upload', (req, res) => {
+app.post('/uploadCV', (req, res) => {
     console.log('Made it /upload');
     try {
-        Upload(req, res, (err) => {
+        UploadCV(req, res, (err) => {
             if (err) {
                 throw 'Error with PDF upload';
             }
@@ -264,7 +267,7 @@ app.post('/upload', (req, res) => {
             }
 
             // Handle the uploaded file
-            const blob = bucket.file(`${formattedTimestamp}_post.pdf`);
+            const blob = bucketCV.file(`${formattedTimestamp}_post.pdf`);
             const blobStream = blob.createWriteStream();
 
             blobStream.on('finish', () => {
@@ -281,27 +284,83 @@ app.post('/upload', (req, res) => {
     }
 });
 
-app.post('/deleteCV', async (req, res) => {
-    const token = req.session.token;
-    const decodedToken = verifyToken(token);
-    const username = decodedToken.username;
-  
+app.post('/uploadPP', (req, res) => {
+    console.log('Made it /upload');
     try {
-        // Delete the file entry from MySQL
-        const deleteQuery = 'UPDATE Applicants SET PdfPath = ? WHERE Username = ?';
-        connection.query(deleteQuery, ["NULL", username], (deleteErr) => {
-          if (deleteErr) {
-            console.error('Error executing MySQL delete query:', deleteErr);
-            return res.status(500).json({ error: 'An error occurred while deleting the file entry' });
-          }
+      UploadPP(req, res, (err) => {
+        if (err) {
+          throw 'Error with profile picture upload';
+        }
+        const file = req.file;
+        if (!file) {
+          throw 'No profile picture file found';
+        }
   
-          return res.json({ message: 'PDF file deleted successfully' });
+        // Handle the uploaded file
+        const timestamp = Date.now();
+        const fileName = `${timestamp}_profile.jpg`; // Set the desired file name and extension
+        
+        const blob = bucketPP.file(fileName);
+        const blobStream = blob.createWriteStream();
+  
+        blobStream.on('finish', () => {
+          res.setHeader('Content-Type', 'application/json');
+          res.status(200).json({ message: 'Success' });
+          console.log('Success');
         });
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json({ error: 'An error occurred while deleting the PDF file' });
+  
+        blobStream.end(file.buffer);
+      });
+    } catch (error) {
+      res.setHeader('Content-Type', 'application/json');
+      res.status(500).json({ error });
     }
 });
+
+app.get('/uploadPP', async (req, res) => {
+    try {
+      const [files] = await bucketPP.getFiles();
+    
+      if (files.length > 0) {
+        const lastFile = files[files.length - 1];
+        const url = `https://storage.googleapis.com/bucket_pp33/${lastFile.id}`;
+        const fileData = { id: lastFile.id, url };
+        
+        req.session.ppPath = url;
+        console.log(req.session.ppPath);
+
+        res.json(fileData);
+        console.log('Success');
+      } else {
+        res.status(404).json({ error: 'No files found' });
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'Error: ' + error });
+    }
+});
+  
+
+// app.post('/deleteCV', async (req, res) => {
+//     const token = req.session.token;
+//     const decodedToken = verifyToken(token);
+//     const username = decodedToken.username;
+  
+//     try {
+//         // Delete the file entry from MySQL
+//         const deleteQuery = 'UPDATE Applicants SET PdfPath = ? WHERE Username = ?';
+//         connection.query(deleteQuery, ["NULL", username], (deleteErr) => {
+//           if (deleteErr) {
+//             console.error('Error executing MySQL delete query:', deleteErr);
+//             return res.status(500).json({ error: 'An error occurred while deleting the file entry' });
+//           }
+  
+//           return res.json({ message: 'PDF file deleted successfully' });
+//         });
+//     } catch (err) {
+//       console.error(err);
+//       return res.status(500).json({ error: 'An error occurred while deleting the PDF file' });
+//     }
+// });
 
 // Company API
 
