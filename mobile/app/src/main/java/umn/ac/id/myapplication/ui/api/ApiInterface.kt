@@ -28,10 +28,21 @@ interface ApiInterface {
         @Field("password") password: String,
     ): Call<SignUpResponse>
 
-//    @POST("setProfileApplicant")
-//    fun setProfileApplicant(
-//        @Header("Authorization") token: String
-//    ): Call<ProfileApplicantResponse>
+    @POST("setProfileApplicant")
+    fun setProfileApplicant(
+        @Header("Authorization") token: String,
+        @Field("Name") Name: String,
+        @Field("DateOfBirth") DateOfBirth: String,
+        @Field("Email") Email: String,
+        @Field("Language") Language: String,
+        @Field("Summary") Summary: String,
+        @Field("Education") Education: String,
+        @Field("Skills") Skills: String,
+        @Field("SalaryMin") SalaryMin: String,
+        @Field("Location") Location: String,
+        @Field("Degree") Degree: String,
+        @Field("MobilePhone") MobilePhone: String
+    ): Call<ProfileApplicantResponse>
 
     @GET("getProfileApplicant")
     fun getProfileApplicant (

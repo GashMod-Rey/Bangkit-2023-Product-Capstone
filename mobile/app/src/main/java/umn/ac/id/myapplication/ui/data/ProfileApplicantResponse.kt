@@ -13,7 +13,7 @@ data class ProfileApplicantResponse(
     val Name: String? = null,
 
     @field: SerializedName("YearOfBirth")
-    val YearOfBirth: Int?= null,
+    val YearOfBirth: String?= null,
 
     @field: SerializedName("Email")
     val Email: String?= null,
