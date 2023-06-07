@@ -1,21 +1,28 @@
 package umn.ac.id.myapplication.ui.applicantpage
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import umn.ac.id.myapplication.R
+import umn.ac.id.myapplication.databinding.ActivityAboutMeBinding
 import umn.ac.id.myapplication.ui.applicantpage.ui.profile.ProfileViewModel
 import umn.ac.id.myapplication.ui.data.ProfileApplicantResponse
 import umn.ac.id.myapplication.ui.utils.Resource
 
 class AboutMeActivity : AppCompatActivity() {
+    val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user")
 
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var progressBar: ProgressBar
+    private lateinit var binding: ActivityAboutMeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

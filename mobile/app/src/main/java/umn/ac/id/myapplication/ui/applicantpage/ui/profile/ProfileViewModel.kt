@@ -4,14 +4,17 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import umn.ac.id.myapplication.ui.api.ApiClient
 import umn.ac.id.myapplication.ui.data.ProfileApplicantResponse
+import umn.ac.id.myapplication.ui.data.UserPreferences
+import umn.ac.id.myapplication.ui.data.UserSession
 import umn.ac.id.myapplication.ui.utils.Resource
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel() {
 
     private val _cvData = MutableLiveData<Resource<ProfileApplicantResponse>>()
     val cvData: LiveData<Resource<ProfileApplicantResponse>> get() = _cvData
@@ -19,6 +22,9 @@ class ProfileViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     private val _isError = MutableLiveData<Boolean>()
 
+    fun getSession(): LiveData<UserSession> {
+        return userPreferences.getSession().asLiveData()
+    }
 
     var errorMessage: String = ""
         private set
