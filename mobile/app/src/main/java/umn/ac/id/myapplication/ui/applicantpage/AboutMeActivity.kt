@@ -31,30 +31,30 @@ class AboutMeActivity : AppCompatActivity() {
         profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         val token = "ini diisi token kita nay"
 
-        profileViewModel.cvData.observe(this) { resource ->
-            when (resource) {
-                is Resource.Loading -> {
-                    // Tampilkan indikator loading atau lakukan tindakan yang sesuai saat data sedang dimuat
-                    showLoadingIndicator()
-                }
-                is Resource.Success -> {
-                    val profileApplicantResponse = resource.data
-                    // Lakukan tindakan yang diperlukan dengan data profileApplicantResponse
-                    hideLoadingIndicator()
-                    if (profileApplicantResponse != null) {
-                        displayProfileData(profileApplicantResponse)
-                    }
-                }
-                is Resource.Error -> {
-                    val errorMessage = resource.message
-                    // Lakukan tindakan yang diperlukan ketika terjadi kesalahan
-                    hideLoadingIndicator()
-                    if (errorMessage != null) {
-                        showError(errorMessage)
-                    }
-                }
-            }
-        }
+//        profileViewModel.cvData.observe(this) { resource ->
+//            when (resource) {
+//                is Resource.Loading -> {
+//                    // Tampilkan indikator loading atau lakukan tindakan yang sesuai saat data sedang dimuat
+//                    showLoadingIndicator()
+//                }
+//                is Resource.Success -> {
+//                    val profileApplicantResponse = resource.data
+//                    // Lakukan tindakan yang diperlukan dengan data profileApplicantResponse
+//                    hideLoadingIndicator()
+//                    if (profileApplicantResponse != null) {
+//                        displayProfileData(profileApplicantResponse)
+//                    }
+//                }
+//                is Resource.Error -> {
+//                    val errorMessage = resource.message
+//                    // Lakukan tindakan yang diperlukan ketika terjadi kesalahan
+//                    hideLoadingIndicator()
+//                    if (errorMessage != null) {
+//                        showError(errorMessage)
+//                    }
+//                }
+//            }
+//        }
 
         profileViewModel.getCvData(token)
     }
