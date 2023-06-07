@@ -136,6 +136,10 @@ class UploadCvActivity : AppCompatActivity() {
                                 this, it.message.toString(), Toast.LENGTH_SHORT
                             ).show()
                         }
+
+                        is Resource.Loading -> {
+
+                        }
                     }
                 }
             }
