@@ -10,7 +10,8 @@ const jwt = require('jsonwebtoken');
 const session = require('express-session');
 const timestamp = new Date();
 const formattedTimestamp = timestamp.toISOString();
-
+const cors = require('cors');
+app.use(cors());
 
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
