@@ -40,6 +40,9 @@ android {
         viewBinding true
         dataBinding true
     }
+    aaptOptions {
+        noCompress "tflite"
+    }
 
 }
 
@@ -69,6 +72,9 @@ dependencies {
 
     //Datastore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    //Tensorflow Lite
+    implementation "org.tensorflow:tensorflow-lite:0.0.0-nightly"
 }
 
 task wrapper(type: Wrapper){
