@@ -1,17 +1,15 @@
 const express = require("express");
 const app = express();
 const port = 8000;
-const path = require("path");
 const { Storage } = require("@google-cloud/storage");
 const Multer = require("multer");
-const src = path.join(__dirname, "views");
 const UploadCV = Multer().single("pdfFile");
-const UploadPP = Multer().single("ppFile");
 const jwt = require('jsonwebtoken');
 const session = require('express-session');
 const timestamp = new Date();
 const formattedTimestamp = timestamp.toISOString();
 const cors = require('cors');
+const spawner = require("child_process").spawn;
 app.use(cors());
 
 const bodyParser = require('body-parser');
@@ -97,87 +95,6 @@ app.post('/signupApplicant', (req, res) => {
     });
 });
 
-app.post('/setProfileApplicant', (req, res) => {
-    // Extract the profile data from the request body
-    const {name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork } = req.body;
-    const ppPath = req.session.ppPath;
-    const pdfPath = req.session.pdfPath;
-    const token = req.session.tokenA;
-    const decodedToken = verifyToken(token);
-    const username = decodedToken.username;
-
-    const query = `UPDATE Applicants SET Name = ?, YearOfBirth = ?, Email = ?, Language = ?, Summary = ?, EducationInstitution = ?, Skills = ?, SalaryMinimum = ?, Location = ?, Degree = ?, MobilePhone = ?, OpenToWork = ?, PdfPath = ?, PpPath = ? WHERE Username = ?`;
-
-    connection.query(query,[name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork, pdfPath, ppPath, username],(err) => {
-        if (err) {
-            console.error('Error executing the query:', err);
-            return res.status(500).json({ message: 'Internal server error.' });
-        }
-
-        return res.status(201).json({ message: 'Profile Updated' });
-      }
-    );
-});
-
-async function setProfileApplicantAuto(req, res) {
-    // Extract the profile data from the request body
-    const dataPy = req.session.dataPy;
-    const ppPath = req.session.ppPath;
-    const pdfPath = req.session.pdfPath;
-    const token = req.session.tokenA;
-    const decodedToken = verifyToken(token);
-    const username = decodedToken.username;
-    
-
-    // data
-    const name = dataPy.PERSON;
-    const email = dataPy.EMAIL;
-    const mobilePhone = dataPy.MOBILE;
-    const summary = dataPy.SUM;
-    const skills = dataPy.SKILL;
-    const language = dataPy.LANG;
-    const education = dataPy.EDU;
-    const degree = dataPy.DEGREE;
-    const location = dataPy.LOC;
-    const skillString = skills.join(', ');
-    const langString = language.join(', ');
-    const joindegree = [].concat(...degree);
-    const degreeString = joindegree.join(', ');
-
-    const query = `UPDATE Applicants SET Name = ?, Email = ?, Language = ?, Summary = ?, EducationInstitution = ?, Skills = ?, Location = ?, Degree = ?, MobilePhone = ?, PdfPath = ? WHERE Username = ?`;
-
-    connection.query(query,[name, email, langString, summary, education, skillString, location, degreeString, mobilePhone, pdfPath, username],(err) => {
-        if (err) {
-            console.error('Error executing the query:', err);
-        }
-
-        console.log('Profile Updated');
-      }
-    );
-};
-
-app.get('/getProfileApplicant', (req, res) => {
-    const token = req.session.tokenA;
-    const decodedToken = verifyToken(token);
-    const username = decodedToken.username;
-
-    const query = `SELECT * FROM Applicants WHERE Username = ?`;
-
-    connection.query(query, [username], (err, results) => {
-        if (err) {
-          console.error('Failed to fetch applicants:', err);
-          res.status(500).json({ error: 'Failed to fetch applicants' });
-          return;
-        }
-        res.json(results);
-    });
-})
-
-function hashPass(password){
-    const hashpass = jwt.sign({password}, secretKey);
-    return hashpass;
-}
-
 app.post('/loginApplicant', (req, res) => {
     const { Username, Password } = req.body;
 
@@ -216,6 +133,12 @@ app.post('/loginApplicant', (req, res) => {
     });
 });
 
+// hashing password
+function hashPass(password){
+    const hashpass = jwt.sign({password}, secretKey);
+    return hashpass;
+}
+
 // Verif pass
 function verifPass(user){
     try {
@@ -250,28 +173,118 @@ function verifyToken(token) {
 }
   
 // Protected route example
-app.get('/protected', (req, res) => {
-    // Get the token from the request header or query parameter
-    const token = req.headers.authorization || req.query.token;
+// app.get('/protected', (req, res) => {
+//     // Get the token from the request header or query parameter
+//     const token = req.headers.authorization || req.query.token;
 
-    if (!token) {
-        return res.status(401).json({ message: 'Access denied. No token provided.' });
-    }
+//     if (!token) {
+//         return res.status(401).json({ message: 'Access denied. No token provided.' });
+//     }
 
-    // Verify the token
-    const decoded = verifyToken(token);
-    if (decoded) {
-        // Token is valid, user is authenticated
-        return res.status(200).json({ message: 'Access granted to protected resource.' });
-    } else {
-        // Token is invalid or expired
-        return res.status(401).json({ message: 'Access denied. Invalid token.' });
-    }
+//     // Verify the token
+//     const decoded = verifyToken(token);
+//     if (decoded) {
+//         // Token is valid, user is authenticated
+//         return res.status(200).json({ message: 'Access granted to protected resource.' });
+//     } else {
+//         // Token is invalid or expired
+//         return res.status(401).json({ message: 'Access denied. Invalid token.' });
+//     }
+// });
+
+app.post('/setProfileApplicant', async (req, res) => {
+    // Extract the profile data from the request body
+    const {name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork } = req.body;
+    const pdfPath = req.session.pdfPath;
+    const token = req.session.tokenA;
+    const decodedToken = verifyToken(token);
+    const username = decodedToken.username;
+
+    const query = `UPDATE Applicants SET Name = ?, YearOfBirth = ?, Email = ?, Language = ?, Summary = ?, EducationInstitution = ?, Skills = ?, SalaryMinimum = ?, Location = ?, Degree = ?, MobilePhone = ?, OpenToWork = ?, PdfPath = ? WHERE Username = ?`;
+
+    connection.query(query,[name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork, pdfPath, username],(err) => {
+        if (err) {
+            console.error('Error executing the query:', err);
+        }
+        console.log("Success");
+      }
+    );
+    await getProfileFinal(req, res);
 });
 
-const spawner = require("child_process").spawn;
+async function getProfileFinal (req, res) {
+    const token = req.session.tokenA;
+    const decodedToken = verifyToken(token);
+    const username = decodedToken.username;
 
-app.get('/uploadCV', async (req, res) => {
+    const query = `SELECT * FROM Applicants WHERE Username = ?`;
+
+    connection.query(query, [username], (err, results) => {
+        if (err) {
+          console.error('Failed to fetch applicants:', err);
+          res.status(500).json({ error: 'Failed to fetch applicants' });
+          return;
+        }
+        res.json(results);
+    });
+};
+
+async function getProfile (req, res) {
+    const token = req.session.tokenA;
+    const decodedToken = verifyToken(token);
+    const username = decodedToken.username;
+
+    const query = `SELECT * FROM Applicants WHERE Username = ?`;
+
+    connection.query(query, [username], (err, results) => {
+        if (err) {
+          console.error('Failed to fetch applicants:', err);
+          res.status(500).json({ error: 'Failed to fetch applicants' });
+          return;
+        }
+        res.json(results);
+    });
+};
+
+async function setProfileApplicantAuto(req, res) {
+    // Extract the profile data from the request body
+    const dataPy = req.session.dataPy;
+    const pdfPath = req.session.pdfPath;
+    const token = req.session.tokenA;
+    const decodedToken = verifyToken(token);
+    const username = decodedToken.username;
+    
+
+    // data
+    const name = dataPy.PERSON;
+    const email = dataPy.EMAIL;
+    const mobilePhone = dataPy.MOBILE;
+    const summary = dataPy.SUM;
+    const skills = dataPy.SKILL;
+    const language = dataPy.LANG;
+    const education = dataPy.EDU;
+    const degree = dataPy.DEGREE;
+    const location = dataPy.LOC;
+    const skillString = skills.join(', ');
+    const langString = language.join(', ');
+    const joindegree = [].concat(...degree);
+    const degreeString = joindegree.join(', ');
+
+    const query = `UPDATE Applicants SET Name = ?, Email = ?, Language = ?, Summary = ?, EducationInstitution = ?, Skills = ?, Location = ?, Degree = ?, MobilePhone = ?, PdfPath = ? WHERE Username = ?`;
+
+    connection.query(query,[name, email, langString, summary, education, skillString, location, degreeString, mobilePhone, pdfPath, username],(err) => {
+        if (err) {
+            console.error('Error executing the query:', err);
+        }
+
+        console.log('Profile Updated');
+      }
+    );
+
+    await getProfile(req, res);
+};
+
+async function getPDF (req, res) {
     try {
       const [files] = await bucketCV.getFiles();
     
@@ -285,7 +298,6 @@ app.get('/uploadCV', async (req, res) => {
         const data_to_pass_in = {
             data_sent: url
         }
-        console.log("Data sent to python script ", data_to_pass_in);
 
         const python_process = spawner("python", ["./cvparser/CVParser.py", JSON.stringify(data_to_pass_in)]);
 
@@ -296,17 +308,14 @@ app.get('/uploadCV', async (req, res) => {
             await setProfileApplicantAuto(req, res);
         });
 
-        res.json(fileData);
         console.log('Success');
-      } else {
-        res.status(404).json({ error: 'No files found' });
       }
     } catch (error) {
-      res.status(500).json({ error: 'Error: ' + error });
+      console.log(error);
     }
-});
+};
 
-app.post('/uploadCV', (req, res) => {
+app.post('/uploadCV', async (req, res) => {
     console.log('Made it /upload');
     try {
         UploadCV(req, res, (err) => {
@@ -322,74 +331,72 @@ app.post('/uploadCV', (req, res) => {
             const blob = bucketCV.file(`${formattedTimestamp}_post.pdf`);
             const blobStream = blob.createWriteStream();
 
-            blobStream.on('finish', () => {
-                res.setHeader('Content-Type', 'application/json');
-                res.status(200).json({ message: 'Success' });
+            blobStream.on('finish', async () => {
                 console.log('Success');
+                await getPDF(req, res);
             });
 
             blobStream.end(file.buffer);
         });
     } catch (error) {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(500).json({ error });
+        console.log(error);
     }
 });
 
-app.post('/uploadPP', (req, res) => {
-    console.log('Made it /upload');
-    try {
-      UploadPP(req, res, (err) => {
-        if (err) {
-          throw 'Error with profile picture upload';
-        }
-        const file = req.file;
-        if (!file) {
-          throw 'No profile picture file found';
-        }
+// app.post('/uploadPP', (req, res) => {
+//     console.log('Made it /upload');
+//     try {
+//       UploadPP(req, res, (err) => {
+//         if (err) {
+//           throw 'Error with profile picture upload';
+//         }
+//         const file = req.file;
+//         if (!file) {
+//           throw 'No profile picture file found';
+//         }
   
-        // Handle the uploaded file
-        const timestamp = Date.now();
-        const fileName = `${timestamp}_profile.jpg`; // Set the desired file name and extension
+//         // Handle the uploaded file
+//         const timestamp = Date.now();
+//         const fileName = `${timestamp}_profile.jpg`; // Set the desired file name and extension
         
-        const blob = bucketPP.file(fileName);
-        const blobStream = blob.createWriteStream();
+//         const blob = bucketPP.file(fileName);
+//         const blobStream = blob.createWriteStream();
   
-        blobStream.on('finish', () => {
-          res.setHeader('Content-Type', 'application/json');
-          res.status(200).json({ message: 'Success' });
-          console.log('Success');
-        });
+//         blobStream.on('finish', () => {
+//           res.setHeader('Content-Type', 'application/json');
+//           res.status(200).json({ message: 'Success' });
+//           console.log('Success');
+//         });
   
-        blobStream.end(file.buffer);
-      });
-    } catch (error) {
-      res.setHeader('Content-Type', 'application/json');
-      res.status(500).json({ error });
-    }
-});
+//         blobStream.end(file.buffer);
+//       });
+//     } catch (error) {
+//       res.setHeader('Content-Type', 'application/json');
+//       res.status(500).json({ error });
+//     }
+// });
 
-app.get('/uploadPP', async (req, res) => {
-    try {
-      const [files] = await bucketPP.getFiles();
+// app.get('/uploadPP', async (req, res) => {
+//     try {
+//       const [files] = await bucketPP.getFiles();
     
-      if (files.length > 0) {
-        const lastFile = files[files.length - 1];
-        const url = `https://storage.googleapis.com/bucket_pp33/${lastFile.id}`;
-        const fileData = { id: lastFile.id, url };
+//       if (files.length > 0) {
+//         const lastFile = files[files.length - 1];
+//         const url = `https://storage.googleapis.com/bucket_pp33/${lastFile.id}`;
+//         const fileData = { id: lastFile.id, url };
         
-        req.session.ppPath = url;
-        console.log(req.session.ppPath);
+//         req.session.ppPath = url;
+//         console.log(req.session.ppPath);
 
-        res.json(fileData);
-        console.log('Success');
-      } else {
-        res.status(404).json({ error: 'No files found' });
-      }
-    } catch (error) {
-      res.status(500).json({ error: 'Error: ' + error });
-    }
-});
+//         res.json(fileData);
+//         console.log('Success');
+//       } else {
+//         res.status(404).json({ error: 'No files found' });
+//       }
+//     } catch (error) {
+//       res.status(500).json({ error: 'Error: ' + error });
+//     }
+// });
   
 
 // app.post('/deleteCV', async (req, res) => {
@@ -491,7 +498,7 @@ app.post('/loginCompany', (req, res) => {
     });
 });
 
-app.post('/setProfileCompany', (req, res) => {
+app.post('/setProfileCompany', async (req, res) => {
     // Extract the profile data from the request body
     const {name, summary, location, employee} = req.body;
     const token = req.session.tokenC;
@@ -503,15 +510,14 @@ app.post('/setProfileCompany', (req, res) => {
     connection.query(query,[name, summary, location, employee, username],(err) => {
         if (err) {
             console.error('Error executing the query:', err);
-            return res.status(500).json({ message: 'Internal server error.' });
         }
-
-        return res.status(201).json({ message: 'Profile Updated' });
+        console.log("Profile Updated");
       }
     );
+    await getProfileCompany(req, res);
 });
 
-app.get('/getProfileCompany', (req, res) => {
+async function getProfileCompany (req, res) {
     const token = req.session.tokenC;
     const decodedToken = verifyToken(token);
     const username = decodedToken.username;
@@ -526,7 +532,7 @@ app.get('/getProfileCompany', (req, res) => {
         }
         res.json(results);
     });
-});
+};
 
 // API Relation
 
@@ -621,10 +627,6 @@ app.post('/status', (req, res) => {
             return res.status(201).json({ message: 'Success update Relation' });
         });
     }    
-});
-  
-app.get("/", (req, res) => {
-    res.sendFile(src + "/index.html");
 });
 
 app.listen(port, () => {
