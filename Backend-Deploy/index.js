@@ -119,7 +119,7 @@ app.post('/setProfileApplicant', (req, res) => {
     );
 });
 
-app.post('/setProfileApplicantAuto', (req, res) => {
+async function setProfileApplicantAuto(req, res) {
     // Extract the profile data from the request body
     const dataPy = req.session.dataPy;
     const ppPath = req.session.ppPath;
@@ -127,6 +127,7 @@ app.post('/setProfileApplicantAuto', (req, res) => {
     const token = req.session.tokenA;
     const decodedToken = verifyToken(token);
     const username = decodedToken.username;
+    
 
     // data
     const name = dataPy.PERSON;
@@ -138,19 +139,22 @@ app.post('/setProfileApplicantAuto', (req, res) => {
     const education = dataPy.EDU;
     const degree = dataPy.DEGREE;
     const location = dataPy.LOC;
+    const skillString = skills.join(', ');
+    const langString = language.join(', ');
+    const joindegree = [].concat(...degree);
+    const degreeString = joindegree.join(', ');
 
-    const query = `UPDATE Applicants SET Name = ?, Email = ?, Language = ?, Summary = ?, EducationInstitution = ?, Skills = ?, Location = ?, Degree = ?, MobilePhone = ?, WHERE Username = ?`;
+    const query = `UPDATE Applicants SET Name = ?, Email = ?, Language = ?, Summary = ?, EducationInstitution = ?, Skills = ?, Location = ?, Degree = ?, MobilePhone = ?, PdfPath = ? WHERE Username = ?`;
 
-    connection.query(query,[name, email, language, summary, education, skills, location, degree, mobilePhone, username],(err) => {
+    connection.query(query,[name, email, langString, summary, education, skillString, location, degreeString, mobilePhone, pdfPath, username],(err) => {
         if (err) {
             console.error('Error executing the query:', err);
-            return res.status(500).json({ message: 'Internal server error.' });
         }
 
-        return res.status(201).json({ message: 'Profile Updated' });
+        console.log('Profile Updated');
       }
     );
-});
+};
 
 app.get('/getProfileApplicant', (req, res) => {
     const token = req.session.tokenA;
@@ -285,10 +289,11 @@ app.get('/uploadCV', async (req, res) => {
 
         const python_process = spawner("python", ["./cvparser/CVParser.py", JSON.stringify(data_to_pass_in)]);
 
-        python_process.stdout.on("data", (data) => {
+        python_process.stdout.on("data", async (data) => {
             const dataPy = JSON.parse(data.toString());
             req.session.dataPy = dataPy;
             console.log("Data from python script", JSON.parse(data.toString()));
+            await setProfileApplicantAuto(req, res);
         });
 
         res.json(fileData);
