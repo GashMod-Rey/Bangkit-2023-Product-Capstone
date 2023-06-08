@@ -16,19 +16,19 @@ import umn.ac.id.myapplication.ui.utils.Resource
 
 class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel() {
 
-    private val _cvData = MutableLiveData<Resource<ProfileApplicantResponse>>()
-    val cvData: LiveData<Resource<ProfileApplicantResponse>> get() = _cvData
+    private val _cvData = MutableLiveData<ProfileApplicantResponse>()
+    val cvData: LiveData<ProfileApplicantResponse> get() = _cvData
 
     private val _isLoading = MutableLiveData<Boolean>()
     private val _isError = MutableLiveData<Boolean>()
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> get() = _error
 
     fun getSession(): LiveData<UserSession> {
 
         return userPreferences.getSession().asLiveData()
     }
 
-    var errorMessage: String = ""
-        private set
 
     fun getCvData(token: String) {
 
@@ -42,18 +42,22 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
                 response: Response<ProfileApplicantResponse>
             ) {
                 if(response.isSuccessful){
-                    _cvData.value = response.body()?.let {
-                        Resource.Success(it)
-                    }
+                    _cvData.value = response.body()
                     Log.d(TAG, "onResponse: ${_cvData.value}")
                 }
+                else {
+                    _cvData.value = null
+                    Log.e(TAG, "onResponse error: ${response.message()}")
+                }
+                _isLoading.value = false
 
 
             }
 
             override fun onFailure(call: Call<ProfileApplicantResponse>, t: Throwable) {
-                _cvData.value = Resource.Error("${t.message}")
+                _error.value = "Failed to fetch CV data: ${t.message}"
                 Log.e(TAG, "onFailure: ${t.message}")
+                _isError.value = true
             }
 
         })
