@@ -3,6 +3,7 @@ package umn.ac.id.myapplication.ui.applicantpage
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -15,20 +16,60 @@ import umn.ac.id.myapplication.R
 import umn.ac.id.myapplication.databinding.ActivityAboutMeBinding
 import umn.ac.id.myapplication.ui.applicantpage.ui.profile.ProfileViewModel
 import umn.ac.id.myapplication.ui.data.ProfileApplicantResponse
+import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.utils.Resource
+import umn.ac.id.myapplication.ui.viewmodelfactory.ProfileViewModelFactory
 
 class AboutMeActivity : AppCompatActivity() {
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user")
 
+    private var token = ""
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var progressBar: ProgressBar
     private lateinit var binding: ActivityAboutMeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_about_me)
-//
-        profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        binding = ActivityAboutMeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val pref = UserPreferences.getInstance(dataStore)
+
+        profileViewModel = ViewModelProvider(this, ProfileViewModelFactory(pref))[ProfileViewModel::class.java]
+
+        profileViewModel.getSession().observe(this){
+            if (it.isLogin){
+                token = it.token
+                Log.d("TAG", "onCreate: $token")
+                profileViewModel.getCvData(token)
+                profileViewModel.cvData.observe(this) {
+                    when(it){
+                        is Resource.Success -> {
+                            it.data?.let { data ->
+                                binding.tvName.text = "Name: ${data.Name}"
+                                binding.tvAge.text = "Year Of Birth: ${data.YearOfBirth}"
+                                binding.tvDesc.text = "Summary: ${data.Summary}"
+                                binding.tvEducationInstitution.text = "Education Institution: ${data.EducationInstitution}"
+                                binding.tvLanguage.text = "Language: ${data.Language}"
+                                binding.tvEmail.text = "Email : ${data.Email}"
+                                binding.tvMobilePhone.text = "Phone : ${data.MobilePhone}"
+                                binding.tvSkills.text = "Skills: ${data.Skills}"
+                                binding.tvDegree.text = "Degree: ${data.Degree}"
+                            }
+
+                        }
+                        is Resource.Error -> {
+                            Toast.makeText(
+                                this, it.message.toString(), Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        is Resource.Loading -> {
+
+                        }
+
+                    }
+                }
+            }
+        }
 //        val token = "ini diisi token kita nay"
 
 //        profileViewModel.cvData.observe(this) { resource ->

@@ -30,17 +30,17 @@ class AboutMeChangeActivity : AppCompatActivity() {
         viewModel.cvData.observe(this){
             cvData ->
             cvData?.let {
-                binding.addName.setText(cvData.Name)
-                binding.addDate.setText(cvData.YearOfBirth)
-                binding.addDegree.setText(cvData.Degree)
-                binding.addDesc.setText(cvData.Summary)
-                binding.addEmail.setText(cvData.Email)
-                binding.addEducationInstitution.setText(cvData.EducationInstitution)
-                binding.addPhone.setText(cvData.MobilePhone)
-                binding.addLanguage.setText(cvData.Language)
-                binding.addSalaryMinimum.setText(cvData.SalaryMinimum.toString())
-                binding.addSkills.setText(cvData.Skills)
-                binding.addLocation.setText(cvData.Location)
+                binding.addName.setText(cvData.data?.Name)
+                binding.addDate.setText(cvData.data?.YearOfBirth)
+                binding.addDegree.setText(cvData.data?.Degree)
+                binding.addDesc.setText(cvData.data?.Summary)
+                binding.addEmail.setText(cvData.data?.Email)
+                binding.addEducationInstitution.setText(cvData.data?.EducationInstitution)
+                binding.addPhone.setText(cvData.data?.MobilePhone)
+                binding.addLanguage.setText(cvData.data?.Language)
+                binding.addSalaryMinimum.setText(cvData.data?.SalaryMinimum.toString())
+                binding.addSkills.setText(cvData.data?.Skills)
+                binding.addLocation.setText(cvData.data?.Location)
             }
         }
         viewModel.getSession().observe(this){

@@ -41,7 +41,7 @@
         tools:layout_editor_absoluteY="97dp" />
 
     <TextView
-        android:id="@+id/tvAge"
+        android:id="@+id/tvName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,11 +51,29 @@
         android:layout_marginHorizontal="30dp"
         android:fontFamily="@font/lato_bold"
         android:layout_marginTop="10dp"
-        android:text="Age : 25 years of age"
+        android:text="Name : Andelle Gianzra"
         android:textColor="#3C3E56"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="306dp" />
+
+    <TextView
+        android:id="@+id/tvAge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/lato_bold"
+        android:layout_marginTop="10dp"
+        android:text="Age : 25 years of age"
+        android:textColor="#3C3E56"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="306dp"
+        />
 
     <TextView
         android:id="@+id/tvSkills"

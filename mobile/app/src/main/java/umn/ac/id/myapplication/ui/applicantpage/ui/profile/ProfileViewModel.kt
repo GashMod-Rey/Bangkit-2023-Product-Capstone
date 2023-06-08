@@ -16,8 +16,8 @@ import umn.ac.id.myapplication.ui.utils.Resource
 
 class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel() {
 
-    private val _cvData = MutableLiveData<ProfileApplicantResponse>()
-    val cvData: LiveData<ProfileApplicantResponse> get() = _cvData
+    private val _cvData = MutableLiveData<Resource<ProfileApplicantResponse?>>()
+    val cvData: LiveData<Resource<ProfileApplicantResponse?>>  = _cvData
 
     private val _isLoading = MutableLiveData<Boolean>()
     private val _isError = MutableLiveData<Boolean>()
@@ -42,11 +42,12 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
                 response: Response<ProfileApplicantResponse>
             ) {
                 if(response.isSuccessful){
-                    _cvData.value = response.body()
+                    _cvData.value = Resource.Success(response.body())
                     Log.d(TAG, "onResponse: ${_cvData.value}")
                 }
                 else {
-                    _cvData.value = null
+                    val errorMessage = response.errorBody()?.string()
+                    _cvData.value = Resource.Error(errorMessage)
                     Log.e(TAG, "onResponse error: ${response.message()}")
                 }
                 _isLoading.value = false
