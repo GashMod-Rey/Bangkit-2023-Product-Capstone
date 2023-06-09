@@ -36,7 +36,6 @@ const multer = Multer({
     fileSize: 20 * 1024 * 1024, //ganti
 });
 
-
 let projectId = "capstone-project-hirehub";
 let keyFilename = "capstone.json";
 
@@ -618,18 +617,23 @@ app.use(express.json());
 
 // Endpoint for retrieving all messages
 async function getMessageApplicant (req, res){
-  res.json({ message: 'Success' });
+    res.json({ 
+        message: 'Success Chat to Company from Applicant' 
+    });
+    console.log({ message: 'Success Chat to Company from Applicant' });
 };
 
-// Endpoint for retrieving all messages
-app.get("/api/messagescompany", (req, res) => {
-  res.json(messages);
-});
+async function getMessageCompany (req, res){
+    res.json({ 
+        message: 'Success Chat to Applicant from Company' 
+    });
+    console.log({ message: 'Success Chat to Applicant from Company' });
+};
 
 // Endpoint for retrieving all chat
 async function getChat (req, res) {
-  res.json({ message: 'Success' });
-  console.log({ message: 'Success' });
+  res.json({ message: 'Success Created Room Chat' });
+  console.log({ message: 'Success Created Room Chat' });
 };
 
 // Endpoint for create new chat
@@ -642,6 +646,7 @@ app.post("/api/chat/newchat", async (req, res) => {
     const decodedTokenC = verifyToken(tokenC);
     const ChatUsernameA = decodedTokenA.username;
     const ChatUsernameC = decodedTokenC.username;
+    const RoomId =`RoomChat_` + ChatUsernameA + ChatUsernameC;
 
   // Specify the options for formatting the date
     const options = {
@@ -662,33 +667,29 @@ app.post("/api/chat/newchat", async (req, res) => {
     .replace(/(\d{2})-(\d{2})-(\d{4})/, "$3-$2-$1");
 
     // Insert the new chat into the MySQL database
-    const query = "INSERT INTO Room_Chat (ChatUsernameA, ChatUsernameC, Created_at) VALUES (?, ?, ?)";
-    const values = [ChatUsernameA, ChatUsernameC, timestamp];
+    const query = "INSERT INTO Room_Chat (Id, ChatUsernameA, ChatUsernameC, Created_at) VALUES (?, ?, ?, ?)";
+    const values = [RoomId, ChatUsernameA, ChatUsernameC, timestamp];
 
         connection.query(query, values, async (error, result) => {
         if (error) {
             console.error("Error creating chat:", error);
             return res.status(500).json({ error: "Failed to create chat" });
         }
-        // const roomIdQuery = "SELECT LAST_INSERT_ID() AS RoomId";
-        // const roomIdResult = await connection.query(roomIdQuery);
-        // const roomId = roomIdResult[0].RoomId;
-        // console.log(roomId);
-
-        // console.log(newChat);
         await getChat(req, res);
     });
 });
 
-// Endpoint for sending a new message
-app.post("/api/messages/sendfromapplicant", (req, res) => {
+// Endpoint for sending a new message from applicant
+app.post("/api/messages/sendfromapplicant", async (req, res) => {
     // Create a new Date object
     const currentDate = new Date();
     const tokenA = req.session.tokenA;
+    const tokenC = req.session.tokenC;
     const decodedTokenA = verifyToken(tokenA);
+    const decodedTokenC = verifyToken(tokenC);
     const ChatUsernameA = decodedTokenA.username;
+    const ChatUsernameC = decodedTokenC.username;
     const {Message} = req.body;
-
 
     // Specify the options for formatting the date
     const options = {
@@ -707,39 +708,95 @@ app.post("/api/messages/sendfromapplicant", (req, res) => {
     .replace(",", "")
     .replace(/\./g, ":")
     .replace(/(\d{2})-(\d{2})-(\d{4})/, "$3-$2-$1");
-
-    // const newMessagefromApplicant = {
-    //     Sent_at: formatTimestamp(new Date()),
-    // };
-    // messages.push(newMessagefromApplicant);
-
     
-    // Insert the new message into the MySQL database
-    const query = "INSERT INTO Chat_Applicant (RoomId, ApplicantUsername, Message, Sent_at) VALUES (?, ?, ?, ?)";
-    const values = [RoomId, ChatUsernameA, Message, timestamp];
+    const getRoomIdQuery =
+    "SELECT Id FROM Room_Chat WHERE ChatUsernameA = ? AND ChatUsernameC = ?";
+    const getRoomIdValues = [ChatUsernameA, ChatUsernameC];
 
-
-    connection.query((error, connection) => {
+    connection.query(getRoomIdQuery, getRoomIdValues, (error, rows) => {
         if (error) {
-            console.error("Error getting MySQL connection:", error);
+            console.error("Error retrieving RoomId:", error);
             return res.status(500).json({ error: "Failed to insert message" });
         }
 
-        connection.query(query, values, async (error, result) => {
+        if (rows.length === 0) {
+            return res.status(400).json({ error: "Invalid chat participants" });
+        }
+
+        const RoomId = rows[0].Id;
+
+        const insertMessageQuery =
+        "INSERT INTO Chat_Applicant (RoomId, ApplicantUsername, Message, Sent_at) VALUES (?, ?, ?, ?)";
+        const insertMessageValues = [RoomId, ChatUsernameA, Message, timestamp];
+
+        connection.query(insertMessageQuery, insertMessageValues, async (error, result) => {
         if (error) {
             console.error("Error inserting message:", error);
             return res.status(500).json({ error: "Failed to insert message" });
         }
 
-        // // Retrieve the inserted message ID
-        // const messageId = result.insertId;
-
-        // // Update the newMessage object with the inserted message ID
-        // newMessagefromApplicant.id = messageId;
-
-        // messages.push(newMessagefromApplicant);
-        // res.status(201).json(newMessagefromApplicant);
         await getMessageApplicant(req, res);
+        });
+    });
+});
+
+// Endpoint for sending a new message from company
+app.post("/api/messages/sendfromcompany", async (req, res) => {
+    // Create a new Date object
+    const currentDate = new Date();
+    const tokenA = req.session.tokenA;
+    const tokenC = req.session.tokenC;
+    const decodedTokenA = verifyToken(tokenA);
+    const decodedTokenC = verifyToken(tokenC);
+    const ChatUsernameA = decodedTokenA.username;
+    const ChatUsernameC = decodedTokenC.username;
+    const {Message} = req.body;
+
+    // Specify the options for formatting the date
+    const options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZone: "Asia/Jakarta", // Set the desired time zone
+    };
+
+  // Format the date into the SQL timestamp format
+    const timestamp = currentDate.toLocaleString("id-ID", options)
+    .replace(/\//g, "-")
+    .replace(",", "")
+    .replace(/\./g, ":")
+    .replace(/(\d{2})-(\d{2})-(\d{4})/, "$3-$2-$1");
+    
+    const getRoomIdQuery =
+    "SELECT Id FROM Room_Chat WHERE ChatUsernameA = ? AND ChatUsernameC = ?";
+    const getRoomIdValues = [ChatUsernameA, ChatUsernameC];
+
+    connection.query(getRoomIdQuery, getRoomIdValues, (error, rows) => {
+        if (error) {
+            console.error("Error retrieving RoomId:", error);
+            return res.status(500).json({ error: "Failed to insert message" });
+        }
+
+        if (rows.length === 0) {
+            return res.status(400).json({ error: "Invalid chat participants" });
+        }
+
+        const RoomId = rows[0].Id;
+
+        const insertMessageQuery =
+        "INSERT INTO Chat_Company (RoomId, CompanyUsername, Message, Sent_at) VALUES (?, ?, ?, ?)";
+        const insertMessageValues = [RoomId, ChatUsernameC, Message, timestamp];
+
+        connection.query(insertMessageQuery, insertMessageValues, async (error, result) => {
+        if (error) {
+            console.error("Error inserting message:", error);
+            return res.status(500).json({ error: "Failed to insert message" });
+        }
+
+        await getMessageCompany(req, res);
         });
     });
 });
