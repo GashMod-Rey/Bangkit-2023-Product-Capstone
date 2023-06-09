@@ -9,7 +9,7 @@ import umn.ac.id.myapplication.ui.data.*
 
 interface ApiInterface {
     @Multipart
-    @POST("upload")
+    @POST("uploadCV")
    fun uploadCV(
         @Part pdfFile: MultipartBody.Part
     ): Call<UploadCVResponse>
@@ -22,11 +22,25 @@ interface ApiInterface {
     ): Call<LoginResponse>
 
     @FormUrlEncoded
+    @POST("loginCompany")
+    fun postLoginCompany(
+        @Field("Username") Username: String,
+        @Field("Password") Password: String
+    ): Call<LoginResponse>
+
+    @FormUrlEncoded
     @POST("signupApplicant")
     fun postSignUp(
         @Field("username") username: String,
         @Field("password") password: String,
     ): Call<SignUpResponse>
+
+    @FormUrlEncoded
+    @POST("signupCompany")
+    fun postSignUpCompany(
+        @Field("username") username: String,
+        @Field("password") password: String,
+    ): Call <SignUpResponse>
 
     @POST("setProfileApplicant")
     fun setProfileApplicant(
@@ -44,9 +58,14 @@ interface ApiInterface {
         @Field("MobilePhone") MobilePhone: String
     ): Call<ProfileApplicantResponse>
 
-    @GET("getProfileApplicant")
+    @GET("getProfile")
     fun getProfileApplicant (
         @Header("Authorization") token: String
-    ): Call<ProfileApplicantResponse>
+    ): Call<GetProfileApplicantResponse>
+
+    @GET("getProfileCompany")
+    fun getProfileCompany(
+        @Header("Authorization") token: String
+    ): Call<GetCompanyProfileResponse>
 
 }

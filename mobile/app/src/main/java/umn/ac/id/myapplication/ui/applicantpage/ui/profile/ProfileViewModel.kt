@@ -11,6 +11,7 @@ import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.Header
 import umn.ac.id.myapplication.ui.api.ApiClient
+import umn.ac.id.myapplication.ui.data.GetProfileApplicantResponse
 import umn.ac.id.myapplication.ui.data.ProfileApplicantResponse
 import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.data.UserSession
@@ -18,8 +19,11 @@ import umn.ac.id.myapplication.ui.utils.Resource
 
 class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel() {
 
-    private val _cvData = MutableLiveData<Resource<ProfileApplicantResponse?>>()
-    val cvData: LiveData<Resource<ProfileApplicantResponse?>>  = _cvData
+    private val _cvData = MutableLiveData<Resource<GetProfileApplicantResponse?>>()
+    val cvData: LiveData<Resource<GetProfileApplicantResponse?>>  = _cvData
+
+    private val _updateCvData = MutableLiveData<Resource<ProfileApplicantResponse?>>()
+    val updateCvData: LiveData<Resource<ProfileApplicantResponse?>> = _updateCvData
 
     private val _isLoading = MutableLiveData<Boolean>()
     private val _isError = MutableLiveData<Boolean>()
@@ -38,10 +42,10 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
         _isError.value = false
 
         val client = ApiClient.apiInstance.getProfileApplicant(token)
-        client.enqueue(object : Callback<ProfileApplicantResponse> {
+        client.enqueue(object : Callback<GetProfileApplicantResponse> {
             override fun onResponse(
-                call: Call<ProfileApplicantResponse>,
-                response: Response<ProfileApplicantResponse>
+                call: Call<GetProfileApplicantResponse>,
+                response: Response<GetProfileApplicantResponse>
             ) {
                 if(response.isSuccessful){
                     _cvData.value = Resource.Success(response.body())
@@ -57,7 +61,7 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
 
             }
 
-            override fun onFailure(call: Call<ProfileApplicantResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetProfileApplicantResponse>, t: Throwable) {
                 _error.value = "Failed to fetch CV data: ${t.message}"
                 Log.e(TAG, "onFailure: ${t.message}")
                 _isError.value = true
@@ -92,12 +96,11 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
                 response: Response<ProfileApplicantResponse>
             ) {
                 if(response.isSuccessful){
-                    _cvData.value = Resource.Success(response.body())
+                    _updateCvData.value = Resource.Success(response.body())
                     Log.d(TAG, "Profile updated successfully")
                 }
                 else {
                     val errorMessage = response.errorBody()?.string()
-
                     Log.e(TAG, "Failed to update ")
                 }
             }
