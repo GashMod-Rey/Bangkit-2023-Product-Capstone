@@ -536,6 +536,7 @@ async function getProfileCompany (req, res) {
 
 // API Relation
 
+
 app.post('/offer', (req, res) => {
     const tokenA = req.session.tokenA;
     const tokenC = req.session.tokenC;
@@ -627,6 +628,139 @@ app.post('/status', (req, res) => {
             return res.status(201).json({ message: 'Success update Relation' });
         });
     }    
+});
+
+// API Chat
+
+// Middleware to parse JSON request bodies
+app.use(express.json());
+
+// Endpoint for retrieving all messages
+async function getMessageApplicant (req, res){
+  res.json({ message: 'Success' });
+};
+
+// Endpoint for retrieving all messages
+app.get("/api/messagescompany", (req, res) => {
+  res.json(messages);
+});
+
+// Endpoint for retrieving all chat
+async function getChat (req, res) {
+  res.json({ message: 'Success' });
+  console.log({ message: 'Success' });
+};
+
+// Endpoint for create new chat
+app.post("/api/chat/newchat", async (req, res) => {
+  // Create a new Date object
+    const currentDate = new Date();
+    const tokenA = req.session.tokenA;
+    const tokenC = req.session.tokenC;
+    const decodedTokenA = verifyToken(tokenA);
+    const decodedTokenC = verifyToken(tokenC);
+    const ChatUsernameA = decodedTokenA.username;
+    const ChatUsernameC = decodedTokenC.username;
+
+  // Specify the options for formatting the date
+    const options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZone: "Asia/Jakarta", // Set the desired time zone
+    };
+
+  // Format the date into the SQL timestamp format
+    const timestamp = currentDate.toLocaleString("id-ID", options)
+    .replace(/\//g, "-")
+    .replace(",", "")
+    .replace(/\./g, ":")
+    .replace(/(\d{2})-(\d{2})-(\d{4})/, "$3-$2-$1");
+
+    // Insert the new chat into the MySQL database
+    const query = "INSERT INTO Room_Chat (ChatUsernameA, ChatUsernameC, Created_at) VALUES (?, ?, ?)";
+    const values = [ChatUsernameA, ChatUsernameC, timestamp];
+
+        connection.query(query, values, async (error, result) => {
+        if (error) {
+            console.error("Error creating chat:", error);
+            return res.status(500).json({ error: "Failed to create chat" });
+        }
+        // const roomIdQuery = "SELECT LAST_INSERT_ID() AS RoomId";
+        // const roomIdResult = await connection.query(roomIdQuery);
+        // const roomId = roomIdResult[0].RoomId;
+        // console.log(roomId);
+
+        // console.log(newChat);
+        await getChat(req, res);
+    });
+});
+
+// Endpoint for sending a new message
+app.post("/api/messages/sendfromapplicant", (req, res) => {
+    // Create a new Date object
+    const currentDate = new Date();
+    const tokenA = req.session.tokenA;
+    const decodedTokenA = verifyToken(tokenA);
+    const ChatUsernameA = decodedTokenA.username;
+    const {Message} = req.body;
+
+
+    // Specify the options for formatting the date
+    const options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZone: "Asia/Jakarta", // Set the desired time zone
+    };
+
+  // Format the date into the SQL timestamp format
+    const timestamp = currentDate.toLocaleString("id-ID", options)
+    .replace(/\//g, "-")
+    .replace(",", "")
+    .replace(/\./g, ":")
+    .replace(/(\d{2})-(\d{2})-(\d{4})/, "$3-$2-$1");
+
+    // const newMessagefromApplicant = {
+    //     Sent_at: formatTimestamp(new Date()),
+    // };
+    // messages.push(newMessagefromApplicant);
+
+    
+    // Insert the new message into the MySQL database
+    const query = "INSERT INTO Chat_Applicant (RoomId, ApplicantUsername, Message, Sent_at) VALUES (?, ?, ?, ?)";
+    const values = [RoomId, ChatUsernameA, Message, timestamp];
+
+
+    connection.query((error, connection) => {
+        if (error) {
+            console.error("Error getting MySQL connection:", error);
+            return res.status(500).json({ error: "Failed to insert message" });
+        }
+
+        connection.query(query, values, async (error, result) => {
+        if (error) {
+            console.error("Error inserting message:", error);
+            return res.status(500).json({ error: "Failed to insert message" });
+        }
+
+        // // Retrieve the inserted message ID
+        // const messageId = result.insertId;
+
+        // // Update the newMessage object with the inserted message ID
+        // newMessagefromApplicant.id = messageId;
+
+        // messages.push(newMessagefromApplicant);
+        // res.status(201).json(newMessagefromApplicant);
+        await getMessageApplicant(req, res);
+        });
+    });
 });
 
 app.listen(port, () => {
