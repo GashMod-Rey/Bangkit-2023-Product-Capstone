@@ -57,6 +57,35 @@ class LoginViewModel(private val userPreferences: UserPreferences) : ViewModel()
         })
     }
 
+    fun postLoginCompany(username: String, password: String){
+        val client = ApiClient.apiInstance.postLoginCompany(username, password)
+        Log.d(TAG, "postLoginCompany: $client")
+        client.enqueue(object: Callback<LoginResponse>{
+            override fun onResponse(
+                call: retrofit2.Call<LoginResponse>,
+                response: Response<LoginResponse>
+            ) {
+                if (response.isSuccessful){
+                    _login.value = response.body()?.let{
+                        Resource.Success(it)
+                    }
+                    Log.d(TAG, "onResponse: ${_login.value}")}
+                else {
+                    val errorBody = response.errorBody()?.string()
+                    val errorMessage = errorBody?.let {
+                        JSONObject(it).getString("message")
+                    }
+                    _login.value = Resource.Error(errorMessage)
+                    Log.e(TAG, "onResponse: $errorMessage")
+                }
+            }
+            override fun onFailure(call: retrofit2.Call<LoginResponse>, t: Throwable) {
+                _login.value = Resource.Error("${t.message}")
+                Log.e(TAG, "onFailure: ${t.message}")
+            }
+        })
+    }
+
     companion object{
         private const val TAG = "LoginViewModel"
     }

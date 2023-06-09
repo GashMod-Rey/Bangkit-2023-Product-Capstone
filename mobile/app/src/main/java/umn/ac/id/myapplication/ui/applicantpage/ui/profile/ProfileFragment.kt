@@ -75,8 +75,8 @@ class ProfileFragment : Fragment() {
 
         val buttonAboutMe = binding.buttonAboutme
         val buttonCV = binding.buttonCv
-        val buttonedit = binding.buttonEdit
-        val buttonsetting = binding.buttonSettings
+        val buttonEdit = binding.buttonEdit
+        val buttonSetting = binding.buttonSettings
 
         buttonAboutMe.setOnClickListener {
             val intent = Intent(requireContext(), AboutMeActivity::class.java)
@@ -88,12 +88,12 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
 
-        buttonedit.setOnClickListener{
+        buttonEdit.setOnClickListener{
             val intent = Intent(requireContext(), AboutMeChangeActivity::class.java)
             startActivity(intent)
         }
 
-        buttonsetting.setOnClickListener{
+        buttonSetting.setOnClickListener{
             val intent = Intent(requireContext(), SettingsActivity::class.java)
             startActivity(intent)
         }
