@@ -46,7 +46,6 @@ const storage = new Storage({
 });
 
 const bucketCV = storage.bucket("bucket_pdf33");
-const bucketPP = storage.bucket("bucket_pp33");
 
 connection.connect((err) => {
     if (err) {
@@ -192,7 +191,7 @@ function verifyToken(token) {
 //     }
 // });
 
-app.post('/setProfileApplicant', async (req, res) => {
+app.post('/setProfileApplicant', (req, res) => {
     // Extract the profile data from the request body
     const {name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork } = req.body;
     const pdfPath = req.session.pdfPath;
@@ -205,14 +204,14 @@ app.post('/setProfileApplicant', async (req, res) => {
     connection.query(query,[name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork, pdfPath, username],(err) => {
         if (err) {
             console.error('Error executing the query:', err);
+            res.status(500).json({ error: 'Error: ' + err });
         }
-        console.log("Success");
+        res.status(200).json({ message: 'Success' });
       }
     );
-    await getProfileFinal(req, res);
 });
 
-async function getProfileFinal (req, res) {
+app.get('/getProfile', (req, res) => {
     const token = req.session.tokenA;
     const decodedToken = verifyToken(token);
     const username = decodedToken.username;
@@ -227,24 +226,7 @@ async function getProfileFinal (req, res) {
         }
         res.json(results);
     });
-};
-
-async function getProfile (req, res) {
-    const token = req.session.tokenA;
-    const decodedToken = verifyToken(token);
-    const username = decodedToken.username;
-
-    const query = `SELECT * FROM Applicants WHERE Username = ?`;
-
-    connection.query(query, [username], (err, results) => {
-        if (err) {
-          console.error('Failed to fetch applicants:', err);
-          res.status(500).json({ error: 'Failed to fetch applicants' });
-          return;
-        }
-        res.json(results);
-    });
-};
+});
 
 async function setProfileApplicantAuto(req, res) {
     // Extract the profile data from the request body
@@ -275,13 +257,12 @@ async function setProfileApplicantAuto(req, res) {
     connection.query(query,[name, email, langString, summary, education, skillString, location, degreeString, mobilePhone, pdfPath, username],(err) => {
         if (err) {
             console.error('Error executing the query:', err);
+            res.status(500).json({ error: 'Error: ' + err });
         }
 
-        console.log('Profile Updated');
+        res.status(200).json({ message: 'Profile Updated' });
       }
     );
-
-    await getProfile(req, res);
 };
 
 async function getPDF (req, res) {
@@ -498,7 +479,7 @@ app.post('/loginCompany', (req, res) => {
     });
 });
 
-app.post('/setProfileCompany', async (req, res) => {
+app.post('/setProfileCompany', (req, res) => {
     // Extract the profile data from the request body
     const {name, summary, location, employee} = req.body;
     const token = req.session.tokenC;
@@ -510,14 +491,14 @@ app.post('/setProfileCompany', async (req, res) => {
     connection.query(query,[name, summary, location, employee, username],(err) => {
         if (err) {
             console.error('Error executing the query:', err);
+            res.status(500).json({ error: 'Error: ' + err });
         }
-        console.log("Profile Updated");
+        res.status(200).json({ message: 'Profile Updated' });
       }
     );
-    await getProfileCompany(req, res);
 });
 
-async function getProfileCompany (req, res) {
+app.get('/getProfileCompany', (req, res) => {
     const token = req.session.tokenC;
     const decodedToken = verifyToken(token);
     const username = decodedToken.username;
@@ -532,7 +513,7 @@ async function getProfileCompany (req, res) {
         }
         res.json(results);
     });
-};
+});
 
 // API Relation
 
