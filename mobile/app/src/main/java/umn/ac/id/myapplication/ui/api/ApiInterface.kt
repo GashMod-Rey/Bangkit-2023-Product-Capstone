@@ -38,7 +38,7 @@ interface ApiInterface {
         @Field("Summary") Summary: String,
         @Field("Education") Education: String,
         @Field("Skills") Skills: String,
-        @Field("SalaryMin") SalaryMin: String,
+        @Field("SalaryMin") SalaryMin: Int,
         @Field("Location") Location: String,
         @Field("Degree") Degree: String,
         @Field("MobilePhone") MobilePhone: String
