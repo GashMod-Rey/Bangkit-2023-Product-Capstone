@@ -8,6 +8,8 @@ import androidx.lifecycle.asLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Field
+import retrofit2.http.Header
 import umn.ac.id.myapplication.ui.api.ApiClient
 import umn.ac.id.myapplication.ui.data.ProfileApplicantResponse
 import umn.ac.id.myapplication.ui.data.UserPreferences
@@ -62,6 +64,51 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
             }
 
         })
+    }
+
+    fun updateProfile(
+        token: String,
+        name: String,
+        date: String,
+        degree: String,
+        desc: String,
+        email: String,
+        educationInstitution: String,
+        phone: String,
+        language: String,
+        salaryMinimum: Int,
+        skills: String,
+        location: String
+    ){
+        val client = ApiClient.apiInstance.setProfileApplicant(
+            token, name, date, email, language, desc,
+            educationInstitution, skills, salaryMinimum,
+            location, degree, phone
+        )
+
+        client.enqueue(object : Callback<ProfileApplicantResponse>{
+            override fun onResponse(
+                call: Call<ProfileApplicantResponse>,
+                response: Response<ProfileApplicantResponse>
+            ) {
+                if(response.isSuccessful){
+                    _cvData.value = Resource.Success(response.body())
+                    Log.d(TAG, "Profile updated successfully")
+                }
+                else {
+                    val errorMessage = response.errorBody()?.string()
+
+                    Log.e(TAG, "Failed to update ")
+                }
+            }
+
+            override fun onFailure(call: Call<ProfileApplicantResponse>, t: Throwable) {
+                Log.e(TAG, "Failed to update profile: ${t.message}")
+            }
+        })
+
+
+
     }
 
 
