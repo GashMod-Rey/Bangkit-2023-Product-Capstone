@@ -37,7 +37,7 @@ This application built using technical stack explained below.
   </li>
 </ol>
 
-### 2. Data Usage
+### 2. Machine Learning Description and Data Usage
 This application using data from various source. 
 For Machine Learning training purposes, we use data from.
 <ol>
@@ -72,7 +72,7 @@ For Machine Learning training purposes, we use data from.
 </ol>
 
 
-### 3. Backend
+### 3. Backend Description and List of Endpoints
 This application using NodeJS as programming language and Express as its framework.
 Here is a list of dependencies used and how to install them:
 <ol>
@@ -97,8 +97,7 @@ To install, run: npm install cors<br/>
   
 To install these dependencies, open your terminal or command prompt, navigate to the project directory, and run the respective npm install commands mentioned above.
 
-### 4. List Of All Endpoint
-For Applicants:
+Endpoints for applicants-side features:
 <ol>
     <li>(POST) /signupApplicant </li>
         <ul>
@@ -115,6 +114,11 @@ For Applicants:
             <li> Function: Set the profile data for an applicant.</li>
             <li> Implementation: Edit profile page.</li>
         </ul>
+    <li>(POST) /uploadCV </li>
+        <ul>
+            <li> Function: Upload a CV (resume) for an applicant. </li>
+            <li> Implementation: Upload CV page. </li>
+        </ul>
     <li>(GET) /getProfile  </li>
         <ul>
             <li> Function: Get the profile data of an applicant.</li>
@@ -123,7 +127,7 @@ For Applicants:
 </ol>
       
 
-For Company:
+Endpoints for companies-side features:
 <ol>
     <li>(POST) /signupCompany </li>
         <ul>
@@ -145,14 +149,4 @@ For Company:
             <li> Function: Get the profile data of a company.</li>
             <li> Implementation: About me Page.</li>
         </ul>
-</ol>
-
-Other Endpoints:
-<ol>
-    <li>(POST) /uploadCV </li>
-        <ul>
-            <li> Function: Upload a CV (resume) for an applicant. </li>
-            <li> Implementation: Upload CV page. </li>
-        </ul>
-</ol>
-  
+</ol>  
