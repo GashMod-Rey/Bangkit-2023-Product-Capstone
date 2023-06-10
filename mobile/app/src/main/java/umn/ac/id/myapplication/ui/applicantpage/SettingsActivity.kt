@@ -1,8 +1,10 @@
 package umn.ac.id.myapplication.ui.applicantpage
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import umn.ac.id.myapplication.R
@@ -21,8 +23,21 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonAboutme.setOnClickListener {
+            showLogoutConfirmationDialog()
+        }
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle("Logout Confirmation")
+        alertDialogBuilder.setMessage("Are you sure you want to logout?")
+        alertDialogBuilder.setPositiveButton("Yes") { dialogInterface: DialogInterface, i: Int ->
             performLogout()
         }
+        alertDialogBuilder.setNegativeButton("No", null)
+
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
 
     private fun performLogout() {
