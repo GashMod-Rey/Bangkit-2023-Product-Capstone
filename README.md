@@ -12,27 +12,27 @@ This application built using technical stack explained below.
 <ol>
   <li> Machine Learning: 
     <ul>
-      <li> Main Language: Python </li>
-      <li> IDEs: Jupyter Notebook & Visual Studio Code </li>
-      <li> Libraries: NLTK, SpaCy, string, requests, fitz (PyMuPDF), re, time, tqdm, sys, json, sklearn, tensorflow, keras, pathlib, warnings </li>
-      <li> Pre-built model: en_core_web_sm & en_core_web_md </li>
-      <li> New findings: model to detect academic degree in /script/output/model-best, three entity content-based filtering (in RecommenderSystem.ipynb, Experimental Work section), and two JSONL files to detect country/languages in a CV </li>
+      <li> Main Programming Language&nbsp; : Python </li>
+      <li> IDEs&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : Jupyter Notebook & Visual Studio Code </li>
+      <li> Libraries&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: NLTK, SpaCy, string, requests, fitz, re, time, tqdm, sys, json, sklearn, tensorflow, keras, pathlib, warnings </li>
+      <li> Pre-built model&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : en_core_web_sm & en_core_web_md </li>
+      <li> New findings&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : model to detect academic degree in /script/output/model-best, three entity content-based filtering (in RecommenderSystem.ipynb, Experimental Work section), and two JSONL files to detect country/languages in a CV </li>
     </ul>
   </li>
   <li> Mobile Development: 
     <ul>
-      <li> Main Scripting/Programming Language: Kotlin & XML </li>
-      <li> IDE: Android Studio </li>
-      <li> Library: Retrofit </li>
+      <li> Main Scripting/Programming Language : Kotlin & XML </li>
+      <li> IDE&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : Android Studio </li>
+      <li> Library&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : Retrofit </li>
     </ul>
   </li>
   <li> Cloud Computing: 
     <ul>
-      <li> Main Programming Language: NodeJS & SQL (MySQL) </li>
-      <li> IDE: Visual Studio Code </li>
-      <li> Framework: ExpressJS </li>
-      <li> Libraries: Multer, @google-cloud/storage, jsonwebtoken, express-session, cors</li>
-      <li> Services: Google Cloud Services </li>
+      <li> Main Programming Language : NodeJS & SQL (MySQL) </li>
+      <li> IDE&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: Visual Studio Code </li>
+      <li> Framework&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;: ExpressJS </li>
+      <li> Libraries&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;: Multer, @google-cloud/storage, jsonwebtoken, express-session, cors</li>
+      <li> Services&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: Google Cloud Services </li>
     </ul>
   </li>
 </ol>
@@ -43,12 +43,12 @@ For Machine Learning training purposes, we use data from.
 <ol>
   <li>Resume Dataset - [URL: https://www.kaggle.com/datasets/aishikai/resume-dataset]</li>
   Details <br/>
-  Owner: Aishik Rakshit <br/>
-  Content: Collection of Curriculum Vitae files <br/>
-  Formats: PDF and Microsoft Word <br/>
-  Language: Mostly English <br/>
-  Total files: 3264 (PDF File), 2296 (Word File) <br/>
-  Format used: Only PDF (All of the files) <br/>
+  Owner&emsp;&emsp;&ensp;: Aishik Rakshit <br/>
+  Content&emsp;&emsp;: Collection of Curriculum Vitae files <br/>
+  Formats&emsp;&emsp;: PDF and Microsoft Word <br/>
+  Language&emsp;&nbsp;: Mostly English <br/>
+  Total files&emsp;&nbsp; : 3264 (PDF File), 2296 (Word File) <br/>
+  Format used : Only PDF (All of the files) <br/>
   <br/>
   Additional Information <br/>
   -Most of the CVs data are from Indians <br/>
@@ -57,18 +57,18 @@ For Machine Learning training purposes, we use data from.
   <br/>
   <li>Resume Data with Annotations - [URL: https://www.kaggle.com/datasets/extremelysunnyyk/resume-data-with-annotations]</li>
   Details <br/>
-  Owner: Yong Kang Chia <br/>
-  Content: CV files in PDF and Microsoft Word format, Poster files, and Training Data files <br/>
-  Language: English <br/>
-  Total files: 8 (PDF File), 2 (Word File), 1 (pkl File), 2 (txt file) <br/>
-  Format used: Only PDF (5 Files) <br/>
+  Owner&emsp;&emsp;&ensp; : Yong Kang Chia <br/>
+  Content&emsp;&emsp;: CV files in PDF and Microsoft Word format, Poster files, and Training Data files <br/>
+  Language&emsp; : English <br/>
+  Total files&emsp;&ensp;: 8 (PDF File), 2 (Word File), 1 (pkl File), 2 (txt file) <br/>
+  Format used : Only PDF (5 Files) <br/>
   <br/>
   Additional Information <br/>
   -Kaggle Usability Rating 3.13 <br/>
   <br/>
   <li>Team Member CVs'</li>
   Details <br/>
-  Owner: Reynard Matthew Yaputra, Nadya Angelia, Andelle Gianzra Basae
+  Owner : Reynard Matthew Yaputra, Nadya Angelia, Andelle Gianzra Basae
 </ol>
 
 
