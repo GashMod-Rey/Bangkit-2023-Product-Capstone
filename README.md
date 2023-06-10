@@ -1,6 +1,9 @@
 # HireHub
+HireHub was inspired by the fact that companies still rely on their HR to filter thousands of job applicants’ CVs. This process is time-consuming and labor-intensive. On the other hand, applicants usually have to make their online in-app profile from scratch which leads to inconsistency between their CV and online profile. Therefore, we offer this application to tackle the problem with recommenders for the company and CV text processing to generate online profiles automatically. With this application, HR will spend less time dealing with irrelevant applicants and the applicants will be helped in making their online presence in-app.
 
-This is a talent-searching application, where there are two user-level, the applicants and the companies. Firstly, the applicants and companies should register and log into the application. Then, each user level has its own functionalities. Applicants can drop their CVs/resumes in our application for companies’ HR to evaluate. In our competitor apps, when applicants want to make their profile, they should do it from scratch and manually input all of their data. Thus, we introduce the second usage of applicants' CVs which is to parse their resume and get the information needed to make their profile, such as name, location (country), mobile phone number, email, skills, languages, education institution, education degree, and their professional summary. However, we still have the feature for manual editing/input since some attributes might not or never be present in a CV/resume, such as age/birth date/birth year and salary expectation or our model badly parse the resume. After applicants drop their resumes and make online profiles, they just need to wait until company offers come and they have the right to accept or reject them. They can also chat with the company during the recruitment process.
+HireHub is a talent search and recruitment platform that connects job seekers with potential employers. This application allows job seekers to create an online profile as simply as uploading their resume and wait for the company to offer them any related job. Employers can search for the candidate and our recommenders system in-app will help them to find the best candidate for specified criteria. This application also offers messaging feature between employers and candidates to enhance the recruitment experience. HireHub aims to surpass beyond nowadays recruitment process with some features, such as CV processing to create online profiles automatically and the recommenders system to help the company with filtering suitable candidates for specified positions.
+
+Hirehub has two user-level, the applicants and the companies. Firstly, the applicants and companies should register and log into the application. Then, each user level has its own functionalities. Applicants can drop their CVs/resumes in our application for companies’ HR to evaluate. In our competitor apps, when applicants want to make their profile, they should do it from scratch and manually input all of their data. Thus, we introduce the second usage of applicants' CVs which is to parse their resume and get the information needed to make their profile, such as name, location (country), mobile phone number, email, skills, languages, education institution, education degree, and their professional summary. However, we still have the feature for manual editing/input since some attributes might not or never be present in a CV/resume, such as age/birth date/birth year and salary expectation or our model badly parse the resume. After applicants drop their resumes and make online profiles, they just need to wait until company offers come and they have the right to accept or reject them. They can also chat with the company during the recruitment process.
 
 On the other hand, company user-level can make their profile online manually. They can also search for applicants/talents with simple steps, such as setting the filter (filtering age/skills/other) and then searching. Then, our application will recommend (with the recommender system that we develop) some applicants in a list from the most relevant to the filter all the way down to the most irrelevant to the filter. HR can then see their online profile and CV, then can offer the applicants a job. HR needs to wait for applicants' responses and if applicants accept the offer for recruitment, the recruitment process will be facilitated via chat in our application. Then, the company will have the right to cancel the recruitment process (since the applicants are no longer relevant, mismatch in the interview/technical test, etc.) or accept the applicants to their companies. If the applicants are accepted by the company, then they will disappear from the search list and the running recruitment process will be terminated.
 
@@ -37,3 +40,28 @@ For Machine Learning training purposes, we use data from.
   Details <br/>
   Owner: Reynard Matthew Yaputra, Nadya Angelia, Andelle Gianzra Basae
 </ol>
+
+
+### 2. Backend
+This application using NodeJS as programming language and Express as its framework.
+Here is a list of dependencies used and how to install them:
+<ol>
+  <li>Express: It is a fast and minimalist web application framework for Node.js. </li>
+To install, run: npm install express <br/>
+  
+  <li>@google-cloud/storage: It is the official Google Cloud Storage client library.</li>
+To install, run: npm install @google-cloud/storage <br/>
+  
+  <li>Multer: It is a middleware for handling multipart/form-data, primarily used for uploading files.</li>
+To install, run: npm install multer <br/>
+
+  <li>jsonwebtoken: It is an implementation of JSON Web Tokens (JWT) for Node.js.</li>
+To install, run: npm install jsonwebtoken<br/>
+  
+  <li>express-session: It is a middleware that enables the use of sessions in Express.js.</li>
+To install, run: npm install express-session<br/>
+  
+  <li>cors: It is a middleware that allows Cross-Origin Resource Sharing (CORS) in Express.js.</li>
+To install, run: npm install cors<br/>
+  
+To install these dependencies, open your terminal or command prompt, navigate to the project directory, and run the respective npm install commands mentioned above.
