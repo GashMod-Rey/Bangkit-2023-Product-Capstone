@@ -54,17 +54,17 @@ class AboutMeChangeActivity : AppCompatActivity() {
                     when(it){
                         is Resource.Success -> {
                             it.data?.let { data ->
-                                binding.addName.setText(data.Name)
-                                binding.addDate.setText(data.YearOfBirth)
-                                binding.addDegree.setText(data.Degree)
-                                binding.addDesc.setText(data.Summary)
-                                binding.addEmail.setText(data.Email)
-                                binding.addEducationInstitution.setText(data.EducationInstitution)
-                                binding.addPhone.setText(data.MobilePhone)
-                                binding.addLanguage.setText(data.Language)
-                                binding.addSalaryMinimum.setText(data.SalaryMinimum.toString())
-                                binding.addSkills.setText(data.Skills)
-                                binding.addLocation.setText(data.Location)
+                                binding.addName.setText(data.name)
+                                binding.addDate.setText(data.yearOfBirth)
+                                binding.addDegree.setText(data.degree)
+                                binding.addDesc.setText(data.summary)
+                                binding.addEmail.setText(data.email)
+                                binding.addEducationInstitution.setText(data.educationInstitution)
+                                binding.addPhone.setText(data.mobilePhone)
+                                binding.addLanguage.setText(data.language)
+                                binding.addSalaryMinimum.setText(data.salaryMinimum.toString())
+                                binding.addSkills.setText(data.skills)
+                                binding.addLocation.setText(data.location)
                             }
 
                         }

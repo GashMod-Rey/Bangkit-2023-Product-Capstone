@@ -45,15 +45,15 @@ class AboutMeActivity : AppCompatActivity() {
                     when(it){
                         is Resource.Success -> {
                             it.data?.let { data ->
-                                binding.tvName.text = "Name: ${data.Name}"
-                                binding.tvAge.text = "Year Of Birth: ${data.YearOfBirth}"
-                                binding.tvDesc.text = "Summary: ${data.Summary}"
-                                binding.tvEducationInstitution.text = "Education Institution: ${data.EducationInstitution}"
-                                binding.tvLanguage.text = "Language: ${data.Language}"
-                                binding.tvEmail.text = "Email : ${data.Email}"
-                                binding.tvMobilePhone.text = "Phone : ${data.MobilePhone}"
-                                binding.tvSkills.text = "Skills: ${data.Skills}"
-                                binding.tvDegree.text = "Degree: ${data.Degree}"
+                                binding.tvName.text = "Name: ${data.name}"
+                                binding.tvAge.text = "Year Of Birth: ${data.yearOfBirth}"
+                                binding.tvDesc.text = "Summary: ${data.summary}"
+                                binding.tvEducationInstitution.text = "Education Institution: ${data.educationInstitution}"
+                                binding.tvLanguage.text = "Language: ${data.language}"
+                                binding.tvEmail.text = "Email : ${data.email}"
+                                binding.tvMobilePhone.text = "Phone : ${data.mobilePhone}"
+                                binding.tvSkills.text = "Skills: ${data.skills}"
+                                binding.tvDegree.text = "Degree: ${data.degree}"
                             }
 
                         }

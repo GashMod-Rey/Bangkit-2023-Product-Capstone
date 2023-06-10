@@ -4,51 +4,51 @@ import com.google.gson.annotations.SerializedName
 
 data class GetProfileApplicantResponse(
     @field: SerializedName("Username")
-    val Username: String,
+    val username: String,
 
     @field: SerializedName("Password")
-    val Password: String,
+    val password: String,
 
     @field: SerializedName("Name")
-    val Name: String? = null,
+    val name: String? = null,
 
     @field: SerializedName("YearOfBirth")
-    val YearOfBirth: String?= null,
+    val yearOfBirth: String?= null,
 
     @field: SerializedName("Email")
-    val Email: String?= null,
+    val email: String?= null,
 
     @field: SerializedName("Language")
-    val Language: String? = null,
+    val language: String? = null,
 
     @field: SerializedName("Summary")
-    val Summary: String? = null,
+    val summary: String? = null,
 
     @field: SerializedName("EducationInstitution")
-    val EducationInstitution: String?= null,
+    val educationInstitution: String?= null,
 
     @field: SerializedName("Skills")
-    val Skills: String?= null,
+    val skills: String?= null,
 
     @field: SerializedName("SalaryMinimum")
-    val SalaryMinimum: Int? = null,
+    val salaryMinimum: Int? = null,
 
     @field: SerializedName("Location")
-    val Location: String?= null,
+    val location: String?= null,
 
     @field: SerializedName("Degree")
-    val Degree: String?= null,
+    val degree: String?= null,
 
     @field: SerializedName("MobilePhone")
-    val MobilePhone: String?= null,
+    val mobilePhone: String?= null,
 
     @field: SerializedName("OpenToWork")
-    val OpenToWork: Boolean? = null,
+    val openToWork: Boolean? = null,
 
     @field: SerializedName("PdfPath")
-    val PdfPath: String?= null,
+    val pdfPath: String?= null,
 
     @field: SerializedName("PpPath")
-    val PpPath: String?= null,
+    val ppPath: String?= null,
 )
 

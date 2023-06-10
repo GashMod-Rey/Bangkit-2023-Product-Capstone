@@ -30,48 +30,19 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private val Context.dataStore by preferencesDataStore(name = "user")
-    private var token = ""
+    private lateinit var token: String
+    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val userPreferences = UserPreferences.getInstance(requireContext().dataStore)
-        val profileViewModel =
-            ViewModelProvider(this, ProfileViewModelFactory(userPreferences)).get(ProfileViewModel::class.java)
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        profileViewModel.getSession().observe(viewLifecycleOwner){
-            if(it.isLogin){
-                token = it.token
-                Log.d("TAG", "onCreate: $token")
-                profileViewModel.cvData.observe(viewLifecycleOwner){
-                    when(it){
-                        is Resource.Success -> {
-                            it.data?.let {
-                                data ->
-                                binding.tvName.text = data.Name
-                                binding.tvRole.text = data.Skills
-                            }
-                        }
-                        is Resource.Error -> {
-                            Toast.makeText(
-                                requireContext(), it.message.toString(), Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                        is Resource.Loading ->{
-
-                        }
-                    }
-                }
-            }
-        }
-
-
+        val userPreferences = UserPreferences.getInstance(requireContext().dataStore)
+        profileViewModel =
+            ViewModelProvider(this, ProfileViewModelFactory(userPreferences)).get(ProfileViewModel::class.java)
 
         val buttonAboutMe = binding.buttonAboutme
         val buttonCV = binding.buttonCv
@@ -106,4 +77,46 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-}
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeSession()
+    }
+
+    private fun observeSession(){
+        profileViewModel.getSession().observe(viewLifecycleOwner){
+            session ->
+            if (session.isLogin){
+                token = session.token
+                if(token != null){
+                    profileViewModel.getCvData(token)
+                }
+                else {
+                    Toast.makeText(requireContext(), "Token is null", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+        }
+
+                profileViewModel.cvData.observe(viewLifecycleOwner){ resource ->
+                    when(resource){
+                        is Resource.Success -> {
+                            val data = resource.data
+                            binding.tvName.text = data?.name
+                            binding.tvRole.text = data?.skills
+                        }
+                        is Resource.Error -> {
+                            Toast.makeText(
+                                requireContext(), resource.message.toString(), Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        is Resource.Loading ->{
+
+                        }
+                    }
+                }
+            }
+        }
+
+
+
