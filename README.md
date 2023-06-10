@@ -8,7 +8,7 @@ Hirehub has two user-level, the applicants and the companies. Firstly, the appli
 On the other hand, company user-level can make their profile online manually. They can also search for applicants/talents with simple steps, such as setting the filter (filtering age/skills/other) and then searching. Then, our application will recommend (with the recommender system that we develop) some applicants in a list from the most relevant to the filter all the way down to the most irrelevant to the filter. HR can then see their online profile and CV, then can offer the applicants a job. HR needs to wait for applicants' responses and if applicants accept the offer for recruitment, the recruitment process will be facilitated via chat in our application. Then, the company will have the right to cancel the recruitment process (since the applicants are no longer relevant, mismatch in the interview/technical test, etc.) or accept the applicants to their companies. If the applicants are accepted by the company, then they will disappear from the search list and the running recruitment process will be terminated.
 
 ### 1. Technical Stack
-This application built using technical stack explained below.
+This application was built using technical stack explained below.
 <ol>
   <li> Machine Learning: 
     <ul>
@@ -38,8 +38,8 @@ This application built using technical stack explained below.
 </ol>
 
 ### 2. Machine Learning Description and Data Usage
-This application using data from various source. 
-For Machine Learning training purposes, we use data from.
+There are three main workloads for Machine Learning team, namely searching for PDF-formatted CV dataset, building a model that can recognize entity from CV/Resume (entity: name, location, education institution, education degree, email, mobile phone, skills, languages, and professional summary), and building a recommendation system for filtering applicants in HR/companies-side.
+This application used PDF-formatted CV data from various source. For Machine Learning training purposes, we used data from.
 <ol>
   <li>Resume Dataset - [URL: https://www.kaggle.com/datasets/aishikai/resume-dataset]</li>
   Details <br/>
@@ -70,7 +70,22 @@ For Machine Learning training purposes, we use data from.
   Details <br/>
   Owner : Reynard Matthew Yaputra, Nadya Angelia, Andelle Gianzra Basae
 </ol>
+After that, we built a CV Parser with various libraries and methods, such as.
+<ol>
+  <li>Regex (Regular Expression): Used in getting email, mobile phone, name, and education institution.</li>
+  <li>Cleaning CV data (removing unnecessary part for gathering certain entity): Used in getting all the entity, significantly shown in getting name, education institution, and summary.</li>
+  <li>Using en_core_web_sm model: Used in getting name.</li>
+  <li>Using en_core_web_md model: Used in getting name, skills, languages, and location.</li>
+  <li>Using pre-defined rule for model's pipe: Used in getting skills (from JobZilla AI, jz_skill_patterns.jsonl)</li>
+  <li>Using our own new rule for model's pipe: Used in getting languages and location (hh_lang_pattern.jsonl and hh_country_pattern.jsonl)</li>
+  <li>Using our own new model created with SpaCy: Used in getting education degree.</li>
+</ol>
 
+Lastly, we built a recommendation system with TensorFlow and deploy/serve the model with TensorFlow Lite.
+
+In addition, we did some experimental work (heavier and inteded to be more robust) using word embedding with gensim models Word2Vec and content-based filtering concept.
+
+For specific documentation of input, output, and process, kindly refer to documentation written in .ipynb.
 
 ### 3. Backend Description and List of Endpoints
 This application using NodeJS as programming language and Express as its framework.
@@ -150,3 +165,97 @@ Endpoints for companies-side features:
             <li> Implementation: About me Page.</li>
         </ul>
 </ol>  
+
+### 4. Replication and Duplication Steps
+This section contains how to replicate (running the code given) and duplicate (remake/re-develop) this project.
+#### 4.1. Machine Learning
+Assume that you didn't have Python or Jupyter Notebook installed in your device, then you should download and install Python and Jupyter Notebook first. After set up all the necessary options, follow this step below to replicate the project.
+<ol>
+  <li>Clone the project from GitHub (project contains code for Machine Learning, Cloud Computing, and Mobile Development)</li>
+  <li>Download all the necessary library using this command on your Anaconda Prompt.</li>
+  <ul>
+    <li>pip install numpy</li>
+    <li>pip install scikit-learn</li>
+    <li>pip install tensorflow</li>
+    <li>pip install keras</li>
+    <li>pip install spacy</li>
+    <li>pip install nltk</li>
+    <li>pip install PyMuPDF</li>
+    <li>pip install requests</li>
+    <li>pip install tqdm</li>
+    <li>(Optional: to run experimental work in RecommenderSystem.ipynb)pip install gensim</li>
+  </ul>
+  <li>Download the pre-built model with these commands.</li>
+  <ul>
+    <li>python -m spacy download en_core_web_sm</li>
+    <li>python -m spacy download en_core_web_md</li>
+  </ul>
+</ol>
+Up to those steps, you should be able to run the code in .ipynb. Further, if you want to duplicate the code from the beginning for further development, our workflow is as follow.
+<ol>
+  <li>Make ResumeParser.ipynb with each function in it.</li>
+  <ul>
+    <li>Using pre-built model</li>
+    To use pre-built model, you can load the model with spacy.load() function, then pass the text you want to parse to the variable parameter. Result of recognition will be in ents, and for each entity in ents, there is label_ and text (label_ is recognized label, text is corresponding text recognized as label). <br/>
+    For example, the code to print all texts associated with organization recognized by the model (en_core_web_md) from a text should look like this.
+<pre>
+model = spacy.load("en_core_web_md")
+result = model(text)
+for ent in result.ents:
+  if ent.label_ == 'ORG':
+    print(ent.text)
+</pre>
+    <li>Making your own pre-defined rule for model's pipe</li>
+    <ol>
+      <li>List all the keywords associated with your labels.</li>
+      <li>Sort it based on alphabet.</li>
+      <li>Split each word by its space.</li>
+      <li>Make the pattern of rules for the jsonl's content.</li>
+    </ol>
+    Advantages: It can perfectly search for any occurence of certain listed keyword. <br/>
+    Disadvantages: It can't search for any occurence besides the listed/pre-defined keywords. <br/>
+    For more comprehensible details, you can refer to the Additional Python Works section in ResumeParser.ipynb.
+    <li>Using pre-defined rule for model's pipe (JobZilla AI pre-defined, our project pre-defined, or your own rule)</li>
+    To use pre-defined rule for model's pipe, you can add the "entity_ruler" pipe in a existing model, load the rules from disk, and do the inference as you have done in using pre-built model before. <br/>
+    For example, the code to incorporate rules from hh_lang_pattern.jsonl file in en_core_web_md model should look like this.
+<pre>
+model = spacy.load("en_core_web_md")
+ruler = model.add_pipe("entity_ruler", before="ner")
+file = "hh_lang_pattern.jsonl"
+ruler.from_disk(file)
+result = model(text)
+</pre>
+    <li>Train our own model with SpaCy</li>
+    To train our own model, follow this step.
+    <ol>
+      <li>Use the code to structure and create training data in ResumeParser.ipynb. For a quick recap, structure_training_data function get the text and list of keywords associated with a label, then annotate/mark the keywords occurence (substring) contained in certain text with that label. Then, create_training_set function will add data to a blank model document. Then, we will get the .spacy file for train and test data.</li>
+      <li>Download base_config.cfg from link given in Additional Python Works section in ResumeParser.ipynb (make sure to choose the NER option).</li>
+      <li>Configure the train and dev data with train and test data path.</li>
+      <li>Initiate the training process and configure the training by running this code.</li>
+<pre>
+python -m spacy init fill-config base_config.cfg config.cfg
+</pre>
+      <li>Following steps before will give us config.cfg file, do train the model by running this code.</li>
+<pre>
+python -m spacy train config.cfg --output ./output
+</pre>
+      <li>The model will be located in output folder (to change this, change the ./output part to ./(folder_name) with (folder_name) is desired folder name. Use them for your entity recognition purposes.</li>
+    </ol>
+    <li>Using our own trained SpaCy model</li>
+    Using our own trained SpaCy model is similar to using pre-built model with SpaCy. The difference only in the spacy.load() function's argument which should contain your model path.
+    For example, if you want to use your own trained model in output/model-best directory, the code should look like this.
+<pre>
+model = spacy.load("output/model-best")
+result = model(text)
+for ent in result.ents:
+  if ent.label_ == 'yourlabel':
+    print(ent.text)
+</pre>
+  </ul>
+  <li>Relocate core code of the .ipynb file to .py file (getting each entity, requests given PDF link and open the PDF, and getting argument from NodeJS backend).</li>
+  <li>Make RecommenderSystem.ipynb with each function in it.</li>
+  <li>Relocate core code of the .ipynb file to .py file (scoring/indexing each attribute and create a ready-to-use matrix).</li>
+</ol>
+
+#### 4.2. Cloud Computing
+#### 4.3. Mobile Development
