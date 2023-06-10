@@ -7,7 +7,36 @@ Hirehub has two user-level, the applicants and the companies. Firstly, the appli
 
 On the other hand, company user-level can make their profile online manually. They can also search for applicants/talents with simple steps, such as setting the filter (filtering age/skills/other) and then searching. Then, our application will recommend (with the recommender system that we develop) some applicants in a list from the most relevant to the filter all the way down to the most irrelevant to the filter. HR can then see their online profile and CV, then can offer the applicants a job. HR needs to wait for applicants' responses and if applicants accept the offer for recruitment, the recruitment process will be facilitated via chat in our application. Then, the company will have the right to cancel the recruitment process (since the applicants are no longer relevant, mismatch in the interview/technical test, etc.) or accept the applicants to their companies. If the applicants are accepted by the company, then they will disappear from the search list and the running recruitment process will be terminated.
 
-### 1. Data Usage
+### 1. Technical Stack
+This application built using technical stack explained below.
+<ol>
+  <li> Machine Learning: 
+    <ul>
+      <li> Main Language : Python </li>
+      <li> IDE : Jupyter Notebook & Visual Studio Code </li>
+      <li> Library : NLTK, SpaCy, string, requests, fitz (PyMuPDF), re, time, tqdm, sys, json, sklearn, tensorflow, keras, pathlib, warnings </li>
+      <li> Pre-built model: en_core_web_sm & en_core_web_md </li>
+      <li> New findings: model to detect academic degree in /script/output/model-best, three entity content-based filtering (in RecommenderSystem.ipynb, Experimental Work section), and two JSONL files to detect country/languages in a CV </li>
+    </ul>
+  </li>
+  <li> Mobile Development: 
+    <ul>
+      <li> Main Scripting/Programming Language: Kotlin & XML </li>
+      <li> IDE: Android Studio </li>
+      <li> Library: Retrofit </li>
+    </ul>
+  </li>
+  <li> Cloud Computing: 
+    <ul>
+      <li> Main Programming Language: NodeJS & SQL (MySQL) </li>
+      <li> IDE: Visual Studio Code </li>
+      <li> Framework: ExpressJS </li>
+      <li> Services: Google Cloud Services </li>
+    </ul>
+  </li>
+</ol>
+
+### 2. Data Usage
 This application using data from various source. 
 For Machine Learning training purposes, we use data from.
 <ol>
@@ -42,7 +71,7 @@ For Machine Learning training purposes, we use data from.
 </ol>
 
 
-### 2. Backend
+### 3. Backend
 This application using NodeJS as programming language and Express as its framework.
 Here is a list of dependencies used and how to install them:
 <ol>
@@ -63,5 +92,66 @@ To install, run: npm install express-session<br/>
   
   <li>cors: It is a middleware that allows Cross-Origin Resource Sharing (CORS) in Express.js.</li>
 To install, run: npm install cors<br/>
+  </ol>
   
 To install these dependencies, open your terminal or command prompt, navigate to the project directory, and run the respective npm install commands mentioned above.
+
+### 4. List Of All Endpoint
+For Applicants:
+<ol>
+    <li>(POST) /signupApplicant </li>
+        <ul>
+            <li> Function         : Sign up a new applicant.</li>
+            <li> Implementation   : Signup for applicant page.</li>
+        </ul>
+    <li>(POST) /loginApplicant </li>
+        <ul>
+            <li> Function         : Log in an applicant.</li>
+            <li> Implementation   : Log in for applicant page.</li>
+        </ul>
+    <li>(POST) /setProfileApplicant </li>
+        <ul>
+            <li> Function         : Set the profile data for an applicant.</li>
+            <li> Implementation   : Edit profile page.</li>
+        </ul>
+    <li>(GET) /getProfile  </li>
+        <ul>
+            <li> Function         : Get the profile data of an applicant.</li>
+            <li> Implementation   : About me Page.</li>
+        </ul>
+</ol>
+      
+
+For Company:
+<ol>
+    <li>(POST) /signupCompany </li>
+        <ul>
+            <li> Function         : Sign up a new company.</li>
+            <li> Implementation   : Signup for company page.</li>
+        </ul>
+    <li>(POST) /loginCompany </li>
+        <ul>
+            <li> Function         : Log in an company.</li>
+            <li> Implementation   : Log in for company page.</li>
+        </ul>
+    <li>(POST) /setProfileCompany </li>
+        <ul>
+            <li> Function         : Set the profile data for a company.</li>
+            <li> Implementation   : Edit profile page.</li>
+        </ul>
+    <li>(GET) /getProfileCompany  </li>
+        <ul>
+            <li> Function         : Get the profile data of a company.</li>
+            <li> Implementation   : About me Page.</li>
+        </ul>
+</ol>
+
+Other Endpoints:
+<ol>
+    <li>(POST) /uploadCV </li>
+        <ul>
+            <li> Function         : Upload a CV (resume) for an applicant. </li>
+            <li> Implementation   : Upload CV page. </li>
+        </ul>
+</ol>
+  
