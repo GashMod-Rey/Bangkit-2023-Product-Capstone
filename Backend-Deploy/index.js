@@ -93,6 +93,7 @@ app.post('/signupApplicant', (req, res) => {
     });
 });
 
+let tokenglobalA = '';
 app.post('/loginApplicant', (req, res) => {
     const { Username, Password } = req.body;
 
@@ -126,10 +127,53 @@ app.post('/loginApplicant', (req, res) => {
 
         // Successful login
         const token = generateToken(user);
-        req.session.tokenA = token;
+        tokenglobalA = token;
         return res.status(200).json({ token: token });
     });
 });
+
+function authenticateTokenA(req, res, next) {
+    // const authHeader = req.headers['authorization'];
+    // const token = authHeader && authHeader.split(' ')[1];
+    const token = tokenglobalA;
+
+    if (token == null) {
+        return res.status(401).json({ message: 'Unauthorized. Please provide a valid token.' });
+    }
+
+    jwt.verify(token, secretKey, (err, applicant) => {
+        if (err) {
+            console.error('Error verifying the token:', err);
+            return res.status(403).json({ message: 'Forbidden. Invalid token.' });
+        }
+        req.applicant = {
+            username: applicant.username
+            // Add any other relevant user data from the token
+        };
+        next();
+    });
+}
+function authenticateTokenC(req, res, next) {
+    // const authHeader = req.headers['authorization'];
+    // const token = authHeader && authHeader.split(' ')[1];
+    const token = tokenglobalC;
+
+    if (token == null) {
+        return res.status(401).json({ message: 'Unauthorized. Please provide a valid token.' });
+    }
+
+    jwt.verify(token, secretKey, (err, company) => {
+        if (err) {
+            console.error('Error verifying the token:', err);
+            return res.status(403).json({ message: 'Forbidden. Invalid token.' });
+        }
+        req.company = {
+            username: company.username
+            // Add any other relevant user data from the token
+        };
+        next();
+    });
+}
 
 // hashing password
 function hashPass(password){
@@ -190,13 +234,11 @@ function verifyToken(token) {
 //     }
 // });
 
-app.post('/setProfileApplicant', (req, res) => {
+app.post('/setProfileApplicant', authenticateTokenA, (req, res) => {
     // Extract the profile data from the request body
     const {name, dateOfBirth, email, language, summary, education, skills, salaryMin, location, degree, mobilePhone, openToWork } = req.body;
     const pdfPath = req.session.pdfPath;
-    const token = req.session.tokenA;
-    const decodedToken = verifyToken(token);
-    const username = decodedToken.username;
+    const username = req.applicant.username;
 
     const query = `UPDATE Applicants SET Name = ?, YearOfBirth = ?, Email = ?, Language = ?, Summary = ?, EducationInstitution = ?, Skills = ?, SalaryMinimum = ?, Location = ?, Degree = ?, MobilePhone = ?, OpenToWork = ?, PdfPath = ? WHERE Username = ?`;
 
@@ -210,10 +252,8 @@ app.post('/setProfileApplicant', (req, res) => {
     );
 });
 
-app.get('/getProfile', (req, res) => {
-    const token = req.session.tokenA;
-    const decodedToken = verifyToken(token);
-    const username = decodedToken.username;
+app.get('/getProfile', authenticateTokenA, (req, res) => {
+    const username = req.applicant.username;
 
     const query = `SELECT * FROM Applicants WHERE Username = ?`;
 
@@ -231,10 +271,7 @@ async function setProfileApplicantAuto(req, res) {
     // Extract the profile data from the request body
     const dataPy = req.session.dataPy;
     const pdfPath = req.session.pdfPath;
-    const token = req.session.tokenA;
-    const decodedToken = verifyToken(token);
-    const username = decodedToken.username;
-    
+    const username = req.applicant.username;
 
     // data
     const name = dataPy.PERSON;
@@ -295,7 +332,7 @@ async function getPDF (req, res) {
     }
 };
 
-app.post('/uploadCV', async (req, res) => {
+app.post('/uploadCV', authenticateTokenA, async (req, res) => {
     console.log('Made it /upload');
     try {
         UploadCV(req, res, (err) => {
@@ -440,6 +477,7 @@ app.post('/signupCompany', (req, res) => {
     });
 });
 
+let tokenglobalC = '';
 app.post('/loginCompany', (req, res) => {
     const { Username, Password } = req.body;
 
@@ -473,17 +511,15 @@ app.post('/loginCompany', (req, res) => {
 
         // Successful login
         const token = generateToken(user);
-        req.session.tokenC = token;
+        tokenglobalC = token;
         return res.status(200).json({ token: token });
     });
 });
 
-app.post('/setProfileCompany', (req, res) => {
+app.post('/setProfileCompany', authenticateTokenC, (req, res) => {
     // Extract the profile data from the request body
     const {name, summary, location, employee} = req.body;
-    const token = req.session.tokenC;
-    const decodedToken = verifyToken(token);
-    const username = decodedToken.username;
+    const username = req.company.username;
 
     const query = `UPDATE Company SET Name = ?, Summary = ?, Location = ?, Employee = ? WHERE Username = ?`;
 
@@ -497,10 +533,8 @@ app.post('/setProfileCompany', (req, res) => {
     );
 });
 
-app.get('/getProfileCompany', (req, res) => {
-    const token = req.session.tokenC;
-    const decodedToken = verifyToken(token);
-    const username = decodedToken.username;
+app.get('/getProfileCompany', authenticateTokenC, (req, res) => {
+    const username = req.company.username;
 
     const query = `SELECT * FROM Company WHERE Username = ?`;
 
@@ -516,14 +550,9 @@ app.get('/getProfileCompany', (req, res) => {
 
 // API Relation
 
-
-app.post('/offer', (req, res) => {
-    const tokenA = req.session.tokenA;
-    const tokenC = req.session.tokenC;
-    const decodedTokenA = verifyToken(tokenA);
-    const decodedTokenC = verifyToken(tokenC);
-    const usernameA = decodedTokenA.username;
-    const usernameC = decodedTokenC.username;
+app.post('/offer', authenticateTokenA, authenticateTokenC, (req, res) => {
+    const usernameA = req.applicant.username;
+    const usernameC = req.company.username;
 
     const query = `INSERT INTO Relation (UsernameA, UsernameC) VALUES (?, ?)`;
     connection.query(query, [usernameA, usernameC], (err, results) =>{
@@ -536,13 +565,9 @@ app.post('/offer', (req, res) => {
     });
 });
 
-app.post('/offerResponse', (req, res) => {
-    const tokenA = req.session.tokenA;
-    const tokenC = req.session.tokenC;
-    const decodedTokenA = verifyToken(tokenA);
-    const decodedTokenC = verifyToken(tokenC);
-    const usernameA = decodedTokenA.username;
-    const usernameC = decodedTokenC.username;
+app.post('/offerResponse', authenticateTokenA, authenticateTokenC, (req, res) => {
+    const usernameA = req.applicant.username;
+    const usernameC = req.company.username;
 
     const { offer } = req.body;
 
@@ -569,13 +594,9 @@ app.post('/offerResponse', (req, res) => {
     }
 });
 
-app.post('/status', (req, res) => {
-    const tokenA = req.session.tokenA;
-    const tokenC = req.session.tokenC;
-    const decodedTokenA = verifyToken(tokenA);
-    const decodedTokenC = verifyToken(tokenC);
-    const usernameA = decodedTokenA.username;
-    const usernameC = decodedTokenC.username;
+app.post('/status', authenticateTokenA, authenticateTokenC, (req, res) => {
+    const usernameA = req.applicant.username;
+    const usernameC = req.company.username;
 
     const { status } = req.body;
 
@@ -637,15 +658,11 @@ async function getChat (req, res) {
 };
 
 // Endpoint for create new chat
-app.post("/api/chat/newchat", async (req, res) => {
+app.post("/api/chat/newchat", authenticateTokenA, authenticateTokenC, async (req, res) => {
   // Create a new Date object
     const currentDate = new Date();
-    const tokenA = req.session.tokenA;
-    const tokenC = req.session.tokenC;
-    const decodedTokenA = verifyToken(tokenA);
-    const decodedTokenC = verifyToken(tokenC);
-    const ChatUsernameA = decodedTokenA.username;
-    const ChatUsernameC = decodedTokenC.username;
+    const ChatUsernameA = req.applicant.username;
+    const ChatUsernameC = req.company.username;
     const RoomId =`RoomChat_` + ChatUsernameA + ChatUsernameC;
 
   // Specify the options for formatting the date
@@ -680,15 +697,11 @@ app.post("/api/chat/newchat", async (req, res) => {
 });
 
 // Endpoint for sending a new message from applicant
-app.post("/api/messages/sendfromapplicant", async (req, res) => {
+app.post("/api/messages/sendfromapplicant", authenticateTokenA, authenticateTokenC,async (req, res) => {
     // Create a new Date object
     const currentDate = new Date();
-    const tokenA = req.session.tokenA;
-    const tokenC = req.session.tokenC;
-    const decodedTokenA = verifyToken(tokenA);
-    const decodedTokenC = verifyToken(tokenC);
-    const ChatUsernameA = decodedTokenA.username;
-    const ChatUsernameC = decodedTokenC.username;
+    const ChatUsernameA = req.applicant.username;
+    const ChatUsernameC = req.company.username;
     const {Message} = req.body;
 
     // Specify the options for formatting the date
@@ -741,15 +754,11 @@ app.post("/api/messages/sendfromapplicant", async (req, res) => {
 });
 
 // Endpoint for sending a new message from company
-app.post("/api/messages/sendfromcompany", async (req, res) => {
+app.post("/api/messages/sendfromcompany", authenticateTokenA, authenticateTokenC, async (req, res) => {
     // Create a new Date object
     const currentDate = new Date();
-    const tokenA = req.session.tokenA;
-    const tokenC = req.session.tokenC;
-    const decodedTokenA = verifyToken(tokenA);
-    const decodedTokenC = verifyToken(tokenC);
-    const ChatUsernameA = decodedTokenA.username;
-    const ChatUsernameC = decodedTokenC.username;
+    const ChatUsernameA = req.applicant.username;
+    const ChatUsernameC = req.company.username;
     const {Message} = req.body;
 
     // Specify the options for formatting the date
