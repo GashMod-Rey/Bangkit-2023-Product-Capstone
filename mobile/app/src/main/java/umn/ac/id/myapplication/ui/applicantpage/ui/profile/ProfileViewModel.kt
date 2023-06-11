@@ -31,7 +31,6 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
     val error: LiveData<String> get() = _error
 
     fun getSession(): LiveData<UserSession> {
-
         return userPreferences.getSession().asLiveData()
     }
 
