@@ -264,7 +264,9 @@ app.get("/getProfile", authenticateTokenA, (req, res) => {
       res.status(500).json({ error: "Failed to fetch applicants" });
       return;
     }
-    res.json(results);
+    const data = results[0];
+    //res.json(results);
+    res.json(data);
   });
 });
 
@@ -542,7 +544,9 @@ app.get("/getProfileCompany", authenticateTokenC, (req, res) => {
       res.status(500).json({ error: "Failed to fetch applicants" });
       return;
     }
-    res.json(results);
+    const data = results[0];
+    //res.json(results);
+    res.json(data);
   });
 });
 
