@@ -1,5 +1,7 @@
+import json
 import numpy as np
 import sys
+from datetime import datetime
 
 def score_skill(skill, skillFilter):
     skill = [x.upper() for x in skill]
@@ -66,8 +68,43 @@ def scoring(data_appl, data_filter):
         i = i+1
 
     x = np.array(x).reshape(-1, 4)
+    x = x.tolist()
+    x = json.dumps(x)
     print(x)
 
-data_appl = sys.argv[1]
-data_filter = sys.argv[2]
+json_data_appl = sys.argv[1]
+json_data_filter = sys.argv[2]
+data_appl_raw = json.loads(json_data_appl)
+data_filter = json.loads(json_data_filter)
+data_appl = []
+
+for appl in data_appl_raw:
+    temp = {}
+    
+    if appl["Skills"] != None:
+        temp["SKILL"] = appl["Skills"].split(", ")
+    else:
+        temp["SKILL"] = [""]
+
+    if appl["Language"] != None:
+        temp["LANG"] = appl["Language"].split(", ")
+    else:
+        temp["LANG"] = [""]
+
+    if appl["YearOfBirth"] != None:
+        current_date = datetime.utcnow()
+        birth_date = datetime.strptime(appl["YearOfBirth"].split("T")[0], "%Y-%m-%d")
+        age = current_date.year - birth_date.year
+        if current_date.month < birth_date.month or (current_date.month == birth_date.month and current_date.day < birth_date.day):
+            age -= 1
+        temp["AGE"] = age
+    else:
+        temp["AGE"] = sys.maxsize
+
+    if appl["SalaryMinimum"] != None:
+        temp["SALARY"] = appl["SalaryMinimum"]
+    else:
+        temp["SALARY"] = sys.maxsize
+    data_appl.append(temp)
+
 scoring(data_appl, data_filter)
