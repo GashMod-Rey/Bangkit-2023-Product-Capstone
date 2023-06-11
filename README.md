@@ -1,4 +1,8 @@
 # HireHub
+<div align="center">
+  <img src="logo.png">
+</div>
+
 HireHub was inspired by the fact that companies still rely on their HR to filter thousands of job applicants’ CVs. This process is time-consuming and labor-intensive. On the other hand, applicants usually have to make their online in-app profile from scratch which leads to inconsistency between their CV and online profile. Therefore, we offer this application to tackle the problem with recommenders for the company and CV text processing to generate online profiles automatically. With this application, HR will spend less time dealing with irrelevant applicants and the applicants will be helped in making their online presence in-app.
 
 HireHub is a talent search and recruitment platform that connects job seekers with potential employers. This application allows job seekers to create an online profile as simply as uploading their resume and wait for the company to offer them any related job. Employers can search for the candidate and our recommenders system in-app will help them to find the best candidate for specified criteria. This application also offers messaging feature between employers and candidates to enhance the recruitment experience. HireHub aims to surpass beyond nowadays recruitment process with some features, such as CV processing to create online profiles automatically and the recommenders system to help the company with filtering suitable candidates for specified positions.
