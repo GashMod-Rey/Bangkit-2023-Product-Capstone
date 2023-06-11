@@ -47,8 +47,12 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
                 response: Response<GetProfileApplicantResponse>
             ) {
                 if(response.isSuccessful){
-                    _cvData.value = Resource.Success(response.body())
-                    Log.d(TAG, "onResponse: ${_cvData.value}")
+                    val responseData = response.body()
+                    responseData?.let{
+                        _cvData.value = Resource.Success(it)
+                        Log.d(TAG, "onResponse: $responseData")
+                    }
+
                 }
                 else {
                     val errorMessage = response.errorBody()?.string()

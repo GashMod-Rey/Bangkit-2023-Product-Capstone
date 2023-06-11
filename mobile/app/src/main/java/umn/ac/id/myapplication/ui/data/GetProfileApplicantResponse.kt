@@ -1,8 +1,16 @@
 package umn.ac.id.myapplication.ui.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class GetProfileApplicantResponse(
+    @field:SerializedName("")
+    val profileApplicants: List<ProfileApplicant>
+)
+
+@Parcelize
+data class ProfileApplicant(
     @field: SerializedName("Username")
     val username: String,
 
@@ -50,5 +58,5 @@ data class GetProfileApplicantResponse(
 
     @field: SerializedName("PpPath")
     val ppPath: String?= null,
-)
+): Parcelable
 

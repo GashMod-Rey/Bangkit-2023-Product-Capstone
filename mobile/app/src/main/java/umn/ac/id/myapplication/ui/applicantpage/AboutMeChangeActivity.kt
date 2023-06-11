@@ -34,29 +34,35 @@ class AboutMeChangeActivity : AppCompatActivity() {
                 token = it.token
                 Log.d("TAG", "onCreate: $token")
                 viewModel.getCvData(token)
-                viewModel.cvData.observe(this) {
-                    when(it){
+                viewModel.cvData.observe(this) { resource ->
+                    when(resource){
                         is Resource.Success -> {
-                            it.data?.let { data ->
-                                binding.apply{
-                                    addName.setText(data.name)
-                                    addDate.setText(data.yearOfBirth)
-                                    addDegree.setText(data.degree)
-                                    addDesc.setText(data.summary)
-                                    addEmail.setText(data.email)
-                                    addEducationInstitution.setText(data.educationInstitution)
-                                    addPhone.setText(data.mobilePhone)
-                                    addLanguage.setText(data.language)
-                                    addSalaryMinimum.setText(data.salaryMinimum.toString())
-                                    addSkills.setText(data.skills)
-                                    addLocation.setText(data.location)
+                            val profileApplicant = resource.data?.profileApplicants
+                            profileApplicant?.let { data ->
+
+                                if(data.isNotEmpty()){
+                                    val profileApplicant = data[0]
+                                    binding.apply{
+                                        addName.setText(profileApplicant.name)
+                                        addDate.setText(profileApplicant.yearOfBirth)
+                                        addDegree.setText(profileApplicant.degree)
+                                        addDesc.setText(profileApplicant.summary)
+                                        addEmail.setText(profileApplicant.email)
+                                        addEducationInstitution.setText(profileApplicant.educationInstitution)
+                                        addPhone.setText(profileApplicant.mobilePhone)
+                                        addLanguage.setText(profileApplicant.language)
+                                        addSalaryMinimum.setText(profileApplicant.salaryMinimum.toString())
+                                        addSkills.setText(profileApplicant.skills)
+                                        addLocation.setText(profileApplicant.location)
+                                    }
                                 }
+
                             }
 
                         }
                         is Resource.Error -> {
                             Toast.makeText(
-                                this, it.message.toString(), Toast.LENGTH_SHORT
+                                this, resource.message.toString(), Toast.LENGTH_SHORT
                             ).show()
                         }
                         is Resource.Loading -> {

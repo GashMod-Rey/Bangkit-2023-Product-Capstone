@@ -101,9 +101,17 @@ class ProfileFragment : Fragment() {
                 profileViewModel.cvData.observe(viewLifecycleOwner){ resource ->
                     when(resource){
                         is Resource.Success -> {
-                            val data = resource.data
-                            binding.tvName.text = data?.name
-                            binding.tvRole.text = data?.skills
+                            val profileApplicant = resource.data?.profileApplicants
+                            profileApplicant?.let{ data ->
+                                if(data.isNotEmpty()){
+                                    val profileApplicant = data[0]
+                                    binding.apply {
+                                        tvName.text = profileApplicant.name
+                                        tvRole.text = profileApplicant.skills
+                                    }
+                                }
+                            }
+
                         }
                         is Resource.Error -> {
                             Toast.makeText(
