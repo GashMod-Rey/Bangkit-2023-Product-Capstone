@@ -814,8 +814,8 @@ app.post("/api/messages/sendfromcompany", authenticateTokenA, authenticateTokenC
 // Recommender System
 // Retrieve the data of applicants from the MySQL database
 const datafilter = [{ ageFilter: [23, 27], tolerance: 5, skillFilter: ["C", "C++", "Java"], langFilter: ["English", "Mandarin", "Javanese"], salaryFilter: [3, 12], tol: 1 }];
-// minta data filter dan CONVERT dari FRONTENDDD MOBILEEEEEE FORMATNYA KAYAK DI ATAS 
-const getApplicantsData = () => {
+// minta data filter dan CONVERT dari FRONTEND MOBILE FORMATNYA KAYAK DI ATAS 
+function getApplicantsData() {
   return new Promise((resolve, reject) => {
     const query = "SELECT * FROM Applicants";
 
@@ -828,22 +828,50 @@ const getApplicantsData = () => {
       }
     });
   });
-};
+}
 
 // Run the Python code and pass the data as command-line arguments
-const runPythonCode = async (applicantsData) => {
+// const runPythonCode = async (applicantsData) => {
+//   try {
+//     const pythonProcess = spawner("python", ["../script/Scoring.py", JSON.stringify(applicantsData), JSON.stringify(datafilter)]);
+
+//     pythonProcess.stdout.on("data", (data) => {
+//       const json_data = data.toString().trim();
+//       const x = JSON.parse(json_data);
+//       for (let i = 0; i < x.length; i++) {
+//         applicantsData[i]["Score"] = x[i];
+//       }
+//       console.log(applicantsData);
+//       res.json(applicantsData);
+
+//       // Kirim jadi JSON ke FE
+//     });
+
+//     pythonProcess.stderr.on("data", (data) => {
+//       console.error(data.toString());
+//     });
+
+//     pythonProcess.on("close", (code) => {
+//       console.log(`Python process exited with code ${code}`);
+//       // Close the connection pool
+//       connection.end();
+//     });
+//   } catch (error) {
+//     console.error("Error:", error);
+//     // Close the connection pool
+//     connection.end();
+//   }
+// };
+
+// Run the Python code and pass the data as command-line arguments
+const runPythonCode = async (applicantsData, res) => {
   try {
     const pythonProcess = spawner("python", ["../script/Scoring.py", JSON.stringify(applicantsData), JSON.stringify(datafilter)]);
 
-    pythonProcess.stdout.on("data", (data) => {
-      const json_data = data.toString().trim();
-      const x = JSON.parse(json_data);
-      for (let i = 0; i < x.length; i++) {
-        applicantsData[i]["Score"] = x[i];
-      }
-      console.log(applicantsData);
+    let result = ""; // Variable to store the result from the Python code
 
-      // Kirim jadi JSON ke FE
+    pythonProcess.stdout.on("data", (data) => {
+      result += data.toString();
     });
 
     pythonProcess.stderr.on("data", (data) => {
@@ -854,24 +882,86 @@ const runPythonCode = async (applicantsData) => {
       console.log(`Python process exited with code ${code}`);
       // Close the connection pool
       connection.end();
+
+      try {
+        const json_data = result.trim();
+        const x = JSON.parse(json_data);
+        for (let i = 0; i < x.length; i++) {
+          applicantsData[i]["Score"] = x[i];
+        }
+        console.log(applicantsData);
+
+        // Convert to JSON format and send it to the frontend
+        res.json(applicantsData);
+      } catch (error) {
+        console.error("Error:", error);
+        // Handle error response to the frontend
+        res.status(500).json({ error: "An error occurred" });
+      }
     });
   } catch (error) {
     console.error("Error:", error);
     // Close the connection pool
     connection.end();
+    // Handle error response to the frontend
+    res.status(500).json({ error: "An error occurred" });
   }
 };
 
-// Retrieve the data of applicants and run the Python code
-getApplicantsData()
-  .then((applicantsData) => {
-    runPythonCode(applicantsData);
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-    // Close the connection pool
-    connection.end();
-  });
+// Express.js endpoint to receive data from mobile frontend
+app.post('/api/filter', (req, res) => {
+  const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol } = req.body;
+
+  // Create the data filter object
+  const datafilter = [
+    {
+      ageFilter: [ageFilter.min, ageFilter.max],
+      tolerance,
+      skillFilter,
+      langFilter,
+      salaryFilter: [salaryFilter.min, salaryFilter.max],
+      tol
+    }
+  ];
+
+  // Retrieve the data of applicants and run the Python code
+  getApplicantsData()
+    .then((applicantsData) => {
+      runPythonCode(applicantsData, res); // Pass the `res` object as an argument
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      res.sendStatus(500);
+    });
+});
+
+// Express.js endpoint to receive data from mobile frontend
+// app.post('/api/filter', (req, res) => {
+//   const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol } = req.body;
+
+//   // Create the data filter object
+//   const datafilter = [
+//     {
+//       ageFilter: [ageFilter.min, ageFilter.max],
+//       tolerance,
+//       skillFilter,
+//       langFilter,
+//       salaryFilter: [salaryFilter.min, salaryFilter.max],
+//       tol
+//     }
+//   ];
+
+//   // Retrieve the data of applicants and run the Python code
+//   getApplicantsData()
+//     .then((applicantsData) => {
+//       runPythonCode(applicantsData, datafilter);
+//       res.sendStatus(200);
+//     })
+//     .catch((error) => {
+//       console.error('Error:', error);
+//       res.sendStatus(500);
+//     });
+// });
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
