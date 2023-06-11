@@ -29,22 +29,6 @@ class AboutMeChangeActivity : AppCompatActivity() {
         val pref = UserPreferences.getInstance(dataStore)
         val viewModel = ViewModelProvider(this, ProfileViewModelFactory(pref))[ProfileViewModel::class.java]
 
-//        viewModel.cvData.observe(this){
-//            cvData ->
-//            cvData?.let {
-//                binding.addName.setText(cvData.data?.Name)
-//                binding.addDate.setText(cvData.data?.YearOfBirth)
-//                binding.addDegree.setText(cvData.data?.Degree)
-//                binding.addDesc.setText(cvData.data?.Summary)
-//                binding.addEmail.setText(cvData.data?.Email)
-//                binding.addEducationInstitution.setText(cvData.data?.EducationInstitution)
-//                binding.addPhone.setText(cvData.data?.MobilePhone)
-//                binding.addLanguage.setText(cvData.data?.Language)
-//                binding.addSalaryMinimum.setText(cvData.data?.SalaryMinimum.toString())
-//                binding.addSkills.setText(cvData.data?.Skills)
-//                binding.addLocation.setText(cvData.data?.Location)
-//            }
-//        }
         viewModel.getSession().observe(this){
             if(it.isLogin){
                 token = it.token
@@ -54,17 +38,19 @@ class AboutMeChangeActivity : AppCompatActivity() {
                     when(it){
                         is Resource.Success -> {
                             it.data?.let { data ->
-                                binding.addName.setText(data.name)
-                                binding.addDate.setText(data.yearOfBirth)
-                                binding.addDegree.setText(data.degree)
-                                binding.addDesc.setText(data.summary)
-                                binding.addEmail.setText(data.email)
-                                binding.addEducationInstitution.setText(data.educationInstitution)
-                                binding.addPhone.setText(data.mobilePhone)
-                                binding.addLanguage.setText(data.language)
-                                binding.addSalaryMinimum.setText(data.salaryMinimum.toString())
-                                binding.addSkills.setText(data.skills)
-                                binding.addLocation.setText(data.location)
+                                binding.apply{
+                                    addName.setText(data.name)
+                                    addDate.setText(data.yearOfBirth)
+                                    addDegree.setText(data.degree)
+                                    addDesc.setText(data.summary)
+                                    addEmail.setText(data.email)
+                                    addEducationInstitution.setText(data.educationInstitution)
+                                    addPhone.setText(data.mobilePhone)
+                                    addLanguage.setText(data.language)
+                                    addSalaryMinimum.setText(data.salaryMinimum.toString())
+                                    addSkills.setText(data.skills)
+                                    addLocation.setText(data.location)
+                                }
                             }
 
                         }

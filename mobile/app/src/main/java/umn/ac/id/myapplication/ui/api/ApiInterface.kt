@@ -1,5 +1,6 @@
 package umn.ac.id.myapplication.ui.api
 
+import android.provider.ContactsContract.Profile
 import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -58,6 +59,15 @@ interface ApiInterface {
         @Field("MobilePhone") MobilePhone: String
     ): Call<ProfileApplicantResponse>
 
+    @POST("setProfileCompany")
+    fun setProfileCompany(
+        @Header("Authorization") token: String,
+        @Field("name") name: String,
+        @Field("summary") summary: String,
+        @Field("location") location: String,
+        @Field("employee") employee: Int
+    ): Call<ProfileApplicantResponse>
+
     @GET("getProfile")
     fun getProfileApplicant (
         @Header("Authorization") token: String
@@ -67,5 +77,24 @@ interface ApiInterface {
     fun getProfileCompany(
         @Header("Authorization") token: String
     ): Call<GetCompanyProfileResponse>
+
+    @POST("offer")
+    fun offerProcess(
+        @Header("Authorization") token: String,
+        @Field("usernameA") usernameA: String,
+        @Field("usernameC") usernameC: String
+    ): Call<ProcessResponse>
+
+    @POST("offerResponse")
+    fun offerApplicant(
+        @Header("Authorization") token: String,
+        @Field("offer") offer: Boolean
+    ): Call<OfferApplicantResponse>
+
+    @POST("status")
+    fun status(
+        @Header("Authorization") token: String,
+        @Field("offer") offer: String
+    ): Call<StatusResponse>
 
 }
