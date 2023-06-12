@@ -34,14 +34,13 @@ This application was built using technical stack explained below.
       <li> IDEs&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : Jupyter Notebook & Visual Studio Code </li>
       <li> Libraries&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: NLTK, SpaCy, string, requests, fitz, re, time, tqdm, sys, json, sklearn, tensorflow, keras, pathlib, warnings </li>
       <li> Pre-built model&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : en_core_web_sm & en_core_web_md </li>
-      <li> New findings&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : model to detect academic degree in /script/output/model-best, three entity content-based filtering (in RecommenderSystem.ipynb, Experimental Work section), and two JSONL files to detect country/languages in a CV </li>
     </ul>
   </li>
   <li> Mobile Development: 
     <ul>
       <li> Main Scripting/Programming Language : Kotlin & XML </li>
       <li> IDE&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; : Android Studio </li>
-      <li> Library&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : Retrofit </li>
+      <li> Library&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : Retrofit, Glide, Datastore, TensorFlow Lite, Socket.io, GSON, Dexter, Room Database, CircleImageView, LiveData, ViewModel </li>
     </ul>
   </li>
   <li> Cloud Computing: 
@@ -56,6 +55,9 @@ This application was built using technical stack explained below.
 </ol>
 
 ## 2. Machine Learning Description and Data Usage
+
+<b> New Findings&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : model to detect academic degree in /script/output/model-best, three entities content-based filtering (in RecommenderSystem.ipynb, Experimental Work section), and two JSONL files to detect country/languages in a CV </b>
+
 There are three main workloads for Machine Learning team, namely searching for PDF-formatted CV dataset, building a model that can recognize entity from CV/Resume (entity: name, location, education institution, education degree, email, mobile phone, skills, languages, and professional summary), and building a recommendation system for filtering applicants in HR/companies-side.
 This application used PDF-formatted CV data from various source. For Machine Learning training purposes, we used data from.
 <ol>
@@ -184,9 +186,13 @@ Endpoints for companies-side features:
         </ul>
 </ol>  
 
-## 4. Replication and Duplication Steps
+## 4. Mobile Development Description
+Link to our Figma (prototype) is as follow. <br/>
+https://www.figma.com/file/KjWlvjAYf1CdEYnAkvxbS7/HireHub?type=design&node-id=0-1&t=diQxH05lD12A2Cdt-0
+
+## 5. Replication and Duplication Steps
 This section contains how to replicate (running the code given) and duplicate (remake/re-develop) this project.
-### 4.1 Machine Learning
+### 5.1 Machine Learning
 Assume that you didn't have Python or Jupyter Notebook installed in your device, then you should download and install Python and Jupyter Notebook first. After set up all the necessary options, follow this step below to replicate the project.
 <ol>
   <li>Clone the project from GitHub (project contains code for Machine Learning, Cloud Computing, and Mobile Development)</li>
@@ -275,32 +281,32 @@ for ent in result.ents:
   <li>Relocate core code of the .ipynb file to .py file (scoring/indexing each attribute and create a ready-to-use matrix).</li>
 </ol>
 
-### 4.2 Cloud Computing
-### 4.3 Mobile Development
+### 5.2 Cloud Computing
+### 5.3 Mobile Development
 
-## 5. Future Works
+## 6. Future Works
 There are some future works that team will take care of in the future to make sure that users have the best experience using the application, such as.
-### 5.1 Machine Learning
-#### 5.1.1 CV Parser
+### 6.1 Machine Learning
+#### 6.1.1 CV Parser
 <ol>
   <li>Getting keyword from a CV</li>
   <li>Getting working experience from a CV</li>
   <li>Optimizing time and memory consumption of the parsing algorithm</li>
 </ol>
 
-#### 5.1.2 Recommender System
+#### 6.1.2 Recommender System
 <ol>
   <li>Incorporating experimental work (word embedding + content-based filtering) to the system</li>
   <li>Simplifying and optimizing time and memory consumption of the preprocessing and recommendation algorithm</li>
 </ol>
 
-### 5.2 Cloud Computing
+### 6.2 Cloud Computing
 <ol>
   <li>Scaling the project further</li>
   <li>Separating the working server with ML algorithm server</li>
 </ol>
 
-### 5.3 Mobile Development
+### 6.3 Mobile Development
 <ol>
   <li>Increasing UI/UX aspects</li>
   <li>Fitting responsiveness (for various device size) to the application</li>
