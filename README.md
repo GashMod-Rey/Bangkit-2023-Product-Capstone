@@ -1,7 +1,21 @@
 # HireHub
+<br/>
 <div align="center">
   <img src="logo.png">
 </div>
+<div align="center">
+  This project was made by team SOLID.exe [C23-PS241] Bangkit Academy 2023 H1. 
+</div>
+<br/>
+
+| Name                    | Bangkit ID    | Learning Path      |
+| ----------------------- |---------------| -------------------|
+| Reynard Matthew Yaputra | M264DSX1826   | Machine Learning   |
+| Hanny Putri Gayatri     | M346DSY3464   | Machine Learning   |
+| Nadya Angelia           | A346DSY2036   | Mobile Development |
+| Gianzra Andelle Basae   | A346DKX4498   | Mobile Development |
+| Yoga Aditiya            | C264DSX2386   | Cloud Computing    |
+| Nehemia Gueldi          | C264DSX2229   | Cloud Computing    |
 
 HireHub was inspired by the fact that companies still rely on their HR to filter thousands of job applicants’ CVs. This process is time-consuming and labor-intensive. On the other hand, applicants usually have to make their online in-app profile from scratch which leads to inconsistency between their CV and online profile. Therefore, we offer this application to tackle the problem with recommenders for the company and CV text processing to generate online profiles automatically. With this application, HR will spend less time dealing with irrelevant applicants and the applicants will be helped in making their online presence in-app.
 
@@ -11,7 +25,7 @@ Hirehub has two user-level, the applicants and the companies. Firstly, the appli
 
 On the other hand, company user-level can make their profile online manually. They can also search for applicants/talents with simple steps, such as setting the filter (filtering age/skills/other) and then searching. Then, our application will recommend (with the recommender system that we develop) some applicants in a list from the most relevant to the filter all the way down to the most irrelevant to the filter. HR can then see their online profile and CV, then can offer the applicants a job. HR needs to wait for applicants' responses and if applicants accept the offer for recruitment, the recruitment process will be facilitated via chat in our application. Then, the company will have the right to cancel the recruitment process (since the applicants are no longer relevant, mismatch in the interview/technical test, etc.) or accept the applicants to their companies. If the applicants are accepted by the company, then they will disappear from the search list and the running recruitment process will be terminated.
 
-### 1. Technical Stack
+## 1. Technical Stack
 This application was built using technical stack explained below.
 <ol>
   <li> Machine Learning: 
@@ -41,7 +55,7 @@ This application was built using technical stack explained below.
   </li>
 </ol>
 
-### 2. Machine Learning Description and Data Usage
+## 2. Machine Learning Description and Data Usage
 There are three main workloads for Machine Learning team, namely searching for PDF-formatted CV dataset, building a model that can recognize entity from CV/Resume (entity: name, location, education institution, education degree, email, mobile phone, skills, languages, and professional summary), and building a recommendation system for filtering applicants in HR/companies-side.
 This application used PDF-formatted CV data from various source. For Machine Learning training purposes, we used data from.
 <ol>
@@ -91,7 +105,7 @@ In addition, we did some experimental work (heavier and inteded to be more robus
 
 For specific documentation of input, output, and process, kindly refer to documentation written in .ipynb.
 
-### 3. Backend Description and List of Endpoints
+## 3. Backend Description and List of Endpoints
 This application using NodeJS as programming language and Express as its framework.
 Here is a list of dependencies used and how to install them:
 <ol>
@@ -170,9 +184,9 @@ Endpoints for companies-side features:
         </ul>
 </ol>  
 
-### 4. Replication and Duplication Steps
+## 4. Replication and Duplication Steps
 This section contains how to replicate (running the code given) and duplicate (remake/re-develop) this project.
-#### 4.1. Machine Learning
+### 4.1. Machine Learning
 Assume that you didn't have Python or Jupyter Notebook installed in your device, then you should download and install Python and Jupyter Notebook first. After set up all the necessary options, follow this step below to replicate the project.
 <ol>
   <li>Clone the project from GitHub (project contains code for Machine Learning, Cloud Computing, and Mobile Development)</li>
@@ -261,5 +275,5 @@ for ent in result.ents:
   <li>Relocate core code of the .ipynb file to .py file (scoring/indexing each attribute and create a ready-to-use matrix).</li>
 </ol>
 
-#### 4.2. Cloud Computing
-#### 4.3. Mobile Development
+### 4.2. Cloud Computing
+### 4.3. Mobile Development
