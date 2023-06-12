@@ -107,7 +107,8 @@ In addition, we did some experimental work (heavier and inteded to be more robus
 
 For specific documentation of input, output, and process, kindly refer to documentation written in .ipynb.
 
-## 3. Backend Description and List of Endpoints
+## 3. Cloud Computing/Backend Description and List of Endpoints
+There are some workloads for cloud computing team, such as database, backend, bucket, run Python from backend, API, and deploying backend on cloud.
 This application using NodeJS as programming language and Express as its framework.
 Here is a list of dependencies used and how to install them:
 <ol>
@@ -210,8 +211,10 @@ Endpoints for chat companies-side features:
 </ol>
 
 ## 4. Mobile Development Description
-Link to our Figma (prototype) is as follow. <br/>
+Prototype of this mobile application was made with Figma. Link to our Figma (prototype) is as follow. <br/>
 https://www.figma.com/file/KjWlvjAYf1CdEYnAkvxbS7/HireHub?type=design&node-id=0-1&t=diQxH05lD12A2Cdt-0
+
+... (here!)
 
 ## 5. Replication and Duplication Steps
 This section contains how to replicate (running the code given) and duplicate (remake/re-develop) this project.
