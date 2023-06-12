@@ -214,7 +214,133 @@ Endpoints for chat companies-side features:
 Prototype of this mobile application was made with Figma. Link to our Figma (prototype) is as follow. <br/>
 https://www.figma.com/file/KjWlvjAYf1CdEYnAkvxbS7/HireHub?type=design&node-id=0-1&t=diQxH05lD12A2Cdt-0
 
-... (here!)
+### 4.1 Applicant Side
+<ol>
+  <li>About Me</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>About Me Change</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Company Profile</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>History Reject</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>History Success</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Login</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Login Option</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Main</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Settings</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Sign Up</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Upload CV</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Upload CV Success</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Chat Applicant</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Profile Applicant</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+</ol>
+
+### 4.2 Company Side
+<ol>
+  <li>Edit Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Failed Hired Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Hiring Process Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>History Decline Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>History Success Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>History Waiting Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Job Preferences</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Login Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Main Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Process Applicants</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Register Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Settings Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Succesfully Hiring Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Waiting Hired Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Chat Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+  <li>Profile Company</li>
+  <ul>
+    <li>Function : </li>
+  </ul>
+</ol>
 
 ## 5. Replication and Duplication Steps
 This section contains how to replicate (running the code given) and duplicate (remake/re-develop) this project.
