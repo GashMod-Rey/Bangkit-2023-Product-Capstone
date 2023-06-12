@@ -184,7 +184,30 @@ Endpoints for companies-side features:
             <li> Function: Get the profile data of a company.</li>
             <li> Implementation: About me Page.</li>
         </ul>
-</ol>  
+</ol>
+
+Endpoints for chat applicants-side features:
+<ol>
+    <li>(POST) /api/chat/newchat </li>
+          <ul>
+              <li> Function: Create Room Chat if applicant accept the offer from company.</li>
+              <li> Implementation: Accept button.</li>
+          </ul>
+    <li>(POST) /api/messages/sendfromapplicant </li>
+        <ul>
+            <li> Function: Send message from applicant to company.</li>
+            <li> Implementation: Send message button.</li>
+        </ul>
+</ol>
+
+Endpoints for chat companies-side features:
+<ol>
+    <li>(POST) /api/messages/sendfromcompany </li>
+        <ul>
+            <li> Function: Send message from company to applicant.</li>
+            <li> Implementation: Send message button.</li>
+        </ul>
+</ol>
 
 ## 4. Mobile Development Description
 Link to our Figma (prototype) is as follow. <br/>
