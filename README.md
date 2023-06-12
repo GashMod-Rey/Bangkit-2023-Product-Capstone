@@ -305,6 +305,34 @@ for ent in result.ents:
 </ol>
 
 ### 5.2 Cloud Computing
+1. Project configuration
+   - Set the project name (Capstone-Project-Hirehub)
+   - Connect the project to bangkit academy billing account
+   - Set the organization as bangkit.academy
+2. Bucket configuration for PDF storage 
+   - Set the bucket name (bucket-pdf33)
+   - Select the region as location type (asia-southeast2)
+   - Uncheck the "enforce public access prevention"
+   - Create the bucket
+   - Set the bucket to public by giving permission to allUsers as viewer
+4. MySQL configuration
+   - Create new instance in SQL
+   - Select MySQL
+   - Set the ID and Password
+   - Set the database 5.7 version 
+   - Create the database in MySQL and create the table needed
+   - Set the connection service so the database can be access from public internet
+5. Service Account configuration
+   - Create a service account as a credential to access the project
+   - Add new key to acccess the service account
+   - Download as JSON file and connect the key to code
+6. Configure the App Engine
+   - Turn on the App Engine service
+   - Open editor and clone the code
+   - Initialize project using gcloud init
+   - Set the app.yaml into the right service (default and then backend)
+   - Deploy with gcloud app deploy
+
 ### 5.3 Mobile Development
 
 ## 6. Future Works
