@@ -11,16 +11,13 @@ import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.Header
 import umn.ac.id.myapplication.ui.api.ApiClient
-import umn.ac.id.myapplication.ui.data.GetProfileApplicantResponse
-import umn.ac.id.myapplication.ui.data.ProfileApplicantResponse
-import umn.ac.id.myapplication.ui.data.UserPreferences
-import umn.ac.id.myapplication.ui.data.UserSession
+import umn.ac.id.myapplication.ui.data.*
 import umn.ac.id.myapplication.ui.utils.Resource
 
 class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel() {
 
-    private val _cvData = MutableLiveData<Resource<GetProfileApplicantResponse?>>()
-    val cvData: LiveData<Resource<GetProfileApplicantResponse?>>  = _cvData
+    private val _cvData = MutableLiveData<Resource<GetProfileApplicantResponse>?>()
+    val cvData: LiveData<Resource<GetProfileApplicantResponse>?>  = _cvData
 
     private val _updateCvData = MutableLiveData<Resource<ProfileApplicantResponse?>>()
     val updateCvData: LiveData<Resource<ProfileApplicantResponse?>> = _updateCvData

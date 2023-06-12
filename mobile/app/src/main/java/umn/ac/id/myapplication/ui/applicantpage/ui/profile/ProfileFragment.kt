@@ -101,15 +101,13 @@ class ProfileFragment : Fragment() {
                 profileViewModel.cvData.observe(viewLifecycleOwner){ resource ->
                     when(resource){
                         is Resource.Success -> {
-                            val profileApplicant = resource.data?.profileApplicants
+                            val profileApplicant = resource.data
                             profileApplicant?.let{ data ->
-                                if(data.isNotEmpty()){
-                                    val profileApplicant = data[0]
                                     binding.apply {
-                                        tvName.text = profileApplicant.name
-                                        tvRole.text = profileApplicant.skills
+                                        tvName.text = data.name
+                                        tvRole.text = data.skills
                                     }
-                                }
+
                             }
 
                         }
@@ -121,6 +119,7 @@ class ProfileFragment : Fragment() {
                         is Resource.Loading ->{
 
                         }
+                        else -> {}
                     }
                 }
             }

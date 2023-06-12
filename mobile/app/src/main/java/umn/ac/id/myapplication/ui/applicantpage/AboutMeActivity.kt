@@ -44,24 +44,22 @@ class AboutMeActivity : AppCompatActivity() {
                 profileViewModel.cvData.observe(this) { resource ->
                     when(resource){
                         is Resource.Success -> {
-                            val profileResponse = resource.data?.profileApplicants
+                            val profileResponse = resource.data
                             profileResponse?.let { data ->
-                                if(data.isNotEmpty()){
-                                    val profileApplicant = data[0]
-                                    binding.tvName.text = "Name: ${profileApplicant.name}"
-                                    binding.tvAge.text = "Year Of Birth: ${profileApplicant.yearOfBirth}"
-                                    binding.tvDesc.text = "Summary: ${profileApplicant.summary}"
-                                    binding.tvEducationInstitution.text = "Education Institution: ${profileApplicant.educationInstitution}"
-                                    binding.tvLanguage.text = "Language: ${profileApplicant.language}"
-                                    binding.tvEmail.text = "Email : ${profileApplicant.email}"
-                                    binding.tvMobilePhone.text = "Phone : ${profileApplicant.mobilePhone}"
-                                    binding.tvSkills.text = "Skills: ${profileApplicant.skills}"
-                                    binding.tvDegree.text = "Degree: ${profileApplicant.degree}"
-                                }
+                                    binding.tvName.text = "Name: ${data.name}"
+                                    binding.tvAge.text = "Year Of Birth: ${data.yearOfBirth}"
+                                    binding.tvDesc.text = "Summary: ${data.summary}"
+                                    binding.tvEducationInstitution.text = "Education Institution: ${data.educationInstitution}"
+                                    binding.tvLanguage.text = "Language: ${data.language}"
+                                    binding.tvEmail.text = "Email : ${data.email}"
+                                    binding.tvMobilePhone.text = "Phone : ${data.mobilePhone}"
+                                    binding.tvSkills.text = "Skills: ${data.skills}"
+                                    binding.tvDegree.text = "Degree: ${data.degree}"
+                                   }
 
                             }
 
-                        }
+
                         is Resource.Error -> {
                             Toast.makeText(
                                 this, resource.message.toString(), Toast.LENGTH_SHORT
@@ -71,6 +69,8 @@ class AboutMeActivity : AppCompatActivity() {
 
                         }
 
+
+                        else -> {}
                     }
                 }
             }

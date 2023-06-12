@@ -37,29 +37,24 @@ class AboutMeChangeActivity : AppCompatActivity() {
                 viewModel.cvData.observe(this) { resource ->
                     when(resource){
                         is Resource.Success -> {
-                            val profileApplicant = resource.data?.profileApplicants
+                            val profileApplicant = resource.data
                             profileApplicant?.let { data ->
-
-                                if(data.isNotEmpty()){
-                                    val profileApplicant = data[0]
                                     binding.apply{
-                                        addName.setText(profileApplicant.name)
-                                        addDate.setText(profileApplicant.yearOfBirth)
-                                        addDegree.setText(profileApplicant.degree)
-                                        addDesc.setText(profileApplicant.summary)
-                                        addEmail.setText(profileApplicant.email)
-                                        addEducationInstitution.setText(profileApplicant.educationInstitution)
-                                        addPhone.setText(profileApplicant.mobilePhone)
-                                        addLanguage.setText(profileApplicant.language)
-                                        addSalaryMinimum.setText(profileApplicant.salaryMinimum.toString())
-                                        addSkills.setText(profileApplicant.skills)
-                                        addLocation.setText(profileApplicant.location)
+                                        addName.setText(data.name)
+                                        addDate.setText(data.yearOfBirth)
+                                        addDegree.setText(data.degree)
+                                        addDesc.setText(data.summary)
+                                        addEmail.setText(data.email)
+                                        addEducationInstitution.setText(data.educationInstitution)
+                                        addPhone.setText(data.mobilePhone)
+                                        addLanguage.setText(data.language)
+                                        addSalaryMinimum.setText(data.salaryMinimum.toString())
+                                        addSkills.setText(data.skills)
+                                        addLocation.setText(data.location)
                                     }
                                 }
 
                             }
-
-                        }
                         is Resource.Error -> {
                             Toast.makeText(
                                 this, resource.message.toString(), Toast.LENGTH_SHORT
@@ -69,6 +64,7 @@ class AboutMeChangeActivity : AppCompatActivity() {
 
                         }
 
+                        else -> {}
                     }
                 }
 
