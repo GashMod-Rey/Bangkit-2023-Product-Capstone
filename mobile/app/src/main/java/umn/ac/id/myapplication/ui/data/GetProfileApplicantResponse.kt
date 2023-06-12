@@ -45,7 +45,7 @@ data class GetProfileApplicantResponse(
     val mobilePhone: String?= null,
 
     @field: SerializedName("OpenToWork")
-    val openToWork: Boolean? = null,
+    val openToWork: Int? = null,
 
     @field: SerializedName("PdfPath")
     val pdfPath: String?= null,

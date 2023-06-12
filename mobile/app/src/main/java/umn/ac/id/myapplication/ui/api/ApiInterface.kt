@@ -43,6 +43,7 @@ interface ApiInterface {
         @Field("password") password: String,
     ): Call <SignUpResponse>
 
+    @FormUrlEncoded
     @POST("setProfileApplicant")
     fun setProfileApplicant(
         @Header("Authorization") token: String,
@@ -59,6 +60,7 @@ interface ApiInterface {
         @Field("MobilePhone") MobilePhone: String
     ): Call<ProfileApplicantResponse>
 
+    @FormUrlEncoded
     @POST("setProfileCompany")
     fun setProfileCompany(
         @Header("Authorization") token: String,
@@ -78,6 +80,7 @@ interface ApiInterface {
         @Header("Authorization") token: String
     ): Call<GetCompanyProfileResponse>
 
+    @FormUrlEncoded
     @POST("offer")
     fun offerProcess(
         @Header("Authorization") token: String,
@@ -85,12 +88,14 @@ interface ApiInterface {
         @Field("usernameC") usernameC: String
     ): Call<ProcessResponse>
 
+    @FormUrlEncoded
     @POST("offerResponse")
     fun offerApplicant(
         @Header("Authorization") token: String,
         @Field("offer") offer: Boolean
     ): Call<OfferApplicantResponse>
 
+    @FormUrlEncoded
     @POST("status")
     fun status(
         @Header("Authorization") token: String,
