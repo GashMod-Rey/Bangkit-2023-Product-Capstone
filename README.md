@@ -337,6 +337,19 @@ for ent in result.ents:
    - Deploy with gcloud app deploy
 
 ### 5.3 Mobile Development
+To replicate this code (run in your local), please download Android Studio and related resources (SDK, etc.). Then, wait for gradle to build and you should have the functional apps.
+
+To duplicate this code, these are the steps we have done:
+<ol>
+  <li>Make the XML for each activity/fragment</li>
+  <li>Make the Intent to connect between Activity</li>
+  <li>Inflate the related Fragment</li>
+  <li>Make the logic code in Kotlin</li>
+  <li>Setup the Retrofit for API connection between Front-End and Back-End</li>
+  <li>Setup the Socket.io for Chat Feature</li>
+  <li>Setup for TensorFlow Lite inference in Front-End</li>
+  <li>Debugging/Testing/Issue Fixing</li>
+</ol>
 
 ## 6. Future Works
 There are some future works that team will take care of in the future to make sure that users have the best experience using the application, such as.
