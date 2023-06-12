@@ -186,7 +186,7 @@ Endpoints for companies-side features:
 
 ## 4. Replication and Duplication Steps
 This section contains how to replicate (running the code given) and duplicate (remake/re-develop) this project.
-### 4.1. Machine Learning
+### 4.1 Machine Learning
 Assume that you didn't have Python or Jupyter Notebook installed in your device, then you should download and install Python and Jupyter Notebook first. After set up all the necessary options, follow this step below to replicate the project.
 <ol>
   <li>Clone the project from GitHub (project contains code for Machine Learning, Cloud Computing, and Mobile Development)</li>
@@ -275,5 +275,33 @@ for ent in result.ents:
   <li>Relocate core code of the .ipynb file to .py file (scoring/indexing each attribute and create a ready-to-use matrix).</li>
 </ol>
 
-### 4.2. Cloud Computing
-### 4.3. Mobile Development
+### 4.2 Cloud Computing
+### 4.3 Mobile Development
+
+## 5. Future Works
+There are some future works that team will take care of in the future to make sure that users have the best experience using the application, such as.
+### 5.1 Machine Learning
+#### 5.1.1 CV Parser
+<ol>
+  <li>Getting keyword from a CV</li>
+  <li>Getting working experience from a CV</li>
+  <li>Optimizing time and memory consumption of the parsing algorithm</li>
+</ol>
+
+#### 5.1.2 Recommender System
+<ol>
+  <li>Incorporating experimental work (word embedding + content-based filtering) to the system</li>
+  <li>Simplifying and optimizing time and memory consumption of the preprocessing and recommendation algorithm</li>
+</ol>
+
+### 5.2 Cloud Computing
+<ol>
+  <li>Scaling the project further</li>
+  <li>Separating the working server with ML algorithm server</li>
+</ol>
+
+### 5.3 Mobile Development
+<ol>
+  <li>Increasing UI/UX aspects</li>
+  <li>Fitting responsiveness (for various device size) to the application</li>
+</ol>
