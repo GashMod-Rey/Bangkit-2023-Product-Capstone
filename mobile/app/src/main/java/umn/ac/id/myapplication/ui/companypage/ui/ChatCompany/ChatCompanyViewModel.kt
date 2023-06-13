@@ -3,8 +3,9 @@ package umn.ac.id.myapplication.ui.companypage.ui.ChatCompany
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import umn.ac.id.myapplication.ui.data.UserPreferences
 
-class ChatCompanyViewModel : ViewModel() {
+class ChatCompanyViewModel(userPreferences: UserPreferences) : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

@@ -14,7 +14,8 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
             preferences ->
             UserSession(
                 preferences[IS_LOGIN] ?: false,
-                preferences[TOKEN]?: ""
+                preferences[TOKEN]?: "",
+                preferences[USERNAME]?: "",
             )
         }
     }
@@ -24,6 +25,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
             preferences ->
             preferences[IS_LOGIN] = userSession.isLogin
             preferences[TOKEN] = userSession.token
+            preferences[USERNAME] = userSession.username
         }
     }
 
@@ -36,6 +38,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     companion object{
         private val IS_LOGIN = booleanPreferencesKey("is_login")
         private val TOKEN = stringPreferencesKey("token")
+        private val USERNAME = stringPreferencesKey("username")
 
         @Volatile
         private var INSTANCE: UserPreferences? = null

@@ -11,6 +11,17 @@
     <color name="blueMain">#356899</color>
     <color name="greenSuccess">#1ED760</color>
     <color name="greyCancelled">#AAA6B9</color>
+    <color name="colorAccent">#FFCEA3</color>
+    <color name="colorAccent0">#5EFFCEA3</color>
+    <color name="colorAccent100">#C68C8C8C</color>
+    <color name="colorPrimary2">#3E3E3E</color>
+    <color name="colorGreen">#4CAF50</color>
 
+    <color name="transparent">#00000000</color>
+    <color name="edittextColor">#DDDDDD</color>
+    <color name="grey">#AAAAAA</color>
+
+    <item name="cardBackground" type="color">#f6f6f6</item>
+    <color name="textColor">#999DA4</color>
 
 </resources>

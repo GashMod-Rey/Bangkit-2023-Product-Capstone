@@ -4,13 +4,20 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import umn.ac.id.myapplication.R
+import com.google.gson.Gson
+import io.socket.client.Socket
+import org.json.JSONObject
 import umn.ac.id.myapplication.databinding.ActivityLoginBinding
+import umn.ac.id.myapplication.ui.api.SocketManager
+import umn.ac.id.myapplication.ui.chat.demo.ui.UserListActivity
+import umn.ac.id.myapplication.ui.chat.model.User
+import umn.ac.id.myapplication.ui.chat.other.*
 import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.data.UserSession
 import umn.ac.id.myapplication.ui.utils.Resource
@@ -21,6 +28,7 @@ import umn.ac.id.myapplication.ui.viewmodelfactory.LoginViewModelFactory
 class LoginActivity : AppCompatActivity() {
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name="user")
     private lateinit var binding: ActivityLoginBinding
+    private var socket: Socket? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -28,6 +36,19 @@ class LoginActivity : AppCompatActivity() {
 
         val pref = UserPreferences.getInstance(dataStore)
         val loginViewModel = ViewModelProvider(this, LoginViewModelFactory(pref))[LoginViewModel::class.java]
+
+
+        socket = SocketManager.getInstance(this)!!.getSocket()
+
+        socket!!.on("SingIn") { args ->
+            Log.e("ttttttttt", "${args[0]}")
+            runOnUiThread {
+                users = Gson().fromJson(args[1].toString(), User::class.java)
+                Intent(this@LoginActivity, MainActivity::class.java).also {
+                    startActivity(it)
+                }
+            }
+        }
 
         binding.buttonLogin.setOnClickListener {
             val username = binding.adUsernameLogin.text.toString().trim()
@@ -45,12 +66,22 @@ class LoginActivity : AppCompatActivity() {
                             loginViewModel.saveSession(
                                 UserSession(
                                     true,
-                                    "Bearer " + it.data?.token
+                                    "Bearer " + it.data?.token,
+                                            username
                                 )
                             )
-                            val intent = Intent(this, MainActivity::class.java)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                            startActivity(intent)
+
+                            val jsonObject = JSONObject()
+                            jsonObject.put("user", username)
+                            jsonObject.put("token", it.data?.token)
+                            Toast.makeText(this, jsonObject.toString(), Toast.LENGTH_LONG).show()
+                            socket!!.emit("SingIn", username, jsonObject)
+
+                            Intent(this@LoginActivity, MainActivity::class.java).also {
+                                startActivity(it)
+                                }
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+//                            startActivity(intent)
 
                             finish()
                         }
@@ -74,5 +105,9 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
+    }
+
+    companion object {
+        lateinit var users: User
     }
 }
