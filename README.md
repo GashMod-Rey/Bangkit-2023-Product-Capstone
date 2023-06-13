@@ -109,6 +109,12 @@ For specific documentation of input, output, and process, kindly refer to docume
 
 ## 3. Cloud Computing/Backend Description and List of Endpoints
 There are some workloads for cloud computing team, such as database, backend, bucket, run Python from backend, API, and deploying backend on cloud.
+
+The architechture of our backend is as follow.
+<div align="center">
+  <img src="Architechture.png" width="50%">
+</div>
+
 This application using NodeJS as programming language and Express as its framework.
 Here is a list of dependencies used and how to install them:
 <ol>
@@ -231,6 +237,16 @@ Our Chat Feature Implementation Flowchart is as follow.
 </div>
 <div align="center">
   <img src="Chat History Flow.png" width="35%">
+</div>
+
+Data flow for CV Parsing Process is as follow.
+<div align="center">
+  <img src="CVParser.png">
+</div>
+
+Data flow for Recommender System is as follow.
+<div align="center">
+  <img src="Recommender.png">
 </div>
 
 ## 4. Mobile Development Description
