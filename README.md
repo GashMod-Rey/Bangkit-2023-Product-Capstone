@@ -1,4 +1,4 @@
-# HireHub
+# HireHub - 
 <br/>
 <div align="center">
   <img src="logo.png">
@@ -185,6 +185,11 @@ Endpoints for companies-side features:
             <li> Function: Get the profile data of a company.</li>
             <li> Implementation: About me Page.</li>
         </ul>
+    <li>(POST) /api/filter  </li>
+        <ul>
+            <li> Function: Get data filter from front-end, scoring applicants, and send the applicants list to front-end.</li>
+            <li> Implementation: .</li>
+        </ul>
 </ol>
 
 Endpoints for chat applicants-side features:
@@ -214,63 +219,72 @@ Endpoints for chat companies-side features:
 Prototype of this mobile application was made with Figma. Link to our Figma (prototype) is as follow. <br/>
 https://www.figma.com/file/KjWlvjAYf1CdEYnAkvxbS7/HireHub?type=design&node-id=0-1&t=diQxH05lD12A2Cdt-0
 
+This list below explaining Activity/Fragment that we have made for the application.
 ### 4.1 Applicant Side
 <ol>
   <li>About Me</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Displaying applicant information</li>
   </ul>
   <li>About Me Change</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Changing applicant information</li>
   </ul>
   <li>Company Profile</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Displaying company profile and accept/reject mechanism</li>
   </ul>
   <li>History Reject</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : List all the companies those applicants reject their offering</li>
   </ul>
   <li>History Success</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : List all the companies those applicants accept their recruiment process offer</li>
+  </ul>
+  <li>Waiting Hired Company</li>
+  <ul>
+    <li>Function : List all the companies those applicants wait for the recruitment process result</li>
+  </ul>
+  <li>Succesfully Hiring Company</li>
+  <ul>
+    <li>Function : List all the companies those applicants success in recruitment process</li>
   </ul>
   <li>Login</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Login for applicants-side</li>
   </ul>
   <li>Login Option</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Choose to login as applicants/companies</li>
   </ul>
   <li>Main</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Container for applicants menu and navbar</li>
   </ul>
   <li>Settings</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Logout from current session</li>
   </ul>
   <li>Sign Up</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Registration for applicants account</li>
   </ul>
   <li>Upload CV</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Upload CV Mechanism</li>
   </ul>
   <li>Upload CV Success</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Notification for success process of upload CV</li>
   </ul>
   <li>Chat Applicant</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Messaging  between applicants and companies</li>
   </ul>
   <li>Profile Applicant</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Displaying profile of applicants</li>
   </ul>
 </ol>
 
@@ -278,69 +292,63 @@ https://www.figma.com/file/KjWlvjAYf1CdEYnAkvxbS7/HireHub?type=design&node-id=0-
 <ol>
   <li>Edit Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Change company information</li>
   </ul>
   <li>Failed Hired Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : List all the applicants that failed in the recruitment process</li>
   </ul>
   <li>Hiring Process Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : List all the applicants that currently in recruitment process</li>
   </ul>
   <li>History Decline Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : List all the applicants that reject company offering</li>
   </ul>
   <li>History Success Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : List all the applicants that success in the recruitment process</li>
   </ul>
   <li>History Waiting Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : List all the applicants that currently get the offering, but have not decided yet</li>
   </ul>
   <li>Job Preferences</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Applicants search filter for company</li>
   </ul>
   <li>Login Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Login for company-side</li>
   </ul>
   <li>Main Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Container for companies menu and navbar</li>
   </ul>
   <li>Process Applicants</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Displaying applicants, their CV/profile, and button to process them</li>
   </ul>
   <li>Register Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Registration for companies account</li>
   </ul>
   <li>Settings Company</li>
   <ul>
-    <li>Function : </li>
-  </ul>
-  <li>Succesfully Hiring Company</li>
-  <ul>
-    <li>Function : </li>
-  </ul>
-  <li>Waiting Hired Company</li>
-  <ul>
-    <li>Function : </li>
+    <li>Function : Logout from current session</li>
   </ul>
   <li>Chat Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Messaging between companies and applicants</li>
   </ul>
   <li>Profile Company</li>
   <ul>
-    <li>Function : </li>
+    <li>Function : Displaying profile of company</li>
   </ul>
 </ol>
+
+After that, we inflated or made the connection between Activity-Fragment and coded the logic for each Activity/Fragment. Lastly, we connected the Mobile Application with Backend with Retrofit.
 
 ## 5. Replication and Duplication Steps
 This section contains how to replicate (running the code given) and duplicate (remake/re-develop) this project.
@@ -491,6 +499,14 @@ There are some future works that team will take care of in the future to make su
 <ol>
   <li>Incorporating experimental work (word embedding + content-based filtering) to the system</li>
   <li>Simplifying and optimizing time and memory consumption of the preprocessing and recommendation algorithm</li>
+  <li>Making Recommender System in interesting and more helpful way (Chatbot/Virtual Assistance)</li>
+</ol>
+
+#### 6.1.3 Other Features
+<ol>
+  <li>Using in-app profile to generate good-quality CV</li>
+  <li>CV Analysis Feature</li>
+  <li>Job Interview Simulation and Scoring with AI</li>
 </ol>
 
 ### 6.2 Cloud Computing
