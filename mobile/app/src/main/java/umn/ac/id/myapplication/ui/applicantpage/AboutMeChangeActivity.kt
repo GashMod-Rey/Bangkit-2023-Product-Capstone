@@ -1,10 +1,12 @@
 package umn.ac.id.myapplication.ui.applicantpage
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -67,6 +69,18 @@ class AboutMeChangeActivity : AppCompatActivity() {
                         else -> {}
                     }
                 }
+                viewModel.updateCvData.observe(this){
+                    resource ->
+                    when(resource){
+                        is Resource.Success -> {
+                            Toast.makeText(this, "Profil berhasil diperbarui", Toast.LENGTH_SHORT).show()
+                        }
+                        is Resource.Error -> {
+                            Toast.makeText(this, "Gagal memperbarui profil: ${resource.message}", Toast.LENGTH_SHORT).show()
+                        }
+                        else -> {}
+                    }
+                }
 
             }
         }
@@ -80,13 +94,35 @@ class AboutMeChangeActivity : AppCompatActivity() {
             val educationInstitution = binding.addEducationInstitution.text.toString()
             val phone = binding.addPhone.text.toString()
             val language = binding.addLanguage.text.toString()
-            val salaryMinimum = binding.addSalaryMinimum.text.toString().toInt()
+            val salaryMinimumText = binding.addSalaryMinimum.text.toString()
+            val salaryMinimum = if (salaryMinimumText.isNotBlank()) {
+                salaryMinimumText.toInt()
+            } else {
+                0
+            }
             val skills = binding.addSkills.text.toString()
             val location = binding.addLocation.text.toString()
 
-            viewModel.updateProfile(token, name, date, degree, desc, email, educationInstitution, phone, language, salaryMinimum, skills, location)
+            val previousData = viewModel.cvData.value?.data
 
-            Toast.makeText(this, "Profil berhasil diperbarui", Toast.LENGTH_SHORT).show()
+            val newName = if(name.isNotBlank()) name else previousData?.name.orEmpty()
+            val newDate = if(date.isNotBlank()) date else previousData?.yearOfBirth.orEmpty()
+            val newDegree = if(degree.isNotBlank()) degree else previousData?.degree.orEmpty()
+            val newDesc = if(desc.isNotBlank()) desc else previousData?.summary.orEmpty()
+            val newEmail = if(email.isNotBlank()) email else previousData?.email.orEmpty()
+            val newEducationInstitution = if(educationInstitution.isNotBlank()) educationInstitution else previousData?.educationInstitution.orEmpty()
+            val newPhone = if(phone.isNotBlank()) phone else previousData?.mobilePhone.orEmpty()
+            val newLanguage = if(language.isNotBlank()) language else previousData?.language.orEmpty()
+            val newSkills = if(skills.isNotBlank()) skills else previousData?.skills.orEmpty()
+            val newSalaryMinimum = if(salaryMinimumText.isNotBlank()) salaryMinimumText.toIntOrNull()?: 0 else previousData?.salaryMinimum?: 0
+            val newLocation = if(location.isNotBlank()) location else previousData?.location.orEmpty()
+
+
+            viewModel.updateProfile(token, newName, newDate, newDegree, newDesc, newEmail, newEducationInstitution, newPhone, newLanguage, newSalaryMinimum, newSkills, newLocation)
+            Intent(this@AboutMeChangeActivity, AboutMeActivity::class.java).also{
+                startActivity(it)
+            }
+
         }
     }
 }

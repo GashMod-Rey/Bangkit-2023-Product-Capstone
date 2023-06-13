@@ -1,6 +1,8 @@
 package umn.ac.id.myapplication.ui.applicantpage.ui.profile
 
 import android.util.Log
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -101,6 +103,7 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
                 }
                 else {
                     val errorMessage = response.errorBody()?.string()
+                    _updateCvData.value = Resource.Error(errorMessage)
                     Log.e(TAG, "Failed to update ")
                 }
             }
