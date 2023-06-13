@@ -233,6 +233,16 @@ Our Chat Feature Implementation Flowchart is as follow.
   <img src="Chat History Flow.png" width="35%">
 </div>
 
+Data flow for CV Parsing Process is as follow.
+<div align="center">
+  <img src="CVParser.png">
+</div>
+
+Data flow for Recommender System is as follow.
+<div align="center">
+  <img src="Recommender.png">
+</div>
+
 ## 4. Mobile Development Description
 Prototype of this mobile application was made with Figma. Link to our Figma (prototype) is as follow. <br/>
 https://www.figma.com/file/KjWlvjAYf1CdEYnAkvxbS7/HireHub?type=design&node-id=0-1&t=diQxH05lD12A2Cdt-0
