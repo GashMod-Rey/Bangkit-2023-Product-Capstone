@@ -221,16 +221,18 @@ Database schema of our applicants is as follow.
 
 Our Chat Feature Implementation Flowchart is as follow.
 <div align="center">
-  <img src="Chat Feature Flow.png">
+  <img src="Chat Feature Flow.png" width="40%">
+  <img src="Chat Applicant Side.png" width="40%>
 </div>
 <div align="center">
-  <img src="Chat Applicant Side.png">
+  <img src="Chat Company Side.png" width="40%">
+  <img src="Chat History Flow.png" width="40%">
 </div>
 <div align="center">
-  <img src="Chat Company Side.png">
+  
 </div>
 <div align="center">
-  <img src="Chat History Flow.png">
+  
 </div>
 
 ## 4. Mobile Development Description
