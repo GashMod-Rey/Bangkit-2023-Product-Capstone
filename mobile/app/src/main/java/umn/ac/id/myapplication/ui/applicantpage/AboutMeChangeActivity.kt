@@ -63,9 +63,7 @@ class AboutMeChangeActivity : AppCompatActivity() {
                             ).show()
                         }
                         is Resource.Loading -> {
-
                         }
-
                         else -> {}
                     }
                 }
@@ -81,47 +79,46 @@ class AboutMeChangeActivity : AppCompatActivity() {
                         else -> {}
                     }
                 }
+                binding.buttonSave.setOnClickListener {
+                    val name = binding.addName.text.toString()
+                    val date = binding.addDate.text.toString()
+                    val degree = binding.addDegree.text.toString()
+                    val desc = binding.addDesc.text.toString()
+                    val email = binding.addEmail.text.toString()
+                    val educationInstitution = binding.addEducationInstitution.text.toString()
+                    val phone = binding.addPhone.text.toString()
+                    val language = binding.addLanguage.text.toString()
+                    val salaryMinimumText = binding.addSalaryMinimum.text.toString()
+                    val salaryMinimum = if (salaryMinimumText.isNotBlank()) {
+                        salaryMinimumText.toInt()
+                    } else {
+                        0
+                    }
+                    val skills = binding.addSkills.text.toString()
+                    val location = binding.addLocation.text.toString()
 
+                    val previousData = viewModel.cvData.value?.data
+
+                    val newName = if(name.isNotBlank()) name else previousData?.name.orEmpty()
+                    val newDate = if(date.isNotBlank()) date else previousData?.yearOfBirth.orEmpty()
+                    val newDegree = if(degree.isNotBlank()) degree else previousData?.degree.orEmpty()
+                    val newDesc = if(desc.isNotBlank()) desc else previousData?.summary.orEmpty()
+                    val newEmail = if(email.isNotBlank()) email else previousData?.email.orEmpty()
+                    val newEducationInstitution = if(educationInstitution.isNotBlank()) educationInstitution else previousData?.educationInstitution.orEmpty()
+                    val newPhone = if(phone.isNotBlank()) phone else previousData?.mobilePhone.orEmpty()
+                    val newLanguage = if(language.isNotBlank()) language else previousData?.language.orEmpty()
+                    val newSkills = if(skills.isNotBlank()) skills else previousData?.skills.orEmpty()
+                    val newSalaryMinimum = if(salaryMinimumText.isNotBlank()) salaryMinimumText.toIntOrNull()?: 0 else previousData?.salaryMinimum?: 0
+                    val newLocation = if(location.isNotBlank()) location else previousData?.location.orEmpty()
+
+
+                    viewModel.updateProfile(token, newName, newDate, newDegree, newDesc, newEmail, newEducationInstitution, newPhone, newLanguage, newSalaryMinimum, newSkills, newLocation)
+                    Intent(this@AboutMeChangeActivity, AboutMeActivity::class.java).also{
+                        startActivity(it)
+                    }
             }
         }
 
-        binding.buttonSave.setOnClickListener {
-            val name = binding.addName.text.toString()
-            val date = binding.addDate.text.toString()
-            val degree = binding.addDegree.text.toString()
-            val desc = binding.addDesc.text.toString()
-            val email = binding.addEmail.text.toString()
-            val educationInstitution = binding.addEducationInstitution.text.toString()
-            val phone = binding.addPhone.text.toString()
-            val language = binding.addLanguage.text.toString()
-            val salaryMinimumText = binding.addSalaryMinimum.text.toString()
-            val salaryMinimum = if (salaryMinimumText.isNotBlank()) {
-                salaryMinimumText.toInt()
-            } else {
-                0
-            }
-            val skills = binding.addSkills.text.toString()
-            val location = binding.addLocation.text.toString()
-
-            val previousData = viewModel.cvData.value?.data
-
-            val newName = if(name.isNotBlank()) name else previousData?.name.orEmpty()
-            val newDate = if(date.isNotBlank()) date else previousData?.yearOfBirth.orEmpty()
-            val newDegree = if(degree.isNotBlank()) degree else previousData?.degree.orEmpty()
-            val newDesc = if(desc.isNotBlank()) desc else previousData?.summary.orEmpty()
-            val newEmail = if(email.isNotBlank()) email else previousData?.email.orEmpty()
-            val newEducationInstitution = if(educationInstitution.isNotBlank()) educationInstitution else previousData?.educationInstitution.orEmpty()
-            val newPhone = if(phone.isNotBlank()) phone else previousData?.mobilePhone.orEmpty()
-            val newLanguage = if(language.isNotBlank()) language else previousData?.language.orEmpty()
-            val newSkills = if(skills.isNotBlank()) skills else previousData?.skills.orEmpty()
-            val newSalaryMinimum = if(salaryMinimumText.isNotBlank()) salaryMinimumText.toIntOrNull()?: 0 else previousData?.salaryMinimum?: 0
-            val newLocation = if(location.isNotBlank()) location else previousData?.location.orEmpty()
-
-
-            viewModel.updateProfile(token, newName, newDate, newDegree, newDesc, newEmail, newEducationInstitution, newPhone, newLanguage, newSalaryMinimum, newSkills, newLocation)
-            Intent(this@AboutMeChangeActivity, AboutMeActivity::class.java).also{
-                startActivity(it)
-            }
 
         }
     }

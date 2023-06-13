@@ -47,17 +47,17 @@ interface ApiInterface {
     @POST("setProfileApplicant")
     fun setProfileApplicant(
         @Header("Authorization") token: String,
-        @Field("Name") Name: String,
-        @Field("DateOfBirth") DateOfBirth: String,
-        @Field("Email") Email: String,
-        @Field("Language") Language: String,
-        @Field("Summary") Summary: String,
-        @Field("Education") Education: String,
-        @Field("Skills") Skills: String,
-        @Field("SalaryMin") SalaryMin: Int,
-        @Field("Location") Location: String,
-        @Field("Degree") Degree: String,
-        @Field("MobilePhone") MobilePhone: String
+        @Field("name") Name: String,
+        @Field("dateOfBirth") DateOfBirth: String,
+        @Field("email") Email: String,
+        @Field("language") Language: String,
+        @Field("summary") Summary: String,
+        @Field("education") Education: String,
+        @Field("skills") Skills: String,
+        @Field("salaryMin") SalaryMin: Int,
+        @Field("location") Location: String,
+        @Field("degree") Degree: String,
+        @Field("mobilePhone") MobilePhone: String
     ): Call<ProfileApplicantResponse>
 
     @FormUrlEncoded

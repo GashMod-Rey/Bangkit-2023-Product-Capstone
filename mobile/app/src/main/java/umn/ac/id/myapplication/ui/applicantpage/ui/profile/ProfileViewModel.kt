@@ -113,8 +113,6 @@ class ProfileViewModel(private val userPreferences: UserPreferences) : ViewModel
             }
         })
 
-
-
     }
 
 
