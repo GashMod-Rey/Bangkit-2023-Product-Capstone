@@ -161,7 +161,6 @@ Endpoints for applicants-side features:
             <li> Implementation: About me Page.</li>
         </ul>
 </ol>
-      
 
 Endpoints for companies-side features:
 <ol>
@@ -188,7 +187,7 @@ Endpoints for companies-side features:
     <li>(POST) /api/filter  </li>
         <ul>
             <li> Function: Get data filter from front-end, scoring applicants, and send the applicants list to front-end.</li>
-            <li> Implementation: .</li>
+            <li> Implementation: Job Preferences Page.</li>
         </ul>
 </ol>
 
@@ -214,6 +213,25 @@ Endpoints for chat companies-side features:
             <li> Implementation: Send message button.</li>
         </ul>
 </ol>
+
+Database schema of our applicants is as follow.
+<div align="center">
+  <img src="database.png">
+</div>
+
+Our Chat Feature Implementation Flowchart is as follow.
+<div align="center">
+  <img src="Chat Feature Flow.png">
+</div>
+<div align="center">
+  <img src="Chat Applicant Side.png">
+</div>
+<div align="center">
+  <img src="Chat Company Side.png">
+</div>
+<div align="center">
+  <img src="Chat History Flow.png">
+</div>
 
 ## 4. Mobile Development Description
 Prototype of this mobile application was made with Figma. Link to our Figma (prototype) is as follow. <br/>
