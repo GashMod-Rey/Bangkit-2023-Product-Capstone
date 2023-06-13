@@ -102,4 +102,20 @@ interface ApiInterface {
         @Field("offer") offer: String
     ): Call<StatusResponse>
 
+    @FormUrlEncoded
+    @POST("api/filter")
+    fun filterUsers(
+        @Header("Authorization") token: String,
+        @Field("ageFilter") ageFilter: List<Int>,
+        @Field("tolerance") tolerance: Int,
+        @Field("skillFilter") skillFilter: List<String>,
+        @Field("langFilter")  langFilter: List<String>,
+        @Field("salaryFilter") salaryFilter: List<Int>,
+        @Field("tol") tol: Int
+    ): Call<List<UserDataResponse>>
+
+
+
+
+
 }

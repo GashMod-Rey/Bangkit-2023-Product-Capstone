@@ -37,6 +37,7 @@
         android:layout_marginLeft="30dp"/>
 
     <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupSkills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -44,76 +45,56 @@
         >
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip1"
+            android:id="@+id/chipCpp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
-            android:text="Product Designer"/>
+            android:text="C++"/>
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
+            android:id="@+id/chipR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
-            android:text="Motion Designer"/>
+            android:text="R"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPython"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
+            android:text="Python"/>
+        <com.google.android.material.chip.Chip
+            android:id="@+id/Java"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
+            android:text="Java"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/C"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
+            android:text="C"/>
 
     </com.google.android.material.chip.ChipGroup>
 
-    <com.google.android.material.chip.ChipGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
-        >
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
-            android:text="UX Designer"/>
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
-            android:text="Graphics Designer"/>
-
-    </com.google.android.material.chip.ChipGroup>
-
-    <com.google.android.material.chip.ChipGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
-        >
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
-            android:text="Full-Stack Developer"/>
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
-            android:text="Developer"/>
-
-    </com.google.android.material.chip.ChipGroup>
 
 
     <TextView
-        android:id="@+id/select_location"
+        android:id="@+id/select_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/lato_bold"
-        android:text="Select Location"
+        android:text="Select Language"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_marginLeft="30dp"/>
 
     <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -121,29 +102,29 @@
         >
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip7"
+            android:id="@+id/chipJavanese"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
-            android:text="Worldwide"/>
+            android:text="Javanese"/>
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip8"
+            android:id="@+id/chipIndonesian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
-            android:text="Jakarta"/>
+            android:text="Indonesia"/>
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip9"
+            android:id="@+id/chipEnglish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
-            android:text="Bandung"/>
+            android:text="English"/>
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip10"
+            android:id="@+id/chipMandarin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
-            android:text="Surabaya"/>
+            android:text="Mandarin"/>
 
     </com.google.android.material.chip.ChipGroup>
     <com.google.android.material.chip.ChipGroup
