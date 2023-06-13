@@ -1,4 +1,4 @@
-# HireHub
+# HireHub - 
 <br/>
 <div align="center">
   <img src="logo.png">
@@ -107,7 +107,8 @@ In addition, we did some experimental work (heavier and inteded to be more robus
 
 For specific documentation of input, output, and process, kindly refer to documentation written in .ipynb.
 
-## 3. Backend Description and List of Endpoints
+## 3. Cloud Computing/Backend Description and List of Endpoints
+There are some workloads for cloud computing team, such as database, backend, bucket, run Python from backend, API, and deploying backend on cloud.
 This application using NodeJS as programming language and Express as its framework.
 Here is a list of dependencies used and how to install them:
 <ol>
@@ -160,7 +161,6 @@ Endpoints for applicants-side features:
             <li> Implementation: About me Page.</li>
         </ul>
 </ol>
-      
 
 Endpoints for companies-side features:
 <ol>
@@ -184,11 +184,189 @@ Endpoints for companies-side features:
             <li> Function: Get the profile data of a company.</li>
             <li> Implementation: About me Page.</li>
         </ul>
-</ol>  
+    <li>(POST) /api/filter  </li>
+        <ul>
+            <li> Function: Get data filter from front-end, scoring applicants, and send the applicants list to front-end.</li>
+            <li> Implementation: Job Preferences Page.</li>
+        </ul>
+</ol>
+
+Endpoints for chat applicants-side features:
+<ol>
+    <li>(POST) /api/chat/newchat </li>
+          <ul>
+              <li> Function: Create Room Chat if applicant accept the offer from company.</li>
+              <li> Implementation: Accept button.</li>
+          </ul>
+    <li>(POST) /api/messages/sendfromapplicant </li>
+        <ul>
+            <li> Function: Send message from applicant to company.</li>
+            <li> Implementation: Send message button.</li>
+        </ul>
+</ol>
+
+Endpoints for chat companies-side features:
+<ol>
+    <li>(POST) /api/messages/sendfromcompany </li>
+        <ul>
+            <li> Function: Send message from company to applicant.</li>
+            <li> Implementation: Send message button.</li>
+        </ul>
+</ol>
+
+Database schema of our applicants is as follow.
+<div align="center">
+  <img src="database.png">
+</div>
+
+Our Chat Feature Implementation Flowchart is as follow.
+<div align="center">
+  <img src="Chat Feature Flow.png">
+</div>
+<div align="center">
+  <img src="Chat Applicant Side.png">
+</div>
+<div align="center">
+  <img src="Chat Company Side.png">
+</div>
+<div align="center">
+  <img src="Chat History Flow.png">
+</div>
 
 ## 4. Mobile Development Description
-Link to our Figma (prototype) is as follow. <br/>
+Prototype of this mobile application was made with Figma. Link to our Figma (prototype) is as follow. <br/>
 https://www.figma.com/file/KjWlvjAYf1CdEYnAkvxbS7/HireHub?type=design&node-id=0-1&t=diQxH05lD12A2Cdt-0
+
+This list below explaining Activity/Fragment that we have made for the application.
+### 4.1 Applicant Side
+<ol>
+  <li>About Me</li>
+  <ul>
+    <li>Function : Displaying applicant information</li>
+  </ul>
+  <li>About Me Change</li>
+  <ul>
+    <li>Function : Changing applicant information</li>
+  </ul>
+  <li>Company Profile</li>
+  <ul>
+    <li>Function : Displaying company profile and accept/reject mechanism</li>
+  </ul>
+  <li>History Reject</li>
+  <ul>
+    <li>Function : List all the companies those applicants reject their offering</li>
+  </ul>
+  <li>History Success</li>
+  <ul>
+    <li>Function : List all the companies those applicants accept their recruiment process offer</li>
+  </ul>
+  <li>Waiting Hired Company</li>
+  <ul>
+    <li>Function : List all the companies those applicants wait for the recruitment process result</li>
+  </ul>
+  <li>Succesfully Hiring Company</li>
+  <ul>
+    <li>Function : List all the companies those applicants success in recruitment process</li>
+  </ul>
+  <li>Login</li>
+  <ul>
+    <li>Function : Login for applicants-side</li>
+  </ul>
+  <li>Login Option</li>
+  <ul>
+    <li>Function : Choose to login as applicants/companies</li>
+  </ul>
+  <li>Main</li>
+  <ul>
+    <li>Function : Container for applicants menu and navbar</li>
+  </ul>
+  <li>Settings</li>
+  <ul>
+    <li>Function : Logout from current session</li>
+  </ul>
+  <li>Sign Up</li>
+  <ul>
+    <li>Function : Registration for applicants account</li>
+  </ul>
+  <li>Upload CV</li>
+  <ul>
+    <li>Function : Upload CV Mechanism</li>
+  </ul>
+  <li>Upload CV Success</li>
+  <ul>
+    <li>Function : Notification for success process of upload CV</li>
+  </ul>
+  <li>Chat Applicant</li>
+  <ul>
+    <li>Function : Messaging  between applicants and companies</li>
+  </ul>
+  <li>Profile Applicant</li>
+  <ul>
+    <li>Function : Displaying profile of applicants</li>
+  </ul>
+</ol>
+
+### 4.2 Company Side
+<ol>
+  <li>Edit Company</li>
+  <ul>
+    <li>Function : Change company information</li>
+  </ul>
+  <li>Failed Hired Company</li>
+  <ul>
+    <li>Function : List all the applicants that failed in the recruitment process</li>
+  </ul>
+  <li>Hiring Process Company</li>
+  <ul>
+    <li>Function : List all the applicants that currently in recruitment process</li>
+  </ul>
+  <li>History Decline Company</li>
+  <ul>
+    <li>Function : List all the applicants that reject company offering</li>
+  </ul>
+  <li>History Success Company</li>
+  <ul>
+    <li>Function : List all the applicants that success in the recruitment process</li>
+  </ul>
+  <li>History Waiting Company</li>
+  <ul>
+    <li>Function : List all the applicants that currently get the offering, but have not decided yet</li>
+  </ul>
+  <li>Job Preferences</li>
+  <ul>
+    <li>Function : Applicants search filter for company</li>
+  </ul>
+  <li>Login Company</li>
+  <ul>
+    <li>Function : Login for company-side</li>
+  </ul>
+  <li>Main Company</li>
+  <ul>
+    <li>Function : Container for companies menu and navbar</li>
+  </ul>
+  <li>Process Applicants</li>
+  <ul>
+    <li>Function : Displaying applicants, their CV/profile, and button to process them</li>
+  </ul>
+  <li>Register Company</li>
+  <ul>
+    <li>Function : Registration for companies account</li>
+  </ul>
+  <li>Settings Company</li>
+  <ul>
+    <li>Function : Logout from current session</li>
+  </ul>
+  <li>Chat Company</li>
+  <ul>
+    <li>Function : Messaging between companies and applicants</li>
+  </ul>
+  <li>Profile Company</li>
+  <ul>
+    <li>Function : Displaying profile of company</li>
+  </ul>
+</ol>
+
+After that, we inflated or made the connection between Activity-Fragment and coded the logic for each Activity/Fragment. Lastly, we connected the Mobile Application with Backend with Retrofit.
 
 ## 5. Replication and Duplication Steps
 This section contains how to replicate (running the code given) and duplicate (remake/re-develop) this project.
@@ -282,7 +460,48 @@ for ent in result.ents:
 </ol>
 
 ### 5.2 Cloud Computing
+1. Project configuration
+   - Set the project name (Capstone-Project-Hirehub)
+   - Connect the project to bangkit academy billing account
+   - Set the organization as bangkit.academy
+2. Bucket configuration for PDF storage 
+   - Set the bucket name (bucket-pdf33)
+   - Select the region as location type (asia-southeast2)
+   - Uncheck the "enforce public access prevention"
+   - Create the bucket
+   - Set the bucket to public by giving permission to allUsers as viewer
+4. MySQL configuration
+   - Create new instance in SQL
+   - Select MySQL
+   - Set the ID and Password
+   - Set the database 5.7 version 
+   - Create the database in MySQL and create the table needed
+   - Set the connection service so the database can be access from public internet
+5. Service Account configuration
+   - Create a service account as a credential to access the project
+   - Add new key to acccess the service account
+   - Download as JSON file and connect the key to code
+6. Configure the App Engine
+   - Turn on the App Engine service
+   - Open editor and clone the code
+   - Initialize project using gcloud init
+   - Set the app.yaml into the right service (default and then backend)
+   - Deploy with gcloud app deploy
+
 ### 5.3 Mobile Development
+To replicate this code (run in your local), please download Android Studio and related resources (SDK, etc.). Then, wait for gradle to build and you should have the functional apps.
+
+To duplicate this code, these are the steps we have done:
+<ol>
+  <li>Make the XML for each activity/fragment</li>
+  <li>Make the Intent to connect between Activity</li>
+  <li>Inflate the related Fragment</li>
+  <li>Make the logic code in Kotlin</li>
+  <li>Setup the Retrofit for API connection between Front-End and Back-End</li>
+  <li>Setup the Socket.io for Chat Feature</li>
+  <li>Setup for TensorFlow Lite inference in Front-End</li>
+  <li>Debugging/Testing/Issue Fixing</li>
+</ol>
 
 ## 6. Future Works
 There are some future works that team will take care of in the future to make sure that users have the best experience using the application, such as.
@@ -298,6 +517,14 @@ There are some future works that team will take care of in the future to make su
 <ol>
   <li>Incorporating experimental work (word embedding + content-based filtering) to the system</li>
   <li>Simplifying and optimizing time and memory consumption of the preprocessing and recommendation algorithm</li>
+  <li>Making Recommender System in interesting and more helpful way (Chatbot/Virtual Assistance)</li>
+</ol>
+
+#### 6.1.3 Other Features
+<ol>
+  <li>Using in-app profile to generate good-quality CV</li>
+  <li>CV Analysis Feature</li>
+  <li>Job Interview Simulation and Scoring with AI</li>
 </ol>
 
 ### 6.2 Cloud Computing
