@@ -112,7 +112,7 @@ interface ApiInterface {
         @Field("langFilter")  langFilter: List<String>,
         @Field("salaryFilter") salaryFilter: List<Int>,
         @Field("tol") tol: Int
-    ): Call<List<UserDataResponse>>
+    ): Call<FilterResponse>
 
 
 

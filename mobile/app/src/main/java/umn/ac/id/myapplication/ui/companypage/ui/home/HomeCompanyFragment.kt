@@ -1,5 +1,6 @@
 package umn.ac.id.myapplication.ui.companypage.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import umn.ac.id.myapplication.databinding.FragmentHomeBinding
 import umn.ac.id.myapplication.databinding.FragmentHomeCompanyBinding
+import umn.ac.id.myapplication.ui.applicantpage.AboutMeActivity
+import umn.ac.id.myapplication.ui.companypage.JobPreferencesActivity
 
 class HomeCompanyFragment : Fragment() {
 
@@ -29,6 +32,10 @@ class HomeCompanyFragment : Fragment() {
         _binding = FragmentHomeCompanyBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.searchFilter.setOnClickListener {
+            val intent = Intent(requireContext(), JobPreferencesActivity::class.java)
+            startActivity(intent)
+        }
         return root
     }
 
