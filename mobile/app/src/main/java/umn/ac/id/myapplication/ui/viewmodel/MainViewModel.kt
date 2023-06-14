@@ -33,7 +33,7 @@ class MainViewModel(private val userPreferences: UserPreferences) : ViewModel(){
                         response: Response<FilterResponse>
                     ) {
                         if (response.isSuccessful){
-                            _filterResponse.value = response.body()?.let { Resource.Success(it.filteredUsers) }
+                            _filterResponse.value = response.body()?.let { Resource.Success(it) }
                             Log.d("JobPreferencesActivity", "onResponse: ${_filterResponse.value}")
 
                         } else {
