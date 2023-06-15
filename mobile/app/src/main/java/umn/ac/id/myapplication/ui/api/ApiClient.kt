@@ -20,7 +20,8 @@ import java.util.concurrent.TimeUnit
 
 
 object ApiClient {
-    private const val BASEURL = "http://192.168.43.20:8000/"
+//    private const val BASEURL = "http://192.168.43.20:8000/"
+private const val BASEURL = "http://192.168.100.12:8000/" //GianURL
     var okHttpClient: OkHttpClient = OkHttpClient.Builder()
             .connectTimeout(1, TimeUnit.MINUTES)
             .readTimeout(30, TimeUnit.SECONDS)

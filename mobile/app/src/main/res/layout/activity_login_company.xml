@@ -61,7 +61,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ad_email_login"
         android:layout_marginTop="30dp"
-        app:cornerRadius="30dp"/>
+        app:cornerRadius="30dp"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/button_login"
