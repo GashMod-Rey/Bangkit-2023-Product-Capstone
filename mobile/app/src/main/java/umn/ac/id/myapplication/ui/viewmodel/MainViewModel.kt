@@ -23,10 +23,11 @@ class MainViewModel(private val userPreferences: UserPreferences) : ViewModel(){
                             tolerance: Int,
                             skillLang: List<String>,
                             langFilter: List<String>,
-                            salaryFilter: List<Int>,
-                            tol: Int){
+                            salaryFilter: List<Float>,
+                            tol: Float,
+                            location: String){
                 _filterResponse.value
-            val client = ApiClient.apiInstance.filterUsers(token, ageFilter, tolerance, skillLang, langFilter, salaryFilter, tol)
+            val client = ApiClient.apiInstance.filterUsers(token, ageFilter, tolerance, skillLang, langFilter, salaryFilter, tol, location)
                 client.enqueue(object: Callback<FilterResponse> {
                     override fun onResponse(
                         call: Call<FilterResponse>,

@@ -815,11 +815,11 @@ app.post("/api/messages/sendfromcompany", authenticateTokenA, authenticateTokenC
 // Retrieve the data of applicants from the MySQL database
 const datafilter = [{ ageFilter: [23, 27], tolerance: 5, skillFilter: ["C", "C++", "Java"], langFilter: ["English", "Mandarin", "Javanese"], salaryFilter: [3, 12], tol: 1 }];
 // minta data filter dan CONVERT dari FRONTEND MOBILE FORMATNYA KAYAK DI ATAS 
-function getApplicantsData() {
+function getApplicantsData(location) {
   return new Promise((resolve, reject) => {
-    const query = "SELECT * FROM Applicants";
+    const query = "SELECT * FROM Applicants WHERE Location = ?";
 
-    connection.query(query, (error, results) => {
+    connection.query(query, [location], (error, results) => {
       if (error) {
         console.error("Error retrieving applicants:", error);
         reject(error);
@@ -910,7 +910,7 @@ const runPythonCode = async (applicantsData, res) => {
 
 // Express.js endpoint to receive data from mobile frontend
 app.post('/api/filter', (req, res) => {
-  const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol } = req.body;
+  const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol, location } = req.body;
 
   // Create the data filter object
   const datafilter = [
@@ -925,7 +925,7 @@ app.post('/api/filter', (req, res) => {
   ];
 
   // Retrieve the data of applicants and run the Python code
-  getApplicantsData()
+  getApplicantsData(location)
     .then((applicantsData) => {
       runPythonCode(applicantsData, res); // Pass the `res` object as an argument
     })

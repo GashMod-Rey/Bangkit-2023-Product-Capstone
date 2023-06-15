@@ -75,23 +75,23 @@ class JobPreferencesActivity : AppCompatActivity() {
         binding.btnSave.setOnClickListener {
             val ageMin = binding.addAgeMin.text.toString().toIntOrNull()
             val ageMax = binding.addAgeMax.text.toString().toIntOrNull()
-            val salaryMin = binding.addSalaryMin.text.toString().toIntOrNull()
-            val salaryMax = binding.addSalaryMax.text.toString().toIntOrNull()
-
+            val salaryMin = binding.addSalaryMin.text.toString().toFloatOrNull()
+            val salaryMax = binding.addSalaryMax.text.toString().toFloatOrNull()
 
             val ageFilter = listOfNotNull(ageMin, ageMax)
             val salaryFilter = listOfNotNull(salaryMin, salaryMax)
             val skillFilter = selectedSkills
             val langFilter = selectedLanguages
-            val tolerance = 5
-            val tol = 1
+            val tolerance = binding.ageTolerance.text.toString().toInt()
+            val tol = binding.salaryTolerance.text.toString().toFloat()
+            val location = binding.addLocation.text.toString()
 
-            sendFilter(ageFilter, salaryFilter, skillFilter, langFilter, tolerance, tol)
+            sendFilter(ageFilter, salaryFilter, skillFilter, langFilter, tolerance, tol, location)
         }
 
     }
 
-    private fun sendFilter(ageFilter: List<Int>, salaryFilter: List<Int>, skillFilter: List<String>, langFilter: List<String>, tolerance:Int, tol: Int){
+    private fun sendFilter(ageFilter: List<Int>, salaryFilter: List<Float>, skillFilter: List<String>, langFilter: List<String>, tolerance:Int, tol: Float, location: String){
         val pref = UserPreferences.getInstance(dataStore)
         val mainViewModel = ViewModelProvider(this, MainViewModelFactory(pref))[MainViewModel::class.java]
 
@@ -99,11 +99,12 @@ class JobPreferencesActivity : AppCompatActivity() {
             if (it.isLogin){
                 token = it.token
                 Log.d("TAG", "onCreate: $token")
-                mainViewModel.filterUsers(token, ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol)
+                mainViewModel.filterUsers(token, ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol, location)
                 mainViewModel.filterResponse.observe(this){
                     when(it){
                         is Resource.Success ->{
                             val filteredUsers = it.data
+                            Log.d("Hi", filteredUsers.toString())
                         }
                         is Resource.Error ->{
                             Toast.makeText(this, it.message.toString(), Toast.LENGTH_SHORT).show()
