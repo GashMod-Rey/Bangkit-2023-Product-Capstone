@@ -11,7 +11,6 @@ const formattedTimestamp = timestamp.toISOString();
 const cors = require("cors");
 const spawner = require("child_process").spawn;
 app.use(cors());
-const axios = require("axios");
 
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
@@ -136,6 +135,8 @@ app.post("/loginApplicant", (req, res) => {
 });
 
 function authenticateTokenA(req, res, next) {
+  // const authHeader = req.headers['authorization'];
+  // const token = authHeader && authHeader.split(' ')[1];
   const token = tokenglobalA;
 
   if (token == null) {
@@ -155,6 +156,8 @@ function authenticateTokenA(req, res, next) {
   });
 }
 function authenticateTokenC(req, res, next) {
+  // const authHeader = req.headers['authorization'];
+  // const token = authHeader && authHeader.split(' ')[1];
   const token = tokenglobalC;
 
   if (token == null) {
@@ -212,6 +215,26 @@ function verifyToken(token) {
     return null;
   }
 }
+
+// Protected route example
+// app.get('/protected', (req, res) => {
+//     // Get the token from the request header or query parameter
+//     const token = req.headers.authorization || req.query.token;
+
+//     if (!token) {
+//         return res.status(401).json({ message: 'Access denied. No token provided.' });
+//     }
+
+//     // Verify the token
+//     const decoded = verifyToken(token);
+//     if (decoded) {
+//         // Token is valid, user is authenticated
+//         return res.status(200).json({ message: 'Access granted to protected resource.' });
+//     } else {
+//         // Token is invalid or expired
+//         return res.status(401).json({ message: 'Access denied. Invalid token.' });
+//     }
+// });
 
 app.post("/setProfileApplicant", authenticateTokenA, (req, res) => {
   // Extract the profile data from the request body
@@ -295,17 +318,14 @@ async function getPDF(req, res) {
         data_sent: url,
       };
 
-      console.log(url);
+      const python_process = spawner("python", ["./cvparser/CVParser.py", JSON.stringify(data_to_pass_in)]);
 
-      //const python_process = spawner("python", ["./cvparser/CVParser.py", JSON.stringify(data_to_pass_in)]);
-
-      const response = await axios.post('http://34.101.252.239:8080/parsedata', { PdfPath: url });
-      console.log(response);
-      const data = response.data;
-      console.log("Data from python script", data);
-
-      req.session.dataPy = data;
-      await setProfileApplicantAuto(req, res);
+      python_process.stdout.on("data", async (data) => {
+        const dataPy = JSON.parse(data.toString());
+        req.session.dataPy = dataPy;
+        console.log("Data from python script", JSON.parse(data.toString()));
+        await setProfileApplicantAuto(req, res);
+      });
 
       console.log("Success");
     }
@@ -341,6 +361,83 @@ app.post("/uploadCV", authenticateTokenA, async (req, res) => {
     console.log(error);
   }
 });
+
+// app.post('/uploadPP', (req, res) => {
+//     console.log('Made it /upload');
+//     try {
+//       UploadPP(req, res, (err) => {
+//         if (err) {
+//           throw 'Error with profile picture upload';
+//         }
+//         const file = req.file;
+//         if (!file) {
+//           throw 'No profile picture file found';
+//         }
+
+//         // Handle the uploaded file
+//         const timestamp = Date.now();
+//         const fileName = `${timestamp}_profile.jpg`; // Set the desired file name and extension
+
+//         const blob = bucketPP.file(fileName);
+//         const blobStream = blob.createWriteStream();
+
+//         blobStream.on('finish', () => {
+//           res.setHeader('Content-Type', 'application/json');
+//           res.status(200).json({ message: 'Success' });
+//           console.log('Success');
+//         });
+
+//         blobStream.end(file.buffer);
+//       });
+//     } catch (error) {
+//       res.setHeader('Content-Type', 'application/json');
+//       res.status(500).json({ error });
+//     }
+// });
+
+// app.get('/uploadPP', async (req, res) => {
+//     try {
+//       const [files] = await bucketPP.getFiles();
+
+//       if (files.length > 0) {
+//         const lastFile = files[files.length - 1];
+//         const url = `https://storage.googleapis.com/bucket_pp33/${lastFile.id}`;
+//         const fileData = { id: lastFile.id, url };
+
+//         req.session.ppPath = url;
+//         console.log(req.session.ppPath);
+
+//         res.json(fileData);
+//         console.log('Success');
+//       } else {
+//         res.status(404).json({ error: 'No files found' });
+//       }
+//     } catch (error) {
+//       res.status(500).json({ error: 'Error: ' + error });
+//     }
+// });
+
+// app.post('/deleteCV', async (req, res) => {
+//     const token = req.session.token;
+//     const decodedToken = verifyToken(token);
+//     const username = decodedToken.username;
+
+//     try {
+//         // Delete the file entry from MySQL
+//         const deleteQuery = 'UPDATE Applicants SET PdfPath = ? WHERE Username = ?';
+//         connection.query(deleteQuery, ["NULL", username], (deleteErr) => {
+//           if (deleteErr) {
+//             console.error('Error executing MySQL delete query:', deleteErr);
+//             return res.status(500).json({ error: 'An error occurred while deleting the file entry' });
+//           }
+
+//           return res.json({ message: 'PDF file deleted successfully' });
+//         });
+//     } catch (err) {
+//       console.error(err);
+//       return res.status(500).json({ error: 'An error occurred while deleting the PDF file' });
+//     }
+// });
 
 // Company API
 
@@ -718,11 +815,11 @@ app.post("/api/messages/sendfromcompany", authenticateTokenA, authenticateTokenC
 // Retrieve the data of applicants from the MySQL database
 const datafilter = [{ ageFilter: [23, 27], tolerance: 5, skillFilter: ["C", "C++", "Java"], langFilter: ["English", "Mandarin", "Javanese"], salaryFilter: [3, 12], tol: 1 }];
 // minta data filter dan CONVERT dari FRONTEND MOBILE FORMATNYA KAYAK DI ATAS 
-function getApplicantsData(location) {
+function getApplicantsData() {
   return new Promise((resolve, reject) => {
-    const query = "SELECT * FROM Applicants WHERE Location = ?";
+    const query = "SELECT * FROM Applicants";
 
-    connection.query(query, [location], (error, results) => {
+    connection.query(query, (error, results) => {
       if (error) {
         console.error("Error retrieving applicants:", error);
         reject(error);
@@ -734,39 +831,86 @@ function getApplicantsData(location) {
 }
 
 // Run the Python code and pass the data as command-line arguments
+// const runPythonCode = async (applicantsData) => {
+//   try {
+//     const pythonProcess = spawner("python", ["../script/Scoring.py", JSON.stringify(applicantsData), JSON.stringify(datafilter)]);
+
+//     pythonProcess.stdout.on("data", (data) => {
+//       const json_data = data.toString().trim();
+//       const x = JSON.parse(json_data);
+//       for (let i = 0; i < x.length; i++) {
+//         applicantsData[i]["Score"] = x[i];
+//       }
+//       console.log(applicantsData);
+//       res.json(applicantsData);
+
+//       // Kirim jadi JSON ke FE
+//     });
+
+//     pythonProcess.stderr.on("data", (data) => {
+//       console.error(data.toString());
+//     });
+
+//     pythonProcess.on("close", (code) => {
+//       console.log(`Python process exited with code ${code}`);
+//       // Close the connection pool
+//       connection.end();
+//     });
+//   } catch (error) {
+//     console.error("Error:", error);
+//     // Close the connection pool
+//     connection.end();
+//   }
+// };
+
+// Run the Python code and pass the data as command-line arguments
 const runPythonCode = async (applicantsData, res) => {
   try {
-    //const pythonProcess = spawner("python", ["../script/Scoring.py", JSON.stringify(applicantsData), JSON.stringify(datafilter)]);
-    const appData = JSON.stringify(applicantsData);
-    const filter = JSON.stringify(datafilter);
-    const sendData = {appData, filter};
-    const response = await axios.post('http://34.101.38.231:5000/recommender', { Data: sendData });
-    const data = response.data;
-    console.log(data);
-    
-    try {
-      for (let i = 0; i < data.length; i++) {
-        applicantsData[i]["Score"] = data[i];
+    const pythonProcess = spawner("python", ["../script/Scoring.py", JSON.stringify(applicantsData), JSON.stringify(datafilter)]);
+
+    let result = ""; // Variable to store the result from the Python code
+
+    pythonProcess.stdout.on("data", (data) => {
+      result += data.toString();
+      console.log(result);
+    });
+    pythonProcess.stderr.on("data", (data) => {
+      console.error(data.toString());
+    });
+
+    pythonProcess.on("close", (code) => {
+      console.log(`Python process exited with code ${code}`);
+      // Close the connection pool
+      connection.end();
+
+      try {
+        const json_data = result.trim();
+        const x = JSON.parse(json_data);
+        for (let i = 0; i < x.length; i++) {
+          applicantsData[i]["Score"] = x[i];
+        }
+        console.log(applicantsData);
+
+        // Convert to JSON format and send it to the frontend
+        res.json(applicantsData);
+      } catch (error) {
+        console.error("Error:", error);
+        // Handle error response to the frontend
+        res.status(500).json({ error: "An error occurred" });
       }
-      console.log(applicantsData);
-
-      // Convert to JSON format and send it to the frontend
-      res.json(applicantsData);
-    } catch (error) {
-      console.error("Error:", error);
-      // Handle error response to the frontend
-      res.status(500).json({ error: "An error occurred" });
-    }
-
+    });
   } catch (error) {
     console.error("Error:", error);
+    // Close the connection pool
+    connection.end();
+    // Handle error response to the frontend
     res.status(500).json({ error: "An error occurred" });
   }
 };
 
 // Express.js endpoint to receive data from mobile frontend
 app.post('/api/filter', (req, res) => {
-  const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol, location } = req.body;
+  const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol } = req.body;
 
   // Create the data filter object
   const datafilter = [
@@ -781,7 +925,7 @@ app.post('/api/filter', (req, res) => {
   ];
 
   // Retrieve the data of applicants and run the Python code
-  getApplicantsData(location)
+  getApplicantsData()
     .then((applicantsData) => {
       runPythonCode(applicantsData, res); // Pass the `res` object as an argument
     })
@@ -790,6 +934,34 @@ app.post('/api/filter', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+// Express.js endpoint to receive data from mobile frontend
+// app.post('/api/filter', (req, res) => {
+//   const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol } = req.body;
+
+//   // Create the data filter object
+//   const datafilter = [
+//     {
+//       ageFilter: [ageFilter.min, ageFilter.max],
+//       tolerance,
+//       skillFilter,
+//       langFilter,
+//       salaryFilter: [salaryFilter.min, salaryFilter.max],
+//       tol
+//     }
+//   ];
+
+//   // Retrieve the data of applicants and run the Python code
+//   getApplicantsData()
+//     .then((applicantsData) => {
+//       runPythonCode(applicantsData, datafilter);
+//       res.sendStatus(200);
+//     })
+//     .catch((error) => {
+//       console.error('Error:', error);
+//       res.sendStatus(500);
+//     });
+// });
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);

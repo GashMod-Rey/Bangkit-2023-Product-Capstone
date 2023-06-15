@@ -9,6 +9,8 @@ import fitz
 import re
 import sys
 import json
+from flask import Flask, request, jsonify
+import os
 
 nltk.download('stopwords')
 model_md = spacy.load("en_core_web_md")
@@ -131,7 +133,7 @@ def take_name(text):
 
 def take_skills(text):
     text = " ".join(text.split("\n"))
-    skills = "./cvparser/jz_skill_patterns.jsonl"
+    skills = "jz_skill_patterns.jsonl"
     ruler.from_disk(skills)
     resultnlp = model_sm(text)
     skillsList = []
@@ -147,7 +149,7 @@ def take_lang(text):
     custom_drop = ["purpose"]
     for drop in custom_drop:
         text = text.lower().replace(drop, "")
-    langs = "./cvparser/hh_lang_pattern.jsonl"
+    langs = "hh_lang_pattern.jsonl"
     ruler.from_disk(langs)
     resultnlp = model_sm(text)
     langList = []
@@ -242,7 +244,7 @@ def take_sum(text):
 
 def take_degree(text):
     text = " ".join(text.split("\n"))
-    nlp = spacy.load("./cvparser/output/model-best")
+    nlp = spacy.load("./output/model-best")
     resultnlp = nlp(text)
     degreeD = ["diploma", "amd", "ama", "str", "ap"]
     degree1 = ["bachelor", "btech",  "sarjana", 'ba', 'bcom', 'be', 'btech', 'bsc', 'bba', 'skom', 'se', 'ssi', 'ssn', 'sikom', 'sip', 'sipol', 'sh', 'spd', 'sked', 'skeb', 'sgz', 'shum', 'spsi']
@@ -283,7 +285,7 @@ def take_degree(text):
 
 def take_country(text):
     text = " ".join(text.split("\n"))
-    loc = "./cvparser/hh_country_pattern.jsonl"
+    loc = "hh_country_pattern.jsonl"
     ruler.from_disk(loc)
     resultnlp = model_sm(text)
     loc = ''
@@ -315,9 +317,18 @@ def cvparsing(pdflink):
     profDic["EDU"] = take_edu(text)
     profDic['DEGREE'] = take_degree(text)
     profDic['LOC'] = take_country(text)
-    out = json.dumps(profDic)
-    print(out)
+    # out = json.dumps(profDic)
+    return profDic
 
-json_input = sys.argv[1]
-data = json.loads(json_input)
-cvparsing(data['data_sent'])
+app = Flask(__name__)
+@app.route('/parsedata', methods=['POST'])
+def parsedata():
+    link = request.form.get('PdfPath')
+    output = cvparsing(link)
+    return jsonify(output)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True, port = int(os.environ.get('PORT', 8000)))
+# json_input = sys.argv[1]
+# data = json.loads(json_input)
+# cvparsing(data['data_sent'])
