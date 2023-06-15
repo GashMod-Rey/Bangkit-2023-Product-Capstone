@@ -1,7 +1,7 @@
 # HireHub - 
 <br/>
 <div align="center">
-  <img src="logo.png">
+  <img src="./assets/logo.png">
 </div>
 <div align="center">
   This project was made by team SOLID.exe [C23-PS241] Bangkit Academy 2023 H1. 
@@ -112,7 +112,7 @@ There are some workloads for cloud computing team, such as database, backend, bu
 
 The architechture of our backend is as follow.
 <div align="center">
-  <img src="Architechture.png" width="50%">
+  <img src="./assets/Architechture.png" width="50%">
 </div>
 
 This application using NodeJS as programming language and Express as its framework.
@@ -222,31 +222,31 @@ Endpoints for chat companies-side features:
 
 Database schema of our applicants is as follow.
 <div align="center">
-  <img src="database.png" width="70%">
+  <img src="./assets/database.png" width="70%">
 </div>
 
 Our Chat Feature Implementation Flowchart is as follow.
 <div align="center">
-  <img src="Chat Feature Flow.png" width="40%">
+  <img src="./assets/Chat Feature Flow.png" width="40%">
 </div>
 <div align="center">
-  <img src="Chat Applicant Side.png" width="40%">
+  <img src="./assets/Chat Applicant Side.png" width="40%">
 </div>
 <div align="center">
-  <img src="Chat Company Side.png" width="40%">
+  <img src="./assets/Chat Company Side.png" width="40%">
 </div>
 <div align="center">
-  <img src="Chat History Flow.png" width="35%">
+  <img src="./assets/Chat History Flow.png" width="35%">
 </div>
 
 Data flow for CV Parsing Process is as follow.
 <div align="center">
-  <img src="CVParser.png">
+  <img src="./assets/CVParser.png">
 </div>
 
 Data flow for Recommender System is as follow.
 <div align="center">
-  <img src="Recommender.png">
+  <img src="./assets/Recommender.png">
 </div>
 
 ## 4. Mobile Development Description
