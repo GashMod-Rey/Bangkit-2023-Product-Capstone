@@ -20,7 +20,18 @@ data class UserDataResponse(
     val score: List<Float>
 )
 
-data class FilterResponse(
-    val filteredUsers: List<UserDataResponse>,
-    val totalCount: Int
+//data class FilterResponse(
+//    val filteredUsers: List<UserDataResponse>,
+//    val totalCount: Int
+//)
+
+data class FilterOptions(
+    val ageFilter: List<Int>,
+    val salaryFilter: List<Int>,
+    val skillFilter: List<String>,
+    val langFilter: List<String>,
+    val tolerance: Int,
+    val tol: Int
 )
+
+class FilterResponse: ArrayList<UserDataResponse>()

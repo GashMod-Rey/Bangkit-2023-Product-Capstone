@@ -110,9 +110,10 @@ interface ApiInterface {
         @Field("tolerance") tolerance: Int,
         @Field("skillFilter") skillFilter: List<String>,
         @Field("langFilter")  langFilter: List<String>,
-        @Field("salaryFilter") salaryFilter: List<Int>,
-        @Field("tol") tol: Int
-    ): Call<List<UserDataResponse>>
+        @Field("salaryFilter") salaryFilter: List<Float>,
+        @Field("tol") tol: Float,
+        @Field("location") location: String
+    ): Call<FilterResponse>
 
 
 
