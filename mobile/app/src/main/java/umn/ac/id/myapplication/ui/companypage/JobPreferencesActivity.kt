@@ -1,11 +1,13 @@
 package umn.ac.id.myapplication.ui.companypage
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -19,6 +21,7 @@ import retrofit2.Response
 import umn.ac.id.myapplication.R
 import umn.ac.id.myapplication.databinding.ActivityJobPreferencesBinding
 import umn.ac.id.myapplication.ui.api.ApiClient
+import umn.ac.id.myapplication.ui.companypage.ui.home.HomeCompanyFragment
 import umn.ac.id.myapplication.ui.data.FilterOptions
 import umn.ac.id.myapplication.ui.data.FilterResponse
 import umn.ac.id.myapplication.ui.data.UserDataResponse
@@ -50,11 +53,14 @@ class JobPreferencesActivity : AppCompatActivity() {
             if(chip!= null){
                 val skill = chip.text.toString()
                 if (chip.isChecked){
+                    chip.setChipBackgroundColorResource(R.color.selected_chip_color)
                     selectedSkills.add(skill)
                 }
                 else {
+                    chip.setChipBackgroundColorResource(R.color.default_chip_color)
                     selectedSkills.remove(skill)
                 }
+                chipGroupSkills.invalidate()
             }
         }
 
@@ -63,12 +69,15 @@ class JobPreferencesActivity : AppCompatActivity() {
             if(chip != null){
                 val language = chip.text.toString()
                 if(chip.isChecked) {
+                    chip.setChipBackgroundColorResource(R.color.selected_chip_color)
                     selectedLanguages.add(language)
                 }
                 else {
+                    chip.setChipBackgroundColorResource(R.color.default_chip_color)
                     selectedLanguages.remove(language)
                 }
             }
+            chipGroupLanguage.invalidate()
         }
 
 
@@ -105,6 +114,8 @@ class JobPreferencesActivity : AppCompatActivity() {
                         is Resource.Success ->{
                             val filteredUsers = it.data
                             Log.d("Hi", filteredUsers.toString())
+                            val intent = Intent(this@JobPreferencesActivity, MainCompanyActivity::class.java)
+                            startActivity(intent)
                         }
                         is Resource.Error ->{
                             Toast.makeText(this, it.message.toString(), Toast.LENGTH_SHORT).show()

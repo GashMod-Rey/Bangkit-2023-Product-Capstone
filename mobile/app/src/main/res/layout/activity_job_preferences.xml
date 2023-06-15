@@ -48,34 +48,44 @@
             android:id="@+id/chipCpp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:fontFamily="@font/lato"
-            android:text="C++"/>
+            android:text="C++"
+            android:clickable="true"/>
         <com.google.android.material.chip.Chip
             android:id="@+id/chipR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:fontFamily="@font/lato"
-            android:text="R"/>
+            android:text="R"
+            android:clickable="true"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipPython"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:fontFamily="@font/lato"
-            android:text="Python"/>
+            android:text="Python"
+            android:clickable="true"/>
         <com.google.android.material.chip.Chip
             android:id="@+id/Java"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:fontFamily="@font/lato"
-            android:text="Java"/>
+            android:text="Java"
+            android:clickable="true"/>
 
         <com.google.android.material.chip.Chip
             android:id="@+id/C"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
-            android:text="C"/>
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:text="C"
+            android:clickable="true"/>
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -106,31 +116,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:clickable="true"
             android:text="Javanese"/>
         <com.google.android.material.chip.Chip
             android:id="@+id/chipIndonesian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:fontFamily="@font/lato"
+            android:clickable="true"
             android:text="Indonesia"/>
         <com.google.android.material.chip.Chip
             android:id="@+id/chipEnglish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:fontFamily="@font/lato"
+            android:clickable="true"
             android:text="English"/>
         <com.google.android.material.chip.Chip
             android:id="@+id/chipMandarin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
-
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:clickable="true"
             android:text="Mandarin"/>
         <com.google.android.material.chip.Chip
             android:id="@+id/chipGermany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:fontFamily="@font/lato"
+            android:clickable="true"
             android:text="Germany"/>
 
     </com.google.android.material.chip.ChipGroup>
@@ -155,6 +174,7 @@
             android:id="@+id/addLocation"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:paddingStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -184,6 +204,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
+            android:paddingStart="10dp"
             android:background="@drawable/edit_text_background"
             android:inputType="numberDecimal" />
 
@@ -204,6 +225,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
+            android:paddingStart="10dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/edit_text_background"
             android:inputType="numberDecimal" />
@@ -243,6 +265,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
+            android:paddingStart="10dp"
             android:layout_marginLeft="30dp"
             android:background="@drawable/edit_text_background"
             android:inputType="numberDecimal" />
@@ -283,6 +306,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
+            android:paddingStart="10dp"
             android:background="@drawable/edit_text_background"
             android:inputType="number" />
 
@@ -304,6 +328,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:paddingStart="10dp"
             android:background="@drawable/edit_text_background"
             android:inputType="number" />
 
@@ -342,6 +367,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="30dp"
+            android:paddingStart="10dp"
             android:background="@drawable/edit_text_background"
             android:inputType="number" />
 

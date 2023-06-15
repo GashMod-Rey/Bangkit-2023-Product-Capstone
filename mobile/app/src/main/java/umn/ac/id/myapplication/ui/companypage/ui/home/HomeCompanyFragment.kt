@@ -8,11 +8,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.tensorflow.lite.Interpreter
+import umn.ac.id.myapplication.R
 import umn.ac.id.myapplication.databinding.FragmentHomeBinding
 import umn.ac.id.myapplication.databinding.FragmentHomeCompanyBinding
 import umn.ac.id.myapplication.ui.applicantpage.AboutMeActivity
+import umn.ac.id.myapplication.ui.chat.adapter.UserAdapter
 import umn.ac.id.myapplication.ui.companypage.JobPreferencesActivity
+import umn.ac.id.myapplication.ui.data.ListUserAdapter
+import umn.ac.id.myapplication.ui.data.UserData
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
@@ -24,6 +29,8 @@ class HomeCompanyFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var interpreter: Interpreter
+    private val list = ArrayList<UserData>()
+    private lateinit var userAdapter: ListUserAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +47,16 @@ class HomeCompanyFragment : Fragment() {
             val intent = Intent(requireContext(), JobPreferencesActivity::class.java)
             startActivity(intent)
         }
+        userAdapter = ListUserAdapter(list)
+        binding.rvList.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = userAdapter
+        }
+
+
+        list.addAll(getListUser())
+        userAdapter.notifyDataSetChanged()
+
 //
 //        val assetManager = requireContext().assets
 //        val tflitePath = "model.tflite"
@@ -79,5 +96,22 @@ class HomeCompanyFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun getListUser(): ArrayList<UserData>{
+        val dataName = resources.getStringArray(R.array.data_name)
+        val dataSkills = resources.getStringArray(R.array.data_skill)
+        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
+        val listUserData = ArrayList<UserData>()
+        for (i in dataName.indices){
+            val user = UserData(dataName[i], dataSkills[i], dataPhoto.getResourceId(i, -1))
+            listUserData.add(user)
+        }
+        dataPhoto.recycle()
+        return listUserData
+    }
+
+    private fun showRecyclerList(){
+
     }
 }

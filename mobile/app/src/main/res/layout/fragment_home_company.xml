@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/lato"
-        android:paddingHorizontal="30dp"
+        android:paddingHorizontal="20dp"
         android:text="Welcome to HireHub!"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -29,10 +29,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/lato_bold"
-        android:paddingHorizontal="30dp"
+        android:paddingHorizontal="0dp"
         android:text="Discover Employee 🔥"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,8 +62,8 @@
         app:startIconDrawable="@drawable/ic_search">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="290dp"
-            android:layout_height="60dp"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
             android:background="@drawable/search_bar"
             android:fontFamily="@font/lato"
             android:hint="Search CV or position"
@@ -74,8 +74,8 @@
 
         <ImageButton
             android:id="@+id/search_filter"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/ic_filter"
             android:backgroundTint="#F2F2F3"
             android:background="@drawable/edit_text_background"

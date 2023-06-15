@@ -24,4 +24,7 @@
     <item name="cardBackground" type="color">#f6f6f6</item>
     <color name="textColor">#999DA4</color>
 
+    <color name="selected_chip_color">#5669FF</color>
+    <color name="default_chip_color">#95969D</color>
+
 </resources>
