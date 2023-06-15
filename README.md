@@ -1,4 +1,4 @@
-# HireHub - 
+# HireHub - Connect the Unreachable
 <br/>
 <div align="center">
   <img src="./assets/logo.png">
@@ -26,7 +26,7 @@ Hirehub has two user-level, the applicants and the companies. Firstly, the appli
 On the other hand, company user-level can make their profile online manually. They can also search for applicants/talents with simple steps, such as setting the filter (filtering age/skills/other) and then searching. Then, our application will recommend (with the recommender system that we develop) some applicants in a list from the most relevant to the filter all the way down to the most irrelevant to the filter. HR can then see their online profile and CV, then can offer the applicants a job. HR needs to wait for applicants' responses and if applicants accept the offer for recruitment, the recruitment process will be facilitated via chat in our application. Then, the company will have the right to cancel the recruitment process (since the applicants are no longer relevant, mismatch in the interview/technical test, etc.) or accept the applicants to their companies. If the applicants are accepted by the company, then they will disappear from the search list and the running recruitment process will be terminated.
 
 ## 1. Technical Stack
-This application was built using technical stack explained below.
+This application was built using the technical stack explained below.
 <ol>
   <li> Machine Learning: 
     <ul>
@@ -56,10 +56,10 @@ This application was built using technical stack explained below.
 
 ## 2. Machine Learning Description and Data Usage
 
-<b> New Findings&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : model to detect academic degree in /script/output/model-best, three entities content-based filtering (in RecommenderSystem.ipynb, Experimental Work section), and two JSONL files to detect country/languages in a CV </b>
+<b> New Findings&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; : a model to detect academic degree in /script/output/model-best, three entities content-based filtering (in RecommenderSystem.ipynb, Experimental Work section), and two JSONL files to detect country/languages in a CV </b>
 
-There are three main workloads for Machine Learning team, namely searching for PDF-formatted CV dataset, building a model that can recognize entity from CV/Resume (entity: name, location, education institution, education degree, email, mobile phone, skills, languages, and professional summary), and building a recommendation system for filtering applicants in HR/companies-side.
-This application used PDF-formatted CV data from various source. For Machine Learning training purposes, we used data from.
+There are three main workloads for the Machine Learning team, namely searching for a PDF-formatted CV dataset, building a model that can recognize entities from CV/Resume (entity: name, location, education institution, education degree, email, mobile phone, skills, languages, and professional summary), and building a recommendation system for filtering applicants in HR/companies-side.
+This application used PDF-formatted CV data from various sources. For Machine Learning training purposes, we used data from.
 <ol>
   <li>Resume Dataset - [URL: https://www.kaggle.com/datasets/aishikai/resume-dataset]</li>
   Details <br/>
@@ -93,29 +93,29 @@ This application used PDF-formatted CV data from various source. For Machine Lea
 After that, we built a CV Parser with various libraries and methods, such as.
 <ol>
   <li>Regex (Regular Expression): Used in getting email, mobile phone, name, and education institution.</li>
-  <li>Cleaning CV data (removing unnecessary part for gathering certain entity): Used in getting all the entity, significantly shown in getting name, education institution, and summary.</li>
+  <li>Cleaning CV data (removing unnecessary parts for gathering certain entities): Used in getting all the entities, significantly shown in getting the name, education institution, and summary.</li>
   <li>Using en_core_web_sm model: Used in getting name.</li>
   <li>Using en_core_web_md model: Used in getting name, skills, languages, and location.</li>
   <li>Using pre-defined rule for model's pipe: Used in getting skills (from JobZilla AI, jz_skill_patterns.jsonl)</li>
   <li>Using our own new rule for model's pipe: Used in getting languages and location (hh_lang_pattern.jsonl and hh_country_pattern.jsonl)</li>
-  <li>Using our own new model created with SpaCy: Used in getting education degree.</li>
+  <li>Using our own new model created with SpaCy: Used in getting education degrees.</li>
 </ol>
 
 Lastly, we built a recommendation system with TensorFlow and deploy/serve the model with TensorFlow Lite.
 
-In addition, we did some experimental work (heavier and inteded to be more robust) using word embedding with gensim models Word2Vec and content-based filtering concept.
+In addition, we did some experimental work (heavier and intended to be more robust) using a word embedding with gensim model Word2Vec and a content-based filtering concept.
 
 For specific documentation of input, output, and process, kindly refer to documentation written in .ipynb.
 
 ## 3. Cloud Computing/Backend Description and List of Endpoints
-There are some workloads for cloud computing team, such as database, backend, bucket, run Python from backend, API, and deploying backend on cloud.
+There are some workloads for the cloud computing teams, such as database, backend, bucket, running Python from the backend, API, and deploying backend on the cloud.
 
-The architechture of our backend is as follow.
+The architecture of our backend is as follows.
 <div align="center">
   <img src="./assets/Architechture.png" width="50%">
 </div>
 
-This application using NodeJS as programming language and Express as its framework.
+This application uses NodeJS as the programming language and Express as its framework.
 Here is a list of dependencies used and how to install them:
 <ol>
   <li>Express: It is a fast and minimalist web application framework for Node.js. </li>
@@ -124,7 +124,7 @@ To install, run: npm install express <br/>
   <li>@google-cloud/storage: It is the official Google Cloud Storage client library.</li>
 To install, run: npm install @google-cloud/storage <br/>
   
-  <li>Multer: It is a middleware for handling multipart/form-data, primarily used for uploading files.</li>
+  <li>Multer: It is a middleware for handling multipart/form data, primarily used for uploading files.</li>
 To install, run: npm install multer <br/>
 
   <li>jsonwebtoken: It is an implementation of JSON Web Tokens (JWT) for Node.js.</li>
@@ -148,8 +148,8 @@ Endpoints for applicants-side features:
         </ul>
     <li>(POST) /loginApplicant </li>
         <ul>
-            <li> Function: Log in an applicant.</li>
-            <li> Implementation: Log in for applicant page.</li>
+            <li> Function: Log in as an applicant.</li>
+            <li> Implementation: Log in for the applicant page.</li>
         </ul>
     <li>(POST) /setProfileApplicant </li>
         <ul>
@@ -173,12 +173,12 @@ Endpoints for companies-side features:
     <li>(POST) /signupCompany </li>
         <ul>
             <li> Function: Sign up a new company.</li>
-            <li> Implementation: Signup for company page.</li>
+            <li> Implementation: Signup for the company page.</li>
         </ul>
     <li>(POST) /loginCompany </li>
         <ul>
-            <li> Function: Log in an company.</li>
-            <li> Implementation: Log in for company page.</li>
+            <li> Function: Log in as a company.</li>
+            <li> Implementation: Log in for the company page.</li>
         </ul>
     <li>(POST) /setProfileCompany </li>
         <ul>
@@ -192,7 +192,7 @@ Endpoints for companies-side features:
         </ul>
     <li>(POST) /api/filter  </li>
         <ul>
-            <li> Function: Get data filter from front-end, scoring applicants, and send the applicants list to front-end.</li>
+            <li> Function: Get data filter from the front-end, score applicants, and send the applicants list to the front-end.</li>
             <li> Implementation: Job Preferences Page.</li>
         </ul>
 </ol>
@@ -201,7 +201,7 @@ Endpoints for chat applicants-side features:
 <ol>
     <li>(POST) /api/chat/newchat </li>
           <ul>
-              <li> Function: Create Room Chat if applicant accept the offer from company.</li>
+              <li> Function: Create Room Chat if the applicant accepts the offer from the company.</li>
               <li> Implementation: Accept button.</li>
           </ul>
     <li>(POST) /api/messages/sendfromapplicant </li>
@@ -220,12 +220,12 @@ Endpoints for chat companies-side features:
         </ul>
 </ol>
 
-Database schema of our applicants is as follow.
+The database schema of our applicants is as follows.
 <div align="center">
   <img src="./assets/database.png" width="70%">
 </div>
 
-Our Chat Feature Implementation Flowchart is as follow.
+Our Chat Feature Implementation Flowchart is as follows.
 <div align="center">
   <img src="./assets/Chat Feature Flow.png" width="40%">
 </div>
@@ -239,21 +239,21 @@ Our Chat Feature Implementation Flowchart is as follow.
   <img src="./assets/Chat History Flow.png" width="35%">
 </div>
 
-Data flow for CV Parsing Process is as follow.
+The data flow for CV Parsing Process is as follows.
 <div align="center">
   <img src="./assets/CVParser.png">
 </div>
 
-Data flow for Recommender System is as follow.
+The data flow for Recommender System is as follows.
 <div align="center">
   <img src="./assets/Recommender.png">
 </div>
 
 ## 4. Mobile Development Description
-Prototype of this mobile application was made with Figma. Link to our Figma (prototype) is as follow. <br/>
+A prototype of this mobile application was made with Figma. The link to our Figma (prototype) is as follows. <br/>
 https://www.figma.com/file/KjWlvjAYf1CdEYnAkvxbS7/HireHub?type=design&node-id=0-1&t=diQxH05lD12A2Cdt-0
 
-This list below explaining Activity/Fragment that we have made for the application.
+The list below explains the Activity/Fragment that we have made for the application.
 ### 4.1 Applicant Side
 <ol>
   <li>About Me</li>
@@ -274,15 +274,15 @@ This list below explaining Activity/Fragment that we have made for the applicati
   </ul>
   <li>History Success</li>
   <ul>
-    <li>Function : List all the companies those applicants accept their recruiment process offer</li>
+    <li>Function : List all the companies those applicants accept their recruitment process offer</li>
   </ul>
   <li>Waiting Hired Company</li>
   <ul>
-    <li>Function : List all the companies those applicants wait for the recruitment process result</li>
+    <li>Function : List all the companies those applicants waiting for the recruitment process result</li>
   </ul>
   <li>Succesfully Hiring Company</li>
   <ul>
-    <li>Function : List all the companies those applicants success in recruitment process</li>
+    <li>Function : List all the companies those applicants succeed in the recruitment process</li>
   </ul>
   <li>Login</li>
   <ul>
@@ -290,7 +290,7 @@ This list below explaining Activity/Fragment that we have made for the applicati
   </ul>
   <li>Login Option</li>
   <ul>
-    <li>Function : Choose to login as applicants/companies</li>
+    <li>Function : Choose to log in as applicants/companies</li>
   </ul>
   <li>Main</li>
   <ul>
@@ -310,7 +310,7 @@ This list below explaining Activity/Fragment that we have made for the applicati
   </ul>
   <li>Upload CV Success</li>
   <ul>
-    <li>Function : Notification for success process of upload CV</li>
+    <li>Function : Notification for successful process of uploading CV</li>
   </ul>
   <li>Chat Applicant</li>
   <ul>
@@ -334,15 +334,15 @@ This list below explaining Activity/Fragment that we have made for the applicati
   </ul>
   <li>Hiring Process Company</li>
   <ul>
-    <li>Function : List all the applicants that currently in recruitment process</li>
+    <li>Function : List all the applicants that are currently in the recruitment process</li>
   </ul>
   <li>History Decline Company</li>
   <ul>
-    <li>Function : List all the applicants that reject company offering</li>
+    <li>Function : List all the applicants that reject the company offering</li>
   </ul>
   <li>History Success Company</li>
   <ul>
-    <li>Function : List all the applicants that success in the recruitment process</li>
+    <li>Function : List all the applicants that succeed in the recruitment process</li>
   </ul>
   <li>History Waiting Company</li>
   <ul>
@@ -362,7 +362,7 @@ This list below explaining Activity/Fragment that we have made for the applicati
   </ul>
   <li>Process Applicants</li>
   <ul>
-    <li>Function : Displaying applicants, their CV/profile, and button to process them</li>
+    <li>Function : Displaying applicants, their CV/profile, and a button to process them</li>
   </ul>
   <li>Register Company</li>
   <ul>
@@ -387,7 +387,7 @@ After that, we inflated or made the connection between Activity-Fragment and cod
 ## 5. Replication and Duplication Steps
 This section contains how to replicate (running the code given) and duplicate (remake/re-develop) this project.
 ### 5.1 Machine Learning
-Assume that you didn't have Python or Jupyter Notebook installed in your device, then you should download and install Python and Jupyter Notebook first. After set up all the necessary options, follow this step below to replicate the project.
+Assume that you didn't have Python or Jupyter Notebook installed on your device, then you should download and install Python and Jupyter Notebook first. After setting up all the necessary options, follow the step below to replicate the project.
 <ol>
   <li>Clone the project from GitHub (project contains code for Machine Learning, Cloud Computing, and Mobile Development)</li>
   <li>Download all the necessary library using this command on your Anaconda Prompt.</li>
@@ -409,13 +409,13 @@ Assume that you didn't have Python or Jupyter Notebook installed in your device,
     <li>python -m spacy download en_core_web_md</li>
   </ul>
 </ol>
-Up to those steps, you should be able to run the code in .ipynb. Further, if you want to duplicate the code from the beginning for further development, our workflow is as follow.
+Up to those steps, you should be able to run the code in .ipynb. Further, if you want to duplicate the code from the beginning for further development, our workflow is as follows.
 <ol>
   <li>Make ResumeParser.ipynb with each function in it.</li>
   <ul>
     <li>Using pre-built model</li>
-    To use pre-built model, you can load the model with spacy.load() function, then pass the text you want to parse to the variable parameter. Result of recognition will be in ents, and for each entity in ents, there is label_ and text (label_ is recognized label, text is corresponding text recognized as label). <br/>
-    For example, the code to print all texts associated with organization recognized by the model (en_core_web_md) from a text should look like this.
+    To use a pre-built model, you can load the model with spacy.load() function, then pass the text you want to parse to the variable parameter. The result of recognition will be in ents, and for each entity in ents, there is label_ and text (label_ is the recognized label, and the text is the corresponding text recognized as the label). <br/>
+    For example, the code to print all texts associated with the organization recognized by the model (en_core_web_md) from a text should look like this.
 <pre>
 model = spacy.load("en_core_web_md")
 result = model(text)
@@ -426,15 +426,15 @@ for ent in result.ents:
     <li>Making your own pre-defined rule for model's pipe</li>
     <ol>
       <li>List all the keywords associated with your labels.</li>
-      <li>Sort it based on alphabet.</li>
+      <li>Sort it based on the alphabet.</li>
       <li>Split each word by its space.</li>
       <li>Make the pattern of rules for the jsonl's content.</li>
     </ol>
-    Advantages: It can perfectly search for any occurence of certain listed keyword. <br/>
-    Disadvantages: It can't search for any occurence besides the listed/pre-defined keywords. <br/>
+    Advantages: It can perfectly search for any occurrence of certain listed keywords. <br/>
+    Disadvantages: It can't search for any occurrence besides the listed/pre-defined keywords. <br/>
     For more comprehensible details, you can refer to the Additional Python Works section in ResumeParser.ipynb.
     <li>Using pre-defined rule for model's pipe (JobZilla AI pre-defined, our project pre-defined, or your own rule)</li>
-    To use pre-defined rule for model's pipe, you can add the "entity_ruler" pipe in a existing model, load the rules from disk, and do the inference as you have done in using pre-built model before. <br/>
+    To use a pre-defined rule for the model's pipe, you can add the "entity_ruler" pipe in an existing model, load the rules from disk, and do the inference as you have done in using the pre-built model before. <br/>
     For example, the code to incorporate rules from hh_lang_pattern.jsonl file in en_core_web_md model should look like this.
 <pre>
 model = spacy.load("en_core_web_md")
@@ -446,9 +446,9 @@ result = model(text)
     <li>Train our own model with SpaCy</li>
     To train our own model, follow this step.
     <ol>
-      <li>Use the code to structure and create training data in ResumeParser.ipynb. For a quick recap, structure_training_data function get the text and list of keywords associated with a label, then annotate/mark the keywords occurence (substring) contained in certain text with that label. Then, create_training_set function will add data to a blank model document. Then, we will get the .spacy file for train and test data.</li>
-      <li>Download base_config.cfg from link given in Additional Python Works section in ResumeParser.ipynb (make sure to choose the NER option).</li>
-      <li>Configure the train and dev data with train and test data path.</li>
+      <li>Use the code to structure and create training data in ResumeParser.ipynb. For a quick recap, the structure_training_data function gets the text and list of keywords associated with a label, then annotate/marks the occurrence of the keywords (substring) contained in certain text with that label. Then, the create_training_set function will add data to a blank model document. Then, we will get the .spacy file for train and test data.</li>
+      <li>Download base_config.cfg from the link given in the Additional Python Works section in ResumeParser.ipynb (make sure to choose the NER option).</li>
+      <li>Configure the train and dev data with the train and test data path.</li>
       <li>Initiate the training process and configure the training by running this code.</li>
 <pre>
 python -m spacy init fill-config base_config.cfg config.cfg
@@ -457,11 +457,11 @@ python -m spacy init fill-config base_config.cfg config.cfg
 <pre>
 python -m spacy train config.cfg --output ./output
 </pre>
-      <li>The model will be located in output folder (to change this, change the ./output part to ./(folder_name) with (folder_name) is desired folder name. Use them for your entity recognition purposes.</li>
+      <li>The model will be located in the output folder (to change this, change the ./output part to ./(folder_name) with (folder_name) as the desired folder name. Use them for your entity recognition purposes.</li>
     </ol>
     <li>Using our own trained SpaCy model</li>
-    Using our own trained SpaCy model is similar to using pre-built model with SpaCy. The difference only in the spacy.load() function's argument which should contain your model path.
-    For example, if you want to use your own trained model in output/model-best directory, the code should look like this.
+    Using our own trained SpaCy model is similar to using a pre-built model with SpaCy. The difference is only in the spacy.load() function's argument which should contain your model path.
+    For example, if you want to use your own trained model in the output/model-best directory, the code should look like this.
 <pre>
 model = spacy.load("output/model-best")
 result = model(text)
@@ -470,9 +470,9 @@ for ent in result.ents:
     print(ent.text)
 </pre>
   </ul>
-  <li>Relocate core code of the .ipynb file to .py file (getting each entity, requests given PDF link and open the PDF, and getting argument from NodeJS backend).</li>
+  <li>Relocate core code of the .ipynb file to .py file (getting each entity, requests given PDF link and opening the PDF, and getting an argument from NodeJS backend).</li>
   <li>Make RecommenderSystem.ipynb with each function in it.</li>
-  <li>Relocate core code of the .ipynb file to .py file (scoring/indexing each attribute and create a ready-to-use matrix).</li>
+  <li>Relocate the core code of the .ipynb file to .py file (scoring/indexing each attribute and creating a ready-to-use matrix).</li>
 </ol>
 
 ### 5.2 Cloud Computing
@@ -485,32 +485,32 @@ for ent in result.ents:
    - Select the region as location type (asia-southeast2)
    - Uncheck the "enforce public access prevention"
    - Create the bucket
-   - Set the bucket to public by giving permission to allUsers as viewer
+   - Set the bucket to the public by giving permission to allUsers as the viewer
 4. MySQL configuration
-   - Create new instance in SQL
+   - Create a new instance in SQL
    - Select MySQL
    - Set the ID and Password
    - Set the database 5.7 version 
    - Create the database in MySQL and create the table needed
-   - Set the connection service so the database can be access from public internet
-5. Service Account configuration
+   - Set the connection service so the database can be accessed from the public internet
+5. Service Account Configuration
    - Create a service account as a credential to access the project
-   - Add new key to acccess the service account
+   - Add a new key to access the service account
    - Download as JSON file and connect the key to code
 6. Configure the App Engine
    - Turn on the App Engine service
-   - Open editor and clone the code
+   - Open the editor and clone the code
    - Initialize project using gcloud init
    - Set the app.yaml into the right service (default and then backend)
    - Deploy with gcloud app deploy
 
 ### 5.3 Mobile Development
-To replicate this code (run in your local), please download Android Studio and related resources (SDK, etc.). Then, wait for gradle to build and you should have the functional apps.
+To replicate this code (run the code in your local host), please download Android Studio and related resources (SDK, etc.). Then, wait for Gradle to build and you should have the functional apps.
 
 To duplicate this code, these are the steps we have done:
 <ol>
   <li>Make the XML for each activity/fragment</li>
-  <li>Make the Intent to connect between Activity</li>
+  <li>Make the Intent to Connect between Activity</li>
   <li>Inflate the related Fragment</li>
   <li>Make the logic code in Kotlin</li>
   <li>Setup the Retrofit for API connection between Front-End and Back-End</li>
@@ -520,7 +520,7 @@ To duplicate this code, these are the steps we have done:
 </ol>
 
 ## 6. Future Works
-There are some future works that team will take care of in the future to make sure that users have the best experience using the application, such as.
+There are some future works that the team will take care of in the future to make sure that users have the best experience using the application, such as.
 ### 6.1 Machine Learning
 #### 6.1.1 CV Parser
 <ol>
@@ -533,7 +533,7 @@ There are some future works that team will take care of in the future to make su
 <ol>
   <li>Incorporating experimental work (word embedding + content-based filtering) to the system</li>
   <li>Simplifying and optimizing time and memory consumption of the preprocessing and recommendation algorithm</li>
-  <li>Making Recommender System in interesting and more helpful way (Chatbot/Virtual Assistance)</li>
+  <li>Making Recommender System in an interesting and more helpful way (Chatbot/Virtual Assistance)</li>
 </ol>
 
 #### 6.1.3 Other Features
@@ -546,11 +546,11 @@ There are some future works that team will take care of in the future to make su
 ### 6.2 Cloud Computing
 <ol>
   <li>Scaling the project further</li>
-  <li>Separating the working server with ML algorithm server</li>
+  <li>Separating the working server with the ML algorithm server</li>
 </ol>
 
 ### 6.3 Mobile Development
 <ol>
   <li>Increasing UI/UX aspects</li>
-  <li>Fitting responsiveness (for various device size) to the application</li>
+  <li>Fitting responsiveness (for various device sizes) to the application</li>
 </ol>
