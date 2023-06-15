@@ -1,4 +1,4 @@
-# HireHub - 
+# HireHub - Connect the Unreachable
 <br/>
 <div align="center">
   <img src="logo.png">
