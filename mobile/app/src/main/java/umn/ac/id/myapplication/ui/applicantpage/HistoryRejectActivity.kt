@@ -15,6 +15,7 @@ import retrofit2.Response
 import umn.ac.id.myapplication.databinding.ActivityHistoryRejectBinding
 import umn.ac.id.myapplication.ui.api.ApiClient
 import umn.ac.id.myapplication.ui.applicantpage.adapter.UserHistoryAdapter
+import umn.ac.id.myapplication.ui.applicantpage.adapter.UserHistoryRejectAdapter
 import umn.ac.id.myapplication.ui.data.HistoryDataResponse
 import umn.ac.id.myapplication.ui.data.HistoryResponse
 import umn.ac.id.myapplication.ui.data.UserPreferences
@@ -26,7 +27,7 @@ class HistoryRejectActivity : AppCompatActivity() {
     private var token = ""
     private lateinit var userPreferences: UserPreferences
     private lateinit var binding:ActivityHistoryRejectBinding
-    private lateinit var adapter: UserHistoryAdapter
+    private lateinit var adapter: UserHistoryRejectAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHistoryRejectBinding.inflate(layoutInflater)
@@ -54,9 +55,9 @@ class HistoryRejectActivity : AppCompatActivity() {
                                 it.UsernameC
                             } ?: emptyList()
 
-                            adapter = UserHistoryAdapter(
+                            adapter = UserHistoryRejectAdapter(
                                 ArrayList(),
-                                object : UserHistoryAdapter.OnClickItem {
+                                object : UserHistoryRejectAdapter.OnClickItem {
                                     override fun onClick(historyData: HistoryDataResponse) {
                                         TODO("Not yet implemented")
                                     }
