@@ -794,36 +794,6 @@ app.post('/api/filter', (req, res) => {
       res.sendStatus(500);
     });
 });
-
-<<<<<<< HEAD
-// Express.js endpoint to receive data from mobile frontend
-// app.post('/api/filter', (req, res) => {
-//   const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol } = req.body;
-
-//   // Create the data filter object
-//   const datafilter = [
-//     {
-//       ageFilter: [ageFilter.min, ageFilter.max],
-//       tolerance,
-//       skillFilter,
-//       langFilter,
-//       salaryFilter: [salaryFilter.min, salaryFilter.max],
-//       tol
-//     }
-//   ];
-
-//   // Retrieve the data of applicants and run the Python code
-//   getApplicantsData()
-//     .then((applicantsData) => {
-//       runPythonCode(applicantsData, datafilter);
-//       res.sendStatus(200);
-//     })
-//     .catch((error) => {
-//       console.error('Error:', error);
-//       res.sendStatus(500);
-//     });
-// });
-
 io.on('connection', function(socket) {
   console.log('User Connection');
 
@@ -918,8 +888,3 @@ http.listen(port, function() {
 // app.listen(port, () => {
 //   console.log(`Server started on port ${port}`);
 // });
-=======
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
-});
->>>>>>> 149c7ae5a5b5bd9a1186317c3aca6f296617389e
