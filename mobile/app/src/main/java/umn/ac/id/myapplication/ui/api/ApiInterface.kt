@@ -101,7 +101,7 @@ interface ApiInterface {
     @POST("status")
     fun status(
         @Header("Authorization") token: String,
-        @Field("offer") offer: String
+        @Field("offer") offer: Boolean
     ): Call<StatusResponse>
 
     @FormUrlEncoded
