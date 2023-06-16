@@ -155,8 +155,6 @@ function authenticateTokenA(req, res, next) {
   });
 }
 function authenticateTokenC(req, res, next) {
-  // const authHeader = req.headers['authorization'];
-  // const token = authHeader && authHeader.split(' ')[1];
   const token = tokenglobalC;
 
   if (token == null) {
@@ -214,26 +212,6 @@ function verifyToken(token) {
     return null;
   }
 }
-
-// Protected route example
-// app.get('/protected', (req, res) => {
-//     // Get the token from the request header or query parameter
-//     const token = req.headers.authorization || req.query.token;
-
-//     if (!token) {
-//         return res.status(401).json({ message: 'Access denied. No token provided.' });
-//     }
-
-//     // Verify the token
-//     const decoded = verifyToken(token);
-//     if (decoded) {
-//         // Token is valid, user is authenticated
-//         return res.status(200).json({ message: 'Access granted to protected resource.' });
-//     } else {
-//         // Token is invalid or expired
-//         return res.status(401).json({ message: 'Access denied. Invalid token.' });
-//     }
-// });
 
 app.post("/setProfileApplicant", authenticateTokenA, (req, res) => {
   // Extract the profile data from the request body
@@ -363,83 +341,6 @@ app.post("/uploadCV", authenticateTokenA, async (req, res) => {
     console.log(error);
   }
 });
-
-// app.post('/uploadPP', (req, res) => {
-//     console.log('Made it /upload');
-//     try {
-//       UploadPP(req, res, (err) => {
-//         if (err) {
-//           throw 'Error with profile picture upload';
-//         }
-//         const file = req.file;
-//         if (!file) {
-//           throw 'No profile picture file found';
-//         }
-
-//         // Handle the uploaded file
-//         const timestamp = Date.now();
-//         const fileName = `${timestamp}_profile.jpg`; // Set the desired file name and extension
-
-//         const blob = bucketPP.file(fileName);
-//         const blobStream = blob.createWriteStream();
-
-//         blobStream.on('finish', () => {
-//           res.setHeader('Content-Type', 'application/json');
-//           res.status(200).json({ message: 'Success' });
-//           console.log('Success');
-//         });
-
-//         blobStream.end(file.buffer);
-//       });
-//     } catch (error) {
-//       res.setHeader('Content-Type', 'application/json');
-//       res.status(500).json({ error });
-//     }
-// });
-
-// app.get('/uploadPP', async (req, res) => {
-//     try {
-//       const [files] = await bucketPP.getFiles();
-
-//       if (files.length > 0) {
-//         const lastFile = files[files.length - 1];
-//         const url = `https://storage.googleapis.com/bucket_pp33/${lastFile.id}`;
-//         const fileData = { id: lastFile.id, url };
-
-//         req.session.ppPath = url;
-//         console.log(req.session.ppPath);
-
-//         res.json(fileData);
-//         console.log('Success');
-//       } else {
-//         res.status(404).json({ error: 'No files found' });
-//       }
-//     } catch (error) {
-//       res.status(500).json({ error: 'Error: ' + error });
-//     }
-// });
-
-// app.post('/deleteCV', async (req, res) => {
-//     const token = req.session.token;
-//     const decodedToken = verifyToken(token);
-//     const username = decodedToken.username;
-
-//     try {
-//         // Delete the file entry from MySQL
-//         const deleteQuery = 'UPDATE Applicants SET PdfPath = ? WHERE Username = ?';
-//         connection.query(deleteQuery, ["NULL", username], (deleteErr) => {
-//           if (deleteErr) {
-//             console.error('Error executing MySQL delete query:', deleteErr);
-//             return res.status(500).json({ error: 'An error occurred while deleting the file entry' });
-//           }
-
-//           return res.json({ message: 'PDF file deleted successfully' });
-//         });
-//     } catch (err) {
-//       console.error(err);
-//       return res.status(500).json({ error: 'An error occurred while deleting the PDF file' });
-//     }
-// });
 
 // Company API
 
@@ -635,33 +536,11 @@ app.post("/status", authenticateTokenA, authenticateTokenC, (req, res) => {
   }
 });
 
-app.get("/historyApplicant", authenticateTokenA, (req, res) => {
-  const usernameA = req.applicant.username;
-
-  const query = `SELECT * FROM Relation WHERE UsernameA = ?`;
-  connection.query(query, [usernameA], (err, result) =>{
-    if (err) {
-      console.error("Error executing the query:", err);
-      return res.status(500).json({ message: "Internal server error." });
-    }
-    return res.status(201).json(result);
-  });
-});
-
-app.get("/historyCompany", authenticateTokenC, (req, res) => {
-  const usernameC = req.company.username;
-
-  const query = `SELECT * from Relation WHERE UsernameC = ?`;
-  connection.query(query, [usernameC], (err, result) =>{
-    if (err) {
-      console.error("Error executing the query:", err);
-      return res.status(500).json({ message: "Internal server error." });
-    }
-    return res.status(201).json(result);
-  });
-});
-
 // API Chat
+const http = require('http').Server(app); 
+const io = require('socket.io')(http); 
+var userList = []; 
+var roomChatList = [];
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
@@ -720,7 +599,7 @@ app.post("/api/chat/newchat", authenticateTokenA, authenticateTokenC, async (req
 
   connection.query(query, values, async (error, result) => {
     if (error) {
-      console.error("Error creating chat:", error);
+      console.log(error)
       return res.status(500).json({ error: "Failed to create chat" });
     }
     await getChat(req, res);
@@ -840,9 +719,7 @@ app.post("/api/messages/sendfromcompany", authenticateTokenA, authenticateTokenC
 });
 
 // Recommender System
-// Retrieve the data of applicants from the MySQL database
-const datafilter = [{ ageFilter: [23, 27], tolerance: 5, skillFilter: ["C", "C++", "Java"], langFilter: ["English", "Mandarin", "Javanese"], salaryFilter: [3, 12], tol: 1 }];
-// minta data filter dan CONVERT dari FRONTEND MOBILE FORMATNYA KAYAK DI ATAS 
+// const datafilter = [{ ageFilter: [23, 27], tolerance: 5, skillFilter: ["C", "C++", "Java"], langFilter: ["English", "Mandarin", "Javanese"], salaryFilter: [3, 12], tol: 1 }];
 function getApplicantsData(location) {
   return new Promise((resolve, reject) => {
     const query = "SELECT * FROM Applicants WHERE Location = ?";
@@ -859,40 +736,7 @@ function getApplicantsData(location) {
 }
 
 // Run the Python code and pass the data as command-line arguments
-// const runPythonCode = async (applicantsData) => {
-//   try {
-//     const pythonProcess = spawner("python", ["../script/Scoring.py", JSON.stringify(applicantsData), JSON.stringify(datafilter)]);
-
-//     pythonProcess.stdout.on("data", (data) => {
-//       const json_data = data.toString().trim();
-//       const x = JSON.parse(json_data);
-//       for (let i = 0; i < x.length; i++) {
-//         applicantsData[i]["Score"] = x[i];
-//       }
-//       console.log(applicantsData);
-//       res.json(applicantsData);
-
-//       // Kirim jadi JSON ke FE
-//     });
-
-//     pythonProcess.stderr.on("data", (data) => {
-//       console.error(data.toString());
-//     });
-
-//     pythonProcess.on("close", (code) => {
-//       console.log(`Python process exited with code ${code}`);
-//       // Close the connection pool
-//       connection.end();
-//     });
-//   } catch (error) {
-//     console.error("Error:", error);
-//     // Close the connection pool
-//     connection.end();
-//   }
-// };
-
-// Run the Python code and pass the data as command-line arguments
-const runPythonCode = async (applicantsData, res) => {
+const runPythonCode = async ([applicantsData, datafilter], res) => {
   try {
     //const pythonProcess = spawner("python", ["../script/Scoring.py", JSON.stringify(applicantsData), JSON.stringify(datafilter)]);
     const appData = JSON.stringify(applicantsData);
@@ -900,44 +744,24 @@ const runPythonCode = async (applicantsData, res) => {
     const sendData = {appData, filter};
     const response = await axios.post('http://34.101.38.231:5000/recommender', { Data: sendData });
     const data = response.data;
+    console.log(data);
     
-    let result = ""; // Variable to store the result from the Python code
-    result += data.toString();
-    console.log(result);
-    
-    // try {
-    //   const json_data = result.trim();
-    //   console.log("data = " + json_data);
-    //   const x = JSON.parse(json_data);
-    //   for (let i = 0; i < x.length; i++) {
-    //     applicantsData[i]["Score"] = x[i];
-    //   }
-    //   console.log(applicantsData);
+    try {
+      for (let i = 0; i < data.length; i++) {
+        applicantsData[i]["Score"] = data[i];
+      }
+      console.log(applicantsData);
 
-    //   // Convert to JSON format and send it to the frontend
-    //   res.json(applicantsData);
-    // } catch (error) {
-    //   console.error("Error:", error);
-    //   // Handle error response to the frontend
-    //   res.status(500).json({ error: "An error occurred" });
-    // }
+      // Convert to JSON format and send it to the frontend
+      res.json(applicantsData);
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle error response to the frontend
+      res.status(500).json({ error: "An error occurred" });
+    }
 
-    // pythonProcess.stdout.on("data", (data) => {
-    //   result += data.toString();
-    // });
-
-    // pythonProcess.stderr.on("data", (data) => {
-    //   console.error(data.toString());
-    // });
-
-    // pythonProcess.on("close", (code) => {
-    //   console.log(`Python process exited with code ${code}`);
-    //   // Close the connection pool
-    //   connection.end();
   } catch (error) {
     console.error("Error:", error);
-    // Close the connection pool
-    // Handle error response to the frontend
     res.status(500).json({ error: "An error occurred" });
   }
 };
@@ -945,58 +769,122 @@ const runPythonCode = async (applicantsData, res) => {
 // Express.js endpoint to receive data from mobile frontend
 app.post('/api/filter', (req, res) => {
   const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol, location } = req.body;
-
-  // Create the data filter object
+  // Convert ageFilter from string to a list
+  const parsedAgeFilter = JSON.parse(ageFilter).map(Number);
+  const parsedSalaryFilter = JSON.parse(salaryFilter).map(Number);
+  
   const datafilter = [
     {
-      ageFilter: [ageFilter.min, ageFilter.max],
-      tolerance,
-      skillFilter,
-      langFilter,
-      salaryFilter: [salaryFilter.min, salaryFilter.max],
-      tol
+      ageFilter : [parsedAgeFilter[0], parsedAgeFilter[1]],
+      tolerance : parseInt(tolerance),
+      skillFilter: skillFilter,
+      langFilter: langFilter,
+      salaryFilter : [parsedSalaryFilter[0], parsedSalaryFilter[1]],
+      tol : parseFloat(tol)
     }
   ];
 
   // Retrieve the data of applicants and run the Python code
   getApplicantsData(location)
     .then((applicantsData) => {
-      runPythonCode(applicantsData, res); // Pass the `res` object as an argument
+      runPythonCode([applicantsData, datafilter], res); // Pass the `res` object as an argument
     })
     .catch((error) => {
       console.error('Error:', error);
       res.sendStatus(500);
     });
 });
+io.on('connection', function(socket) {
+  console.log('User Connection');
 
-// Express.js endpoint to receive data from mobile frontend
-// app.post('/api/filter', (req, res) => {
-//   const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol } = req.body;
+  socket.on("message", function(value) {
+      console.log(value);
+      io.emit("message", value);
+  });
 
-//   // Create the data filter object
-//   const datafilter = [
-//     {
-//       ageFilter: [ageFilter.min, ageFilter.max],
-//       tolerance,
-//       skillFilter,
-//       langFilter,
-//       salaryFilter: [salaryFilter.min, salaryFilter.max],
-//       tol
-//     }
-//   ];
+  socket.on("user-join", function(value) {
+      console.log(value + "user-join");
+      socket.broadcast.emit("new-users", value);
+  });
 
-//   // Retrieve the data of applicants and run the Python code
-//   getApplicantsData()
-//     .then((applicantsData) => {
-//       runPythonCode(applicantsData, datafilter);
-//       res.sendStatus(200);
-//     })
-//     .catch((error) => {
-//       console.error('Error:', error);
-//       res.sendStatus(500);
-//     });
-// });
+  socket.on('connect user', function(id,user){
+      console.log("Connected user ");
+      io.emit('connect user', id,user);
+  });
 
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
+  socket.on('on typing', function(id,typing){
+      io.emit('on typing', id,typing);
+  });
+
+  socket.on('chat message', function(id,msg){
+      io.emit('chat message', id, msg);
+  });
+
+  socket.on('allUser', function(token){
+      io.emit('allUser', userList);
+  });
+
+  socket.on('allRoomChat', function(token) {
+      io.emit('allRoomChat', roomChatList);
+  });
+
+  socket.on('SingUp', function(username,User){
+      for (let i = 0; i < userList.length; i++) { 
+         if (userList[i]['username']==User['username']) {
+            io.emit('SingUp', username,false);
+             break;
+         }else if(i==userList.length-1){
+            userList.push(User);
+            io.emit('SingUp', username,true);
+            io.emit('allUser', userList);    
+         }
+       }
+      if(userList.length==0){
+            userList.push(User);
+            io.emit('SingUp', id,true);
+            io.emit('get all user', userList);
+         }
+   });
+
+   socket.on('SingOut', function(username, User){
+      userList = userList.filter((user) => user['token'] != User['token']);
+      io.emit('SingOut', username,false);
+      io.emit('allUser', userList);  
+   });
+
+  socket.on('SingIn', function(username, User) {
+      console.log(userList.length)
+      userList.push(User)
+      console.log(userList);
+      
+      console.log(User["username"])
+      console.log(username)
+      for (let i = 0; i < userList.length; i++) {
+          if (userList[i]['username'] == User['username'] && userList[i]['token'] == User['token']) {
+              userList[i]['isOnline'] = User['isOnline'];
+              io.emit('SingIn', username, userList[i]);
+              break;
+          }
+      }
+  });
+
+  socket.on('dataUpdate', function(User){ 
+      console.log("dataUpdate " + User["username"] + " " + User["isOnline"])
+      console.log(userList)
+      for (let i = 0; i < userList.length; i++) { 
+        if (userList[i]['username'] == User['username']) {
+          userList[i]['isOnline'] = User['isOnline'];
+           io.emit('get all user', userList);
+           break;
+        }
+      }
+  });  
+})
+
+http.listen(port, function() {
+  console.log('Server started on port ' + port);
 });
+
+// app.listen(port, () => {
+//   console.log(`Server started on port ${port}`);
+// });
