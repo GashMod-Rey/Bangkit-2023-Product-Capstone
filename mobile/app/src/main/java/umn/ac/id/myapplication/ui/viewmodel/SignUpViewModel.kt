@@ -18,6 +18,9 @@ class SignUpViewModel: ViewModel(){
     private val _signup = MutableLiveData<Resource<SignUpResponse>>()
     val signup: LiveData<Resource<SignUpResponse>> = _signup
 
+    private val _signupcompany =  MutableLiveData<Resource<SignUpResponse>>()
+    val signupcompany: LiveData<Resource<SignUpResponse>> = _signupcompany
+
     fun postRegister(username: String, password: String, socket: Socket){
         val client = ApiClient.apiInstance.postSignUp(username, password)
         Log.d(TAG, "postLogin: $client")
@@ -55,6 +58,42 @@ class SignUpViewModel: ViewModel(){
         })
     }
 
+    fun postRegisterCompany(username: String, password: String, socket: Socket){
+            val client = ApiClient.apiInstance.postSignUpCompany(username, password)
+        Log.d(TAG, "postLoginCompany: $client")
+        client.enqueue(object : Callback<SignUpResponse>{
+            override fun onResponse(
+                call: Call<SignUpResponse>,
+                response: Response<SignUpResponse>
+            ) {
+                if(response.isSuccessful){
+                    _signup.value = response.body()?.let{
+                        Resource.Success(it)
+                    }
+
+                    var userID = JSONObject()
+                    userID.put(User.USERNAME, username)
+                    userID.put(User.PASSWORD, password)
+
+                    socket!!.emit(SING_UP, username, userID)
+
+                    Log.d(TAG, "onResponse: ${_signup.value}")
+                } else {
+                    val errorBody = response.errorBody()?.string()
+                    val errorMessage = errorBody?.let {
+                        JSONObject(it).getString("message")
+                    }
+                    _signup.value = Resource.Error(errorMessage)
+                    Log.e(TAG, "onResponse: $errorMessage")
+                }
+            }
+
+            override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
+                _signup.value = Resource.Error("${t.message}")
+                Log.e(TAG, "onFailure: ${t.message}")
+            }
+        })
+    }
     companion object{
         private const val TAG = "SignUpViewModel"
     }

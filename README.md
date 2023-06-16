@@ -503,6 +503,11 @@ for ent in result.ents:
    - Initialize project using gcloud init
    - Set the app.yaml into the right service (default and then backend)
    - Deploy with gcloud app deploy
+7. Configure the Compute Engine
+   - Turn on the Compute Engine service
+   - Create Virtual Machine (hirehub-cvparser & hirehub-recommender)
+   - Open the SSH, install libraries, and clone the code
+   - Deploy with nohup python3 CVParser.py and nohup python3 Scoring.py
 
 ### 5.3 Mobile Development
 To replicate this code (run the code in your local host), please download Android Studio and related resources (SDK, etc.). Then, wait for Gradle to build and you should have the functional apps.
