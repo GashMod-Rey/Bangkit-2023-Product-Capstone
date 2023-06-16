@@ -63,6 +63,7 @@ class HomeCompanyFragment : Fragment() {
 
         val fil_user = arguments?.getString("fil_user")
         var userDataList: List<UserDataResponse> = emptyList()
+        var sortedUserDataList: List<UserDataResponse> = emptyList()
         var userDataScore = ArrayList<Float>()
 
         if(fil_user != null) {
@@ -72,6 +73,7 @@ class HomeCompanyFragment : Fragment() {
 
             for(i in userDataList) {
                 scoreMatrix.add(i.Score)
+                Log.d("Hi", i.Score.toString())
             }
 
             val assetManager = requireContext().assets
@@ -113,11 +115,10 @@ class HomeCompanyFragment : Fragment() {
             }
 
             Log.d("Hi", userDataScore.toString())
+            val indexedValues = userDataScore.withIndex()
+            val sortedIndices = indexedValues.sortedByDescending {it.value}.map {it.index}
+            sortedUserDataList = sortedIndices.map { userDataList[it] }
 
-//            val flatScores = output.flatten().toFloatArray()
-//            buffer.put(flatScores)
-//
-//            val indices = buffer.array().indices.sorted
         }
 
         list.addAll(getListUser(userDataList))

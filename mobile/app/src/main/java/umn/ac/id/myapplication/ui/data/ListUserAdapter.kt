@@ -20,6 +20,7 @@ class ListUserAdapter(private val listUser: ArrayList<UserData>):
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val photo : ImageView = itemView.findViewById(R.id.photo)
         val name : TextView = itemView.findViewById(R.id.title_name)
+        val skills : TextView = itemView.findViewById(R.id.chat)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -31,6 +32,7 @@ class ListUserAdapter(private val listUser: ArrayList<UserData>):
         val (name, skills, photo) = listUser[position]
         holder.photo.setImageResource(photo)
         holder.name.text = name
+        holder.skills.text = skills
 
         holder.itemView.setOnClickListener{
         }

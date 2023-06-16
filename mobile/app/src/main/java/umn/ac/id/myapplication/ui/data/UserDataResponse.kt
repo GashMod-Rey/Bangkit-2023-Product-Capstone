@@ -26,12 +26,13 @@ data class UserDataResponse(
 //)
 
 data class FilterOptions(
-    val ageFilter: List<Int>,
-    val salaryFilter: List<Int>,
+    val ageFilter: String,
+    val salaryFilter: String,
     val skillFilter: List<String>,
     val langFilter: List<String>,
-    val tolerance: Int,
-    val tol: Int
+    val tolerance: String,
+    val tol: String,
+    val location: String
 )
 
 class FilterResponse: ArrayList<UserDataResponse>()

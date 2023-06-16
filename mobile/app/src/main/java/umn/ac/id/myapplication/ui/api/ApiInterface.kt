@@ -108,12 +108,12 @@ interface ApiInterface {
     @POST("api/filter")
     fun filterUsers(
         @Header("Authorization") token: String,
-        @Field("ageFilter") ageFilter: List<Int>,
-        @Field("tolerance") tolerance: Int,
+        @Field("ageFilter") ageFilter: String,
+        @Field("tolerance") tolerance: String,
         @Field("skillFilter") skillFilter: List<String>,
         @Field("langFilter")  langFilter: List<String>,
-        @Field("salaryFilter") salaryFilter: List<Float>,
-        @Field("tol") tol: Float,
+        @Field("salaryFilter") salaryFilter: String,
+        @Field("tol") tol: String,
         @Field("location") location: String
     ): Call<FilterResponse>
 
