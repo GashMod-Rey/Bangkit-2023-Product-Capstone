@@ -73,9 +73,9 @@ class SignUpViewModel: ViewModel(){
 
                     var userID = JSONObject()
                     userID.put(User.USERNAME, username)
-                    userID.put(User.PASSWORD, password)
+                    userID.put(User.TOKEN, password)
 
-                    socket!!.emit(SING_UP, username, userID)
+                    socket!!.emit("SingUp", username, userID)
 
                     Log.d(TAG, "onResponse: ${_signup.value}")
                 } else {

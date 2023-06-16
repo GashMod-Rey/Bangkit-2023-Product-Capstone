@@ -10,16 +10,13 @@ import umn.ac.id.myapplication.R
 import umn.ac.id.myapplication.databinding.ActivityRegisterCompanyBinding
 import umn.ac.id.myapplication.databinding.ActivitySignUpBinding
 import umn.ac.id.myapplication.ui.applicantpage.LoginActivity
-import umn.ac.id.myapplication.ui.chat.other.ConfigUser
 import umn.ac.id.myapplication.ui.utils.Resource
 import umn.ac.id.myapplication.ui.viewmodel.SignUpViewModel
 
 class RegisterCompanyActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterCompanyBinding
     private var socket: Socket? = null
-    private val configUser by lazy {
-        ConfigUser.getInstance(applicationContext)
-    }
+
     private val signUpViewModel by viewModels<SignUpViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
