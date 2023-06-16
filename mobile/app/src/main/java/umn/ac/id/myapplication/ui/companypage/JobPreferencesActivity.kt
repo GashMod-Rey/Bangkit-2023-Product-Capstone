@@ -108,6 +108,7 @@ class JobPreferencesActivity : AppCompatActivity() {
                     when(it){
                         is Resource.Success ->{
                             val filteredUsers = it.data
+                            Log.d("Hi", filteredUsers.toString())
                             val intent = Intent(this@JobPreferencesActivity, MainCompanyActivity::class.java)
                             val filteredUsersJSON = Gson().toJson(filteredUsers)
                             intent.putExtra("fil_user", filteredUsersJSON)

@@ -28,8 +28,8 @@ data class UserDataResponse(
 data class FilterOptions(
     val ageFilter: String,
     val salaryFilter: String,
-    val skillFilter: List<String>,
-    val langFilter: List<String>,
+    val skillFilter: String,
+    val langFilter: String,
     val tolerance: String,
     val tol: String,
     val location: String

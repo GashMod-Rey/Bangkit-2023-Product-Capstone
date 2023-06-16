@@ -110,8 +110,8 @@ interface ApiInterface {
         @Header("Authorization") token: String,
         @Field("ageFilter") ageFilter: String,
         @Field("tolerance") tolerance: String,
-        @Field("skillFilter") skillFilter: List<String>,
-        @Field("langFilter")  langFilter: List<String>,
+        @Field("skillFilter") skillFilter: String,
+        @Field("langFilter")  langFilter: String,
         @Field("salaryFilter") salaryFilter: String,
         @Field("tol") tol: String,
         @Field("location") location: String

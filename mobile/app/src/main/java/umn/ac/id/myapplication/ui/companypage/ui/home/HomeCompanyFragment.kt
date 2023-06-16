@@ -73,7 +73,6 @@ class HomeCompanyFragment : Fragment() {
 
             for(i in userDataList) {
                 scoreMatrix.add(i.Score)
-                Log.d("Hi", i.Score.toString())
             }
 
             val assetManager = requireContext().assets
