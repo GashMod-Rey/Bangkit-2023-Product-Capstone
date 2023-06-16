@@ -16,9 +16,9 @@ import umn.ac.id.myapplication.databinding.ActivityEditCompanyBinding
 import umn.ac.id.myapplication.ui.applicantpage.AboutMeActivity
 import umn.ac.id.myapplication.ui.applicantpage.ui.profile.ProfileViewModel
 import umn.ac.id.myapplication.ui.companypage.ui.ProfileCompany.ProfileCompanyViewModel
-import umn.ac.id.myapplication.ui.companypage.ui.ProfileCompany.ProfileCompanyViewModelFactory
 import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.utils.Resource
+import umn.ac.id.myapplication.ui.viewmodelfactory.ProfileCompanyViewModelFactory
 import umn.ac.id.myapplication.ui.viewmodelfactory.ProfileViewModelFactory
 
 class EditCompanyActivity : AppCompatActivity() {

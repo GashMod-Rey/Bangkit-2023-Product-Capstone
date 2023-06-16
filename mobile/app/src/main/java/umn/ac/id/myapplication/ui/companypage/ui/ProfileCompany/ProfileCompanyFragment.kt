@@ -22,6 +22,8 @@ import umn.ac.id.myapplication.ui.applicantpage.ui.profile.ProfileViewModel
 import umn.ac.id.myapplication.ui.companypage.SettingsCompanyActivity
 import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.utils.Resource
+import umn.ac.id.myapplication.ui.viewmodelfactory.ProfileCompanyViewModelFactory
+import umn.ac.id.myapplication.ui.viewmodelfactory.ProfileViewModelFactory
 
 
 class ProfileCompanyFragment : Fragment() {
@@ -40,8 +42,8 @@ class ProfileCompanyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val userPreferences = UserPreferences.getInstance(requireContext().dataStore)
-        val profileViewModel =
-            ViewModelProvider(this).get(ProfileCompanyViewModel::class.java)
+        profileViewModel =
+            ViewModelProvider(this, ProfileCompanyViewModelFactory(userPreferences)).get(ProfileCompanyViewModel::class.java)
 
         _binding = FragmentProfileCompanyBinding.inflate(inflater, container, false)
         val root: View = binding.root

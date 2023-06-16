@@ -107,13 +107,3 @@ class ProfileCompanyViewModel(private val userPreferences: UserPreferences) : Vi
 
 }
 
-class ProfileCompanyViewModelFactory(private val userPreferences: UserPreferences) :
-    ViewModelProvider.NewInstanceFactory(){
-    @Suppress("UNCHECKED_CAST")
-    override fun <T: ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ProfileCompanyViewModel::class.java)){
-            return ProfileCompanyViewModel(userPreferences) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel Class")
-    }
-}
