@@ -715,8 +715,7 @@ app.post("/api/messages/sendfromcompany", authenticateTokenA, authenticateTokenC
 });
 
 // Recommender System
-// Retrieve the data of applicants from the MySQL database
-// minta data filter dan CONVERT dari FRONTEND MOBILE FORMATNYA KAYAK DI ATAS 
+// const datafilter = [{ ageFilter: [23, 27], tolerance: 5, skillFilter: ["C", "C++", "Java"], langFilter: ["English", "Mandarin", "Javanese"], salaryFilter: [3, 12], tol: 1 }];
 function getApplicantsData(location) {
   return new Promise((resolve, reject) => {
     const query = "SELECT * FROM Applicants WHERE Location = ?";
@@ -733,7 +732,7 @@ function getApplicantsData(location) {
 }
 
 // Run the Python code and pass the data as command-line arguments
-const runPythonCode = async (applicantsData, datafilter, res) => {
+const runPythonCode = async ([applicantsData, datafilter], res) => {
   try {
     //const pythonProcess = spawner("python", ["../script/Scoring.py", JSON.stringify(applicantsData), JSON.stringify(datafilter)]);
     const appData = JSON.stringify(applicantsData);
@@ -766,23 +765,25 @@ const runPythonCode = async (applicantsData, datafilter, res) => {
 // Express.js endpoint to receive data from mobile frontend
 app.post('/api/filter', (req, res) => {
   const { ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol, location } = req.body;
-
-  // Create the data filter object
+  // Convert ageFilter from string to a list
+  const parsedAgeFilter = JSON.parse(ageFilter).map(Number);
+  const parsedSalaryFilter = JSON.parse(salaryFilter).map(Number);
+  
   const datafilter = [
     {
-      ageFilter: [ageFilter.min, ageFilter.max],
-      tolerance,
-      skillFilter,
-      langFilter,
-      salaryFilter: [salaryFilter.min, salaryFilter.max],
-      tol
+      ageFilter : [parsedAgeFilter[0], parsedAgeFilter[1]],
+      tolerance : parseInt(tolerance),
+      skillFilter: skillFilter,
+      langFilter: langFilter,
+      salaryFilter : [parsedSalaryFilter[0], parsedSalaryFilter[1]],
+      tol : parseFloat(tol)
     }
   ];
 
   // Retrieve the data of applicants and run the Python code
   getApplicantsData(location)
     .then((applicantsData) => {
-      runPythonCode(applicantsData, datafilter, res); // Pass the `res` object as an argument
+      runPythonCode([applicantsData, datafilter], res); // Pass the `res` object as an argument
     })
     .catch((error) => {
       console.error('Error:', error);
