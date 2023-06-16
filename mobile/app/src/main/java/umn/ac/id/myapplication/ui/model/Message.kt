@@ -4,18 +4,16 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class User(
+data class Message(
     var user: String = "",
-    var image: String = "",
+    var message: String = "",
     var token: String = "",
-    var isOnline: Boolean = false
+    var time: String = "",
 ) : Parcelable {
-
     companion object {
         const val USERNAME = "username"
-        const val IMAGE = "image"
+        const val MESSAGE = "message"
         const val TOKEN = "token"
-        const val IS_ONLINE = "isOnline"
+        const val TIME = "time"
     }
-
 }

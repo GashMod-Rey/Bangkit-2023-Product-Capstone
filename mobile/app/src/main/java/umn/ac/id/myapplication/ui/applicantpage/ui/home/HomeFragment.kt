@@ -1,13 +1,14 @@
-package umn.ac.id.myapplication.ui.applicantpage.ui.model.home
+package umn.ac.id.myapplication.ui.applicantpage.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import umn.ac.id.myapplication.databinding.FragmentHomeBinding
+import umn.ac.id.myapplication.ui.applicantpage.LoginActivity
 
 class HomeFragment : Fragment() {
 
@@ -28,6 +29,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        Log.d("", "USER: ${LoginActivity.applicant.user} | ${LoginActivity.applicant.token}")
 
         return root
     }

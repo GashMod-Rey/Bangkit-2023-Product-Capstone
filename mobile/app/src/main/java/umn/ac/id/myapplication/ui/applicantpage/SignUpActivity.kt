@@ -6,19 +6,15 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import io.socket.client.Socket
-import umn.ac.id.myapplication.R
 import umn.ac.id.myapplication.databinding.ActivitySignUpBinding
-import umn.ac.id.myapplication.ui.chat.other.ConfigUser
 import umn.ac.id.myapplication.ui.utils.Resource
 import umn.ac.id.myapplication.ui.viewmodel.SignUpViewModel
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private var socket: Socket? = null
-    private val configUser by lazy {
-        ConfigUser.getInstance(applicationContext)
-    }
     private val signUpViewModel by viewModels<SignUpViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
@@ -61,7 +57,6 @@ class SignUpActivity : AppCompatActivity() {
                     }
                 }
             }
-
 
         }
     }

@@ -7,7 +7,7 @@ import io.socket.client.Socket
 class SocketManager private constructor(private var context: Context) {
 
     private var socket: Socket? = null
-    private val BASE_URL        = "http://192.168.100.12:8000/"
+    private val BASE_URL        = "http://192.168.100.12:8000"
 
     companion object {
         var instance: SocketManager? = null

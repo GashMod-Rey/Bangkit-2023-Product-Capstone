@@ -1,36 +1,26 @@
-package umn.ac.id.myapplication.ui.chat.adapter
+package umn.ac.id.myapplication.ui.applicantpage.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import umn.ac.id.myapplication.R
 import umn.ac.id.myapplication.databinding.ItemChatListBinding
-import umn.ac.id.myapplication.ui.chat.model.User
-
+import umn.ac.id.myapplication.ui.model.User
 
 class UserAdapter(val data: ArrayList<User>, val onClick: OnClickItem) : RecyclerView.Adapter<UserAdapter.MyViewHolder>() {
 
-    private lateinit var binding: ItemChatListBinding
-
-    inner class MyViewHolder(item: View) : RecyclerView.ViewHolder(item)
+    inner class MyViewHolder(val binding: ItemChatListBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_chat_list, parent, false
-            )
-        )
+        val binding = ItemChatListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val user = data[position]
 
-        holder.itemView.apply {
-            binding.titleName.text = user.username
-            setOnClickListener {
-                onClick.onClick(user)
-            }
+        holder.binding.titleName.text = user.user
+        holder.itemView.setOnClickListener {
+            onClick.onClick(user)
         }
     }
 
@@ -39,6 +29,4 @@ class UserAdapter(val data: ArrayList<User>, val onClick: OnClickItem) : Recycle
     interface OnClickItem {
         fun onClick(user: User)
     }
-
 }
-

@@ -15,11 +15,9 @@ import io.socket.client.Socket
 import org.json.JSONObject
 import umn.ac.id.myapplication.databinding.ActivityLoginBinding
 import umn.ac.id.myapplication.ui.api.SocketManager
-import umn.ac.id.myapplication.ui.chat.demo.ui.UserListActivity
-import umn.ac.id.myapplication.ui.chat.model.User
-import umn.ac.id.myapplication.ui.chat.other.*
 import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.data.UserSession
+import umn.ac.id.myapplication.ui.model.User
 import umn.ac.id.myapplication.ui.utils.Resource
 import umn.ac.id.myapplication.ui.viewmodel.LoginViewModel
 import umn.ac.id.myapplication.ui.viewmodelfactory.LoginViewModelFactory
@@ -40,15 +38,20 @@ class LoginActivity : AppCompatActivity() {
 
         socket = SocketManager.getInstance(this)!!.getSocket()
 
-        socket!!.on("SingIn") { args ->
-            Log.e("ttttttttt", "${args[0]}")
+        socket!!.on(Socket.EVENT_CONNECT_ERROR) {
             runOnUiThread {
-                users = Gson().fromJson(args[1].toString(), User::class.java)
-                Intent(this@LoginActivity, MainActivity::class.java).also {
-                    startActivity(it)
-                }
+                Log.e("EVENT_CONNECT_ERROR", "EVENT_CONNECT_ERROR: ")
             }
         }
+        socket!!.on(
+            Socket.EVENT_CONNECT
+        ) { Log.e("onConnect", "Socket Connected!") };
+        socket!!.on(Socket.EVENT_DISCONNECT) {
+            runOnUiThread {
+                Log.e("onDisconnect", "Socket onDisconnect!")
+            }
+        }
+        socket!!.connect()
 
         binding.buttonLogin.setOnClickListener {
             val username = binding.adUsernameLogin.text.toString().trim()
@@ -71,10 +74,19 @@ class LoginActivity : AppCompatActivity() {
                                 )
                             )
 
+                            socket!!.on("SingIn") { ars ->
+                                Log.e("ttttttttt", "${ars[0]}")
+                                Log.e("sssssssss", "${ars[1]}")
+                                runOnUiThread {
+                                    applicant = Gson().fromJson(ars[1].toString(), umn.ac.id.myapplication.ui.model.User::class.java)
+                                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                                }
+                            }
+
                             val jsonObject = JSONObject()
                             jsonObject.put("user", username)
                             jsonObject.put("token", it.data?.token)
-                            Toast.makeText(this, jsonObject.toString(), Toast.LENGTH_LONG).show()
+                            jsonObject.put("isOnline", true)
                             socket!!.emit("SingIn", username, jsonObject)
 
                             Intent(this@LoginActivity, MainActivity::class.java).also {
@@ -108,6 +120,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     companion object {
-        lateinit var users: User
+        var applicant: User = User()
     }
 }

@@ -14,7 +14,7 @@ import umn.ac.id.myapplication.R
 import umn.ac.id.myapplication.databinding.FragmentHomeBinding
 import umn.ac.id.myapplication.databinding.FragmentHomeCompanyBinding
 import umn.ac.id.myapplication.ui.applicantpage.AboutMeActivity
-import umn.ac.id.myapplication.ui.chat.adapter.UserAdapter
+import umn.ac.id.myapplication.ui.companypage.adapter.UserAdapter
 import umn.ac.id.myapplication.ui.companypage.JobPreferencesActivity
 import umn.ac.id.myapplication.ui.data.ListUserAdapter
 import umn.ac.id.myapplication.ui.data.UserData

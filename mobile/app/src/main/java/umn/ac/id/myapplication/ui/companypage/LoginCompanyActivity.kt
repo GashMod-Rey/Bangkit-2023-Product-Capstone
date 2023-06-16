@@ -4,33 +4,32 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.google.gson.Gson
 import io.socket.client.Socket
-import umn.ac.id.myapplication.R
-import umn.ac.id.myapplication.databinding.ActivityLoginBinding
+import org.json.JSONObject
 import umn.ac.id.myapplication.databinding.ActivityLoginCompanyBinding
 import umn.ac.id.myapplication.ui.api.SocketManager
-import umn.ac.id.myapplication.ui.applicantpage.MainActivity
 import umn.ac.id.myapplication.ui.applicantpage.SignUpActivity
-import umn.ac.id.myapplication.ui.chat.other.ConfigUser
 import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.data.UserSession
+import umn.ac.id.myapplication.ui.model.User
 import umn.ac.id.myapplication.ui.utils.Resource
 import umn.ac.id.myapplication.ui.viewmodel.LoginViewModel
 import umn.ac.id.myapplication.ui.viewmodelfactory.LoginViewModelFactory
 
 class LoginCompanyActivity : AppCompatActivity() {
 
+
+
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name="user")
     private lateinit var binding: ActivityLoginCompanyBinding
     private var socket: Socket? = null
-    private val configUser by lazy {
-        ConfigUser.getInstance(applicationContext)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +42,22 @@ class LoginCompanyActivity : AppCompatActivity() {
 
         socket = SocketManager.getInstance(this)!!.getSocket()
 
+        socket!!.on(Socket.EVENT_CONNECT_ERROR) {
+            runOnUiThread {
+                Log.e("EVENT_CONNECT_ERROR", "EVENT_CONNECT_ERROR: ")
+            }
+        }
+        socket!!.on(
+            Socket.EVENT_CONNECT
+        ) { Log.e("onConnect", "Socket Connected!") };
+        socket!!.on(Socket.EVENT_DISCONNECT) {
+            runOnUiThread {
+                Log.e("onDisconnect", "Socket onDisconnect!")
+
+            }
+        }
+        socket!!.connect()
+
         binding.buttonLogin.setOnClickListener {
             val username = binding.adEmailLogin.text.toString().trim()
             val password = binding.adPasswordLogin.text.toString().trim()
@@ -52,7 +67,7 @@ class LoginCompanyActivity : AppCompatActivity() {
                 binding.adEmailLogin.error = "Username is empty"
             }
             else {
-                loginViewModel.postLoginCompany(username, password, socket!!, configUser!!)
+                loginViewModel.postLoginCompany(username, password)
                 loginViewModel.login.observe(this){
                     when(it){
                         is Resource.Success -> {
@@ -63,9 +78,25 @@ class LoginCompanyActivity : AppCompatActivity() {
                                     username
                                 )
                             )
-                            val intent = Intent(this, MainCompanyActivity::class.java)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                            startActivity(intent)
+//                            val intent = Intent(this, MainCompanyActivity::class.java)
+                            socket!!.on("SingIn") { ars ->
+                                runOnUiThread {
+                                    company = Gson().fromJson(ars[1].toString(), User::class.java)
+                                }
+                            }
+
+                            val jsonObject = JSONObject()
+                            jsonObject.put("user", username)
+                            jsonObject.put("token", it.data?.token)
+                            jsonObject.put("isOnline", true)
+                            socket!!.emit("SingIn", username, jsonObject)
+
+                            Intent(this@LoginCompanyActivity, MainCompanyActivity::class.java).also { intent ->
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                startActivity(intent)
+                            }
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+//                            startActivity(intent)
 
                             finish()
                         }
@@ -89,5 +120,9 @@ class LoginCompanyActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
+    }
+
+    companion object {
+        var company : User = User()
     }
 }

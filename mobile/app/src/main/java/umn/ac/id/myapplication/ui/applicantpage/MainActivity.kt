@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import umn.ac.id.myapplication.R
-import umn.ac.id.myapplication.ui.applicantpage.ui.chat.ChatFragment
+import umn.ac.id.myapplication.ui.applicantpage.chat.ChatFragment
 import umn.ac.id.myapplication.ui.applicantpage.ui.history.HistoryFragment
-import umn.ac.id.myapplication.ui.applicantpage.ui.model.home.HomeFragment
+import umn.ac.id.myapplication.ui.applicantpage.ui.home.HomeFragment
 import umn.ac.id.myapplication.ui.applicantpage.ui.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity() {

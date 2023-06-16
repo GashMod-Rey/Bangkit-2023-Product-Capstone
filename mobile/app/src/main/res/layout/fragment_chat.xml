@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.applicantpage.ui.chat.ChatFragment">
+    tools:context=".ui.applicantpage.chat.ChatFragment">
 
     <TextView
         android:id="@+id/title_bar"

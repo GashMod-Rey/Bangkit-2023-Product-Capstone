@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F9F9F9"
-    tools:context=".ui.applicantpage.ui.chat.ChatActivity">
+    tools:context=".ui.applicantpage.chat.ChatActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

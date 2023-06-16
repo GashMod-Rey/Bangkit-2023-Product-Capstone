@@ -5,14 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import umn.ac.id.myapplication.R
 import umn.ac.id.myapplication.databinding.ActivitySettingsBinding
-import umn.ac.id.myapplication.ui.applicantpage.ui.chat.ChatFragment
-import umn.ac.id.myapplication.ui.applicantpage.ui.history.HistoryFragment
-import umn.ac.id.myapplication.ui.applicantpage.ui.model.home.HomeFragment
-import umn.ac.id.myapplication.ui.applicantpage.ui.profile.ProfileFragment
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding

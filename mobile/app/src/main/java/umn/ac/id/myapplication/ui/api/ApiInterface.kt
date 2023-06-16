@@ -7,6 +7,8 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 import umn.ac.id.myapplication.ui.data.*
+import umn.ac.id.myapplication.ui.model.ChatData
+import umn.ac.id.myapplication.ui.model.MessageData
 
 interface ApiInterface {
     @Multipart
@@ -115,7 +117,23 @@ interface ApiInterface {
         @Field("location") location: String
     ): Call<FilterResponse>
 
+    @POST("api/chat/newchat")
+    fun createNewChat(
+        @Header("Authorization") token: String,
+        @Body chatData: ChatData
+    ): Call<GetChatResponse>
 
+    @POST("api/messages/sendfromapplicant")
+    fun sendMessageFromApplicant(
+        @Header("Authorization") token: String,
+        @Body messageData: MessageData
+    ): Call<GetChatResponse>
+
+    @POST("api/messages/sendfromcompany")
+    fun sendMessageFromCompany(
+        @Header("Authorization") token: String,
+        @Body messageData: MessageData
+    ): Call<GetChatResponse>
 
 
 

@@ -36,6 +36,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ui.applicantpage.MessageActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.applicantpage.HistorySuccessActivity"
             android:exported="false">
             <meta-data
@@ -89,6 +96,13 @@
         </activity>
         <activity
             android:name=".ui.companypage.HistorySuccessCompanyActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.companypage.MessageCompanyActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -150,14 +164,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.applicantpage.ui.chat.NoMessageActivity"
+            android:name=".ui.applicantpage.chat.NoMessageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.applicantpage.ui.chat.ChatActivity"
+            android:name=".ui.applicantpage.chat.ChatActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
