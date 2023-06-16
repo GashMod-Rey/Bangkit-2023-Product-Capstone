@@ -135,6 +135,16 @@ interface ApiInterface {
         @Body messageData: MessageData
     ): Call<GetChatResponse>
 
+    @GET("historyApplicant")
+    fun getHistoryApplicant(
+        @Header("Authorization") token: String
+    ): Call<HistoryResponse>
+
+    @GET("historyCompany")
+    fun getHistoryCompany(
+        @Header("Authorization") token: String
+    ): Call<HistoryResponse>
+
 
 
 }
