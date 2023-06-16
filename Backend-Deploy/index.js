@@ -634,6 +634,10 @@ app.post("/status", authenticateTokenA, authenticateTokenC, (req, res) => {
 });
 
 // API Chat
+const http = require('http').Server(app); 
+const io = require('socket.io')(http); 
+var userList = []; 
+var roomChatList = [];
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
@@ -692,7 +696,7 @@ app.post("/api/chat/newchat", authenticateTokenA, authenticateTokenC, async (req
 
   connection.query(query, values, async (error, result) => {
     if (error) {
-      console.error("Error creating chat:", error);
+      console.log(error)
       return res.status(500).json({ error: "Failed to create chat" });
     }
     await getChat(req, res);
@@ -963,6 +967,97 @@ app.post('/api/filter', (req, res) => {
 //     });
 // });
 
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
+io.on('connection', function(socket) {
+  console.log('User Connection');
+
+  socket.on("message", function(value) {
+      console.log(value);
+      io.emit("message", value);
+  });
+
+  socket.on("user-join", function(value) {
+      console.log(value + "user-join");
+      socket.broadcast.emit("new-users", value);
+  });
+
+  socket.on('connect user', function(id,user){
+      console.log("Connected user ");
+      io.emit('connect user', id,user);
+  });
+
+  socket.on('on typing', function(id,typing){
+      io.emit('on typing', id,typing);
+  });
+
+  socket.on('chat message', function(id,msg){
+      io.emit('chat message', id, msg);
+  });
+
+  socket.on('allUser', function(token){
+      io.emit('allUser', userList);
+  });
+
+  socket.on('allRoomChat', function(token) {
+      io.emit('allRoomChat', roomChatList);
+  });
+
+  socket.on('SingUp', function(username,User){
+      for (let i = 0; i < userList.length; i++) { 
+         if (userList[i]['username']==User['username']) {
+            io.emit('SingUp', username,false);
+             break;
+         }else if(i==userList.length-1){
+            userList.push(User);
+            io.emit('SingUp', username,true);
+            io.emit('allUser', userList);    
+         }
+       }
+      if(userList.length==0){
+            userList.push(User);
+            io.emit('SingUp', id,true);
+            io.emit('get all user', userList);
+         }
+   });
+
+   socket.on('SingOut', function(username, User){
+      userList = userList.filter((user) => user['token'] != User['token']);
+      io.emit('SingOut', username,false);
+      io.emit('allUser', userList);  
+   });
+
+  socket.on('SingIn', function(username, User) {
+      console.log(userList.length)
+      userList.push(User)
+      console.log(userList);
+      
+      console.log(User["username"])
+      console.log(username)
+      for (let i = 0; i < userList.length; i++) {
+          if (userList[i]['username'] == User['username'] && userList[i]['token'] == User['token']) {
+              userList[i]['isOnline'] = User['isOnline'];
+              io.emit('SingIn', username, userList[i]);
+              break;
+          }
+      }
+  });
+
+  socket.on('dataUpdate', function(User){ 
+      console.log("dataUpdate " + User["username"] + " " + User["isOnline"])
+      console.log(userList)
+      for (let i = 0; i < userList.length; i++) { 
+        if (userList[i]['username'] == User['username']) {
+          userList[i]['isOnline'] = User['isOnline'];
+           io.emit('get all user', userList);
+           break;
+        }
+      }
+  });  
+})
+
+http.listen(port, function() {
+  console.log('Server started on port ' + port);
 });
+
+// app.listen(port, () => {
+//   console.log(`Server started on port ${port}`);
+// });

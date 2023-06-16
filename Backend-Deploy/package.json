@@ -10,7 +10,8 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.22",
     "path": "^0.12.7",
-    "requests": "^0.3.0"
+    "requests": "^0.3.0",
+    "socket.io": "^4.6.2"
   },
   "name": "backend-deploy",
   "version": "1.0.0",
