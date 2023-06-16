@@ -73,7 +73,6 @@ class HomeCompanyFragment : Fragment() {
 
             for(i in userDataList) {
                 scoreMatrix.add(i.Score)
-                Log.d("Hi", i.Score.toString())
             }
 
             val assetManager = requireContext().assets
@@ -114,14 +113,12 @@ class HomeCompanyFragment : Fragment() {
                 }
             }
 
-            Log.d("Hi", userDataScore.toString())
             val indexedValues = userDataScore.withIndex()
             val sortedIndices = indexedValues.sortedByDescending {it.value}.map {it.index}
             sortedUserDataList = sortedIndices.map { userDataList[it] }
-
         }
 
-        list.addAll(getListUser(userDataList))
+        list.addAll(getListUser(sortedUserDataList))
         userAdapter.notifyDataSetChanged()
         return root
     }

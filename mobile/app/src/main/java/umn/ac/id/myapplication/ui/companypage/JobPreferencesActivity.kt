@@ -65,7 +65,7 @@ class JobPreferencesActivity : AppCompatActivity() {
                 val chip = findViewById<Chip>(id)
                 if (chip != null) {
                     val lang = chip.text.toString()
-                    selectedLanguages.add(lang)
+                    selectedSkills.add(lang)
                 }
             }
 
@@ -73,7 +73,7 @@ class JobPreferencesActivity : AppCompatActivity() {
                 val chip = findViewById<Chip>(id)
                 if(chip!= null){
                     val skill = chip.text.toString()
-                    selectedSkills.add(skill)
+                    selectedLanguages.add(skill)
                 }
             }
 
@@ -102,12 +102,12 @@ class JobPreferencesActivity : AppCompatActivity() {
         mainViewModel.getSession().observe(this){
             if (it.isLogin){
                 token = it.token
-                Log.d("TAG", "onCreate: $token")
                 mainViewModel.filterUsers(token, ageFilter, tolerance, skillFilter, langFilter, salaryFilter, tol, location)
                 mainViewModel.filterResponse.observe(this){
                     when(it){
                         is Resource.Success ->{
                             val filteredUsers = it.data
+                            Log.d("Hi", filteredUsers.toString())
                             val intent = Intent(this@JobPreferencesActivity, MainCompanyActivity::class.java)
                             val filteredUsersJSON = Gson().toJson(filteredUsers)
                             intent.putExtra("fil_user", filteredUsersJSON)

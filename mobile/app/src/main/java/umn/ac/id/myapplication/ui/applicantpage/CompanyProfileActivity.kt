@@ -36,21 +36,21 @@ class CompanyProfileActivity : AppCompatActivity() {
             if(it.isLogin){
                 token = it.token
                 Log.d("TAG", "onCreate: $token")
-
+                binding.buttonAccept.setOnClickListener {
+                    val status = true
+                    sendStatus(token,true)
+                }
+                binding.buttonReject.setOnClickListener {
+                    val status = false
+                    sendStatus(token,false)
+                }
             }
         }
-        binding.buttonAccept.setOnClickListener {
-            val status = true
-            sendStatus(true)
-        }
-        binding.buttonReject.setOnClickListener {
-            val status = false
-            sendStatus(false)
-        }
+
 
     }
 
-    private fun sendStatus(status: Boolean){
+    private fun sendStatus(token: String, status: Boolean){
         val apiService = ApiClient.apiInstance
         val request = apiService.offerApplicant(token,status)
 

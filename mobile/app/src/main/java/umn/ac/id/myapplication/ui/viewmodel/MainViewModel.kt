@@ -27,7 +27,7 @@ class MainViewModel(private val userPreferences: UserPreferences) : ViewModel(){
                             tol: Float,
                             location: String){
                 _filterResponse.value
-            val client = ApiClient.apiInstance.filterUsers(token, ageFilter.toString(), tolerance.toString(), skillFilter, langFilter, salaryFilter.toString(), tol.toString(), location)
+            val client = ApiClient.apiInstance.filterUsers(token, ageFilter.toString(), tolerance.toString(), skillFilter.toString(), langFilter.toString(), salaryFilter.toString(), tol.toString(), location)
                 client.enqueue(object: Callback<FilterResponse> {
                     override fun onResponse(
                         call: Call<FilterResponse>,

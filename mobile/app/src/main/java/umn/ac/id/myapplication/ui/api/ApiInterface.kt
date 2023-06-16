@@ -101,7 +101,7 @@ interface ApiInterface {
     @POST("status")
     fun status(
         @Header("Authorization") token: String,
-        @Field("offer") offer: String
+        @Field("offer") offer: Boolean
     ): Call<StatusResponse>
 
     @FormUrlEncoded
@@ -110,8 +110,8 @@ interface ApiInterface {
         @Header("Authorization") token: String,
         @Field("ageFilter") ageFilter: String,
         @Field("tolerance") tolerance: String,
-        @Field("skillFilter") skillFilter: List<String>,
-        @Field("langFilter")  langFilter: List<String>,
+        @Field("skillFilter") skillFilter: String,
+        @Field("langFilter")  langFilter: String,
         @Field("salaryFilter") salaryFilter: String,
         @Field("tol") tol: String,
         @Field("location") location: String
@@ -134,6 +134,16 @@ interface ApiInterface {
         @Header("Authorization") token: String,
         @Body messageData: MessageData
     ): Call<GetChatResponse>
+
+    @GET("historyApplicant")
+    fun getHistoryApplicant(
+        @Header("Authorization") token: String
+    ): Call<HistoryResponse>
+
+    @GET("historyCompany")
+    fun getHistoryCompany(
+        @Header("Authorization") token: String
+    ): Call<HistoryResponse>
 
 
 
