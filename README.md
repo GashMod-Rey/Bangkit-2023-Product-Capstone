@@ -13,7 +13,7 @@
 | Reynard Matthew Yaputra | M264DSX1826   | Machine Learning   |
 | Hanny Putri Gayatri     | M346DSY3464   | Machine Learning   |
 | Nadya Angelia           | A346DSY2036   | Mobile Development |
-| Gianzra Andelle Basae   | A346DKX4498   | Mobile Development |
+| Andelle Gianzra Basae   | A346DKX4498   | Mobile Development |
 | Yoga Aditiya            | C264DSX2386   | Cloud Computing    |
 | Nehemia Gueldi          | C264DSX2229   | Cloud Computing    |
 
