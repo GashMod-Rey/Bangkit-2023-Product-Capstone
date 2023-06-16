@@ -536,6 +536,32 @@ app.post("/status", authenticateTokenA, authenticateTokenC, (req, res) => {
   }
 });
 
+app.get("/historyApplicant", authenticateTokenA, (req, res) => {
+  const usernameA = req.applicant.username;
+
+  const query = `SELECT * FROM Relation WHERE UsernameA = ?`;
+  connection.query(query, [usernameA], (err, result) =>{
+    if (err) {
+      console.error("Error executing the query:", err);
+      return res.status(500).json({ message: "Internal server error." });
+    }
+    return res.status(201).json(result);
+  });
+});
+
+app.get("/historyCompany", authenticateTokenC, (req, res) => {
+  const usernameC = req.company.username;
+
+  const query = `SELECT * from Relation WHERE UsernameC = ?`;
+  connection.query(query, [usernameC], (err, result) =>{
+    if (err) {
+      console.error("Error executing the query:", err);
+      return res.status(500).json({ message: "Internal server error." });
+    }
+    return res.status(201).json(result);
+  });
+});
+
 // API Chat
 const http = require('http').Server(app); 
 const io = require('socket.io')(http); 
@@ -719,7 +745,6 @@ app.post("/api/messages/sendfromcompany", authenticateTokenA, authenticateTokenC
 });
 
 // Recommender System
-// const datafilter = [{ ageFilter: [23, 27], tolerance: 5, skillFilter: ["C", "C++", "Java"], langFilter: ["English", "Mandarin", "Javanese"], salaryFilter: [3, 12], tol: 1 }];
 function getApplicantsData(location) {
   return new Promise((resolve, reject) => {
     const query = "SELECT * FROM Applicants WHERE Location = ?";
@@ -772,13 +797,15 @@ app.post('/api/filter', (req, res) => {
   // Convert ageFilter from string to a list
   const parsedAgeFilter = JSON.parse(ageFilter).map(Number);
   const parsedSalaryFilter = JSON.parse(salaryFilter).map(Number);
+  const parsedSkillFilter = JSON.parse(skillFilter).map(item => item.toUpperCase());
+  const parsedLangFilter = JSON.parse(langFilter).map(item => item.toUpperCase());
   
   const datafilter = [
     {
       ageFilter : [parsedAgeFilter[0], parsedAgeFilter[1]],
       tolerance : parseInt(tolerance),
-      skillFilter: skillFilter,
-      langFilter: langFilter,
+      skillFilter: parsedSkillFilter,
+      langFilter: parsedLangFilter,
       salaryFilter : [parsedSalaryFilter[0], parsedSalaryFilter[1]],
       tol : parseFloat(tol)
     }
