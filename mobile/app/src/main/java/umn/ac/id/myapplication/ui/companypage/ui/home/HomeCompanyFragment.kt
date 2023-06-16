@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.tensorflow.lite.Interpreter
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
 import umn.ac.id.myapplication.R
 import umn.ac.id.myapplication.databinding.FragmentHomeBinding
 import umn.ac.id.myapplication.databinding.FragmentHomeCompanyBinding
@@ -20,10 +22,10 @@ import umn.ac.id.myapplication.ui.companypage.JobPreferencesActivity
 import umn.ac.id.myapplication.ui.data.ListUserAdapter
 import umn.ac.id.myapplication.ui.data.UserData
 import umn.ac.id.myapplication.ui.data.UserDataResponse
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.FileInputStream
+import java.nio.channels.FileChannel
 import java.util.Collections.emptyList
 
 
@@ -61,44 +63,62 @@ class HomeCompanyFragment : Fragment() {
 
         val fil_user = arguments?.getString("fil_user")
         var userDataList: List<UserDataResponse> = emptyList()
+        var userDataScore = ArrayList<Float>()
+
         if(fil_user != null) {
             userDataList = Gson().fromJson(fil_user, object : TypeToken<List<UserDataResponse>>() {}.type)
+
+            var scoreMatrix = ArrayList<List<Float>>()
+
+            for(i in userDataList) {
+                scoreMatrix.add(i.Score)
+            }
+
+            val assetManager = requireContext().assets
+            val modelPath = "model.tflite"
+            val fileDescriptor = assetManager.openFd(modelPath)
+            val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
+            val fileChannel = inputStream.channel
+            val startOffset = fileDescriptor.startOffset
+            val declaredLength = fileDescriptor.declaredLength
+            val interpreter = Interpreter(fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength))
+
+            val inputSize = 1
+            val inputChannels = 4
+
+            val inputBuffer = ByteBuffer.allocateDirect(inputSize * inputChannels * Float.SIZE_BYTES).apply {
+                order(ByteOrder.nativeOrder())
+            }
+
+            for(row in scoreMatrix) {
+                val floatBuffer = inputBuffer.asFloatBuffer()
+                for (item in row) {
+                    floatBuffer.put(item)
+                }
+
+                val outputSize = 1
+                val outputChannels = 1
+
+                val output = Array(outputSize){
+                    FloatArray(outputChannels)
+                }
+
+                interpreter.run(inputBuffer, output)
+
+                for (row in output) {
+                    for (value in row) {
+                        userDataScore.add(value)
+                    }
+                }
+            }
+
+            Log.d("Hi", userDataScore.toString())
+
+//            val flatScores = output.flatten().toFloatArray()
+//            buffer.put(flatScores)
+//
+//            val indices = buffer.array().indices.sorted
         }
-
-        Log.d("Hi", userDataList.size.toString())
-
-//        val assetManager = requireContext().assets
-//        val tflitePath = "model.tflite"
-//        val interpreter = Interpreter(requireContext().assets.openFd(tflitePath).fileDescriptor)
-//
-//        val inputSize = 5
-//        val inputChannels = 4
-//
-//        val inputBuffer = ByteBuffer.allocateDirect(inputSize * inputSize * inputChannels * Float.SIZE_BYTES).apply {
-//            order(ByteOrder.nativeOrder())
-//        }
-//        val floatBuffer = inputBuffer.asFloatBuffer()
-//
-//        val input = arrayOf(
-//            floatArrayOf(0.33f, 0.33f, 0f, 0f),
-//            floatArrayOf(0f, 0.33f, 0f, 0f),
-//            floatArrayOf(0f, 0f, 0f, 0f),
-//            floatArrayOf(0f, 0f, 0f, 0f)
-//        )
-//
-//        input.forEach {
-//            floatBuffer.put(it)
-//        }
-//
-//        val output = Array(desiredOutputSize){
-//            FloatArray(outputChannels)
-//        }
-//        interpreter.run(inputBuffer, output)
-//
-//        val flatScores = output.flatten().toFloatArray()
-//        buffer.put(flatScores)
-//
-//        val indices = buffer.array().indices.sorted
 
         list.addAll(getListUser(userDataList))
         userAdapter.notifyDataSetChanged()
@@ -129,7 +149,6 @@ class HomeCompanyFragment : Fragment() {
                 listUserData.add(user)
             }
         }
-        Log.d("Hi", listUserData.toString())
         return listUserData
     }
 

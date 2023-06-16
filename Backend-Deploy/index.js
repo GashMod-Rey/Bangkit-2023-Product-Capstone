@@ -716,7 +716,6 @@ app.post("/api/messages/sendfromcompany", authenticateTokenA, authenticateTokenC
 
 // Recommender System
 // Retrieve the data of applicants from the MySQL database
-const datafilter = [{ ageFilter: [23, 27], tolerance: 5, skillFilter: ["C", "C++", "Java"], langFilter: ["English", "Mandarin", "Javanese"], salaryFilter: [3, 12], tol: 1 }];
 // minta data filter dan CONVERT dari FRONTEND MOBILE FORMATNYA KAYAK DI ATAS 
 function getApplicantsData(location) {
   return new Promise((resolve, reject) => {
@@ -734,7 +733,7 @@ function getApplicantsData(location) {
 }
 
 // Run the Python code and pass the data as command-line arguments
-const runPythonCode = async (applicantsData, res) => {
+const runPythonCode = async (applicantsData, datafilter, res) => {
   try {
     //const pythonProcess = spawner("python", ["../script/Scoring.py", JSON.stringify(applicantsData), JSON.stringify(datafilter)]);
     const appData = JSON.stringify(applicantsData);
@@ -783,7 +782,7 @@ app.post('/api/filter', (req, res) => {
   // Retrieve the data of applicants and run the Python code
   getApplicantsData(location)
     .then((applicantsData) => {
-      runPythonCode(applicantsData, res); // Pass the `res` object as an argument
+      runPythonCode(applicantsData, datafilter, res); // Pass the `res` object as an argument
     })
     .catch((error) => {
       console.error('Error:', error);
