@@ -2,6 +2,7 @@ package umn.ac.id.myapplication.ui.companypage.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +19,13 @@ import umn.ac.id.myapplication.ui.chat.adapter.UserAdapter
 import umn.ac.id.myapplication.ui.companypage.JobPreferencesActivity
 import umn.ac.id.myapplication.ui.data.ListUserAdapter
 import umn.ac.id.myapplication.ui.data.UserData
+import umn.ac.id.myapplication.ui.data.UserDataResponse
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.util.Collections.emptyList
+
 
 class HomeCompanyFragment : Fragment() {
 
@@ -53,11 +59,14 @@ class HomeCompanyFragment : Fragment() {
             adapter = userAdapter
         }
 
+        val fil_user = arguments?.getString("fil_user")
+        var userDataList: List<UserDataResponse> = emptyList()
+        if(fil_user != null) {
+            userDataList = Gson().fromJson(fil_user, object : TypeToken<List<UserDataResponse>>() {}.type)
+        }
 
-        list.addAll(getListUser())
-        userAdapter.notifyDataSetChanged()
+        Log.d("Hi", userDataList.size.toString())
 
-//
 //        val assetManager = requireContext().assets
 //        val tflitePath = "model.tflite"
 //        val interpreter = Interpreter(requireContext().assets.openFd(tflitePath).fileDescriptor)
@@ -90,6 +99,9 @@ class HomeCompanyFragment : Fragment() {
 //        buffer.put(flatScores)
 //
 //        val indices = buffer.array().indices.sorted
+
+        list.addAll(getListUser(userDataList))
+        userAdapter.notifyDataSetChanged()
         return root
     }
 
@@ -98,16 +110,26 @@ class HomeCompanyFragment : Fragment() {
         _binding = null
     }
 
-    private fun getListUser(): ArrayList<UserData>{
-        val dataName = resources.getStringArray(R.array.data_name)
-        val dataSkills = resources.getStringArray(R.array.data_skill)
-        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
+    private fun getListUser(userDataList: List<UserDataResponse>): ArrayList<UserData>{
         val listUserData = ArrayList<UserData>()
-        for (i in dataName.indices){
-            val user = UserData(dataName[i], dataSkills[i], dataPhoto.getResourceId(i, -1))
-            listUserData.add(user)
+        if (userDataList.isEmpty()) {
+            val dataName = resources.getStringArray(R.array.data_name)
+            val dataSkills = resources.getStringArray(R.array.data_skill)
+            val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
+            for (i in dataName.indices){
+                val user = UserData(dataName[i], dataSkills[i], dataPhoto.getResourceId(i, -1))
+                listUserData.add(user)
+            }
+            dataPhoto.recycle()
         }
-        dataPhoto.recycle()
+        else
+        {
+            for (i in userDataList){
+                val user = UserData(i.Name!!, i.Skills!!, R.drawable.ic_person)
+                listUserData.add(user)
+            }
+        }
+        Log.d("Hi", listUserData.toString())
         return listUserData
     }
 

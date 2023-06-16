@@ -1,23 +1,23 @@
 package umn.ac.id.myapplication.ui.data
 
 data class UserDataResponse(
-    val username: String,
-    val password: String,
-    val name: String?,
-    val yearOfBirth: String?,
-    val email: String?,
-    val language: String?,
-    val summary: String?,
-    val educationInstitution: String?,
-    val skills: String?,
-    val salaryMinimum: String?,
-    val location: String?,
-    val degree: String?,
-    val mobilePhone: String?,
-    val openToWork: Int?,
-    val pdfPath: String?,
-    val ppPath: String?,
-    val score: List<Float>
+    val Username: String,
+    val Password: String,
+    val Name: String?,
+    val YearOfBirth: String?,
+    val Email: String?,
+    val Language: String?,
+    val Summary: String?,
+    val EducationInstitution: String?,
+    val Skills: String?,
+    val SalaryMinimum: String?,
+    val Location: String?,
+    val Degree: String?,
+    val MobilePhone: String?,
+    val OpenToWork: Int?,
+    val PdfPath: String?,
+    val PpPath: String?,
+    val Score: List<Float>
 )
 
 //data class FilterResponse(

@@ -29,6 +29,7 @@ import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.utils.Resource
 import umn.ac.id.myapplication.ui.viewmodel.MainViewModel
 import umn.ac.id.myapplication.ui.viewmodelfactory.MainViewModelFactory
+import com.google.gson.Gson
 
 class JobPreferencesActivity : AppCompatActivity() {
     val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user")
@@ -48,40 +49,34 @@ class JobPreferencesActivity : AppCompatActivity() {
         val selectedSkills = mutableListOf<String>()
         val selectedLanguages = mutableListOf<String>()
 
-        chipGroupSkills.setOnCheckedChangeListener { group, checkedId ->
-            val chip = group.findViewById<Chip>(checkedId)
-            if(chip!= null){
-                val skill = chip.text.toString()
-                if (chip.isChecked){
-                    chip.setChipBackgroundColorResource(R.color.selected_chip_color)
-                    selectedSkills.add(skill)
-                }
-                else {
-                    chip.setChipBackgroundColorResource(R.color.default_chip_color)
-                    selectedSkills.remove(skill)
-                }
-                chipGroupSkills.invalidate()
-            }
+        var tempSkills = mutableListOf<Int>()
+        var tempLangs = mutableListOf<Int>()
+
+        chipGroupSkills.setOnCheckedStateChangeListener { group, checkedId ->
+            tempSkills = checkedId
         }
 
-        chipGroupLanguage.setOnCheckedChangeListener { group, checkedId ->
-            val chip = group.findViewById<Chip>(checkedId)
-            if(chip != null){
-                val language = chip.text.toString()
-                if(chip.isChecked) {
-                    chip.setChipBackgroundColorResource(R.color.selected_chip_color)
-                    selectedLanguages.add(language)
-                }
-                else {
-                    chip.setChipBackgroundColorResource(R.color.default_chip_color)
-                    selectedLanguages.remove(language)
-                }
-            }
-            chipGroupLanguage.invalidate()
+        chipGroupLanguage.setOnCheckedStateChangeListener { group, checkedId ->
+            tempLangs = checkedId
         }
-
 
         binding.btnSave.setOnClickListener {
+            for (id in tempSkills) {
+                val chip = findViewById<Chip>(id)
+                if (chip != null) {
+                    val lang = chip.text.toString()
+                    selectedLanguages.add(lang)
+                }
+            }
+
+            for (id in tempLangs) {
+                val chip = findViewById<Chip>(id)
+                if(chip!= null){
+                    val skill = chip.text.toString()
+                    selectedSkills.add(skill)
+                }
+            }
+
             val ageMin = binding.addAgeMin.text.toString().toIntOrNull()
             val ageMax = binding.addAgeMax.text.toString().toIntOrNull()
             val salaryMin = binding.addSalaryMin.text.toString().toFloatOrNull()
@@ -113,8 +108,9 @@ class JobPreferencesActivity : AppCompatActivity() {
                     when(it){
                         is Resource.Success ->{
                             val filteredUsers = it.data
-                            Log.d("Hi", filteredUsers.toString())
                             val intent = Intent(this@JobPreferencesActivity, MainCompanyActivity::class.java)
+                            val filteredUsersJSON = Gson().toJson(filteredUsers)
+                            intent.putExtra("fil_user", filteredUsersJSON)
                             startActivity(intent)
                         }
                         is Resource.Error ->{

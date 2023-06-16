@@ -2,6 +2,7 @@ package umn.ac.id.myapplication.ui.companypage
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
@@ -20,9 +21,11 @@ import umn.ac.id.myapplication.ui.chat.other.*
 import umn.ac.id.myapplication.ui.companypage.ui.HistoryCompany.HistoryCompanyFragment
 import umn.ac.id.myapplication.ui.companypage.ui.ProfileCompany.ProfileCompanyFragment
 import umn.ac.id.myapplication.ui.companypage.ui.home.HomeCompanyFragment
+import umn.ac.id.myapplication.ui.data.UserDataResponse
 import umn.ac.id.myapplication.ui.data.UserPreferences
 import umn.ac.id.myapplication.ui.viewmodel.MainViewModel
 import umn.ac.id.myapplication.ui.viewmodelfactory.MainViewModelFactory
+import com.google.gson.Gson
 
 class MainCompanyActivity : AppCompatActivity() {
 
@@ -48,6 +51,8 @@ class MainCompanyActivity : AppCompatActivity() {
         mSocket!!.on(Socket.EVENT_CONNECT) {}
         mSocket!!.on(Socket.EVENT_DISCONNECT) {}
 
+        val userDataJson = intent.getStringExtra("fil_user")
+
         mainViewModel.getSession().observe(this){
             if (it.isLogin){
                 isDataShow = savedInstanceState?.getBoolean(IS_CONNECTING) ?: true
@@ -72,6 +77,12 @@ class MainCompanyActivity : AppCompatActivity() {
                 R.id.navigation_chat_company -> selectedFragment = MainFragment()
                 R.id.navigation_history_company -> selectedFragment = HistoryCompanyFragment()
                 R.id.navigation_profile_company -> selectedFragment = ProfileCompanyFragment()
+            }
+
+            if(userDataJson != null) {
+                val bundle = Bundle()
+                bundle.putString("fil_user", userDataJson)
+                selectedFragment?.arguments = bundle
             }
 
             if(selectedFragment != null){
